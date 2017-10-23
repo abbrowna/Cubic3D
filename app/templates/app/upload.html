@@ -1,0 +1,101 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="page-header title"><h1>{{ title }}.</h1></div>
+
+<div class="row">
+    <div class="col-md-6 uploadcol">
+        <form method="post" enctype="multipart/form-data" id="upload_form" class="form-horizontal">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <div class="input-group">
+                {{form.description.errors}}
+                <span class="input-group-addon"><label class="control-label" for="{{from.description.id_for_label}}">Descriptive name:</label></span>
+                {{form.description}}
+            </div>
+
+            <div class="input-group" id="file_picker">
+                {{form.thing.errors}}
+                <span class="input-group-addon"><label class="control-label" for="{{from.thing.id_for_label}}">Part as .STL file:</label></span>
+                {{form.thing}}
+            </div>
+
+            <div class="input-group">
+                {{form.purpose.errors}}
+                <span class="input-group-addon"><label class="control-label" for="{{from.purpose.id_for_label}}">Purpose:</label></span>
+                {{form.purpose}}
+            </div>
+
+            <div class="input-group">
+                {{form.material.errors}}
+                <span class="input-group-addon"><label class="control-label" for="{{from.material.id_for_label}}">Material:</label></span>
+                {{form.material}}
+            </div>
+
+            <div class="input-group">
+                {{form.color.errors}}
+                <span class="input-group-addon"><label class="control-label" for="{{from.color.id_for_label}}">Color:</label></span>
+                {{form.color}}
+            </div>
+
+            <div class="input-group" id="combo_info" style="display:none">
+                {{form.color_combo.errors}}
+                <span class="input-group-addon"><label class="control-label" for="{{from.color_combo.id_for_label}}">Instructions:</label></span>
+                {{form.color_combo}}
+            </div>
+    
+            <div class="checkbox">
+                <label><input type="checkbox" id="scaleselect"> Change Scaling</label>
+            </div>
+        
+            <div class="input-group" id="scalingtext" style="display:none">
+                {{form.scale_info.errors}}
+                <span class="input-group-addon"><label class="control-label" for="{{from.scale_info.id_for_label}}">Scaling info</label></span>
+                {{form.scale_info}}
+            </div>
+
+            <div class="checkbox">
+                <label><input type="checkbox" id="further_select"> Additional requests</label>
+            </div>
+
+            <div class="input-group" id="furthertext" style="display:none">
+                {{form.further_requests.errors}}
+                <span class="input-group-addon"><label class="control-label" for="{{from.further_requests.id_for_label}}">Additional Requests</label></span>
+                {{form.further_requests}}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Done</button>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <div class="uploadhelp">
+            <h2 class="page-header">Helpfull info</h2>
+            <p>
+                Here are some on the fly pointers that may help you decide. We however
+                recommed that you visit the <strong><a href={% url 'materials' %}>Materials</a></strong>
+                page for more indepth explanations .
+            </p>
+            <ol>
+                <li>
+                    PLA will work for most applications even mechanical in which case 
+                    you should set the <em>purpose</em> field to <em>mechanical</em>
+                </li>
+                <li>
+                    If you really feel that your part will undergo some extra loads or
+                    has sections that will bend in order to join to other parts, then the
+                    flexibility and toughness of PETG should come in handy. 
+                </li>
+                <li>Multicolor and Mechanical parts will generally be abit pricier. </li>
+                <li>Colors can only be changed as the part transitions from one layer into another</li>
+                <li>
+                    the designs you upload should be in .stl format. Most CAD software support exporting designs as .stl format.
+                    files obtained from Thingiverse are already in .stl format.
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

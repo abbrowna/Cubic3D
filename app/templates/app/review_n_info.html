@@ -1,0 +1,79 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+<div class="page-header title"><h1>{{title}}</h1></div>
+<div class="alert alert-success">
+    <strong>Success!</strong>Your Print request has ben recieved
+</div>
+<h2>So here's what we got...</h2>
+
+<div class="row" id="review">
+    <div class="col-md-3 received" id="id_received">
+        <h3>Descriptive name:</h3>
+        <p>{{description}}</p>
+        <h3>Uploaded file:</h3>
+        <p>{{filename}}</p>
+        <h3>Purpose:</h3>
+        <p>{{purpose}}</p>
+        <h3>Material:</h3>
+        <p>{{material}}</p>
+        <h3>Color:</h3>
+        <p>{{color}}</p>
+        {% if colorinfo != "" %}
+            <h3>Color info</h3>
+            <p>{{colorinfo}}</p>
+        {% endif %}
+        {% if scaleinfo != "" %}
+            <h3>Scaling</h3>
+            <p>{{scaleinfo}}</p>
+        {% endif %}
+        {% if further_requests != "" %}
+            <h3>Further requests</h3>
+            <p>{{further_requests}}</p>
+        {% endif %}
+    </div>
+    
+    <div class="col-md-9" id="viewrow">
+        <p id="stlpath" hidden>{{stlpath}}</p>
+        <iframe id="id_stlviewer" scrolling="no" src="{% url 'viewer'%}">            
+        </iframe>
+    </div>
+
+ 
+</div>
+
+<div class="alert alert-info">
+    <!--<strong>Sliced output {{sliceoutput}}<br /></strong>-->
+    <strong>Mass: {{slicemass}} g</strong>
+    <strong>Estimated price: {{price}} Ksh</strong>
+    <h4>Important points to note:</h4>
+    <ul>
+        <li>The plane on which your object lies in the viewer above is 200x200mm. This should help give some perspective. Also, your object has to fit in there to be printable.</li>
+        <li>The above viewer and price-estimate uses a scale of 100% and also assumes that the part is given in mm.</li>
+        <li>If your object appears too small or too large, it is likely it was created in dimensions other than mm. You need to specify scaling.</li>
+        <li> If you already requested a custom scale in the previous page, go ahead and complete the request. We shall mail you the price with your scaling applied.</li>
+        <li>Even if your part looks the perfect size above, the estimate is not final. We shall email you a final price after analyzing your request.</li>
+    </ul>
+</div>
+<div class="next-steps">
+    <h2 class="page-header">Final info:<small>Now that we have your details, what next?;</small></h2>
+    <ol>
+        <li>We will first take a look at your print file and selected options to see if its viable</li>
+        <li>
+            We then send you an email with the final Price and a link to confirm your print request.
+            Clicking on this link confirms your request and makes it final.
+        </li>
+        <li>
+            Once confirmed, we then print your part and communicate with you via the phone number
+            indicated in your account details for collection.
+        </li>
+        <li>
+            Payment is required during the physical hand over.
+        </li>
+    </ol>
+    <a class="btn btn-warning" href="{% url 'cancel' %}">Cancel 3Dprint &times;</a>
+    <a class="btn btn-primary" href="{% url 'thanks' %}">Finish &raquo; </a>
+</div>
+
+
+{% endblock %}

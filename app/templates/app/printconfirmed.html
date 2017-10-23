@@ -1,0 +1,37 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="page-header title"><h1>{{ title }}.</h1></div>
+<div class="alert alert-success">
+    <strong>Success! Time for the magic to happen.</strong>
+</div>
+<div class="print_queue_info">
+    <h3 class="page-header">Order info</h3>
+    <p>You have succesfully placed your order and <strong>{{description}}</strong> is now in the priting queue with the following options:</p>
+    <ul>
+        <li>{{purpose}}</li>
+        <li>{{material}}</li>
+        <li>{{color}}</li>
+        <li>{{colorinfo}}</li>
+        <li>{{scaleinfo}}</li>
+        <li>{{further_requests}}</li>
+    </ul>
+    <p>
+        We will get back to you <strong>via the mobile number provided in your account details</strong> when your part has been printed 
+        so as to arrange for the exchange.
+    </p>
+    <h3>Quick links</h3>
+    <div class="list-group">
+        <a href="{% url 'thingiverse' %}" class="list-group-item">
+            <h4 class="list-group-item-heading">Thingiverse</h4>
+            <p class="list-group-item-text">See other amazing things you can print</p>
+        </a>
+        <a href="{% if user.is_authenticated %}{% url 'upload' %}{% else %}{% url 'startlogin' %}{%endif%} " class="list-group-item">
+            <h4 class="list-group-item-heading">Print request</h4>
+            <p class="list-group-item-text">Make a print request.</p>
+        </a>
+    </div>
+    <a class="btn btn-primary" href="{% url 'home' %}">Home</a>
+</div>
+{% endblock %}

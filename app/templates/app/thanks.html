@@ -1,0 +1,22 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="page-header title"><h1>{{ title }}.</h1></div>
+<div class="alert alert-info">
+    <strong>Hold tight!</strong>We will get back to you real soon via email with a link to confirm your request
+</div>
+<h3>Quick links</h3>
+<div class="list-group">
+    <a href="{% url 'thingiverse' %}" class="list-group-item">
+        <h4 class="list-group-item-heading">Thingiverse</h4>
+        <p class="list-group-item-text">See other amazing things you can print</p>
+    </a>
+    <a href="{% if user.is_authenticated %}{% url 'upload' %}{% else %}{% url 'startlogin' %}{%endif%} " class="list-group-item">
+        <h4 class="list-group-item-heading">Print request</h4>
+        <p class="list-group-item-text">Make another print request.</p>
+    </a>
+</div>
+<a class="btn btn-primary" href="{% url 'home' %}">Home</a>
+
+{% endblock %}

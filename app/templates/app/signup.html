@@ -1,0 +1,55 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+<div class="page-header title"><h1>{{title}}.</h1></div>
+<div class="signuprow row">
+    <h2 class="page-header">Please fill in your details</h2>
+    <div class="col-md-5">
+        <form method="POST" class="form-horizontal">
+            {% csrf_token %} 
+            {{ form.non_field_errors }}
+            
+            <div class="input-group">
+                {{form.first_name.errors}}
+                <span class="input-group-addon"><label class="control-label" for="{{from.first_name.id_for_label}}">First name:</label></span>
+                {{form.first_name}}
+            </div>
+            <div class="input-group"> 
+                {{form.last_name.errors}}
+                <span class="input-group-addon"><label class="control-label" for="{{from.last_name.id_for_label}}">Last name:</label></span>                
+                {{form.last_name}}
+            </div>
+            <div class="input-group">
+                {{form.username.errors}}
+                <span class="input-group-addon"><label class="control-label" for="{{from.username.id_for_label}}">Username:</label></span>                
+                {{form.username}}
+            </div>
+            <div class="input-group">
+                {{form.email.errors}}
+                <span class="input-group-addon"><label class="control-label" for="{{from.email.id_for_label}}">Email:</label></span>                
+                {{form.email}}
+            </div>
+            <div class="input-group">   
+                {{form.mobile.errors}}
+                <span class="input-group-addon"><label class="control-label" for="{{from.mobile.id_for_label}}">Phone number:</label></span>                
+                {{form.mobile}}
+            </div>
+            <div class="input-group"> 
+                {{form.password1.errors}}
+                <span class="input-group-addon"><label class="control-label" for="{{from.password1.id_for_label}}">Password:</label></span>                
+                {{form.password1}}
+            </div>
+            <div class="input-group">  
+                {{form.password2.errors}}
+                <span class="input-group-addon"><label class="control-label" for="{{from.password2.id_for_label}}">Confirm Password:</label></span>                
+                {{form.password2}}
+            </div>
+            <button type="submit" class="btn-primary">Sign me Up</button>
+        </form>
+    </div>
+    <div class="col-md-7 logocol">
+        <span class="brand">CUBIC3D</span>
+    </div>
+</div>
+
+{% endblock %}

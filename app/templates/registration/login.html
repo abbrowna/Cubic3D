@@ -1,0 +1,50 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="page-header title"><h1>Login</h1></div>
+<div class="row">
+    <div class="col-md-6">
+        <section id="loginForm">
+            <h2>Enter your Cubic3D credentials</h2>
+            <form action="." method="post" class="form-horizontal">
+                {% csrf_token %}
+
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    {{form.username}}
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>                   
+                    {{form.password}}                    
+                </div>
+                {% if form.errors %}
+                <p class="validation-summary-errors">Please enter a correct user name and password.</p>
+                {% endif %}
+
+                <div>
+                    <input type="hidden" name="next" value="{{next}}" />
+                    <input type="submit" value="Log in" class="btn btn-primary" />
+                </div>
+            </form>
+
+            <div><a href="{% url 'password_reset' %}">Forgot password</a></div>
+            <div class="signup_link_section">
+                <p>Don't have a cubic account? <a href="{% url 'signup' %}">Sign Up</a> Now.</p>
+            </div>
+        </section>
+    </div>
+    <div class="col-md-6">
+
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+    {% load staticfiles %}
+<script src="{% static 'app/scripts/jquery.validate.min.js' %}"></script>
+
+{% endblock %}

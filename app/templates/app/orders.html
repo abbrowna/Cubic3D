@@ -1,0 +1,44 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+<div class="page-header title"><h1>{{title}}</h1></div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>UploadID</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>PrintName</th>
+            <th>Confirmed</th>
+            <th>Purpose</th>
+            <th>Material</th>
+            <th>Color</th>
+            <th>ColorCombo</th>
+            <th>ScaleInfo</th>
+            <th>Special</th>
+            <th>Printed</th>
+            <th>Download</th>
+        </tr>
+    </thead>
+    {% for order in orderqueue  %}
+        <tr>
+            <td class="requestid">{{order.upload_id}}</td>
+            <td>{{order.user.first_name}}</td>
+            <td>{{order.user.last_name}}</td>
+            <td>{{order.description}}</td>
+            <td>{{order.confirmed_on}}</td>
+            <td>{{order.purpose}}</td>
+            <td>{{order.material}}</td>
+            <td>{{order.color}}</td>
+            <td>{{order.color_combo}}</td>
+            <td>{{order.scale_info}}</td>
+            <td>{{order.further_requests}}</td>
+            <td>{{order.printed}}</td>
+            <td><a class="btn btn-primary download" href="/download/{{order.thing.path}}" target="_blank">Download</a></td>
+            <td><a class="btn btn-primary setprinted" href="/setprinted/{{order.upload_id}}">Set Printed</a></td>
+        </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

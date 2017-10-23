@@ -1,0 +1,70 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+<div class="page-header title"><h1>{{ title }}</h1></div>
+<div class="matlinfo">
+    <h2 class="page-header">{{ message }}</h2>   
+        <p>
+            Common 3D printing materials are usually thermoplastics which means they dont degrade on application of heat.
+            Materials also have varying properties which means one may be more suited to an application than another.            
+        </p>
+        <p>The following is a side by side comparison of the the two materials we specialize in and should help you decide which material to choose.</p>
+    <div class="row">
+        <div class="col-md-4">
+            <h3 class="page-header">PETG</h3>
+            <ul>
+                <li>
+                    Firstly, and most importantly, it's <strong>Durable</strong>, it's more flexible than PLA but also a little softer.
+                    You'd have a hard job breaking it in half. So if an unbreakable case or enclosure is what you need, PETG trumps its competitor.
+                </li>
+                <li>It has very <strong>low shrinkage</strong>, and therefore no warping. This is ideal for printing big stuff. </li>
+                <li>It has <strong>fantastic layer adhesion</strong>. This contributes to the strength of the print.</li>
+                <li>Great chemical resistance along with alkali, acid and water resistance.</li>
+                <li>It has a glass transition temperature of 80C which is worth taking into consideration.</li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h3 class="page-header">PLA</h3>
+            <ul>
+                <li>
+                    PLA is <strong>hard but brittle</strong>. It is more likely to break rather than bend under loads
+                    but would have put up quite a decent fight before it does so.
+                </li>
+                <li>
+                    It also has <strong>low shrinkage</strong> meaning it can print big stuff as well. Nothing to separate it from PETG here.
+                </li>
+                <li>
+                    The finish that PLA produces is usually very neat. It can be easily pigmented meaning colors are vivid.
+                </li>
+                <li>
+                    You dont need to feel bad when throwing out PLA because this material is easily biodegradable,
+                    made from natural ingredients.
+                </li>
+                <li>
+                    It has a lower glass transition temperature than PETG so dont put it in high temperature situations.
+                    60C is the recommended top limit.
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h3 class="page-header">New materials comming soon</h3>
+        </div>
+    </div>
+    <h3 class="page-header"> So let's sum it all up for you</h3>
+    <p>
+        If your print is destined to be a vital mechanical part which will be undergoing loading or your part will be exposed to harsh environmental conditions, 
+        then PETG is definately the material to choose.
+    </p>
+    <p>
+        Alternatively, if your print is more artistically oriented or even mechanical but with minimal loads, PLA should be your go to material.
+    </p>
+    <p>
+        Generaly, PLA is suitable for most applications. Only when you feel the need for that extra strength and/or flexibility shoud you choose PETG. 
+    </p>
+    <p>Hopefully now your ready to move to the next step. Use the button below to get started.</p>
+    <div>
+        <a class="btn btn-default" href="{% url 'home' %}">Back Home</a>
+        <a class="btn btn-primary" href="{% if user.is_authenticated %}{% url 'upload' %}{% else %}{% url 'startlogin' %}{%endif%} ">Request a print &raquo;</a>
+    </div>   
+</div>
+{% endblock %}

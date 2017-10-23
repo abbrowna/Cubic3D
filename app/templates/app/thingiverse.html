@@ -1,0 +1,37 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+<div class="page-header title"><h1>{{title}}<small> Thingiverse meets Cubic3D</small></h1></div>
+<a class="btn btn-primary" data-toggle="modal" data-target="#helpmodal">How to use</a>
+
+<div id="helpmodal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2 class="modal-title">How to use Thingiverse</h2>
+      </div>
+      <div class="modal-body">
+        <ul>
+            <li>Enter some search criteria for the item you want(upper right)</li>
+            <li>Click on an item to get more info on it</li>
+            <li>if you want to print the item, use the "thing files" link and click on the .stl file you want. This will download the file.</li>
+            <li>When requesting a print, select the file you just downloaded.</li>
+            <li>Note that item size can also be scaled up or down as you desire, just use the scale checkbox when selecting options.</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<iframe src="https://www.thingiverse.com/" class="iframe"></iframe>
+
+<div >
+    <a class="btn btn-warning" href="{% url 'home' %}">Home</a>
+    <a class="btn btn-primary" href="{% if user.is_authenticated %}{% url 'upload' %}{% else %}{% url 'startlogin' %}{%endif%} ">Print downloaded files &raquo;</a>
+</div>
+{% endblock %}
