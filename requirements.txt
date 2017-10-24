@@ -7,3 +7,4 @@ python-utils==2.2.0
 pytz==2017.2
 setuptools==28.8.0
 gunicorn
+whitenoise
