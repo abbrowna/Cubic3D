@@ -18,8 +18,8 @@ def slicedweight(pathtofile, density):
         result = subprocess.check_output(cmd, shell=True, stderr=subprocess.STDOUT)
         string = result.decode('utf-8')
         print(string)
-        search = re.compile('(?<=Filament:\s)[0-9]+')
-        filamentvolume = search.findall(string)
-        mass = int(filamentvolume[0])*density/1000
-        roundmass = int(math.ceil(mass))
-        return (string,roundmass)
+        #search = re.compile('(?<=Filament:\s)[0-9]+')
+        #filamentvolume = search.findall(string)
+        #mass = int(filamentvolume[0])*density/1000
+        #roundmass = int(math.ceil(mass))
+        #return (string,roundmass)
