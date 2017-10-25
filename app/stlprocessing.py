@@ -15,12 +15,11 @@ def slicedweight(pathtofile, density):
         return (string,roundmass)
     else:
         cmd = r'cd app && chmod -R a+rwx CuraEngine && cd CuraEngine/build && CuraEngine slice -v -j "../resources/definitions/fdmprinter.def.json" -s machine_width=200 -s material_diameter=1.75 -s center_object=true -s adhesion_type=skirt -s infill_line_distance=2.4 -s support_enable=true -l "{0}"'.format(pathtofile)
-        #cmd = r'cd app && chmod -R a+rwx CuraEngine && cd CuraEngine/build && CuraEngine slice -v -j "app/CuraEngine/resources/definitions/fdmprinter.def.json" -o "/output.gcode" -s machine_height=175 -s machine_depth=200 -s machine_width=200 -s material_diameter=1.75 -s center_object=true -s adhesion_type=skirt -s infill_line_distance=2.4 -s support_enable=true -l "{0}"'.format(pathtofile)
         result = subprocess.check_output(cmd, shell=True, stderr=subprocess.STDOUT)
         string = result.decode('utf-8')
         print(string)
-        #search = re.compile('(?<=Filament:\s)[0-9]+')
-        #filamentvolume = search.findall(string)
-        #mass = int(filamentvolume[0])*density/1000
-        #roundmass = int(math.ceil(mass))
-        #return (string,roundmass)
+        search = re.compile('(?<=Filament:\s)[0-9]+')
+        filamentvolume = search.findall(string)
+        mass = int(filamentvolume[0])*density/1000
+        roundmass = int(math.ceil(mass))
+        return (string,roundmass)
