@@ -66,7 +66,7 @@ urlpatterns = [
         }, 
         name='logout'),
     url('^', include('django.contrib.auth.urls')),
-    url(r'^viewer/', TemplateView.as_view(template_name="app\stlviewer.html"),
+    url(r'^viewer/', TemplateView.as_view(template_name="app/stlviewer.html"),
                    name='viewer'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
