@@ -15,6 +15,7 @@ from django.conf import settings
 from django.http import Http404, HttpResponse, HttpRequest
 from django.core.mail import EmailMessage
 import os
+from sys import platform
 
 def home(request):
     """Renders the home page."""
@@ -87,6 +88,8 @@ def upload(request):
 
 @staff_member_required
 def download(request, path):
+    if platform != 'win32':
+        path = r'/"{0}"'.format(path)
     with open(path, 'rb') as fh:
         response = HttpResponse(fh.read(), content_type="application/vnd.stl")
         response['Content-Disposition'] = 'inline; filename=' + os.path.basename(path)
