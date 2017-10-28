@@ -87,12 +87,10 @@ def upload(request):
 
 @staff_member_required
 def download(request, path):
-    if os.path.exists(path):
-        with open(path, 'rb') as fh:
-            response = HttpResponse(fh.read(), content_type="application/vnd.stl")
-            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(path)
-            return response
-    raise Http404
+    with open(path, 'rb') as fh:
+        response = HttpResponse(fh.read(), content_type="application/vnd.stl")
+        response['Content-Disposition'] = 'inline; filename=' + os.path.basename(path)
+        return response
 
 @staff_member_required
 def set_printed(request, id):
