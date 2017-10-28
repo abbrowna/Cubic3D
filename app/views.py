@@ -89,7 +89,7 @@ def upload(request):
 @staff_member_required
 def download(request, path):
     if platform != 'win32':
-        path = r'/"{0}"'.format(path)
+        path = r'/{0}'.format(path)
     with open(path, 'rb') as fh:
         response = HttpResponse(fh.read(), content_type="application/vnd.stl")
         response['Content-Disposition'] = 'inline; filename=' + os.path.basename(path)
