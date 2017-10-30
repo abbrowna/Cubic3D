@@ -24,7 +24,7 @@ def home(request):
         request,
         'app/index.html',
         {
-            'title':'CUBIC3D-Home',
+            'title':'Home',
             'year':datetime.now().year,
         }
     )
