@@ -51,7 +51,7 @@ class Tempthings(models.Model):
             density = 1.25
         output,mass = slicedweight(self.thing.path,density)
         price = (int(math.ceil(mass))*15)
-        return int(math.ceil(price/50.0)*50)
+        return mass,int(math.ceil(price/50.0)*50)
 
 
 class ThingOrders(models.Model):

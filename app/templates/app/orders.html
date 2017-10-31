@@ -6,14 +6,13 @@
 <table class="table">
     <thead>
         <tr>
-            <th>UploadID</th>
-            <th>FirstName</th>
-            <th>LastName</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Email</th>
             <th>PrintName</th>
-            <th>Confirmed</th>
-            <th>Purpose</th>
-            <th>Material</th>
-            <th>Color</th>
+            <th>Conf</th>
+            <th>Info</th>
             <th>ColorCombo</th>
             <th>ScaleInfo</th>
             <th>Special</th>
@@ -24,13 +23,12 @@
     {% for order in orderqueue  %}
         <tr>
             <td class="requestid">{{order.upload_id}}</td>
-            <td>{{order.user.first_name}}</td>
-            <td>{{order.user.last_name}}</td>
+            <td>{{order.user.first_name}} {{order.user.last_name}}</td>
+            <td>{{order.user.profile.mobile}}</td>
+            <td>{{order.user.email}}</td>
             <td>{{order.description}}</td>
             <td>{{order.confirmed_on}}</td>
-            <td>{{order.purpose}}</td>
-            <td>{{order.material}}</td>
-            <td>{{order.color}}</td>
+            <td>{{order.purpose}} {{order.material}} {{order.color}}</td>
             <td>{{order.color_combo}}</td>
             <td>{{order.scale_info}}</td>
             <td>{{order.further_requests}}</td>

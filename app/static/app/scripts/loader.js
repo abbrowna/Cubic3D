@@ -15,7 +15,7 @@ window.addEventListener("load", function () {
     view.appendChild(renderer.domElement);
 
     var camera = new THREE.PerspectiveCamera(45, w / h, 1, 1000);
-    camera.position.set(3, 3, 100);
+    camera.position.set(100, 100, 200);
     var cameraTarget = new THREE.Vector3(0, 0, 0);
 
     var controls = new THREE.TrackballControls(camera, view);

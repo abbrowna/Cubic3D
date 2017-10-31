@@ -36,7 +36,7 @@ def contact(request):
         request,
         'app/contact.html',
         {
-            'title':'Contact',
+            'title':'Contact Us',
             'message':'We\'d love to be of any assistance we can. You can get to us by writing to:',
             'year':datetime.now().year,
         }
@@ -109,11 +109,10 @@ def review_n_info(request):
     thing_id=request.session.get('thing_id')
     file_name=request.session.get('file_name')
     part=Tempthings.objects.get(id=thing_id)
-    slice=part.slicemass()
+    mass,price=part.thing_price()
     return render(request,'app/review_n_info.html',
         {
-            'slicemass':slice[1],
-            'sliceoutput':slice[0],
+            'slicemass':mass,
             'description':part.description,
             'filename':file_name,
             'purpose':part.purpose,
@@ -124,7 +123,8 @@ def review_n_info(request):
             'further_requests':part.further_requests,
             'title':'Review and final info',
             'year':datetime.now().year,
-            'price':part.thing_price,
+            'price':price,
+            'priceupper':price*1.2,
             'stlpath':part.thing.url,
         }
     )

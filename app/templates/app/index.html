@@ -51,9 +51,13 @@
         <h2 class="page-header">What exactly is 3D printing?</h2>
         <p>
             Simply put, 3D printing, more technically known as Additive manufacturing,
-            is the building of physical objects using a layer upon layer process.<br />
+            is the building of physical objects using a layer upon layer process.
+        </p>
+        <p>
             Just as you may print letters or images onto a piece of paper, we can print
-            an object into existance for you. You might even say we pull it right out of thin air!<br />
+            an object into existance for you. You might even say we pull it right out of thin air!
+        </p>
+        <p>
             For the knowledge seekers, feel free to use the link below.
         </p>
         <p><a class="btn btn-primary" href="https://www.3dhubs.com/what-is-3d-printing" target="_blank">Learn more &raquo;</a></p>
@@ -74,18 +78,21 @@
     <div class="col-md-4">
         <h2 class="page-header">Getting started</h2>
         <p><strong>Ready to print something new? lets get you on the right track</strong></p>
-        <p>take a look at the vast library of amazing things you can print.</p>
-        <p><a class="btn btn-primary" href="{% url 'thingiverse' %}">Thingiverse &raquo;</a></p>
+        <p>take a look at the vast library of amazing things you can print. You can download the <strong>.stl</strong> of the object you fancy then come back here to see what to do next.</p>
+        <p><a class="btn btn-primary" href="https://thingiverse.com" target="_blank">Thingiverse &raquo;</a></p>
         <p>
             If you already found and downloaded what you'd like to print or perhaps you have your own design
             as is commonly the case for makers and architects, use the button below.
         </p>
-        <!--<p><a class="btn btn-primary" href="{% if user.is_authenticated %}{% url 'upload' %}{% else %}{% url 'startlogin' %}{%endif%} ">Request a print &raquo;</a></p>-->
         <p><a class="btn btn-primary" href="{% url 'upload' %}">Request a print &raquo;</a></p>
     </div>
 </div>
 
-<h2 class="page-header">What to print...?<small>Meet Thingiverse</small></h2>
+<div class="mainrow" id="mainhelp">
+    <p>If you require help obtaining a <strong>3D object from a 2D image</strong>, Feel free to write to us at <a href="mailto:Support@cubic3D.co.ke">Support@Cubic3D.co.ke</a><br /></p>
+</div>
+
+<a href="https://thingiverse.com" target="_blank"><h2 class="page-header">Meet Thingiverse. <small> Our recommended 3D object library</small></h2></a>
 <iframe src="https://www.thingiverse.com/" class="iframe"></iframe>
 
 {% endblock %}
