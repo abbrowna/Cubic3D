@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 import posixpath
+from sys import platform
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['139.59.26.37','localhost','cubic3d.co.ke']
 
@@ -141,10 +142,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 #File system 
 
 MEDIA_URL = '/media/'
-if DEBUG:
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-else:
+if platform != 'win32':
     MEDIA_ROOT = os.path.join('/home/cubic', 'media/')
+else:
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 #Email
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
