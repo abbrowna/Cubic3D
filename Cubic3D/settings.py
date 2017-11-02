@@ -90,7 +90,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join('/home', 'db.sqlite3'),
+            'NAME': os.path.join('/home/cubic', 'db.sqlite3'),
         }
     }
 
