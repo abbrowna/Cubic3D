@@ -83,4 +83,9 @@ $(document).ready(function () {
     $(".logocol").css('height', $(".signuprow").height() + 'px');
     //review and info viewer
     $("#viewrow").css('height', $("#review").height() + 'px');
+
+    //call the modal if form submits
+    $("#upload_form").on('submit', function (event) {
+        $('#uploadmodal').modal('show');
+    })
 });

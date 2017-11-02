@@ -10,7 +10,6 @@ def accepthtml(printrequest,price):
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
             <meta name="viewport" content="width=device-width">
             <!--[if !mso]><!--><meta http-equiv="X-UA-Compatible" content="IE=edge"><!--<![endif]-->
-            <title>Template Base</title>
             <!--[if !mso]><!-- -->
 	        <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" type="text/css">
 	        <!--<![endif]-->
@@ -408,7 +407,6 @@ def rejecthtml(printrequest,message):
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width">
         <!--[if !mso]><!--><meta http-equiv="X-UA-Compatible" content="IE=edge"><!--<![endif]-->
-        <title>Template Base</title>
         <!--[if !mso]><!-- -->
 	    <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" type="text/css">
 	    <!--<![endif]-->
