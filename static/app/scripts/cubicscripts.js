@@ -55,21 +55,19 @@ $(document).ready(function () {
     $("select").addClass("form-control");
     $("textarea").addClass("form-control");
 
-    //autopopulate fields in confirmations page
-    $(".sendconfirm").click(function (event) {
-        var cell = $(this).parent();
-        var idfield = $(cell).siblings("td.requestid").html();
-        $('#id_requestid').val(idfield);
+    //display correct form in reject or accept page depending on the clicked button
+    $("#sendconfirm").click(function (event) {
+        $('#rejectmessagefield').hide();
+        $('#finalpricefield').show();
         $('#id_rejectmessage').val("N/A");
         $('#viablebool').val(true);
-        $('#linkform').submit();
+        $('#emailsubmit').show();
     });
-    $(".sendreject").click(function (event) {
-        var cell = $(this).parent();
-        var idfield = $(cell).siblings("td.requestid").html();
-        $('#id_requestid').val(idfield);
+    $("#sendreject").click(function (event) {
+        $('#rejectmessagefield').show();
+        $('#finalpricefield').hide();
         $('#viablebool').val(false);
-        $('form').submit();
+        $('#emailsubmit').show();
     });
 
     //signupform placeholders

@@ -79,12 +79,20 @@ WSGI_APPLICATION = 'Cubic3D.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join('/home', 'db.sqlite3'),
+        }
+    }
 
 
 # Password validation
@@ -133,7 +141,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 #File system 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 #Email
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

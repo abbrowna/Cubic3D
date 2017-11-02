@@ -64,7 +64,7 @@
     <p>Hopefully now your ready to move to the next step. Use the button below to get started.</p>
     <div>
         <a class="btn btn-default" href="{% url 'home' %}">Back Home</a>
-        <a class="btn btn-primary" href="{% if user.is_authenticated %}{% url 'upload' %}{% else %}{% url 'startlogin' %}{%endif%} ">Request a print &raquo;</a>
+        <a class="btn btn-primary" href="{% url 'upload' %}">Request a print &raquo;</a>
     </div>   
 </div>
 {% endblock %}

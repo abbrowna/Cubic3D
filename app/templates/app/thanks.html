@@ -8,11 +8,11 @@
 </div>
 <h3>Quick links</h3>
 <div class="list-group">
-    <a href="{% url 'thingiverse' %}" class="list-group-item">
+    <a href="https://thingiverse.com" class="list-group-item">
         <h4 class="list-group-item-heading">Thingiverse</h4>
         <p class="list-group-item-text">See other amazing things you can print</p>
     </a>
-    <a href="{% if user.is_authenticated %}{% url 'upload' %}{% else %}{% url 'startlogin' %}{%endif%} " class="list-group-item">
+    <a href="{% url 'upload' %}" class="list-group-item">
         <h4 class="list-group-item-heading">Print request</h4>
         <p class="list-group-item-text">Make another print request.</p>
     </a>

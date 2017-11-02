@@ -15,7 +15,7 @@ import math
 class Tempthings(models.Model):
     description = models.CharField(max_length=255, blank=True, verbose_name = "Descriptive name")
     user = models.ForeignKey(User)
-    thing = models.FileField(upload_to='thingstemp/%Y/%m/%d/',
+    thing = models.FileField(upload_to='thingstemp/%Y/%m/',
                              validators=[FileExtensionValidator(['stl'],'Please export your file as a .STL object then upload it. If your unable, Email your file to us instead')])
     uploaded_at = models.DateTimeField(auto_now_add=True,)
     material_choices=(

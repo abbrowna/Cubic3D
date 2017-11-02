@@ -46,9 +46,10 @@ class TempThingForm(forms.ModelForm):
             }
 
 class EmailForm(forms.Form):
-    requestid = forms.IntegerField()
     viable = forms.BooleanField(required=False)
+    price = forms.IntegerField(required=False)
     rejectmessage = forms.CharField(widget=forms.Textarea)
+
 
 
 

@@ -1,0 +1,12 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="page-header title"><h1>{{ title }}.</h1></div>
+<div>
+    <p><a href="{% url 'orders' %}" class="btn btn-primary btn-large">Orders &raquo;</a></p>
+    <p><a href="{% url 'printrequests' %}" class="btn btn-primary btn-large">Print Requests &raquo;</a></p>
+    <p><a href="{% url 'abandoned' %}" class="btn btn-primary btn-large">Abandoned requests &raquo;</a></p>
+</div>
+
+{% endblock %}

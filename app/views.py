@@ -4,7 +4,7 @@ Definition of views.
 
 from django.shortcuts import render, redirect
 from django.template import RequestContext
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.contrib.auth import login, authenticate
 from app.forms import SignUpForm, TempThingForm, EmailForm
 from app.models import Tempthings, ThingOrders
@@ -138,6 +138,17 @@ def cancel (request):
     part.delete()
     return redirect('home')
 
+def delete_file(request, requestid):
+    """delete the atual file from storage"""
+    assert isinstance(request, HttpRequest)
+    try:
+        part=Tempthings.objects.get(id=requestid)
+        os.remove(part.thing.path)
+        part.delete()
+    except:
+        pass
+    return redirect('abandoned')
+
 def thanks(request):
     """thank you and quick links page"""
     assert isinstance(request, HttpRequest)
@@ -183,22 +194,59 @@ def confirm_print(request,thing_id):
         }
     )
 
+def myadmin(request):
+    """Renders the custom administration page"""
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'app/myadmin.html',
+        {
+            'title':'Administration panel',
+            'year':datetime.now().year,
+        }
+    )
+
 @staff_member_required
-def send_confirm_link(request):
-    """Renders part upload page"""
+def printrequests(request):
+    """Viewer for print requests"""
     assert isinstance(request, HttpRequest)
     requestqueue=Tempthings.objects.filter(confirmation_sent=False).order_by('uploaded_at')
+    return render(request,'app/printrequests.html',
+        {
+            'title':'Print requests that haven\'t been attended to.',
+            'year':datetime.now().year,
+            'requestqueue':requestqueue,
+        }
+    )
+
+@staff_member_required
+def abandoned(request):
+    """Viewer for abandoned print requests"""
+    assert isinstance(request, HttpRequest)
+    abandoned=Tempthings.objects.filter(confirmation_sent=True).filter(uploaded_at__gte=datetime.now()-timedelta(days=14)).order_by('uploaded_at')
+    return render(request,'app/abandoned.html',
+        {
+            'title':'Print requests that have been abandoned.',
+            'year':datetime.now().year,
+            'abandoned':abandoned,
+        }
+    )
+
+@staff_member_required
+def accept_or_reject(request, requestid):
+    """Provides for sending an acceptance or rejected email"""
+    assert isinstance(request, HttpRequest)
+    printrequest=Tempthings.objects.get(id=requestid)
     if request.method == 'POST':
         form = EmailForm(request.POST)
         if form.is_valid():
-            requestid = form.cleaned_data['requestid']
             viable = form.data['viablebool']
-            printrequest = Tempthings.objects.get(id=requestid)
             if viable == 'true':
                 subject = 'Print Confirmation'
-                html_content = accepthtml(printrequest)
+                finalprice = form.cleaned_data['price']
+                html_content = accepthtml(printrequest,finalprice)
             else:
-                subject = 'Print request Error'
+                subject = 'Print Request Error'
                 html_content = rejecthtml(printrequest,form.cleaned_data['rejectmessage'])
             from_email = 'orders@Cubic3D.co.ke'
             to = printrequest.user.email
@@ -213,17 +261,18 @@ def send_confirm_link(request):
                 #delete the request and the uploaded file
                 os.remove(printrequest.thing.path)
                 printrequest.delete()
-            return redirect('send_confirm_link')
+            return redirect('printrequests')
     else:
         form = EmailForm()
-    return render(request,'app/send_confirm_link.html',
+    return render(request,'app/accept_or_reject.html',
         {
+            'printrequest':printrequest,
             'form':form,
-            'title':'View requests and send confirmation links.',
+            'title':'Print requests that havent been attended to.',
             'year':datetime.now().year,
-            'requestqueue':requestqueue,
         }
     )
+
 
 @staff_member_required
 def orders(request):

@@ -1,0 +1,28 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+<div class="page-header title"><h1>{{title}}</h1></div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>request ID</th>
+            <th>Name</th>
+            <th>Print Name</th>
+            <th>Uploaded At</th>
+            <th>Link</th>
+        </tr>
+    </thead>
+    {% for printrequest in requestqueue  %}
+        <tr>
+            <td>{{printrequest.id}}</td>
+            <td>{{printrequest.user.first_name}} {{printrequest.user.last_name}}</td>
+            <td>{{printrequest.description}}</td>
+            <td>{{printrequest.uploaded_at}}</td>
+            <td><a class="btn btn-danger" href="/delete_file/{{printrequest.id}}">Delete file</a></td>
+        </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock %}

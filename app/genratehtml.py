@@ -1,4 +1,4 @@
-def accepthtml(printrequest):
+def accepthtml(printrequest,price):
     mail="""
         <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"><head>
             <!--[if gte mso 9]><xml>
@@ -16,155 +16,155 @@ def accepthtml(printrequest):
 	        <!--<![endif]-->
     
             <style type="text/css" id="media-query">
-              body {
+              body {{
           margin: 0;
-          padding: 0; }
+          padding: 0; }}
 
-        table, tr, td {
+        table, tr, td {{
           vertical-align: top;
-          border-collapse: collapse; }
+          border-collapse: collapse; }}
 
-        .ie-browser table, .mso-container table {
-          table-layout: fixed; }
+        .ie-browser table, .mso-container table {{
+          table-layout: fixed; }}
 
-        * {
-          line-height: inherit; }
+        * {{
+          line-height: inherit; }}
 
-        a[x-apple-data-detectors=true] {
+        a[x-apple-data-detectors=true] {{
           color: inherit !important;
-          text-decoration: none !important; }
+          text-decoration: none !important; }}
 
-        [owa] .img-container div, [owa] .img-container button {
-          display: block !important; }
+        [owa] .img-container div, [owa] .img-container button {{
+          display: block !important; }}
 
-        [owa] .fullwidth button {
-          width: 100% !important; }
+        [owa] .fullwidth button {{
+          width: 100% !important; }}
 
-        [owa] .block-grid .col {
+        [owa] .block-grid .col {{
           display: table-cell;
           float: none !important;
-          vertical-align: top; }
+          vertical-align: top; }}
 
-        .ie-browser .num12, .ie-browser .block-grid, [owa] .num12, [owa] .block-grid {
-          width: 650px !important; }
+        .ie-browser .num12, .ie-browser .block-grid, [owa] .num12, [owa] .block-grid {{
+          width: 650px !important; }}
 
-        .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
-          line-height: 100%; }
+        .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {{
+          line-height: 100%; }}
 
-        .ie-browser .mixed-two-up .num4, [owa] .mixed-two-up .num4 {
-          width: 216px !important; }
+        .ie-browser .mixed-two-up .num4, [owa] .mixed-two-up .num4 {{
+          width: 216px !important; }}
 
-        .ie-browser .mixed-two-up .num8, [owa] .mixed-two-up .num8 {
-          width: 432px !important; }
+        .ie-browser .mixed-two-up .num8, [owa] .mixed-two-up .num8 {{
+          width: 432px !important; }}
 
-        .ie-browser .block-grid.two-up .col, [owa] .block-grid.two-up .col {
-          width: 325px !important; }
+        .ie-browser .block-grid.two-up .col, [owa] .block-grid.two-up .col {{
+          width: 325px !important; }}
 
-        .ie-browser .block-grid.three-up .col, [owa] .block-grid.three-up .col {
-          width: 216px !important; }
+        .ie-browser .block-grid.three-up .col, [owa] .block-grid.three-up .col {{
+          width: 216px !important; }}
 
-        .ie-browser .block-grid.four-up .col, [owa] .block-grid.four-up .col {
-          width: 162px !important; }
+        .ie-browser .block-grid.four-up .col, [owa] .block-grid.four-up .col {{
+          width: 162px !important; }}
 
-        .ie-browser .block-grid.five-up .col, [owa] .block-grid.five-up .col {
-          width: 130px !important; }
+        .ie-browser .block-grid.five-up .col, [owa] .block-grid.five-up .col {{
+          width: 130px !important; }}
 
-        .ie-browser .block-grid.six-up .col, [owa] .block-grid.six-up .col {
-          width: 108px !important; }
+        .ie-browser .block-grid.six-up .col, [owa] .block-grid.six-up .col {{
+          width: 108px !important; }}
 
-        .ie-browser .block-grid.seven-up .col, [owa] .block-grid.seven-up .col {
-          width: 92px !important; }
+        .ie-browser .block-grid.seven-up .col, [owa] .block-grid.seven-up .col {{
+          width: 92px !important; }}
 
-        .ie-browser .block-grid.eight-up .col, [owa] .block-grid.eight-up .col {
-          width: 81px !important; }
+        .ie-browser .block-grid.eight-up .col, [owa] .block-grid.eight-up .col {{
+          width: 81px !important; }}
 
-        .ie-browser .block-grid.nine-up .col, [owa] .block-grid.nine-up .col {
-          width: 72px !important; }
+        .ie-browser .block-grid.nine-up .col, [owa] .block-grid.nine-up .col {{
+          width: 72px !important; }}
 
-        .ie-browser .block-grid.ten-up .col, [owa] .block-grid.ten-up .col {
-          width: 65px !important; }
+        .ie-browser .block-grid.ten-up .col, [owa] .block-grid.ten-up .col {{
+          width: 65px !important; }}
 
-        .ie-browser .block-grid.eleven-up .col, [owa] .block-grid.eleven-up .col {
-          width: 59px !important; }
+        .ie-browser .block-grid.eleven-up .col, [owa] .block-grid.eleven-up .col {{
+          width: 59px !important; }}
 
-        .ie-browser .block-grid.twelve-up .col, [owa] .block-grid.twelve-up .col {
-          width: 54px !important; }
+        .ie-browser .block-grid.twelve-up .col, [owa] .block-grid.twelve-up .col {{
+          width: 54px !important; }}
 
-        @media only screen and (min-width: 670px) {
-          .block-grid {
-            width: 650px !important; }
-          .block-grid .col {
-            vertical-align: top; }
-            .block-grid .col.num12 {
-              width: 650px !important; }
-          .block-grid.mixed-two-up .col.num4 {
-            width: 216px !important; }
-          .block-grid.mixed-two-up .col.num8 {
-            width: 432px !important; }
-          .block-grid.two-up .col {
-            width: 325px !important; }
-          .block-grid.three-up .col {
-            width: 216px !important; }
-          .block-grid.four-up .col {
-            width: 162px !important; }
-          .block-grid.five-up .col {
-            width: 130px !important; }
-          .block-grid.six-up .col {
-            width: 108px !important; }
-          .block-grid.seven-up .col {
-            width: 92px !important; }
-          .block-grid.eight-up .col {
-            width: 81px !important; }
-          .block-grid.nine-up .col {
-            width: 72px !important; }
-          .block-grid.ten-up .col {
-            width: 65px !important; }
-          .block-grid.eleven-up .col {
-            width: 59px !important; }
-          .block-grid.twelve-up .col {
-            width: 54px !important; } }
+        @media only screen and (min-width: 670px) {{
+          .block-grid {{
+            width: 650px !important; }}
+          .block-grid .col {{
+            vertical-align: top; }}
+            .block-grid .col.num12 {{
+              width: 650px !important; }}
+          .block-grid.mixed-two-up .col.num4 {{
+            width: 216px !important; }}
+          .block-grid.mixed-two-up .col.num8 {{
+            width: 432px !important; }}
+          .block-grid.two-up .col {{
+            width: 325px !important; }}
+          .block-grid.three-up .col {{
+            width: 216px !important; }}
+          .block-grid.four-up .col {{
+            width: 162px !important; }}
+          .block-grid.five-up .col {{
+            width: 130px !important; }}
+          .block-grid.six-up .col {{
+            width: 108px !important; }}
+          .block-grid.seven-up .col {{
+            width: 92px !important; }}
+          .block-grid.eight-up .col {{
+            width: 81px !important; }}
+          .block-grid.nine-up .col {{
+            width: 72px !important; }}
+          .block-grid.ten-up .col {{
+            width: 65px !important; }}
+          .block-grid.eleven-up .col {{
+            width: 59px !important; }}
+          .block-grid.twelve-up .col {{
+            width: 54px !important; }} }}
 
-        @media (max-width: 670px) {
-          .block-grid, .col {
+        @media (max-width: 670px) {{
+          .block-grid, .col {{
             min-width: 320px !important;
             max-width: 100% !important;
-            display: block !important; }
-          .block-grid {
-            width: calc(100% - 40px) !important; }
-          .col {
-            width: 100% !important; }
-            .col > div {
-              margin: 0 auto; }
-          img.fullwidth, img.fullwidthOnMobile {
-            max-width: 100% !important; } }
+            display: block !important; }}
+          .block-grid {{
+            width: calc(100% - 40px) !important; }}
+          .col {{
+            width: 100% !important; }}
+            .col > div {{
+              margin: 0 auto; }}
+          img.fullwidth, img.fullwidthOnMobile {{
+            max-width: 100% !important; }} }}
 
             </style>
         </head>
         <body class="clean-body" style="margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: #3B3B3B">
           <style type="text/css" id="media-query-bodytag">
-            @media (max-width: 520px) {
-              .block-grid {
+            @media (max-width: 520px) {{
+              .block-grid {{
                 min-width: 320px!important;
                 max-width: 100%!important;
                 width: 100%!important;
                 display: block!important;
-              }
+              }}
 
-              .col {
+              .col {{
                 min-width: 320px!important;
                 max-width: 100%!important;
                 width: 100%!important;
                 display: block!important;
-              }
+              }}
 
-                .col > div {
+                .col > div {{
                   margin: 0 auto;
-                }
+                }}
 
-              img.fullwidth {
+              img.fullwidth {{
                 max-width: 100%!important;
-              }
-            }
+              }}
+            }}
           </style>
           <!--[if IE]><div class="ie-browser"><![endif]-->
           <!--[if mso]><div class="mso-container"><![endif]-->
@@ -211,7 +211,7 @@ def accepthtml(printrequest):
                   
                             <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
         <div style="font-family:'Bitter', Georgia, Times, 'Times New Roman', serif;line-height:180%;color:#FFFFFF; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">	
-	        <div style="font-size:12px;line-height:22px;color:#FFFFFF;font-family:'Bitter', Georgia, Times, 'Times New Roman', serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 25px;text-align: center">We took a look at your print request of <strong>{}</strong> and are please to inform you that it is viable. We are now writing to you to confirm that you still want this part printed with the following options:</p><ul><li style="font-size: 14px; line-height: 16px; text-align: left;">Purpose:{}</li><li style="font-size: 14px; line-height: 16px; text-align: left;">Material{}</li><li style="font-size: 14px; line-height: 16px; text-align: left;">Color{}</li></ul><p style="margin: 0;font-size: 12px;line-height: 22px;text-align: center">If that looks alright, just a few more things then we can make it final</p></div>	
+	        <div style="font-size:12px;line-height:22px;color:#FFFFFF;font-family:'Bitter', Georgia, Times, 'Times New Roman', serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 25px;text-align: center">We took a look at your print request of <strong>{}</strong> and are please to inform you that it is viable. We are now writing to you to confirm that you still want this object printed with the following options:</p><ul><li style="font-size: 14px; line-height: 16px; text-align: left;">Purpose: {}</li><li style="font-size: 14px; line-height: 16px; text-align: left;">Material: {}</li><li style="font-size: 14px; line-height: 16px; text-align: left;">Color: {}</li></ul><p style="margin: 0;font-size: 12px;line-height: 22px;text-align: center">If that looks alright, just a few more things then we can make it final</p></div>	
         </div>
         <!--[if mso]></td></tr></table><![endif]-->
 
@@ -243,7 +243,7 @@ def accepthtml(printrequest):
                   
                             <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
         <div style="font-family:Verdana, Geneva, sans-serif;line-height:180%;color:#FFFFFF; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">	
-	        <div style="font-size:12px;line-height:22px;font-family:Verdana, Geneva, sans-serif;color:#FFFFFF;text-align:left;"><ul style="list-style-type: circle;"><li style="font-size: 12px; line-height: 21px;"><span style="color: rgb(255, 153, 0); font-size: 12px; line-height: 21px;"><span style="background-color: rgb(0, 128, 0); font-size: 12px; line-height: 21px;">﻿</span><span style="font-size: 14px; line-height: 25px;">After assessment of your request, your item will cost KSH <strong>{}</strong> to print.</span></span></li><li style="font-size: 12px; line-height: 21px;"><span style="font-size: 14px; line-height: 25px; color: rgb(255, 153, 0);">Payment is expected during the physical handing over of the already printed part. You are hence expected to be prepared in order to receive your object .</span></li><li style="font-size: 12px; line-height: 21px;"><span style="font-size: 14px; line-height: 25px; color: rgb(255, 153, 0);">The Available payment options are through&#160;<strong>cash&#160;</strong>or&#160;<strong>Mpesa</strong>.</span></li><li style="font-size: 12px; line-height: 21px;"><span style="font-size: 14px; line-height: 25px; color: rgb(255, 153, 0);">Also note that additional courier fees will be incurred for delivery to clients outside of the Juja locale.</span></li><li style="font-size: 12px; line-height: 21px;"><span style="font-size: 14px; line-height: 25px; color: rgb(255, 153, 0);">When your part is printed, we give you a call via the number provided in your account details to organised for the exchange.</span></li></ul></div>	
+	        <div style="font-size:12px;line-height:22px;font-family:Verdana, Geneva, sans-serif;color:#FFFFFF;text-align:left;"><ul style="list-style-type: circle;"><li style="font-size: 12px; line-height: 21px;"><span style="color: rgb(255, 153, 0); font-size: 12px; line-height: 21px;"><span style="background-color: rgb(0, 128, 0); font-size: 12px; line-height: 21px;">﻿</span><span style="font-size: 14px; line-height: 25px;">After assessment of your request, your item will cost KSH <strong>{}</strong> to print.</span></span></li><li style="font-size: 12px; line-height: 21px;"><span style="font-size: 14px; line-height: 25px; color: rgb(255, 153, 0);">Payment is expected during the physical handing over of the already printed object. You are hence expected to be prepared in order to receive your object .</span></li><li style="font-size: 12px; line-height: 21px;"><span style="font-size: 14px; line-height: 25px; color: rgb(255, 153, 0);">The Available payment options are through&#160;<strong>cash&#160;</strong>or&#160;<strong>Mpesa</strong>.</span></li><li style="font-size: 12px; line-height: 21px;"><span style="font-size: 14px; line-height: 25px; color: rgb(255, 153, 0);">Also note that additional courier fees will be incurred for delivery to clients outside of the Juja locale.</span></li><li style="font-size: 12px; line-height: 21px;"><span style="font-size: 14px; line-height: 25px; color: rgb(255, 153, 0);">When your object is printed, we give you a call via the number provided in your account details to organised for the exchange.</span></li></ul></div>	
         </div>
         <!--[if mso]></td></tr></table><![endif]-->
 
@@ -393,7 +393,7 @@ def accepthtml(printrequest):
           <!--[if (mso)|(IE)]></div><![endif]-->
 
         </body></html>
-    """.format (printrequest.description,printrequest.purpose,printrequest.material,printrequest.color,printrequest.thing_price(),printrequest.id)
+    """.format (printrequest.description,printrequest.purpose,printrequest.material,printrequest.color,price,printrequest.id)
     return mail
 
 def rejecthtml(printrequest,message):
@@ -414,155 +414,155 @@ def rejecthtml(printrequest,message):
 	    <!--<![endif]-->
     
         <style type="text/css" id="media-query">
-          body {
+          body {{
       margin: 0;
-      padding: 0; }
+      padding: 0; }}
 
-    table, tr, td {
+    table, tr, td {{
       vertical-align: top;
-      border-collapse: collapse; }
+      border-collapse: collapse; }}
 
-    .ie-browser table, .mso-container table {
-      table-layout: fixed; }
+    .ie-browser table, .mso-container table {{
+      table-layout: fixed; }}
 
-    * {
-      line-height: inherit; }
+    * {{
+      line-height: inherit; }}
 
-    a[x-apple-data-detectors=true] {
+    a[x-apple-data-detectors=true] {{
       color: inherit !important;
-      text-decoration: none !important; }
+      text-decoration: none !important; }}
 
-    [owa] .img-container div, [owa] .img-container button {
-      display: block !important; }
+    [owa] .img-container div, [owa] .img-container button {{
+      display: block !important; }}
 
-    [owa] .fullwidth button {
-      width: 100% !important; }
+    [owa] .fullwidth button {{
+      width: 100% !important; }}
 
-    [owa] .block-grid .col {
+    [owa] .block-grid .col {{
       display: table-cell;
       float: none !important;
-      vertical-align: top; }
+      vertical-align: top; }}
 
-    .ie-browser .num12, .ie-browser .block-grid, [owa] .num12, [owa] .block-grid {
-      width: 650px !important; }
+    .ie-browser .num12, .ie-browser .block-grid, [owa] .num12, [owa] .block-grid {{
+      width: 650px !important; }}
 
-    .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
-      line-height: 100%; }
+    .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {{
+      line-height: 100%; }}
 
-    .ie-browser .mixed-two-up .num4, [owa] .mixed-two-up .num4 {
-      width: 216px !important; }
+    .ie-browser .mixed-two-up .num4, [owa] .mixed-two-up .num4 {{
+      width: 216px !important; }}
 
-    .ie-browser .mixed-two-up .num8, [owa] .mixed-two-up .num8 {
-      width: 432px !important; }
+    .ie-browser .mixed-two-up .num8, [owa] .mixed-two-up .num8 {{
+      width: 432px !important; }}
 
-    .ie-browser .block-grid.two-up .col, [owa] .block-grid.two-up .col {
-      width: 325px !important; }
+    .ie-browser .block-grid.two-up .col, [owa] .block-grid.two-up .col {{
+      width: 325px !important; }}
 
-    .ie-browser .block-grid.three-up .col, [owa] .block-grid.three-up .col {
-      width: 216px !important; }
+    .ie-browser .block-grid.three-up .col, [owa] .block-grid.three-up .col {{
+      width: 216px !important; }}
 
-    .ie-browser .block-grid.four-up .col, [owa] .block-grid.four-up .col {
-      width: 162px !important; }
+    .ie-browser .block-grid.four-up .col, [owa] .block-grid.four-up .col {{
+      width: 162px !important; }}
 
-    .ie-browser .block-grid.five-up .col, [owa] .block-grid.five-up .col {
-      width: 130px !important; }
+    .ie-browser .block-grid.five-up .col, [owa] .block-grid.five-up .col {{
+      width: 130px !important; }}
 
-    .ie-browser .block-grid.six-up .col, [owa] .block-grid.six-up .col {
-      width: 108px !important; }
+    .ie-browser .block-grid.six-up .col, [owa] .block-grid.six-up .col {{
+      width: 108px !important; }}
 
-    .ie-browser .block-grid.seven-up .col, [owa] .block-grid.seven-up .col {
-      width: 92px !important; }
+    .ie-browser .block-grid.seven-up .col, [owa] .block-grid.seven-up .col {{
+      width: 92px !important; }}
 
-    .ie-browser .block-grid.eight-up .col, [owa] .block-grid.eight-up .col {
-      width: 81px !important; }
+    .ie-browser .block-grid.eight-up .col, [owa] .block-grid.eight-up .col {{
+      width: 81px !important; }}
 
-    .ie-browser .block-grid.nine-up .col, [owa] .block-grid.nine-up .col {
-      width: 72px !important; }
+    .ie-browser .block-grid.nine-up .col, [owa] .block-grid.nine-up .col {{
+      width: 72px !important; }}
 
-    .ie-browser .block-grid.ten-up .col, [owa] .block-grid.ten-up .col {
-      width: 65px !important; }
+    .ie-browser .block-grid.ten-up .col, [owa] .block-grid.ten-up .col {{
+      width: 65px !important; }}
 
-    .ie-browser .block-grid.eleven-up .col, [owa] .block-grid.eleven-up .col {
-      width: 59px !important; }
+    .ie-browser .block-grid.eleven-up .col, [owa] .block-grid.eleven-up .col {{
+      width: 59px !important; }}
 
-    .ie-browser .block-grid.twelve-up .col, [owa] .block-grid.twelve-up .col {
-      width: 54px !important; }
+    .ie-browser .block-grid.twelve-up .col, [owa] .block-grid.twelve-up .col {{
+      width: 54px !important; }}
 
-    @media only screen and (min-width: 670px) {
-      .block-grid {
-        width: 650px !important; }
-      .block-grid .col {
-        vertical-align: top; }
-        .block-grid .col.num12 {
-          width: 650px !important; }
-      .block-grid.mixed-two-up .col.num4 {
-        width: 216px !important; }
-      .block-grid.mixed-two-up .col.num8 {
-        width: 432px !important; }
-      .block-grid.two-up .col {
-        width: 325px !important; }
-      .block-grid.three-up .col {
-        width: 216px !important; }
-      .block-grid.four-up .col {
-        width: 162px !important; }
-      .block-grid.five-up .col {
-        width: 130px !important; }
-      .block-grid.six-up .col {
-        width: 108px !important; }
-      .block-grid.seven-up .col {
-        width: 92px !important; }
-      .block-grid.eight-up .col {
-        width: 81px !important; }
-      .block-grid.nine-up .col {
-        width: 72px !important; }
-      .block-grid.ten-up .col {
-        width: 65px !important; }
-      .block-grid.eleven-up .col {
-        width: 59px !important; }
-      .block-grid.twelve-up .col {
-        width: 54px !important; } }
+    @media only screen and (min-width: 670px) {{
+      .block-grid {{
+        width: 650px !important; }}
+      .block-grid .col {{
+        vertical-align: top; }}
+        .block-grid .col.num12 {{
+          width: 650px !important; }}
+      .block-grid.mixed-two-up .col.num4 {{
+        width: 216px !important; }}
+      .block-grid.mixed-two-up .col.num8 {{
+        width: 432px !important; }}
+      .block-grid.two-up .col {{
+        width: 325px !important; }}
+      .block-grid.three-up .col {{
+        width: 216px !important; }}
+      .block-grid.four-up .col {{
+        width: 162px !important; }}
+      .block-grid.five-up .col {{
+        width: 130px !important; }}
+      .block-grid.six-up .col {{
+        width: 108px !important; }}
+      .block-grid.seven-up .col {{
+        width: 92px !important; }}
+      .block-grid.eight-up .col {{
+        width: 81px !important; }}
+      .block-grid.nine-up .col {{
+        width: 72px !important; }}
+      .block-grid.ten-up .col {{
+        width: 65px !important; }}
+      .block-grid.eleven-up .col {{
+        width: 59px !important; }}
+      .block-grid.twelve-up .col {{
+        width: 54px !important; }} }}
 
-    @media (max-width: 670px) {
-      .block-grid, .col {
+    @media (max-width: 670px) {{
+      .block-grid, .col {{
         min-width: 320px !important;
         max-width: 100% !important;
-        display: block !important; }
-      .block-grid {
-        width: calc(100% - 40px) !important; }
-      .col {
-        width: 100% !important; }
-        .col > div {
-          margin: 0 auto; }
-      img.fullwidth, img.fullwidthOnMobile {
-        max-width: 100% !important; } }
+        display: block !important; }}
+      .block-grid {{
+        width: calc(100% - 40px) !important; }}
+      .col {{
+        width: 100% !important; }}
+        .col > div {{
+          margin: 0 auto; }}
+      img.fullwidth, img.fullwidthOnMobile {{
+        max-width: 100% !important; }} }}
 
         </style>
     </head>
     <body class="clean-body" style="margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: #3B3B3B">
       <style type="text/css" id="media-query-bodytag">
-        @media (max-width: 520px) {
-          .block-grid {
+        @media (max-width: 520px) {{
+          .block-grid {{
             min-width: 320px!important;
             max-width: 100%!important;
             width: 100%!important;
             display: block!important;
-          }
+          }}
 
-          .col {
+          .col {{
             min-width: 320px!important;
             max-width: 100%!important;
             width: 100%!important;
             display: block!important;
-          }
+          }}
 
-            .col > div {
+            .col > div {{
               margin: 0 auto;
-            }
+            }}
 
-          img.fullwidth {
+          img.fullwidth {{
             max-width: 100%!important;
-          }
-        }
+          }}
+        }}
       </style>
       <!--[if IE]><div class="ie-browser"><![endif]-->
       <!--[if mso]><div class="mso-container"><![endif]-->
@@ -609,7 +609,7 @@ def rejecthtml(printrequest,message):
                   
                         <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
     <div style="font-family:'Bitter', Georgia, Times, 'Times New Roman', serif;line-height:180%;color:#FFFFFF; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">	
-	    <div style="font-size:12px;line-height:22px;color:#FFFFFF;font-family:'Bitter', Georgia, Times, 'Times New Roman', serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 25px;text-align: center">We took a look at your print request of {} and unfortunately encountered some problems.</p><p style="margin: 0;font-size: 14px;line-height: 25px;text-align: center">Don't give up though, the below section details the reason we can't print your part and the possible solutions.</p></div>	
+	    <div style="font-size:12px;line-height:22px;color:#FFFFFF;font-family:'Bitter', Georgia, Times, 'Times New Roman', serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 25px;text-align: center">We took a look at your print request of {} and unfortunately encountered some problems.</p><p style="margin: 0;font-size: 14px;line-height: 25px;text-align: center">Don't give up though, the below section details the reason we can't print your object and the possible solutions.</p></div>	
     </div>
     <!--[if mso]></td></tr></table><![endif]-->
 

@@ -28,12 +28,14 @@ urlpatterns = [
     url(r'^confirm/(?P<thing_id>[0-9]+)/$',app.views.confirm_print, name='confirm'),
     url(r'^download/(?P<path>.*)/$',app.views.download, name='download'),
     url(r'^setprinted/(?P<id>.*)/$',app.views.set_printed, name='set_printed'),
+    url(r'^delete_file/(?P<requestid>.*)/$',app.views.delete_file, name='delete_file'),
+    url(r'^accept_or_reject/(?P<requestid>.*)/$',app.views.accept_or_reject, name='accept_or_reject'),
     url(r'^gettingstarted/thanks',app.views.thanks, name='thanks'),
-    url(r'^thingiverse',app.views.thingiverse, name='thingiverse'),
     url(r'^materials',app.views.materials, name='materials'),
-    url(r'^gallery',app.views.gallery, name='gallery'),
-    url(r'^send_confirmation_link',app.views.send_confirm_link, name='send_confirm_link'),
+    url(r'^printrequests',app.views.printrequests, name='printrequests'),
+    url(r'^abandoned',app.views.abandoned, name='abandoned'),
     url(r'^orders',app.views.orders, name='orders'),
+    url(r'^myadmin',app.views.myadmin, name='myadmin'),
     url(r'^accounts/login/$',
         django.contrib.auth.views.login,
         {
@@ -46,28 +48,14 @@ urlpatterns = [
             }
         }, 
         name='mylogin'),
-    url(r'^gettingstarted/login/$',
-        django.contrib.auth.views.login,
-        {
-            'template_name': 'app/startlogin.html',
-            'authentication_form': app.forms.BootstrapAuthenticationForm,
-            'extra_context':
-            {
-                'title': 'Getting Started:First, let\'s get you Logged in',
-                'year': datetime.now().year,
-            }
-        }, 
-        name='startlogin'),
     url(r'^signup/$',app.views.signup, name='signup'),
-    url(r'^gettingstarted/signup/$',app.views.startsignup, name='startsignup'),
     url(r'^logout$',django.contrib.auth.views.logout,
         {
             'next_page': '/',
         }, 
         name='logout'),
     url('^', include('django.contrib.auth.urls')),
-    url(r'^viewer/', TemplateView.as_view(template_name="app/stlviewer.html"),
-                   name='viewer'),
+    url(r'^viewer/', TemplateView.as_view(template_name="app/stlviewer.html"),name='viewer'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
