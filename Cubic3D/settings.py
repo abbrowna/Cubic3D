@@ -141,7 +141,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 #File system 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+if DEBUG:
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+else:
+    MEDIA_ROOT = os.path.join('/home/cubic', 'media/')
 
 #Email
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
