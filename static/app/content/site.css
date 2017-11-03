@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'BankGothic Md BT';
+    src: url('../fonts/bgothm.woff2') format('woff2'),
+    url('../fonts/bgothm.woff') format('woff'),/* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+    url('../fonts/bgothm.ttf') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+} 
+
 body {
     padding-top: 50px;
     padding-bottom: 20px;

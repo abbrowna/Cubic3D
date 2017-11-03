@@ -27,7 +27,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['139.59.26.37','localhost','cubic3d.co.ke']
+ALLOWED_HOSTS = ['139.59.26.37','localhost','cubic3d.co.ke','www.cubic3d.co.ke']
 
 
 # Application definition
