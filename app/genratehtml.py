@@ -19,6 +19,15 @@ def accepthtml(printrequest,price):
           margin: 0;
           padding: 0; }}
 
+          @font-face {{
+            font-family: 'BankGothic Md BT';
+            src: url('https://cubic3d.co.ke/static/app/fonts/bgothm.woff2') format('woff2'),
+            url('https://cubic3d.co.ke/static/app/fonts/bgothm.woff') format('woff'),/* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+            url('https://cubic3d.co.ke/static/app/fonts/bgothm.ttf') format('truetype');
+            font-weight:normal;
+            font-style:normal;
+        }} 
+
         table, tr, td {{
           vertical-align: top;
           border-collapse: collapse; }}
@@ -193,8 +202,8 @@ def accepthtml(printrequest,price):
                   
                   
                             <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
-        <div style="font-family:'Bitter', Georgia, Times, 'Times New Roman', serif;line-height:120%;color:#FCC658; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">	
-	        <div style="line-height:14px;font-size:12px;color:#FCC658;font-family:'Bitter', Georgia, Times, 'Times New Roman', serif;text-align:left;"><p style="margin: 0;line-height: 14px;text-align: center;font-size: 12px"><span style="font-size: 48px; line-height: 57px;">CUBIC3D</span></p></div>	
+        <div style="font-family:'BankGothic Md BT', Georgia, Times, 'Times New Roman', serif;line-height:120%;color:#FCC658; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">	
+	        <div style="line-height:14px;font-size:12px;color:#FCC658;font-family:'BankGothic Md BT', Georgia, Times, 'Times New Roman', serif;text-align:left;"><p style="margin: 0;line-height: 14px;text-align: center;font-size: 12px"><span style="font-size: 48px; line-height: 57px;">CUBIC3D</span></p></div>	
         </div>
         <!--[if mso]></td></tr></table><![endif]-->
 
@@ -590,8 +599,8 @@ def rejecthtml(printrequest,message):
                   
                   
                         <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
-    <div style="font-family:'Bitter', Georgia, Times, 'Times New Roman', serif;line-height:120%;color:#FCC658; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">	
-	    <div style="line-height:14px;font-size:12px;color:#FCC658;font-family:'Bitter', Georgia, Times, 'Times New Roman', serif;text-align:left;"><p style="margin: 0;line-height: 14px;text-align: center;font-size: 12px"><span style="font-size: 48px; line-height: 57px;">CUBIC3D</span></p></div>	
+    <div style="font-family:'BankGothic Md BT', Georgia, Times, 'Times New Roman', serif;line-height:120%;color:#FCC658; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">	
+	    <div style="line-height:14px;font-size:12px;color:#FCC658;font-family:'BankGothic Md BT', Georgia, Times, 'Times New Roman', serif;text-align:left;"><p style="margin: 0;line-height: 14px;text-align: center;font-size: 12px"><span style="font-size: 48px; line-height: 57px;">CUBIC3D</span></p></div>	
     </div>
     <!--[if mso]></td></tr></table><![endif]-->
 
