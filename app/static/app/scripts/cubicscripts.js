@@ -30,8 +30,7 @@ $(document).ready(function () {
         }
     });
 
-    $(".iframe").css('height', $(window).height() + 'px');
-    $(".iframe").css('width', $(".container").width() + 'px');
+    //$(".iframe").css('height', $(window).height() + 'px');
 
     $("#scaleselect").change(function (event) {
         if ($(this).is(":checked")) {
@@ -50,9 +49,10 @@ $(document).ready(function () {
         }
     });
 
-    $(":input[type!='file']").addClass("form-control");
-    $(":input[type='checkbox']").removeClass("form-control");
+    //$(":input[type!='file']").addClass("form-control");
+    //$(":input[type='checkbox']").removeClass("form-control");
     $("select").addClass("form-control");
+    $(":input[type='text']").addClass("form-control");
     $("textarea").addClass("form-control");
 
     //display correct form in reject or accept page depending on the clicked button

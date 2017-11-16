@@ -13,7 +13,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.conf import settings
 from django.http import Http404, HttpResponse, HttpRequest
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage, send_mail
 import os
 from sys import platform
 
@@ -81,7 +81,7 @@ def upload(request):
     return render(request,'app/upload.html',
         {
             'form':form,
-            'title':'Next step, upload your part and select the options you fancy.',
+            'title':'Upload & Options.',
             'year':datetime.now().year,
         }
     )
@@ -152,6 +152,7 @@ def delete_file(request, requestid):
 def thanks(request):
     """thank you and quick links page"""
     assert isinstance(request, HttpRequest)
+    send_mail('new print request', 'There\'s a new print request for you. Check it out', 'orders@cubic3d.co.ke', ['abbrowna@cubic3d.co.ke'])
     return render(request,'app/thanks.html',
         {
             'title':'Thanks for the request',
@@ -330,25 +331,6 @@ def signup(request):
         }
     )
 
-#def startsignup(request):
-#    if request.method == 'POST':
-#        form = SignUpForm(request.POST)
-#        if form.is_valid():
-#            form.save()
-#            username = form.cleaned_data.get('username')
-#            raw_password = form.cleaned_data.get('password1')
-#            user = authenticate(username=username, password=raw_password)
-#            login(request, user)
-#            return redirect('upload')
-#    else:
-#        form = SignUpForm()
-#    return render(request,'app/signup.html',
-#        {
-#            'form': form,
-#            'title':'SignUp',
-#            'year':datetime.now().year,                            
-#        }
-#    )
 
 
 
