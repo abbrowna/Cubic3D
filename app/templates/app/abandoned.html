@@ -13,7 +13,7 @@
             <th>Link</th>
         </tr>
     </thead>
-    {% for printrequest in requestqueue  %}
+    {% for printrequest in abandoned  %}
         <tr>
             <td>{{printrequest.id}}</td>
             <td>{{printrequest.user.first_name}} {{printrequest.user.last_name}}</td>

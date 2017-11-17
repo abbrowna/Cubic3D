@@ -5,7 +5,7 @@ from sys import platform
 
 def slicedweight(pathtofile, density):  
     if platform == 'win32':
-        cmd = r'cd C:\Program Files\Cura 2.7 && CuraEngine slice -v -j "C:\Program Files\Cura 2.7\resources\definitions\fdmprinter.def.json" -o "C:\Users\abbro\Documents\Visual Studio 2017\Projects\Cubic3D\Cubic3D\output.gcode" -s machine_height=175 -s machine_depth=200 -s machine_width=200 -s material_diameter=1.75 -s center_object=true -s adhesion_type=skirt -s infill_line_distance=2.4 -s support_enable=true -l "{0}"'.format(pathtofile)
+        cmd = r'cd C:\Program Files\Ultimaker Cura 3.0 && CuraEngine slice -v -j "C:\Program Files\Cura 2.7\resources\definitions\fdmprinter.def.json" -o "C:\Users\abbro\Documents\Visual Studio 2017\Projects\Cubic3D\Cubic3D\output.gcode" -s machine_height=175 -s machine_depth=200 -s machine_width=200 -s material_diameter=1.75 -s center_object=true -s adhesion_type=skirt -s infill_line_distance=2.4 -s support_enable=false -l "{0}"'.format(pathtofile)
         result = subprocess.check_output(cmd, shell=True, stderr=subprocess.STDOUT)
         string = result.decode('utf-8')
         search = re.compile('(?<=Filament:\s)[0-9]+')
@@ -14,7 +14,7 @@ def slicedweight(pathtofile, density):
         roundmass = int(math.ceil(mass))
         return (string,roundmass)
     else:
-        cmd = r'cd /home/curafiles/CuraEngine/build && ./CuraEngine slice -v -j "../resources/definitions/fdmprinter.def.json" -o "/home/cubic/media/test.gcode" -s machine_height=175 -s machine_depth=200 -s machine_width=200 -s material_diameter=1.75 -s center_object=true -s adhesion_type=skirt -s infill_line_distance=2.4 -s support_skip_some_zags=False -s support_enable=true -l "{0}"'.format(pathtofile)
+        cmd = r'cd /home/curafiles/CuraEngine/build && ./CuraEngine slice -v -j "../resources/definitions/fdmprinter.def.json" -o "/home/cubic/media/test.gcode" -s machine_height=175 -s machine_depth=200 -s machine_width=200 -s material_diameter=1.75 -s center_object=true -s adhesion_type=skirt -s infill_line_distance=2.4 -s support_skip_some_zags=False -s support_enable=false -l "{0}"'.format(pathtofile)
         result = subprocess.check_output(cmd, shell=True, stderr=subprocess.STDOUT)
         string = result.decode('utf-8')
         search = re.compile('(?<=Filament:\s)[0-9]+')

@@ -8,8 +8,7 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Mobile</th>
-            <th>Email</th>
+            <th>Contacts</th>
             <th>PrintName</th>
             <th>Conf</th>
             <th>Info</th>
@@ -24,8 +23,7 @@
         <tr>
             <td class="requestid">{{order.upload_id}}</td>
             <td>{{order.user.first_name}} {{order.user.last_name}}</td>
-            <td>{{order.user.profile.mobile}}</td>
-            <td>{{order.user.email}}</td>
+            <td>{{order.user.email}} {{order.user.profile.mobile}}</td>
             <td>{{order.description}}</td>
             <td>{{order.confirmed_on}}</td>
             <td>{{order.purpose}} {{order.material}} {{order.color}}</td>

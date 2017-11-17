@@ -141,12 +141,12 @@ def cancel (request):
 def delete_file(request, requestid):
     """delete the atual file from storage"""
     assert isinstance(request, HttpRequest)
+    part=Tempthings.objects.get(id=requestid)
     try:
-        part=Tempthings.objects.get(id=requestid)
         os.remove(part.thing.path)
-        part.delete()
     except:
         pass
+    part.delete()
     return redirect('abandoned')
 
 def thanks(request):
@@ -224,7 +224,7 @@ def printrequests(request):
 def abandoned(request):
     """Viewer for abandoned print requests"""
     assert isinstance(request, HttpRequest)
-    abandoned=Tempthings.objects.filter(confirmation_sent=True).filter(uploaded_at__gte=datetime.now()-timedelta(days=14)).order_by('uploaded_at')
+    abandoned=Tempthings.objects.filter(confirmation_sent=True).filter(uploaded_at__lt=datetime.now()-timedelta(days=14)).order_by('uploaded_at')
     return render(request,'app/abandoned.html',
         {
             'title':'Print requests that have been abandoned.',
@@ -279,7 +279,7 @@ def accept_or_reject(request, requestid):
 def orders(request):
     """View confirmed orders"""
     assert isinstance(request, HttpRequest)
-    orderqueue=ThingOrders.objects.order_by('confirmed_on')
+    orderqueue=ThingOrders.objects.order_by('-confirmed_on')
     return render(request,'app/orders.html',
         {
             'title':'View Orders',
