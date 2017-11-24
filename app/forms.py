@@ -6,7 +6,7 @@ from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
-from app.models import Tempthings
+from app.models import Tempthings, Quote
 
 class BootstrapAuthenticationForm(AuthenticationForm):
     """Authentication form which uses boostrap CSS."""
@@ -32,23 +32,28 @@ class SignUpForm(UserCreationForm):
 class TempThingForm(forms.ModelForm):
     class Meta:
         model = Tempthings
-        fields = ('description','thing','material','purpose','color','color_combo','scale_info','further_requests',)
+        fields = ('description','thing','material','purpose','color','color_combo','further_requests',)
         widgets={
             'color_combo':forms.Textarea(attrs={
                 'placeholder':'Please tell us how you want the colors combined. Try and keep it simple.'
-                }),
-            'scale_info':forms.Textarea(attrs={
-                'placeholder':'You can define the resizing scale here as a percentage or by giving the value of height, width or length you would like. Please not that the price estimation on the next page assumes no change of scaling and that your part is in mm.'
                 }),
             'further_requests':forms.Textarea(attrs={
                 'placeholder':'If you have any additional requests for example the direction in which max strength is required which is determined by print orientation, you can make them known here.'
                 }),
             }
 
+class QuoteForm(forms.ModelForm):
+    class Meta:
+        model = Quote
+        fields = ('thing','material','purpose','color')
+
 class EmailForm(forms.Form):
     viable = forms.BooleanField(required=False)
     price = forms.IntegerField(required=False)
     rejectmessage = forms.CharField(widget=forms.Textarea)
+
+class ScaleForm(forms.Form):
+    scale = forms.FloatField(required=False, widget=forms.NumberInput(attrs={'placeholder':100,'class':'form-control'}))
 
 
 

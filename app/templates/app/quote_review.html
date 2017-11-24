@@ -3,14 +3,12 @@
 {% block content %}
 <div class="page-header title"><h1>{{title}}</h1></div>
 <div class="alert alert-success">
-    <strong>Success!</strong>Your Print request has been recieved
+    <strong>Success!</strong>Part processed successfully
 </div>
-<h2>So here's what we got...</h2>
+<h2>Here's your quote</h2>
 
 <div class="row review">
     <div class="col-md-3 received">
-        <h3>Descriptive name:</h3>
-        <p>{{description}}</p>
         <h3>Uploaded file:</h3>
         <p>{{filename}}</p>
         <h3>Purpose:</h3>
@@ -19,20 +17,12 @@
         <p>{{material}}</p>
         <h3>Color:</h3>
         <p>{{color}}</p>
-        {% if colorinfo != "" %}
-            <h3>Color info</h3>
-            <p>{{colorinfo}}</p>
-        {% endif %}
-        {% if further_requests != "" %}
-            <h3>Further requests</h3>
-            <p>{{further_requests}}</p>
-        {% endif %}
         <form method="post">
             {% csrf_token %}
             <div class="scalerow">
                 <div class="input-group">
                     <span class="input-group-addon">Scale</span>
-                    {{form.scale}}       
+                    {{form.scale}}
                     <span class="input-group-addon">%</span>
                     <span class="input-group-addon btnspan">
                         <button type="submit" class="btn btn-warning">Set</button>
@@ -40,7 +30,8 @@
                 </div> 
             </div>
         </form>
-    </div>                
+    </div>
+    
     <div class="col-md-9" id="viewrow">
         <p id="stlpath" hidden>{{stlpath}}</p>
         <iframe id="id_stlviewer" scrolling="no" src="{% url 'viewer'%}"></iframe>
@@ -56,29 +47,18 @@
         <li>The plane on which your object lies in the viewer above is 200x200mm. This should help give some perspective. Also, your object has to fit in there to be printable.</li>
         <li>The above viewer and price-estimate uses a scale of 100% and also assumes that the part is given in mm.</li>
         <li>If your object appears too small or too large, it is likely it was created in dimensions other than mm.</li>
-        <li>You can specify a scale above as a percentage of the original to bring it to the required/desirable size</li>
-        <li>The above price is just an estimate an is subject to change, we shall email you a final price after analyzing your request.</li>
+        <li>If the above is true, please specify a scale as a percentage of the original to bring your object to the correct/desirable size</li>
+        <li>The above price is just an estimate and is subject to change. The final price is usually sent via email when a full print request is made.</li>
     </ul>
 </div>
-<div class="next-steps">
-    <h2 class="page-header">Final info:<small>Now that we have your details, what next?;</small></h2>
-    <ol>
-        <li>We will first take a look at your print file and selected options to see if its viable</li>
-        <li>
-            We then send you an email with the final Price and a link to confirm your print request.
-            Clicking on this link confirms your request and makes it final.
-        </li>
-        <li>
-            Once confirmed, we then print your part and communicate with you via the phone number
-            indicated in your account details for collection.
-        </li>
-        <li>
-            Payment is required during the physical hand-over.
-        </li>
-    </ol>
-    <a class="btn btn-warning" href="{% url 'cancel' %}">Cancel 3Dprint &times;</a>
-    <a class="btn btn-primary" href="{% url 'thanks' %}">Finish &raquo; </a>
+
+<div>
+    <div class="alert alert-info">
+        <strong>Thanks for trying us out! </strong>Use the button below if your done viewing your print request
+    </div>
+    <a class="btn btn-primary" href="{% url 'delquote' %}">Done &raquo;</a>
 </div>
+
 
 
 {% endblock %}

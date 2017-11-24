@@ -31,7 +31,7 @@ class Tempthings(models.Model):
     purpose = models.CharField(max_length=5,choices=infill_choices,default='ART')
     color = models.CharField(max_length=10,choices=color_choices,default='GRN')
     color_combo = models.TextField(blank=True,)
-    scale_info = models.TextField(blank=True,)
+    scale = models.FloatField(default=100)
     further_requests = models.TextField(blank=True,)
     confirmation_sent=models.BooleanField(default=False)
     
@@ -53,6 +53,39 @@ class Tempthings(models.Model):
         price = (int(math.ceil(mass))*15)
         return mass,int(math.ceil(price/50.0)*50)
 
+class Quote(models.Model):
+    thing = models.FileField(upload_to='thingstemp/%Y/%m/',
+                             validators=[FileExtensionValidator(['stl'],'Please export your file as a .STL object then upload it. If your unable, Email your file to us instead')])
+    material_choices=(
+        ('PLA','PLA'),('PETG','PETG')
+    )
+    infill_choices=(
+        ('ART','Artistic/Aestetic'),('MECH','Mechanical')
+    )
+    color_choices=(
+        ('GRN','Green'),('BLK','Black'),('WHT','White'),('COMBO','green-black combo')
+        )
+    material = models.CharField(max_length=5,choices=material_choices,default='PLA')
+    purpose = models.CharField(max_length=5,choices=infill_choices,default='ART')
+    color = models.CharField(max_length=10,choices=color_choices,default='GRN')
+    scale = models.FloatField(default=100)
+    def slicemass(self):
+        from app.stlprocessing import slicedweight
+        if self.material == 'PETG':
+            density = 1.27
+        elif self.material == 'PLA':
+            density = 1.25
+        return slicedweight(self.thing.path,density)
+
+    def thing_price(self):
+        from app.stlprocessing import slicedweight
+        if self.material == 'PETG':
+            density = 1.27
+        elif self.material == 'PLA':
+            density = 1.25
+        output,mass = slicedweight(self.thing.path,density)
+        price = (int(math.ceil(mass))*15)
+        return mass,int(math.ceil(price/50.0)*50)
 
 class ThingOrders(models.Model):
     upload_id = models.IntegerField()
@@ -73,7 +106,7 @@ class ThingOrders(models.Model):
     purpose = models.CharField(max_length=5,choices=infill_choices,default='ART')
     color = models.CharField(max_length=10,choices=color_choices,default='GRN')
     color_combo = models.TextField(blank=True,)
-    scale_info = models.TextField(blank=True,)
+    scale = models.FloatField(default=False,)
     further_requests = models.TextField(blank=True,)
     printed = models.BooleanField(default=False,)
 

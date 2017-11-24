@@ -19,12 +19,6 @@
             {% csrf_token %}
             {{ form.non_field_errors }}
 
-            <div class="input-group">
-                {{form.description.errors}}
-                <span class="input-group-addon"><label class="control-label" for="{{from.description.id_for_label}}">Descriptive name:</label></span>
-                {{form.description}}
-            </div>
-
             <div class="input-group" id="file_picker">
                 {{form.thing.errors}}
                 <span class="input-group-addon"><label class="control-label" for="{{from.thing.id_for_label}}">Part as .STL file:</label></span>
@@ -47,22 +41,6 @@
                 {{form.color.errors}}
                 <span class="input-group-addon"><label class="control-label" for="{{from.color.id_for_label}}">Color:</label></span>
                 {{form.color}}
-            </div>
-
-            <div class="input-group" id="combo_info" style="display:none">
-                {{form.color_combo.errors}}
-                <span class="input-group-addon"><label class="control-label" for="{{from.color_combo.id_for_label}}">Instructions:</label></span>
-                {{form.color_combo}}
-            </div>
-
-            <div class="checkbox">
-                <label><input type="checkbox" id="further_select"> Additional requests</label>
-            </div>
-
-            <div class="input-group" id="furthertext" style="display:none">
-                {{form.further_requests.errors}}
-                <span class="input-group-addon"><label class="control-label" for="{{from.further_requests.id_for_label}}">Additional Requests</label></span>
-                {{form.further_requests}}
             </div>
 
             <button type="submit" id="uploadsubmit" class="btn btn-primary">Done</button>

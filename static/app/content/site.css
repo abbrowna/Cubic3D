@@ -112,6 +112,24 @@ input[type="checkbox"].input-validation-error {
     font-size:large;
     text-align:center;
 }
+#mainhelp p{
+    margin-bottom:0;
+}
+.quote_or_request{
+    list-style-type:none;
+    overflow:hidden;
+    padding-left:0;
+}
+.quote_or_request li{
+    float:left;
+    padding-right:10px;
+    height:34px;
+}
+.quote_or_request p{
+    margin-top:6px;
+    display:inline-block;
+    text-align:center;
+}
 .page-header{
     border-bottom-color:#cccccc;
 }
@@ -227,6 +245,8 @@ iframe{
     border-right-style:solid;
     border-right-width:3px;
     border-right-color:#b3b3b3;
+    padding-left:8px;
+    padding-right:8px;
 }
 .received p{
     color:#e6e6e6;
@@ -323,7 +343,7 @@ iframe{
     width:100%;
     height:100%;
 }
-#review{
+.review{
     background:#333333;
     padding:5px;
     margin:5px;
@@ -381,4 +401,15 @@ iframe{
     100% {
         transform: rotate(360deg);
     }
+}
+
+/*Scale row*/
+.btnspan{
+    padding:0 0 0 5px;
+    border-width:0;
+    background-color:transparent;
+}
+.btnspan button{
+    border-top-left-radius:0;
+    border-bottom-left-radius:0;
 }

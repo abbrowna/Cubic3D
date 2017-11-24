@@ -50,12 +50,12 @@ window.addEventListener("load", function () {
         directionalLight.shadow.bias = -0.005;
     }
 
-    scene.add(new THREE.HemisphereLight(0x443333, 0x111122));
+    //scene.add(new THREE.HemisphereLight(0xe6e6e6, 0x404040));
     addShadowedLight(1, 1, 1, 0xffffff, 1.35);
-    addShadowedLight(0.5, 1, -1, 0xffaa00, 1);
+    addShadowedLight(0.5, 1, -1, 0xffffff, 1);
 
     var mat = new THREE.MeshPhongMaterial({
-        color: 0xff5533, specular: 0x111111, shininess: 200
+        color: 0xff8000, specular: 0x111111, shininess: 30
     });
     var obj = new THREE.Mesh(new THREE.Geometry(), mat);
     obj.position.set(0, -0.25, 0.6);
@@ -65,17 +65,24 @@ window.addEventListener("load", function () {
     obj.receiveShadow = true;
     scene.add(obj);
 
+    //grid
+    var mygrid = new THREE.GridHelper(200, 20, 0xff8000, 0x808080);
+    mygrid.position.y = 0.5;
+    mygrid.position.x = 0;
+    mygrid.position.z = 0;
+    scene.add(mygrid);
+
     //ground
-    var plane = new THREE.Mesh(
-        new THREE.PlaneBufferGeometry(200, 200),
-        new THREE.MeshPhongMaterial({ color: 0x999999, specular: 0x101010 })
-    );
-    plane.rotation.x = -Math.PI / 2;
-    plane.position.x = 0;
-    plane.position.y = 0.5;
-    plane.position.z = 0;
-    scene.add(plane);
-    plane.receiveShadow = true;
+    //var plane = new THREE.Mesh(
+    //    new THREE.PlaneBufferGeometry(200, 200),
+    //    new THREE.MeshPhongMaterial({ color: 0x999999, specular: 0x101010 })
+    //);
+    //plane.rotation.x = -Math.PI / 2;
+    //plane.position.x = 0;
+    //plane.position.y = 0.5;
+    //plane.position.z = 0;
+    //scene.add(plane);
+    //plane.receiveShadow = true;
 
     var loop = function loop() {
         requestAnimationFrame(loop);
@@ -94,7 +101,7 @@ window.addEventListener("load", function () {
             var geom = loadStl(buffer);
 
             scene.remove(obj);
-            scene.remove(plane);
+            scene.remove(mygrid);
 
             obj = new THREE.Mesh(geom, mat);
 
@@ -104,10 +111,10 @@ window.addEventListener("load", function () {
             scene.add(obj);
 
             geom.computeBoundingBox();
-            //plane.position.x = geom.boundingBox.min.x;
-            plane.position.y = 0-((geom.boundingBox.max.y-geom.boundingBox.min.y)/2);
-            //plane.position.z = geom.boundingBox.min.z;
-            scene.add(plane);
+            //mygrid.position.x = geom.boundingBox.min.x;
+            mygrid.position.y = 0-((geom.boundingBox.max.y-geom.boundingBox.min.y)/2);
+            //mygrid.position.z = geom.boundingBox.min.z;
+            scene.add(mygrid);
 
         }, false);
         reader.readAsArrayBuffer(file);

@@ -5,6 +5,8 @@ $(document).ready(function () {
         $("#id_color").append('<option value="BLK">Black</option>');
         $("#id_color").append('<option value="COMBO"> green-black combo</option>');
     }
+
+    //Upload page functions
     $("#file_picker input").remove();
     $("#file_picker").append('<input type="file" name="thing" accept=".stl" required id="id_thing">');
 
@@ -30,16 +32,6 @@ $(document).ready(function () {
         }
     });
 
-    //$(".iframe").css('height', $(window).height() + 'px');
-
-    $("#scaleselect").change(function (event) {
-        if ($(this).is(":checked")) {
-            $("#scalingtext").show();
-        }
-        else {
-            $("#scalingtext").hide();
-        }
-    });
     $("#further_select").change(function (event) {
         if ($(this).is(":checked")) {
             $("#furthertext").show();
@@ -49,8 +41,7 @@ $(document).ready(function () {
         }
     });
 
-    //$(":input[type!='file']").addClass("form-control");
-    //$(":input[type='checkbox']").removeClass("form-control");
+    //form-control into form fields for bootstrap styling
     $("select").addClass("form-control");
     $(":input[type='text']").addClass("form-control");
     $("textarea").addClass("form-control");
@@ -79,13 +70,19 @@ $(document).ready(function () {
     $("#id_username").attr('placeholder', 'Username');
     $("#id_password").attr('placeholder', 'Password');
 
+    //main row equal col height
+    $(".firstcol").css('height', $(".mainrow").height() + 'px');
+    $(".midcol").css('height', $(".mainrow").height() + 'px');
+
     //signup form logo
     $(".logocol").css('height', $(".signuprow").height() + 'px');
     //review and info viewer
-    $("#viewrow").css('height', $("#review").height() + 'px');
+    $("#viewrow").css('height', $(".review").height() + 'px');
 
-    //call the modal if form submits
+    //call the processing modal if form submits
     $("#upload_form").on('submit', function (event) {
         $('#uploadmodal').modal('show');
     })
+
+    
 });

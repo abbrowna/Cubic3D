@@ -48,7 +48,7 @@
 {% endblock %}
 {% block content %}
 <div class="row mainrow">
-    <div class="col-md-4">
+    <div class="col-md-4 firstcol">
         <h2 class="page-header">What exactly is 3D printing?</h2>
         <p>
             Simply put, 3D printing, more technically known as Additive manufacturing,
@@ -71,7 +71,10 @@
                 <li class="mainmatl"><strong>PETG:</strong>Polyethylene-Tetrapthalate-Glycol</li>
             </ol>
         <p>
-            Dont worry we understand what you're going through right now. Use the button below to find out
+            Dont worry we understand what you're going through right now.
+        </p> 
+        <p>
+            Use the button below to find out
             more about these materials and most importantly, which one you should choose.
         </p>
         <p><a class="btn btn-primary" href="{% url 'materials' %}">Materials &raquo;</a></p>
@@ -83,9 +86,15 @@
         <p><a class="btn btn-primary" href="https://thingiverse.com" target="_blank">Thingiverse &raquo;</a></p>
         <p>
             If you already found and downloaded what you'd like to print or perhaps you have your own design
-            as is commonly the case for makers and architects, use the button below.
+            as is commonly the case for makers and architects,you could:
         </p>
-        <p><a class="btn btn-primary" href="{% url 'upload' %}">Request a print &raquo;</a></p>
+        <ul class="quote_or_request">
+            <li><a class="btn btn-primary" href="{% url 'upload' %}">Request a print &raquo;</a></li>
+            <li><p>Or</p></li>
+            <li style="float:left;"><a class="btn btn-primary" href="{% url 'def_quote' %}">Get a quote &raquo;</a></li>
+        </ul>
+        
+
     </div>
 </div>
 

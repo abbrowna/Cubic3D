@@ -6,8 +6,8 @@ from django.shortcuts import render, redirect
 from django.template import RequestContext
 from datetime import datetime, timedelta
 from django.contrib.auth import login, authenticate
-from app.forms import SignUpForm, TempThingForm, EmailForm
-from app.models import Tempthings, ThingOrders
+from app.forms import SignUpForm, TempThingForm, EmailForm, QuoteForm, ScaleForm
+from app.models import Tempthings, ThingOrders, Quote
 from app.genratehtml import accepthtml, rejecthtml
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
@@ -63,6 +63,27 @@ def materials(request):
             'year':datetime.now().year,
         }
     )
+
+def def_quote(request):
+    """Renders page for part upload to get quote"""
+    assert isinstance(request, HttpRequest)
+    if request.method == 'POST':
+        form = QuoteForm(request.POST, request.FILES)
+        if form.is_valid():
+            temp = form.save()
+            request.session['quotename']=form.cleaned_data['thing'].name
+            request.session['quoteid']=temp.id
+            return redirect('quote_review')
+    else:
+        form = QuoteForm()
+    return render(request, 'app/def_quote.html',
+        {
+            'form':form,
+            'title':'Upload & Options.',
+            'year':datetime.now().year,
+        }
+    )
+
 @login_required
 def upload(request):
     """Renders part upload page"""
@@ -102,16 +123,71 @@ def set_printed(request, id):
     part.save()
     return redirect('orders')
         
+def quote_review(request):
+    """Renders the review page of a quote"""
+    assert isinstance(request, HttpRequest)
+    if request.method == 'POST':
+        form = ScaleForm(request.POST)
+        if form.is_valid():
+            from app.stlprocessing import setscale
+            quoteid=request.session.get('quoteid')
+            quote = Quote.objects.get(id=quoteid)
+            requiredscale=form.cleaned_data['scale']
+            if requiredscale is None:
+                requiredscale = 100
+            setscale(quote.thing.path,quote.scale,requiredscale)
+            quote.scale = requiredscale
+            quote.save()
+            return redirect('quote_review')
+    else:
+        quoteid = request.session.get('quoteid')
+        quotename = request.session.get('quotename')
+        quote = Quote.objects.get(id=quoteid)
+        formdata = {'scale':quote.scale}
+        form = ScaleForm(initial=formdata)
+        mass,price = quote.thing_price()
+    return render(request, 'app/quote_review.html',
+        {
+            'form':form,
+            'filename':quotename,
+            'slicemass':mass,
+            'purpose':quote.purpose,
+            'material':quote.material,
+            'color':quote.color,
+            'price':price,
+            'priceupper':price*1.2,
+            'stlpath':quote.thing.url,
+            'year':datetime.now().year,
+            'title':'Quote Review and info',
+        }
+    )
 
 def review_n_info(request):
     """Renders the confirmation and info view"""
     assert isinstance(request, HttpRequest)
-    thing_id=request.session.get('thing_id')
-    file_name=request.session.get('file_name')
-    part=Tempthings.objects.get(id=thing_id)
-    mass,price=part.thing_price()
+    if request.method == 'POST':
+        form = ScaleForm(request.POST)
+        if form.is_valid():
+            from app.stlprocessing import setscale
+            thing_id=request.session.get('thing_id')
+            part=Tempthings.objects.get(id=thing_id)
+            requiredscale=form.cleaned_data['scale']
+            if requiredscale is None:
+                requiredscale = 100
+            setscale(part.thing.path,part.scale,requiredscale)
+            part.scale = requiredscale
+            part.save()
+            return redirect('review_n_info')
+    else:
+        thing_id=request.session.get('thing_id')
+        file_name=request.session.get('file_name')
+        part=Tempthings.objects.get(id=thing_id)
+        formdata = {'scale':part.scale}
+        form = ScaleForm(initial=formdata)
+        mass,price=part.thing_price()
     return render(request,'app/review_n_info.html',
         {
+            'form':form,
             'slicemass':mass,
             'description':part.description,
             'filename':file_name,
@@ -119,7 +195,6 @@ def review_n_info(request):
             'material':part.material,
             'color':part.color,
             'colorinfo':part.color_combo,
-            'scaleinfo':part.scale_info,
             'further_requests':part.further_requests,
             'title':'Review and final info',
             'year':datetime.now().year,
@@ -138,8 +213,17 @@ def cancel (request):
     part.delete()
     return redirect('home')
 
+def delquote(request):
+    """cleans up the quote from storage"""
+    assert isinstance(request, HttpRequest)
+    quoteid = request.session.get('quoteid')
+    quote=Quote.objects.get(id=quoteid)
+    os.remove(quote.thing.path)
+    quote.delete()
+    return redirect('home')
+
 def delete_file(request, requestid):
-    """delete the atual file from storage"""
+    """delete the actual file from storage"""
     assert isinstance(request, HttpRequest)
     part=Tempthings.objects.get(id=requestid)
     try:
@@ -174,7 +258,7 @@ def confirm_print(request,thing_id):
         order.purpose=part.purpose
         order.color=part.color
         order.color_combo=part.color_combo
-        order.scale_info=part.scale_info
+        order.scale=part.scale
         order.further_requests=part.further_requests
         order.save()
         part.delete()
@@ -190,7 +274,7 @@ def confirm_print(request,thing_id):
             'material':order.material,
             'color':order.color,
             'colorinfo':order.color_combo,
-            'scaleinfo':order.scale_info,
+            'scale':order.scale,
             'further_requests':order.further_requests,
         }
     )
