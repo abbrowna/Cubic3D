@@ -12,7 +12,7 @@
             <th>PrintName</th>
             <th>Conf</th>
             <th>Info</th>
-            <th>ColorCombo</th>
+            <th>Specs</th>
             <th>ScaleInfo</th>
             <th>Special</th>
             <th>Printed</th>
@@ -22,14 +22,12 @@
     {% for order in orderqueue  %}
         <tr>
             <td class="requestid">{{order.upload_id}}</td>
-            <td>{{order.user.first_name}} {{order.user.last_name}}</td>
-            <td>{{order.user.email}} {{order.user.profile.mobile}}</td>
+            <td>{{order.user.first_name}} {{order.user.last_name}} {{order.user.email}} {{order.user.profile.mobile}}</td>
             <td>{{order.description}}</td>
             <td>{{order.confirmed_on}}</td>
             <td>{{order.purpose}} {{order.material}} {{order.color}}</td>
-            <td>{{order.color_combo}}</td>
+            <td>{{order.color_combo}} {{order.further_requests}}</td>
             <td>{{order.scale}}</td>
-            <td>{{order.further_requests}}</td>
             <td>{{order.printed}}</td>
             <td><a class="btn btn-primary download" href="/download/{{order.thing.path}}" target="_blank">Download</a></td>
             <td><a class="btn btn-primary setprinted" href="/setprinted/{{order.upload_id}}">Set Printed</a></td>
