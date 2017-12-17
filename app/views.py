@@ -236,7 +236,7 @@ def delete_file(request, requestid):
 def thanks(request):
     """thank you and quick links page"""
     assert isinstance(request, HttpRequest)
-    send_mail('new print request', 'There\'s a new print request for you. Check it out', 'orders@cubic3d.co.ke', ['abbrowna@cubic3d.co.ke'])
+    send_mail('new print request', 'There\'s a new print request for you. Check it out', 'orders@cubic3d.co.ke', ['abbrowna@cubic3d.co.ke','noelkimwatan@cubic3d.co.ke'])
     return render(request,'app/thanks.html',
         {
             'title':'Thanks for the request',
@@ -263,8 +263,9 @@ def confirm_print(request,thing_id):
         order.save()
         part.delete()
         order=ThingOrders.objects.get(upload_id=thing_id)
+        send_mail('new print request', 'A request has just been confirmed. Check it out', 'orders@cubic3d.co.ke', ['abbrowna@cubic3d.co.ke','noelkimwatan@cubic3d.co.ke'])
     except Tempthings.DoesNotExist:
-        raise Http404("Print request Does not exist")
+        raise Http404("Print request Does not exist. It may have been deleted or you are trying to confirm a request the second time.")
     return render(request, 'app/printconfirmed.html',
         {
             'title':'Print request Confirmed',
