@@ -70,9 +70,9 @@ $(document).ready(function () {
     $("#id_username").attr('placeholder', 'Username');
     $("#id_password").attr('placeholder', 'Password');
 
-    //main row equal col height
-    $(".firstcol").css('height', $(".mainrow").height() + 'px');
-    $(".midcol").css('height', $(".mainrow").height() + 'px');
+    ////main row equal col height
+    //$(".firstcol").css('height', $(".mainrow").height() + 'px');
+    //$(".midcol").css('height', $(".mainrow").height() + 'px');
 
     //signup form logo
     $(".logocol").css('height', $(".signuprow").height() + 'px');
