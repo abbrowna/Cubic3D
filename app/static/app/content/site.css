@@ -19,6 +19,7 @@ body {
 }
 .navbar{
     margin:0;
+    border-radius:0;
 }
 
 #logoutForm{
@@ -158,10 +159,12 @@ input[type="checkbox"].input-validation-error {
     float:left;
 }
 .aboutinfo {
-    background: #e6e6e6;
+    background: #333333;
+    /*background: #e6e6e6;*/
     border-color: #4d4d4d;
     border-radius: 10px;
-    padding:24px 30px 48px 30px
+    padding:24px 30px 48px 30px;
+    color:#b3b3b3;
 }
 .contactinfo {
     font-size:large;
@@ -171,10 +174,11 @@ input[type="checkbox"].input-validation-error {
     /*font-family: 'Microsoft YaHei UI';*/
     font-size: large;
     padding:10px;
+    padding-right:300px;
 }
 .applications {
     font-size: large;
-    border-left-color: #337ab7;
+    border-left-color: #0099ff;
     border-left-width: 4px;
     border-left-style: solid;
     margin-left: 30px

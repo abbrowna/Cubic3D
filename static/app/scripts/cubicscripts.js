@@ -3,7 +3,10 @@ $(document).ready(function () {
         $("#id_color option").remove();
         $("#id_color").append('<option value="GRN" selected="selected">Green</option>');
         $("#id_color").append('<option value="BLK">Black</option>');
-        $("#id_color").append('<option value="COMBO"> green-black combo</option>');
+        $("#id_color").append('<option value="BLUE">Blue</option>');
+        $("#id_color").append('<option value="RED">Red</option>');
+        $("#id_color").append('<option value="WHT">White</option>');
+        $("#id_color").append('<option value="COMBO">Combination</option>');
     }
 
     //Upload page functions
@@ -13,13 +16,16 @@ $(document).ready(function () {
     $("#id_material").change(function (event) {
         if ($(this).val() == "PETG") {
             $("#id_color option").remove();
-            $("#id_color").append('<option value="WHT" selected="selected">White</option>');
+            $("#id_color").append('<option value="GRY" selected="selected">Grey</option>');
         }
         else if ($(this).val() == "PLA") {
             $("#id_color option").remove();
             $("#id_color").append('<option value="GRN" selected="selected">Green</option>');
             $("#id_color").append('<option value="BLK">Black</option>');
-            $("#id_color").append('<option value="COMBO"> green-black combo</option>');
+            $("#id_color").append('<option value="BLUE">Blue</option>');
+            $("#id_color").append('<option value="RED">Red</option>');
+            $("#id_color").append('<option value="WHT">White</option>');
+            $("#id_color").append('<option value="COMBO">Combination</option>');
         }
     });
 
