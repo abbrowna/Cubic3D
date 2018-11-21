@@ -329,16 +329,6 @@ def old_sys_orders(request):
             'year':datetime.now().year,
         }
     )
-
-@staff_member_required
-def email_is_username(request):
-    """replace username with user email"""
-    assert isinstance(request, HttpRequest)
-    users = User.objects.all()
-    for user in users:
-        user.username = user.email
-        user.save()
-    return redirect('myadmin')
     
 @staff_member_required
 def myadmin(request):

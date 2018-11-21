@@ -51,9 +51,6 @@ urlpatterns = [
     path('my_admin/orders/pending/',app.views.orders, name='orders'),
     path('my_admin/user_profiles/', app.views.user_profiles, name='user_profiles'),
     path('accounts/change_profile/', app.views.change_profile, name='change_profile'),
-    
-    #temporary path to set username as email
-    path('email_is_username/', app.views.email_is_username, name='email_is_username'),
 
     path('accounts/login/',
         django.contrib.auth.views.LoginView.as_view(
