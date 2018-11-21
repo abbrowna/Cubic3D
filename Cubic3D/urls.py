@@ -46,6 +46,7 @@ urlpatterns = [
     path('my_admin/printrequests/pending/', app.views.pending_confirmation, name='pending_confirmation'),
     path('my_admin/orders/printed/', app.views.printed, name='printed'),
     path('my_admin/orders/completed/', app.views.completed_orders, name='completed'),
+    path('my_admin/orders/old_completed/', app.views.old_sys_orders, name='old_sys_orders'),
     path('my_admin/orders/printed/receipt/<invoice_id>/<orderlist>/', app.views.send_receipt, name='send_receipt'),
     path('my_admin/orders/pending/',app.views.orders, name='orders'),
     path('my_admin/user_profiles/', app.views.user_profiles, name='user_profiles'),

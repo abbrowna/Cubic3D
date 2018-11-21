@@ -318,33 +318,17 @@ def confirm_print(request,thing_id):
                 'year':datetime.now().year,
             })
 
-@ staff_member_required
-def transferprint(request):
-    """transfers orders back into temp things"""
-    assert isinstance(request, HttpRequest)
+def old_sys_orders(request):
+    """ enables viewing if prints from the old system """
+    assert isinstance (request , HttpRequest)
     orders = ThingOrders.objects.all()
-    prints = PrintRequest.objects.all()
-    if not len(prints):
-        for order in orders:
-            printrequest = PrintRequest()
-            printrequest.description = order.description
-            printrequest.user = order.user
-            printrequest.thing = order.thing
-            printrequest.material = Material.objects.get(acronym = order.material)
-            printrequest.purpose = order.purpose
-            printrequest.color = order.color
-            printrequest.color_combo = order.color_combo
-            printrequest.scale = order.scale
-            printrequest.further_requests = order.further_requests
-            printrequest.confirmation_sent = True
-            printrequest.confirmed = True
-            printrequest.confirmation_date = order.confirmed_on
-            #uncomment the next line if operating on digital ocean
-            printrequest.final_price = printrequest.thing_price()[1]
-            printrequest.printed = True
-            printrequest.receipted = True
-            printrequest.save()
-    return redirect('myadmin')
+    return render(request,'myadmin/old_orders.html',
+        {
+            'orders':orders,
+            'title':'Orders from the old system',
+            'year':datetime.now().year,
+        }
+    )
 
 @staff_member_required
 def email_is_username(request):

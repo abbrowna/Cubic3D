@@ -1,0 +1,50 @@
+﻿{% extends "app/layout.html" %}
+
+{% block fullcontent %}
+<div class="myadmin_title">
+    <h1>{{title}}</h1>
+    <div class="nav_link"><a href="{% url 'myadmin' %}">&lt; Main</a></div>
+</div>
+
+<div class="admin_table_wrapper">    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Client</th>
+                <th>Print</th>
+                <th>Material</th>
+                <th>Color</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        {% for order in orders  %}
+            <tr>
+                <td>{{order.id}}</td>
+                <td>
+                    {{order.user.first_name}} {{order.user.last_name}}<br />
+                    {% if order.bill_to %}
+                    {{ order.bill_to }}
+                    {% else %}
+                    0{{order.user.profile.mobile}}<br />
+                    {% endif %}
+                </td>
+                <td>
+                    {{order.description}}
+                </td>
+                <td>
+                    {{order.material}}
+                </td>
+                <td>
+                    {{order.color}}
+                    {{order.further_requests}}
+                    {{orders.color_combo}}
+                </td>
+                <td>{{order.confirmed_on}}</td>
+                <td></td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}
