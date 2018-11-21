@@ -9,7 +9,7 @@ from django.template.loader import render_to_string
 from datetime import datetime, timedelta
 from django.contrib.auth import login, authenticate
 from app.forms import SignUpForm, TempThingForm, EmailForm, QuoteForm, ScaleForm, GroupInvoiceForm, ProfileForm
-from app.models import PrintRequest, Quote, Material, GroupedPrintRequest, GroupRecord, Invoice
+from app.models import PrintRequest, Quote, Material, GroupedPrintRequest, GroupRecord, Invoice, ThingOrders
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
@@ -340,6 +340,7 @@ def transferprint(request):
         #uncomment the next line if operating on digital ocean
         printrequest.final_price = printrequest.thing_price()[1]
         printrequest.printed = True
+        printrequest.receipted = True
         printrequest.save()
     return redirect('myadmin')
 
