@@ -1,0 +1,46 @@
+{% extends "app/layout.html" %}
+
+{% block fullcontent %}
+<div class="myadmin_title">
+    <h1>{{title}}</h1>
+    <div class="nav_link"><a href="{% url 'myadmin' %}">&lt; Main</a></div>
+</div>
+
+<div class="admin_table_wrapper">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>request ID</th>
+                <th>Client</th>
+                <th>Print name</th>
+                <th>Uploaded date</th>
+                <th>Final price</th>
+                <th></th>
+            </tr>
+        </thead>
+        {% for item in group  %}
+            <tr>
+                <td>{{item.printrequest.id}}</td>
+                <td>{{item.printrequest.user.first_name}} {{item.printrequest.user.last_name}}</td>
+                <td>{{item.printrequest.description}}</td>
+                <td>{{item.printrequest.uploaded_at}}</td>
+                <td>{{item.printrequest.final_price}}</td>
+                <td><a href="{% url 'remove_from_group' requestid=item.printrequest.id %}">&times;</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<div class="admin_form_wrapper container">
+    <form method="post">
+        {% csrf_token %}
+        {#<input type="checkbox" name="Bill_to" id="bill_to_select" />#}
+        <div>
+            {{ form.bill_to }}
+        </div> 
+        <input class="btn btn1" type="submit" id="group_submit" value="Send invoice"/>
+    </form>
+</div>
+
+
+{% endblock %}

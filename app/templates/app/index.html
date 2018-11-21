@@ -1,0 +1,145 @@
+{% extends "app/layout.html" %}
+
+{% block fullcontent %}
+<div class="SEO container" id="mobile_welcome">
+    <h2 class="welcome"> Welcome to</h2>
+    <h1 class="brand"> CUBIC 3D</h1>
+    <div class="about">
+        <p>
+            We are a Kenyan 3D printing service that brings this versatile manufacturing technique
+            much closer to home all without breaking the bank.
+        </p>
+    </div>
+    <a class="btn btn1" href="/about" role="button">About us</a>
+</div>
+<div class="carousel slide carousel-fade" id="cubiccarousel" data-ride="carousel" data-interval="6000">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#cubiccarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#cubiccarousel" data-slide-to="1"></li>
+        <li data-target="#cubiccarousel" data-slide-to="2"></li>
+        <li data-target="#cubiccarousel" data-slide-to="3"></li>
+        <li data-target="#cubiccarousel" data-slide-to="4"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+        {% load static %}
+        <div class="item active">
+            <div style="opacity: 0.75;">
+                <img class="slides" src="{% static "app/images/Scincube.webp" %}" alt="Logo">
+            </div>
+            <div class="SEO carousel-caption" style="margin:0;">
+                <h2 class="welcome"> Welcome to</h2>
+                <h1 class="brand"> CUBIC 3D</h1>
+                <p class="about">
+                    We are a Kenyan 3D printing service that brings this versatile<br /> manufacturing technique
+                    much closer to home<br /> all without breaking the bank.
+                </p>
+                <a class="btn btn1" href="/about" role="button">About us</a>
+            </div>
+        </div>
+        <div class="item">
+            <div style="opacity: 0.7;">
+                <img class="slides" src="{% static "app/images/art.webp" %}" alt="Art">
+            </div>
+            <div class="carousel-caption">
+                <span>3D printed Art</span>
+            </div>
+        </div>  
+        <div class="item">
+            <div style="opacity: 0.7;">
+                <img class="slides" src="{% static "app/images/arch.webp" %}" alt="Architecture">
+            </div>
+            <div class="carousel-caption">
+                <span>3D printing for Architects</span>
+            </div>
+        </div>    
+        <div class="item">
+            <div style="opacity: 0.7;">
+                <img class="slides" src="{% static "app/images/wheel.webp" %}" alt="Engineering">
+            </div>
+            <div class="carousel-caption">
+                <span>3D printing for Engineers</span>
+            </div>
+        </div>
+        <div class="item">
+            <div style="opacity: 0.75;">
+                <img class="slides" src="{% static "app/images/lifestyle.webp" %}" alt="Lifestyle">
+            </div> 
+            <div class="carousel-caption">
+                <span>3D printed lifestyle</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#cubiccarousel" data-slide="prev">
+        <svg  class="carousel-control-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 21 41" enable-background="new 0 0 21 41">
+            <polygon points="20.3,40.8 0,20.5 20.3,0.2 21,0.9 1.3,20.5 21,40.1 "></polygon>
+        </svg>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#cubiccarousel" data-slide="next">
+        <svg class="carousel-control-svg" id="svg-right"  version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 21 41" enable-background="new 0 0 21 41">
+            <polygon points="20.3,40.8 0,20.5 20.3,0.2 21,0.9 1.3,20.5 21,40.1 "></polygon>
+        </svg>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row" id="indexrow">
+    <div class="col-md-4 col1">
+        <h2>WHAT IS<br />3D PRINTING?</h2>
+        <div class="col-content">
+            <p>
+                Simply put, 3D printing is the manufacturing of physical objects like a vase or an enclosure, 
+                using a layer upon layer process.
+            </p>
+            <p>
+                The process is extremely versatile in that it can pull an object directly from its digital model 
+                without the overhead of creating equipment specialized to the manufacture of that object.
+            </p>
+            <p>
+                This makes it perfect for rapid prototyping and one time production of objects.
+            </p>
+            <div class="col-link">
+                <a href="https://www.3dhubs.com/what-is-3d-printing" target="_blank"><span>Read More &raquo;</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col2">
+        <h2>MATERIALS</h2>
+        <div class="col-content">        
+            <p>Objects can be printed in a plethora of materials, but we specialize in two:</p>
+                <ol class="matlist">
+                    <li>PLA: Polylactic-Acid</li>
+                    <li>PETG: Polyethylene-Terephthalate-Glycol</li>
+                </ol>
+            <p>
+                Use the link below to find out more about these materials and most importantly, which one you should choose.
+            </p>
+            <div class="col-link"><a href="{% url 'materials' %}"><span>Materials &raquo;</span></a></div>
+        </div>
+    </div>
+    <div class="col-md-4 col3">
+        <h2>GETTING STARTED</h2>
+        <div class="col-content" style="top:100px;">        
+            <p><strong>Ready to print something new? lets get you on the right track</strong></p>
+            <p>
+                If your looking for something commonplace like a vase or cartoon character, 
+                you could browse this vast library of online objects, get its 3D file then request a print below.
+            </p>
+            <p><div style="text-align:center"><a class="btn btn1" href="https://thingiverse.com" target="_blank">Thingiverse &raquo;</a></div></p>
+            <p>
+                If your object is custom designed, in CAD software like an enclosure for your circuit or an architectural model, 
+                just export your model in <strong>.stl format</strong> then use one of the buttons below.
+            </p>
+            <div class="col-link"><a href="{% url 'upload' %}"><strong>Request a print &raquo;</strong></a></div>
+            <div class="col-link"><a href="{% url 'def_quote' %}"><strong>Get an estimate &raquo;</strong></a></div>
+        </div>      
+    </div>
+</div>
+{% endblock %}

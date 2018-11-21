@@ -1,0 +1,68 @@
+{% extends "app/layout.html" %}
+
+
+{% block fullcontent %}
+{% load static %}
+
+<div id="gallery_modal" class="modal fade" role="dialog">
+    <div class="modal-content" >
+        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+        <div class="carousel slide carousel-fade" id="gallery_carousel" data-ride="carousel" data-interval="5000">
+            {% load static %}
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                {% for photo in photos %}
+                    {% if forloop.counter0 == 0 %}
+                        <div class="item active">
+                            <img class="slides" src="{{ photo }}">
+                        </div>
+                    {% else %}
+                        <div class="item">
+                            <img class="slides" src="{{ photo }}">
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#gallery_carousel" data-slide="prev">
+                <svg  class="carousel-control-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 21 41" enable-background="new 0 0 21 41">
+                    <polygon points="20.3,40.8 0,20.5 20.3,0.2 21,0.9 1.3,20.5 21,40.1 "></polygon>
+                </svg>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#gallery_carousel" data-slide="next">
+                <svg class="carousel-control-svg" id="svg-right"  version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 21 41" enable-background="new 0 0 21 41">
+                    <polygon points="20.3,40.8 0,20.5 20.3,0.2 21,0.9 1.3,20.5 21,40.1 "></polygon>
+                </svg>
+                <span class="sr-only">Next</span>
+            </a>
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                {% for photo in photos %}
+                    <li data-target="#gallery_carousel" data-slide-to="{{ forloop.counter0 }}" class="active"></li>                
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div id="gallery_strip">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <img alt="violin" data-type="image" src="{% static "app/images/gallery/violin.png" %}">
+                <img alt="assembly" data-type="image" src="{% static "app/images/gallery/assembly.png" %}">
+                <img alt="bracket" data-type="image" src="{% static "app/images/gallery/bracket.png" %}">
+                <img alt="midway" data-type="image" src="{% static "app/images/gallery/print in progress.png" %}">
+            </div>
+            <div class="col-sm-6">
+                <img alt="architecture group" data-type="image" src="{% static "app/images/gallery/architecture group.png" %}">
+                <img alt="test print" data-type="image" src="{% static "app/images/gallery/test print.png" %}">
+                <img alt="burj khalifa" data-type="image" src="{% static "app/images/gallery/Burj Khalifa.png" %}">
+                <img alt="architecture" data-type="image" src="{% static "app/images/gallery/architecture building.png" %}">
+            </div>
+        </div>
+    </div>    
+</div>
+
+{% endblock %}

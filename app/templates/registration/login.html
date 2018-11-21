@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ title }}</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="icon" href="{% static 'app/images/favicon.ico' %}">
+        <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'app/content/sitev2.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'app/content/responsive.css' %}"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body class="cleanbody">
+        <div id="login" class="container">
+            <div id="logintitle"><h1>Login</h1></div>
+            <form action="." method="post" class="form-horizontal">
+                {% csrf_token %}
+                <!--<div class="input-group">
+                    {{form.email}}
+                </div>-->
+                <div class="input-group">
+                    {{form.username}}
+                </div>
+                <div class="input-group">
+                    {{form.password}}                    
+                </div>
+                {% if form.errors %}
+                <p class="validation-summary-errors">Please enter a correct user name and password.</p>
+                {% endif %}
+
+                <div class="submitbtn">
+                    <input type="hidden" name="next" value="{{next}}" />
+                    <input type="submit" value="Log in" class="btn btn1" />
+                </div>
+            </form>
+            <p><a href="{% url 'password_reset' %}">Forgot password?</a></p>
+            <p>Not a member? <a href="{% url 'signup' %}">Sign Up.</a></p>
+          
+        </div>
+        <script src="{% static 'app/scripts/jquery.validate.min.js' %}"></script>
+        <script src="{% static 'app/scripts/cubicscripts.js' %}?v=3.0"></script>
+        <script src="{% static 'app/scripts/jquery.bcSwipe.min.js' %}"></script>
+
+    </body>
+</html>
+

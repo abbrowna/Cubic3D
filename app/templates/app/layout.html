@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="icon" href="{% static 'app/images/favicon.ico' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/sitev2.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/responsive.css' %}"/>
+  
+</head>
+
+<body style="display:none">
+    <div style="min-height:calc(100vh - 80px);">
+        <nav class="navbar" id="navbar-container">
+            <div class="container" id="navbar-strip">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#cubicnav">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a href="/" class="navbar-brand">CUBIC3D</a>
+                </div>
+                <div class="collapse navbar-collapse" id="cubicnav">
+                    <ul class="nav navbar-nav">
+                        <li><a role="button" data-listposition="left" href="{% url 'about' %}">ABOUT US</a></li>
+                        <li><a role="button" href="{% url 'contact' %}">CONTACT</a></li>
+                        <li><a role ="button" href="{% url 'materials' %}">MATERIALS</a></li>
+                        <li><a role ="button" href="{% url 'gallery' %}">GALLERY</a></li>
+                        <li class="separator"></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown">Hello {{ user.first_name }}! <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{% url 'logout' %}">Log off</a>
+                                </li>
+                                <li><a href="{% url 'change_profile' %}">My account</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Sign Up / Log In</a></li>
+                    {% endif %} 
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            {% block fullcontent %}{% endblock %}
+        </div>
+        <div class="container body-content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    <div class="container-fluid" id="footer-wide">
+        <div class="container">
+            <footer>
+                <div class="row">
+                    <div class="col-sm-10 copyright">
+                            <p>&copy; {{ year }} Cubic3D . 3D printing closer home</p>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="social-bar row">
+                            <div class="col-xs-6" style="text-align:right;"><a href="https://twitter.com/Cubic3D_Ke" target="_blank"><img src="{% static "app/images/twitter.webp" %}" alt="twitter"></a></div>
+                            <div class="col-xs-6"><a href="https://www.instagram.com/cubic3d_ke/" target="_blank"><img src="{% static "app/images/instagram.webp" %}" alt="instagram"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!--<script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>-->
+    <script src="{% static 'app/scripts/respond.js' %}"></script>
+{% block scripts %}
+    <script src="{% static 'app/scripts/jquery.bcSwipe.min.js' %}"></script>
+    <script src="{% static 'app/scripts/cubicscripts.js' %}?v=3.0"></script>
+
+{% endblock %}
+
+</body>
+</html>

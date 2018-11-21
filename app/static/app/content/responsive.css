@@ -1,0 +1,134 @@
+/****screen Size specific styling****/
+
+
+/* Extra small devices (phones, 600px and down) */
+@media (max-width: 600px) {
+    .SEO, .item {
+        font-size: 7px; /*em will be used in reference to this size*/
+    }
+    .carousel-indicators{
+        display:none;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media (min-width: 600px) {
+    .SEO, .item {
+        font-size: 8px; /*em will be used in reference to this size*/
+    }
+    .carousel-indicators {
+        display: none;
+    }
+    .cleanbody {
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+    .separator {
+        border-width: 0px 1px 0px 0px;
+        border-style: solid;
+        border-color: #a6a6a6;
+        height: 64px;
+        position: relative;
+        bottom: 10px;
+    }
+    #mobile_welcome {
+        display: none;
+    }
+    .SEO .welcome {
+        position: absolute;
+        margin: 0;
+        top: 7%;
+        right: 0;
+        left: 0;
+    }
+    .SEO .brand {
+        position: absolute;
+        margin: 0;
+        top: 24%;
+        right: 0;
+        left: 0;
+    }
+    .SEO .about {
+        position: absolute;
+        margin: 0;
+        top: 50%;
+        right: 0;
+        left: 0;
+    }
+    .SEO .btn1 {
+        position: absolute;
+        margin: auto;
+        top: 73%;
+        right: 0;
+        left: 0;
+    }
+    .carousel-indicators {
+        display: block;
+    }
+    .copyright{
+        text-align:left;
+    }
+    .material_p{
+        padding: 50px 80px;
+    }
+    #TPU_strip .container {
+        padding: 50px 80px 50px 80px;
+    }
+    #materialstrip .row{
+        display: none;
+    }
+    #comptable td {
+        padding: 15px 40px;
+    }
+    #review_info .col-md-8 {
+        display: block;
+    }
+    .clean_brand {
+        position: absolute;
+        top: 2%;
+        left: 10%;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+    .SEO, .item {
+        font-size: 10px; /*em will be used in reference to this size*/
+    }
+    #indexrow, #about-strip .row, #contact-strip .row {
+        display: flex;
+    }
+    #contact-strip .col-md-3{
+        height: 360px;
+    }
+    #contact-strip .centered_contact{
+        padding-top: 50%;
+        padding-bottom: 50%
+    }
+    #comptable td {
+        padding: 15px 50px;
+    }
+    .uploadhelp{
+        display: block;
+    }
+    #review_info .row{
+        display: flex;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        width: 980px;
+    }
+}

@@ -1,0 +1,53 @@
+﻿{% extends "app/layout.html" %}
+
+{% block fullcontent %}
+<div class="myadmin_title">
+    <h1>{{title}}</h1>
+    <div class="nav_link"><a href="{% url 'myadmin' %}">&lt; Main</a></div>
+</div>
+
+<div class="admin_table_wrapper">    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Client</th>
+                <th>Print</th>
+                <th>QTY</th>
+                <th>each@</th>
+                <th>Total</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        {% for order in completed  %}
+            <tr>
+                <td>{{order.printrequest.id}}</td>
+                <td>
+                    {{order.printrequest.user.first_name}} {{order.printrequest.user.last_name}}<br />
+                    {% if order.bill_to %}
+                    {{ order.bill_to }}
+                    {% else %}
+                    0{{order.printrequest.user.profile.mobile}}<br />
+                    {% endif %}
+                </td>
+                <td style="background-color:{{order.printrequest.color}}">
+                    {{order.printrequest.description}}<br />
+                    {{order.printrequest.material.acronym}}<br />
+                    {{order.printrequest.further_requests}}<br />
+                    {{order.printrequests.color_combo}}
+                </td>
+                {% if order.printrequest.quantity == 1 %}
+                <td>&times;{{order.printrequest.quantity}}</td>
+                {% else %}
+                <td class="unusual">&times;{{order.printrequest.quantity}}</td>
+                {% endif %}
+                <td>{{order.printrequest.final_price}}</td>
+                <td>{{order.printrequest.subtotal}}</td>
+                <td>{{order.printrequest.confirmation_date}}</td>
+                <td></td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

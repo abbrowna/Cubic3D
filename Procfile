@@ -1,0 +1,1 @@
+web: gunicorn Cubic3D.wsgi --log-file -

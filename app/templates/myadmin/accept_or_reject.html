@@ -1,0 +1,80 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+<div class="myadmin_title"><h1>{{title}}</h1></div>
+
+<div class="row">
+    <div class="col-md-6 request_details">
+        <p>Name: <strong>{{printrequest.user.first_name}} {{printrequest.user.last_name}}</strong></p>
+        <p>Description: <strong>{{printrequest.description}}</strong></p>
+        <p>Uploaded on: <strong>{{printrequest.uploaded_at}}</strong></p>
+        <strong>
+            {{printrequest.color}} 
+            {{printrequest.material.acronym}} 
+            {{printrequest.purpose}} 
+            &times;
+            {% if printrequest.quantity == 1 %}
+            {{printrequest.quantity}}
+            {% else %}
+            {{printrequest.quantity}}
+            {% endif %}
+        </strong>
+        <p>{{printrequest.color_combo}}</p>
+        <p>Scale: <strong>{{printrequest.scale}}</strong></p>
+        <p>{{printrequest.further_requests}}</p>
+    </div>
+
+    <div class="col-md-6">
+        <div id="linkform">
+            <div class="action_list" style="text-align: center; padding-bottom: 10px;">
+                <a class="spaced_action selected" id="sendconfirm">
+                    <svg viewBox="10 11.716197967529297 180.0003662109375 176.68380737304688" xmlns="http://www.w3.org/2000/svg" data-type="color" role="img" preserveAspectRatio="xMidYMid meet">
+                        <g>
+                            <path d="M73.1 178.3h80.8c28.6 0 25.5-25.3 22.9-28.8 4.7-5.4 7.8-14.6 3.7-21.8 3.3-3.3 8.9-12.4 3.9-21.8 9.9-9.9 6.8-29.9-10.3-29.9h-44.8s4.1-25 4.1-26.6c-1-14.1-9.8-31.3-10.2-31.9-1.6-3.1-9.8-7.2-18.2-5.3-10.9 2-12 9-12 10.8 0 0 .4 18.8.4 23.8C88.3 58 70.7 87.5 65.2 90c-.8-9.6-9-17-18.8-18.2H28.7c-18.7 0-18.7 20-18.7 20v77.8c0 10.4 8.4 18.8 18.8 18.8h14.9c13.1 0 20.5-8 20.6-13.3 0 .1 3.7 3.2 8.8 3.2zm-26.7 2H28.8c-5.9 0-10.6-4.8-10.6-10.6V90.6C18.2 84.7 23 80 28.8 80h17.6C52.3 80 57 84.8 57 90.6v79.1c.1 5.8-4.7 10.6-10.6 10.6zm129-75.8h-25.9c-1.2 0-2 .8-2 2s.8 2 2 2h24.6c6.3 4.1 3.7 12.5-1.8 16.4h-22.7c-1.2 0-2 .8-2 2s.8 2 2 2h18.2c10 3.1 7 14.7-.4 18.4h-17.8c-1.2 0-2 .8-2 2s.8 2 2 2h17.6c6.8 4.1 3.3 18.4-10.8 18.4H78.1c-4.8 0-11.7.3-12.8-6V100c2.9-1.9 5.8-3.9 7.7-5.6 5.8-4.8 29.1-42.6 29.1-47.4s-.4-25-.4-25 4.6-6 14.8-1.7c0 0 8.7 16.1 9.6 29 0 0-4 26.5-6 34.8h54.6c12.6.2 11.1 16.7.7 20.4z" data-color="1"></path>
+                        </g>
+                    </svg>
+                </a>
+                <a class="spaced_action" id="sendreject">
+                    <svg viewBox="18 18 164 164" xmlns="http://www.w3.org/2000/svg" data-type="color" role="img" preserveAspectRatio="xMidYMid meet">
+                        <g>
+                            <path d="M171.1 182L100 110.9 28.9 182 18 171.1 89.1 100 18 28.9 28.9 18 100 89.1 171.1 18 182 28.9 110.9 100l71.1 71.1-10.9 10.9z" data-color="1"></path>
+                        </g>
+                    </svg>
+                </a>
+                <a class="spaced_action" href="/download/{{printrequest.thing.path}}" target="_blank">
+                    <svg viewBox="46.500423431396484 53.6049919128418 107.000732421875 91.99668884277344" height="200" width="200" xmlns="http://www.w3.org/2000/svg" data-type="color" role="img" preserveAspectRatio="xMidYMid meet">
+                        <g>
+                            <path d="M141.796 86.941a30.774 30.774 0 0 0-.177-7.123c-1.952-13.646-12.874-24.335-26.565-25.994-10.476-1.27-20.894 3.049-27.478 11.251-.064-.012-.126-.036-.19-.047a19.332 19.332 0 0 0-14.551 3.201 19.356 19.356 0 0 0-8.32 15.934h-.11c-8.505 0-15.979 6.104-17.506 14.675-1.717 9.649 2.179 18.062 10.421 22.504l.255.137c2.832 1.536 5.028 2.729 20.843 2.729 3.766 0 8.31-.067 13.813-.215a1.722 1.722 0 0 0 1.677-1.768c-.027-.951-.893-1.743-1.767-1.678-27.693.734-30.116-.579-32.924-2.1l-.262-.142c-6.97-3.756-10.127-10.63-8.662-18.864 1.333-7.484 8.3-12.643 15.834-11.727a1.746 1.746 0 0 0 1.412-.482c.372-.367.559-.884.507-1.405a16.033 16.033 0 0 1 .155-4.436 15.932 15.932 0 0 1 6.606-10.336c3.511-2.448 7.766-3.389 11.976-2.633a15.964 15.964 0 0 1 7.574 3.596 1.725 1.725 0 0 0 2.241-2.622c-1.617-1.383-3.456-2.447-5.408-3.233 5.868-6.568 14.626-9.99 23.451-8.917 12.146 1.472 21.838 10.954 23.565 23.059.337 2.345.362 4.741.055 7.224l-.05.285a1.725 1.725 0 0 0 1.138 1.868c7.035 2.467 11.489 9.634 10.594 17.043-1.008 8.311-8.595 14.126-18 13.974-4.946-.112-17.411-.157-23.995-.165h-.002a1.725 1.725 0 0 0-.003 3.449c6.571.007 19.003.052 23.92.162.195.005.389.007.581.007 10.96 0 19.715-7.079 20.918-17.013 1.034-8.534-3.78-16.807-11.566-20.198z" data-color="1"></path>
+                            <path d="M106.018 135.241l-4.23 4.375V92.128c0-.951-.774-1.726-1.724-1.726s-1.724.774-1.724 1.726v47.488l-4.23-4.375a1.724 1.724 0 0 0-2.476 2.397l7.192 7.439c.002.003.007.004.009.006a1.713 1.713 0 0 0 2.456 0l.009-.006 7.192-7.439a1.724 1.724 0 0 0-.04-2.437 1.719 1.719 0 0 0-2.434.04z" data-color="1"></path>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <div class="admin_form_wrapper">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+
+                    <div class="input-group rejection" style="display:none">
+                        {{form.rejectmessage.errors}}
+                        {{form.rejectmessage}}
+                    </div>
+                    <div class="input-group acceptance">
+                        <lable for="{{add_to_group.id_for_label}}" class="input-group-addon">Add to Group?</lable>
+                        {{ form.add_to_group }}
+                    </div>
+                    <div class="input-group acceptance" id="finalpricefield">
+                        {{form.price.errors}}
+                        {{form.price}}
+                    </div>
+                    <div class="input-group acceptance">
+                        {{ form.bill_to }}
+                    </div>
+
+                    <input type="submit" class="btn btn1" id="emailsubmit" value="Send invoice">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

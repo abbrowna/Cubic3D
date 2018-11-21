@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ title }}</title>
+        {% load static %}
+        {#<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">#}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        {#<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>#}
+        <link rel="stylesheet" href="{% static 'app/content/pdf.css' %}" />
+        <style>
+            @font-face {
+                font-family: 'DIN Neuzeit Grotesk';
+                src: url('{% static 'app/fonts/DIN Neuzeit Grotesk LT W01 BdCn.ttf' %}') format('truetype');
+            }
+        </style>
+    </head>
+    <body>
+        <table class="outer">
+            <tr>
+                <td>
+                    <table class="innertable">
+                        <tr>
+                            <td class="wrapper">
+                                <table class="maintable">
+                                    <tr>
+                                        <td class="pdfbrand">
+                                            CUBIC3D
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-bottom: 20px; text-align: center;">PAYMENT RECEIPT</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>Payment date: <strong>{{date}}</strong></p>
+                                            <p>Receipt #: <strong>RCPT{{invoice.number}}</strong></p>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="padding: 70px 0;">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <p style="font-size:16px; color: grey;">Received from</p>
+                                                        {% if invoice.bill_to %}
+                                                        <p>{{ invoice.bill_to }}</p>
+                                                        {% else %}
+                                                        <p>{{invoice.user.first_name}} {{ invoice.user.last_name }}</p>
+                                                        <p>{{ invoice.user.email }}</p>
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td></td>
+                                        <td style="text-align: center;">
+                                            <p class="amount" style="padding: 20px 10px 2px 10px; margin-bottom:0; border-bottom-width:0">Amount received</p>
+                                            <p class="amount" style="padding: 2px 10px 20px 10px; margin-top:0; border-top-width:0"><small style="color:grey">KES </small>{{ invoice.amount }}</p>
+                                        </td>
+                                    </tr>
+                                    <tr><td><p style="font-size:16px; color: grey;">Payment for</p></td></tr>
+                                    <tr>
+                                        <th>Invoice #</th>
+                                        <th>Invoice date</th>
+                                        <th>Amount ( KES )</th>
+                                    </tr>
+                                    <tr class="items">
+                                        <td>
+                                            INV-{{invoice.number }}
+                                        </td>
+                                        <td>
+                                            {{ invoice.date }}
+                                        </td>
+                                        <td>
+                                            {{ invoice.amount }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 15px 0 15px 0">&nbsp;</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

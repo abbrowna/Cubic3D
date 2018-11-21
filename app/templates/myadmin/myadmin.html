@@ -1,0 +1,17 @@
+{% extends "app/layout.html" %}
+
+{% block fullcontent %}
+
+<div class="container myadmin_title">
+    <h1>{{ title }}</h1>
+</div>
+<div class="admin_links">
+    <a href="{% url 'printrequests' %}" class="btn btn1">Print Requests &raquo;</a>
+    <a href="{% url 'pending_confirmation' %}" class="btn btn1">Pending confirmation &raquo;</a>
+    <a href="{% url 'orders' %}" class="btn btn1">Orders &raquo;</a>
+    <a href="{% url 'printed' %}" class="btn btn1">Printed &raquo;</a>
+    <a href="{% url 'completed' %}" class="btn btn1">Completed orders &raquo;</a>
+    <a href="{% url 'user_profiles'%}" class="btn btn1">Users</a>
+</div>
+
+{% endblock %}

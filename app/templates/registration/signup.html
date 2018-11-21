@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ title }}</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="icon" href="{% static 'app/images/favicon.ico' %}">
+        <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'app/content/sitev2.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'app/content/responsive.css' %}"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    </head>
+    <body class="cleanbody">
+        <div id="signup" class="container">
+            <div id="signuptitle"><h1>{{title}}</h1></div>
+            <p>Already a member? <a href="{% url 'login'%}">Log In</a></p>
+            <form method="POST" class="form-horizontal">
+            <div class="row">
+                <div class="col-sm-6">
+                    {% csrf_token %} 
+                    {{ form.non_field_errors }}            
+                    <div class="input-group">
+                        {{form.first_name.errors}}
+                        <!--<span class="input-group-addon"><label class="control-label" for="{{from.first_name.id_for_label}}">First name:</label></span>-->
+                        {{form.first_name}}
+                    </div>
+                    <div class="input-group"> 
+                        {{form.last_name.errors}}
+                        {{form.last_name}}
+                    </div>
+                    <div class="input-group" style="display:none" >
+                        {{form.username.errors}}
+                        {{form.username}}
+                    </div>
+                    <div class="input-group">
+                        {{form.email.errors}}
+                        {{form.email}}
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="input-group">   
+                        {{form.mobile.errors}}
+                        {{form.mobile}}
+                    </div>
+                    <div class="input-group"> 
+                        {{form.password1.errors}}
+                        {{form.password1}}
+                    </div>
+                    <div class="input-group">  
+                        {{form.password2.errors}}
+                        {{form.password2}}
+                    </div>
+                    {{ form.errors }}
+                </div>
+            </div>
+            <div class="submitbtn"><input type="submit" value="Go" class="btn btn1" /></div>
+        </form>
+        </div>
+        <script src="{% static 'app/scripts/jquery.bcSwipe.min.js' %}"></script>
+        <script src="{% static 'app/scripts/cubicscripts.js' %}?v=3.0"></script>
+
+    </body>
+</html>
+

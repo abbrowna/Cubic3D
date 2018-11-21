@@ -1,0 +1,70 @@
+{% extends "app/layout.html" %}
+
+{% block fullcontent %}
+
+<div class="navbar-image">
+    {% load static %}
+    <img src="{% static "app/images/Scincube.webp" %}" alt="Logo">
+</div>
+
+<div>
+    <div id="overview" class="container">
+        <div class="row">
+            <div class="col-md-4" style="text-align:center">
+                <h2>ABOUT US</h2>
+            </div>
+            <div class="col-md-8">
+                <p>
+                    Cubic3D is a professional 3D print service based in Juja Kenya with 
+                    a pricing that works even for those without an entire organization behind them.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="about-strip">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Simplified process</h4>
+                    <p>
+                        Its really easy to get your object printed with our online print request system. 
+                        Here are the steps:
+                    </p>
+                    <ol>
+                        <li>
+                            Obtain the digital design of  the object either through CAD software or from Thingiverse.
+                        </li>
+                        <li>
+                            Request a print using the link provided in our <a href="/">home page.</a>
+                        </li>
+                        <li>
+                            We send you the cost of printing your object that you agree to.
+                        </li>
+                        <li>
+                            Give us at least 48 hours to print your object. Only upon delivery of the object do we ask for payment.
+                        </li>                    
+                    </ol>
+                </div>
+                <div class="col-md-4">
+                    <h4>Professionalism</h4>
+                    <p>The quality of your 3D print is our primary concern and we strive to produce parts that need no further finishing processes.</p>
+                    <p>Rest assured, we will print out objects that are true to the form and dimensions defined in the digital design; as accurate as 0.02mm in some cases.</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Personalized approach</h4>
+                    <p>From the versatility of the process, every print request is different and everyone has their own preferences and tolerances.</p>
+                    <p>We therefore love to hear you out so that we get as much information as is needed to produce the object as you intended it to be.</p>
+                </div>
+            </div>
+            <ul style="list-style:none">
+                <li><a href="{% url 'upload' %}">Request a 3D print</a></li>
+                <li><a href="{% url 'def_quote' %}">Get an estimate</a></li>
+            </ul>
+
+        </div>
+    </div>    
+</div>
+
+{% endblock %}
+
+

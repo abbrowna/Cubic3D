@@ -1,0 +1,133 @@
+{% extends "app/layout.html" %}
+
+
+{% block fullcontent %}
+{% load static %}
+
+<div id="materialtitle" class="container">
+    <div class="row">
+        <div class="col-sm-2">
+            <img alt="Graduate" data-type="image" src="{% static "app/images/school hat.webp" %}">
+        </div>
+        <div class="col-sm-10">
+            <h2>Material science 101</h2>        
+        </div>
+    </div>        
+</div>
+
+<div id="materialstrip">
+    <div class="container">
+        <div class="material_p">
+            <p>
+                3D printing materials are generally thermoplastics which means they can be reworked and reshaped on application of heat without degrading them. 
+                They vary in properties which would make one material more suited to an application than the others.
+            </p>
+            <p>
+                To simplify things, below is a side by side comparison of the two materials we specialize in.
+            </p>
+        </div>
+        <div class="row">
+            <!--<img src="{% static "/app/images/molecule.png" %}" />-->
+            <div class="col-sm-6">
+                <h2>PETG</h2>
+                <h3>(Polyethylene Terephthalate-Glycol)</h3>
+                <div class="comparison comp1 mycol1" id="mytrial">
+                    <p>PETG is a tough material and will flex elastically, then deform plastically rather than snapping. </p>
+                </div>
+                <div class="comparison comp2 mycol1">
+                    <p>Comes in neutral colors such as white and gray with descent surface detail.</p>
+                </div>
+                <div class="comparison comp3 mycol1">
+                    <p>Very strong with high impact resistance resulting from its flexibility.</p>
+                </div>
+                <div class="comparison comp4 mycol1">
+                    <p>High alkali, acid and water resistance just like big brother PET as used in food and drink containers.</p>
+                </div>
+                <div class="comparison comp5 mycol1">
+                    <p>High temperature resistance softening at around 80c.</p>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <h2>PLA</h2>
+                <h3>(Polylactic Acid)</h3>
+                <div class="comparison comp1 mycol2">
+                    <p>PLA doesn't like to bend, and puts up a descent fight until failure by breakage. </p>
+                </div>
+                <div class="comparison comp2 mycol2">
+                    <p>Superb surface detail with vibrant true colors, highly desirable properties for art. </p>
+                </div>
+                <div class="comparison comp3 mycol2">
+                    <p>Rigid but brittle material with respectable strength. </p>
+                </div>
+                <div class="comparison comp4 mycol2">
+                    <p>Made from biodegradable materials hence Eco friendly but less resistant to solvents and other chemicals.</p>
+                </div>
+                <div class="comparison comp5 mycol2">
+                    <p>Low glass transition temperature of around 60c which is a good thing for high surface detail.</p>
+                </div>
+            </div>
+        </div>
+
+        <table id="comptable">
+            <tr class="table-header">
+                <th></th>
+                <th style="width:40%"><h2>PETG</h2><h3>(Polyethylene Terephthalate-Glycol)</h3></th>
+                <th style="width:40%"><h2>PLA</h2><h3>(Polylactic Acid)</h3></th>
+            </tr>
+            <tr>
+                <td class="comptopic">Flexibility</td>
+                <td class="comparison border">PETG is a tough material and will flex, then deform plastically rather than snapping.</td>
+                <td class="comparison">PLA doesn't like to bend, and puts up a descent fight until failure by breakage.</td>
+            </tr>
+            <tr>
+                <td class="comptopic">Finish</td>
+                <td class="comparison border">Comes in neutral colors such as white and gray with descent surface detail.</td>
+                <td class="comparison">PLA doesn't like to bend, and puts up a descent fight until failure by breakage.</td>
+            </tr>
+            <tr>
+                <td class="comptopic">Strength</td>
+                <td class="comparison border">Strong with high impact resistance resulting from its flexibility.</td>
+                <td class="comparison">PLA doesn't like to bend, and puts up a descent fight until failure by breakage.</td>
+            </tr>
+            <tr>
+                <td class="comptopic">Resistance</td>
+                <td class="comparison border">High alkali, acid and water resistance just like big brother PET as used in food and drink containers.</td>
+                <td class="comparison">PLA doesn't like to bend, and puts up a descent fight until failure by breakage.</td>
+            </tr>
+            <tr>
+                <td class="comptopic">Heat</td>
+                <td class="comparison border">High temperature resistance softening at around 80c.</td>
+                <td class="comparison">PLA doesn't like to bend, and puts up a descent fight until failure by breakage.</td>
+            </tr>
+        </table>
+        <div class="material_p">
+            <p>To sum it up...</p>
+            <p>
+                If your print is a vital mechanical part which will be undergoing significant loading or exposed to harsh environmental conditions, 
+                then PETG is definitely the material to choose.
+            </p>
+            <p>Artistically oriented objects or even mechanical but with minimal loads are however more suited to PLA.</p>
+        </div>
+    </div>
+</div>
+<div id="TPU_strip">
+    <div class="container">
+        <h3>Introducing... <span>ThermoPlastic Polyurethane</span></h3>
+        <h4>Better known by its acronym, TPU completes our 3D printing trio.</h4>
+        <p>
+            TPU is essentially a plastic with rubber like characteristics which distinguishes it from the more common PLA and PETG. It can be stretched and reverts to its 
+            original form without deformation, it is also more resistant to abrasion.
+        </p>
+        <p>
+            You can use TPU to print parts that need to bend or flex, extend or contract as part of normal operation, or during installation. This opens up a host of new 
+            possibilities such as ergonomic covers for mechanical handles, or mounting brackets that need to absorb vibrations to reduce noise.
+        </p>
+        <p>
+            One thing worth mentioning, the overall flexibility of the final part can be vastly controlled by the infill density used when printing. For example a cube with 
+            lower infill will be squishy in the hand while a completely solid cube will be a lot firmer. 
+        </p>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,70 @@
+﻿{% extends "app/layout.html" %}
+
+{% block fullcontent %}
+<div class="myadmin_title">
+    <h1>{{title}}</h1>
+    <div class="nav_link"><a href="{% url 'myadmin' %}">&lt; Main</a></div>
+</div>
+
+<div class="admin_table_wrapper">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Client</th>
+                <th>Print</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        {% for invoice_object in invoices  %}
+            <tr>
+                <td class="requestid">INV-{{invoice_object.invoice.number}}</td>
+                <td>
+                    {{invoice_object.invoice.user.first_name}} {{invoice_object.invoice.user.last_name}}<br />
+                    {% if invoice_object.invoice.bill_to %}
+                    {{ invoice_object.invoice.bill_to }}<br />
+                    {% endif %}
+                    0{{invoice_object.invoice.user.profile.mobile}}
+                </td>                
+                <td class="indicator">
+                    {% for order in invoice_object.orders %}
+                        {{order.description}} &times;{{order.quantity}}
+                        {% if order.printed %}
+                        <svg viewBox="10 11.716197967529297 180.0003662109375 176.68380737304688" xmlns="http://www.w3.org/2000/svg" data-type="color" role="img" preserveAspectRatio="xMidYMid meet">
+                            <g>
+                                <path d="M177.804 52.827L76.192 161.956c-3.063 3.257-8.188 3.404-11.443.34L22.55 122.609c-3.257-3.032-3.417-8.175-.353-11.432l4.869-6.109c3.06-3.287 8.154-3.432 11.443-.353l32.622 29.803 90.834-95.868c3.06-3.277 7.345-4.706 11.604-.76l3.883 3.54c3.252 3.029 3.415 8.142.352 11.397z"></path>
+                            </g>
+                        </svg>
+                        {% else %}
+                        <svg viewBox="46.500423431396484 53.6049919128418 107.000732421875 91.99668884277344" xmlns="http://www.w3.org/2000/svg" data-type="color" role="img" preserveAspectRatio="xMidYMid meet">
+                            <g>
+                                <path d="M171.1 182L100 110.9 28.9 182 18 171.1 89.1 100 18 28.9 28.9 18 100 89.1 171.1 18 182 28.9 110.9 100l71.1 71.1-10.9 10.9z" fill="red" data-color="1"></path>
+                            </g>
+                        </svg>
+                        {% endif %}
+                        <br />
+                    {% endfor %}
+                </td>
+              
+                <td>{{invoice_object.invoice.date}}</td>
+                <td class="action_list">
+                    <a href="{% url 'send_receipt' invoice_id=invoice_object.invoice.number orderlist=invoice_object.order_id_list %}" data-toggle="tooltip" title="Send receipt">
+                        <svg viewBox="43 43 114 114" xmlns="http://www.w3.org/2000/svg" data-type="shape" role="img">
+                            <g>
+                                <path d="M43 43v114h114V43H43zm108.3 108.3H48.7V48.7h102.6v102.6z"></path>
+                                <path d="M134.2 71.5v5.7H65.8v-5.7h68.4z"></path>
+                                <path d="M134.2 98.1v5.7H65.8v-5.7h68.4z"></path>
+                                <path d="M134.2 111.4v5.7H65.8v-5.7h68.4z"></path>
+                                <path d="M100 124.7v5.7H65.8v-5.7H100z"></path>
+                                <path d="M117.1 84.8v5.7H65.8v-5.7h51.3z"></path>
+                            </g>
+                        </svg>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "app/layout.html" %}
+
+{% block fullcontent %}
+
+<div id="thanks_title" class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <div>
+                <svg viewBox="19.999221801757812 35.50064468383789 160.00083923339844 128.99925231933594" xmlns="http://www.w3.org/2000/svg" data-type="shape" role="img">
+                    <g>
+                        <path d="M177.804 52.827L76.192 161.956c-3.063 3.257-8.188 3.404-11.443.34L22.55 122.609c-3.257-3.032-3.417-8.175-.353-11.432l4.869-6.109c3.06-3.287 8.154-3.432 11.443-.353l32.622 29.803 90.834-95.868c3.06-3.277 7.345-4.706 11.604-.76l3.883 3.54c3.252 3.029 3.415 8.142.352 11.397z"></path>
+                    </g>
+                </svg>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <h2>Done</h2>
+        </div>
+    </div>
+</div>
+
+<div id="thanks_info">
+    <div class="container">
+        <div class="info">
+            <p>
+                Your print request has been received. We will take a look at the details then 
+                send you an email with its price tag and a confirmation link real soon. See you there.
+            </p>
+        </div>
+        <h4>Quick links:</h4>
+        <div class="quick_link">
+            <p><span><a class="btn btn1" href="https://thingiverse.com" target="_blank">Thingiverse</a></span>Check out other amazing things you can print</p>
+        </div>
+        <div class="quick_link">
+            <p>Submit another <span><a class="btn btn1" href="{% url 'upload' %}">Print request</a></span></p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

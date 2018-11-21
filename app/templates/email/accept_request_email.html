@@ -1,0 +1,143 @@
+﻿{% autoescape off %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>3D printing Invoice</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        {% load static %}
+        <style>
+            @font-face {
+                font-family: 'DIN Neuzeit Grotesk';
+                src: url('{% static 'app/fonts/DIN Neuzeit Grotesk LT W01 BdCn.ttf' %}') format('truetype');
+            }
+            .button {
+                border-radius: 2px;
+                background-color: #F7D57F;
+                text-align:center;
+                padding: 5px 0 5px 0;
+            }
+
+            .button a {
+                padding: 8px 12px;
+                border: 1px solid #F7D57F;
+                border-radius: 2px;
+                font-family: Helvetica, Arial, sans-serif;
+                font-size: 14px;
+                color: #000000; 
+                text-decoration: none;
+                font-weight: bold;
+                display: block;
+                /*width: 60px;*/
+            }
+            .invoice {
+                border-style: solid;
+                border-width: 1px;
+                border-color: #000000;
+            }
+        </style>
+    </head>
+    <body style="margin: 0; padding: 0;">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td style="padding: 20px 30px 20px 30px;">
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+                        <tr style="display: none"><td>The cost of your 3D print is now available for viewing. </td></tr>
+                        <tr>
+                            <td style="padding: 0 0 20px 0;">
+                                <h1 style="color:#F7D57F; font-family:'DIN Neuzeit Grotesk',sans-serif;">Cubic3D</h1>
+                                <p style="font-size:1.2em;">Hello {{ printrequest.user.first_name }}.</p>
+                                <p style="font-size:1.2em;">
+                                    Your request has been accepted and we have prepared an invoice for you that can be viewed below 
+                                    and is also attached onto this email as a pdf.
+                                </p>
+                                <p style="font-size:1.2em;">
+                                    For us to get started printing your object, all you have to do is accept the invoice through 
+                                    the link provided. Payment is only required on delivery of your 3D printed part(s). 
+                                    You will be contacted when your print is ready to organize on a time and place for delivery.
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table border="0" class="invoice" width="100%">
+                                    <tr>
+                                        <td>
+                                            <p>INV-{{ printrequest.id }}</p>
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td style="text-align:right;">
+                                            Date: {{ date }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p style="margin: 0 0 5px 0">BILL TO:</p>
+                                            {% if bill_to %}
+                                            <p style="margin:5px 0 0 0; padding: 0 0 20px 0">{{ bill_to }}</p>
+                                            {% else %}
+                                            <p style="margin:5px 0px 0px 0px;">{{printrequest.user.first_name}} {{ printrequest.user.last_name }}</pstyle>
+                                            <p style="margin:0 0 0 0; padding: 0 0 20px 0">{{ printrequest.user.email }}</p>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: bold">
+                                            Item
+                                        </td>
+                                        <td style="font-weight: bold">
+                                            Quantity
+                                        </td>
+                                        <td style="font-weight: bold">
+                                            Unit price
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ printrequest.description }}
+                                        </td>
+                                        <td>
+                                            {{ printrequest.quantity }}
+                                        </td>
+                                        <td>
+                                            {{ printrequest.final_price }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 15px 0 15px 0">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>Total:</p>
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td style="font-weight: bold">
+                                            {{ printrequest.subtotal }}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:50px 0 20px 0;">
+                                <p style="font-size: 1.2em;">Click the link below to accept the invoice:</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" style="padding: 0 0 60px 0;">
+                                <table width="50%" align="center">
+                                    <tr>
+                                        <td class="button">
+                                            <a href="{{confirmation_link}}" target="_blank">Accept invoice</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
+{% endautoescape %}
