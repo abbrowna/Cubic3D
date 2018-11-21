@@ -323,25 +323,27 @@ def transferprint(request):
     """transfers orders back into temp things"""
     assert isinstance(request, HttpRequest)
     orders = ThingOrders.objects.all()
-    for order in orders:
-        printrequest = PrintRequest()
-        printrequest.description = order.description
-        printrequest.user = order.user
-        printrequest.thing = order.thing
-        printrequest.material = Material.objects.get(acronym = order.material)
-        printrequest.purpose = order.purpose
-        printrequest.color = order.color
-        printrequest.color_combo = order.color_combo
-        printrequest.scale = order.scale
-        printrequest.further_requests = order.further_requests
-        printrequest.confirmation_sent = True
-        printrequest.confirmed = True
-        printrequest.confirmation_date = order.confirmed_on
-        #uncomment the next line if operating on digital ocean
-        printrequest.final_price = printrequest.thing_price()[1]
-        printrequest.printed = True
-        printrequest.receipted = True
-        printrequest.save()
+    prints = PrintRequest.objects.all()
+    if not len(prints):
+        for order in orders:
+            printrequest = PrintRequest()
+            printrequest.description = order.description
+            printrequest.user = order.user
+            printrequest.thing = order.thing
+            printrequest.material = Material.objects.get(acronym = order.material)
+            printrequest.purpose = order.purpose
+            printrequest.color = order.color
+            printrequest.color_combo = order.color_combo
+            printrequest.scale = order.scale
+            printrequest.further_requests = order.further_requests
+            printrequest.confirmation_sent = True
+            printrequest.confirmed = True
+            printrequest.confirmation_date = order.confirmed_on
+            #uncomment the next line if operating on digital ocean
+            printrequest.final_price = printrequest.thing_price()[1]
+            printrequest.printed = True
+            printrequest.receipted = True
+            printrequest.save()
     return redirect('myadmin')
 
 @staff_member_required
