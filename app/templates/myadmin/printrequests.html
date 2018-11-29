@@ -25,7 +25,7 @@
         {% for printrequest in requestqueue  %}
             <tr>
                 <td>{{printrequest.id}}</td>
-                <td>{{printrequest.user.first_name}} {{printrequest.user.last_name}}<br />0{{printrequest.user.profile.mobile}}</td>
+                <td>{{printrequest.user.first_name}} {{printrequest.user.last_name}}<br />{{printrequest.user.profile.mobile}}</td>
                 <td style="background-color:{{printrequest.color}}">{{printrequest.description}}<br />{{printrequest.material.acronym}}<br />{{printrequest.further_requests}}<br />{{printrequests.color_combo}}</td>
                 {% if printrequest.quantity == 1 %}
                 <td>&times;{{printrequest.quantity}}</td>
