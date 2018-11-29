@@ -345,7 +345,7 @@ def myadmin(request):
 def printrequests(request):
     """Viewer for print requests"""
     assert isinstance(request, HttpRequest)
-    requestqueue=PrintRequest.objects.filter(confirmation_sent=False).filter(grouped=False).order_by('uploaded_at')
+    requestqueue=PrintRequest.objects.filter(confirmation_sent=False).filter(grouped=False)
     return render(request,'myadmin/printrequests.html',
         {
             'title':'Print requests',
