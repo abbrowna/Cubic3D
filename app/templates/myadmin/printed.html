@@ -14,6 +14,7 @@
                 <th>Client</th>
                 <th>Print</th>
                 <th>Date</th>
+                <th>Amount</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -25,7 +26,7 @@
                     {% if invoice_object.invoice.bill_to %}
                     {{ invoice_object.invoice.bill_to }}<br />
                     {% endif %}
-                    0{{invoice_object.invoice.user.profile.mobile}}
+                    {{invoice_object.invoice.user.profile.mobile}}
                 </td>                
                 <td class="indicator">
                     {% for order in invoice_object.orders %}
@@ -48,6 +49,7 @@
                 </td>
               
                 <td>{{invoice_object.invoice.date}}</td>
+                <td>{{invoice_object.invoice.amount}}</td>
                 <td class="action_list">
                     <a href="{% url 'send_receipt' invoice_id=invoice_object.invoice.number orderlist=invoice_object.order_id_list %}" data-toggle="tooltip" title="Send receipt">
                         <svg viewBox="43 43 114 114" xmlns="http://www.w3.org/2000/svg" data-type="shape" role="img">
