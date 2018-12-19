@@ -83,7 +83,10 @@ class GroupRecord(models.Model):
     id_string = models.CharField(max_length=100, primary_key=True)
     def id_list(self):
         request_IDs = self.id_string[1:len(self.id_string)-1].split(", ")
-        return request_IDs
+        IDs = []
+        for i in request_IDs:
+            IDs.append(int(i))
+        return IDs
 
 class Quote(models.Model):
     thing = models.FileField(upload_to='thingstemp/%Y/%m/',

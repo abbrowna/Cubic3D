@@ -103,6 +103,15 @@
                                             {{ printrequest.final_price }}
                                         </td>
                                     </tr>
+                                    {% if delivery_fee %}
+                                    <tr>
+                                        <td>
+                                            Delivery fee
+                                        </td>
+                                        <td></td>
+                                        <td>{{ delivery_fee }}</td>
+                                    </tr>
+                                    {% endif %}
                                     <tr>
                                         <td style="padding: 15px 0 15px 0">&nbsp;</td>
                                     </tr>
@@ -112,7 +121,7 @@
                                         </td>
                                         <td>&nbsp;</td>
                                         <td style="font-weight: bold">
-                                            {{ printrequest.subtotal }}
+                                            {{ subtotal }}
                                         </td>
                                     </tr>
                                 </table>

@@ -38,6 +38,7 @@ $(document).ready(function () {
     $("#id_new_password1").attr('placeholder', 'New password');
     $("#id_new_password2").attr('placeholder', 'Retype new password');
     $("#id_bill_to").attr('placeholder', 'Alternative billing name (optional)');
+    $("#id_delivery_fee").attr('placeholder', 'Price for delivery (optional)');
     $("#id_price").attr('placeholder', 'Final Price');
     $("#id_rejectmessage").attr('placeholder',
         'Explanation as to why the print request has been rejected (optional) (If left blank no email will be sent)');
@@ -233,10 +234,12 @@ $(document).ready(function () {
         if (this.checked) {
             $('#emailsubmit').attr("value", "Add to group");
             $('#id_bill_to').parent().hide();
+            $('#id_delivery_fee').parent().hide();
         }
         else {
             $('#emailsubmit').attr("value", "Send invoice");
             $('#id_bill_to').parent().show();
+            $('#id_delivery_fee').parent().show();
         }
     });
 

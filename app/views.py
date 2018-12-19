@@ -288,7 +288,7 @@ def confirm_print(request,thing_id):
     try:
         thing_id = int(thing_id)
         printrequest = PrintRequest.objects.get(pk=thing_id)
-        if  not printrequest.confirmed:
+        if not printrequest.confirmed:
             send_mail('new order', 'Order confirmed', 'orders@cubic3d.co.ke', ['abbrowna@cubic3d.co.ke','noelkimwatan@cubic3d.co.ke'])
         printrequest.confirmed = True
         printrequest.confirmation_date = datetime.now()
@@ -366,6 +366,10 @@ def accept_or_reject(request, requestid):
             add_to_group = form.cleaned_data['add_to_group']
             finalprice = form.cleaned_data['price']
             printrequest.final_price = finalprice
+            if form.cleaned_data['delivery_fee']:
+                delivery_fee = form.cleaned_data['delivery_fee']
+            else:
+                delivery_fee = 0
             if add_to_group:
                 groupedprintrequest = GroupedPrintRequest()
                 groupedprintrequest.printrequest = printrequest
@@ -381,18 +385,20 @@ def accept_or_reject(request, requestid):
                     html_content = render_to_string('email/accept_request_email.html',
                         {
                             'printrequest':printrequest,
-                            'subtotal':printrequest.subtotal(),
+                            'subtotal':(printrequest.subtotal() + delivery_fee),
                             'date':today.strftime("%d-%m-%y"),
                             'bill_to':form.cleaned_data['bill_to'],
                             'confirmation_link':request.build_absolute_uri(reverse('confirm', args=[printrequest.id])),
+                            'delivery_fee':delivery_fee,
                         },request
                     )
                     pdf_content = render_to_string('email/pdf_invoice.html',
                         {
                             'printrequest':printrequest,
                             'date':today.strftime("%d-%m-%y"),
-                            'subtotal': printrequest.subtotal(),
-                            'bill_to':form.cleaned_data['bill_to']
+                            'subtotal': (printrequest.subtotal() + delivery_fee),
+                            'bill_to':form.cleaned_data['bill_to'],
+                            'delivery_fee':delivery_fee,
                         },request)
                     
                     invoice_path = "invoices/INV-{}.pdf".format(printrequest.id)
@@ -410,7 +416,7 @@ def accept_or_reject(request, requestid):
                     printrequest.save()
                     invoice = Invoice()
                     invoice.number = printrequest.id
-                    invoice.amount = printrequest.subtotal()
+                    invoice.amount = printrequest.subtotal() + delivery_fee
                     invoice.user = printrequest.user
                     if form.cleaned_data['bill_to']:
                         invoice.bill_to = form.cleaned_data['bill_to']
@@ -457,10 +463,12 @@ def grouped_requests(request):
         form = GroupInvoiceForm(request.POST)
         if form.is_valid():
             grandtotal = 0
+            delivery_fee = form.cleaned_data['delivery_fee']
             id_list= []
             for item in group:
                 grandtotal += item.printrequest.subtotal()
                 id_list.append(item.printrequest.id)
+            grandtotal += delivery_fee
             html_content = render_to_string('email/accept_group_email.html',
                 {
                     'group':group,
@@ -468,6 +476,7 @@ def grouped_requests(request):
                     'date':datetime.today().strftime("%d-%m-%y"),
                     'bill_to':form.cleaned_data['bill_to'],
                     'confirmation_link':request.build_absolute_uri(reverse('confirm', args=[str(id_list)])),
+                    'delivery_fee':delivery_fee
                 },request
             )
             pdf_content = render_to_string('email/group_pdf_invoice.html',
@@ -475,7 +484,8 @@ def grouped_requests(request):
                     'group':group,
                     'grandtotal':grandtotal,
                     'date':datetime.today().strftime("%d-%m-%y"),
-                    'bill_to':form.cleaned_data['bill_to']
+                    'bill_to':form.cleaned_data['bill_to'],
+                    'delivery_fee':delivery_fee
                 },request)
             invoice_path = "invoices/INV-{}.pdf".format(group[0].printrequest.id)
             pdf_invoice = open(invoice_path,"w+b")
@@ -562,10 +572,10 @@ def printed(request):
     assert isinstance(request, HttpRequest)
     
     class InvoiceForPrinted():
-        def __init__(self,invoice,orders):
+        def __init__(self,invoice,orders,id_list):
             self.invoice=invoice
             self.orders=orders
-        order_id_list = []
+            self.id_list = id_list
     
     def get_orders(id_list):
         order_list = []
@@ -579,7 +589,7 @@ def printed(request):
     printed_objects_ungrouped = PrintRequest.objects.filter(printed=True).filter(receipted=False).filter(grouped=False)    
     for item in printed_objects_ungrouped:
         i = Invoice.objects.get(number=item.id)
-        invoices_for_printed.append(InvoiceForPrinted(i,[item,]))
+        invoices_for_printed.append(InvoiceForPrinted(i,[item,],[item.id,]))
 
     printed_objects_grouped = PrintRequest.objects.filter(printed=True).filter(receipted=False).filter(grouped=True)
     grouprecords = GroupRecord.objects.all();
@@ -587,11 +597,7 @@ def printed(request):
         for record in grouprecords:
             if int(record.id_list()[0]) == item.id:
                 i = Invoice.objects.get(number=item.id)
-                invoices_for_printed.append(InvoiceForPrinted(i,get_orders(record.id_list())))
-
-    for i in invoices_for_printed:
-        for order in i.orders:
-            i.order_id_list.append(order.id)
+                invoices_for_printed.append(InvoiceForPrinted(i,get_orders(record.id_list()),record.id_list()))
     
     return render(request, 'myadmin/printed.html',
         {
@@ -628,8 +634,8 @@ def send_receipt(request, invoice_id, orderlist):
     invoice.paid = True
     invoice.save()
 
-    item_id_list = orderlist[1:len(orderlist)-1].split(", ")
-    for id in item_id_list:
+    cleaned_list = orderlist[1:len(orderlist)-1].split(", ")
+    for id in cleaned_list:
         order = PrintRequest.objects.get(pk=int(id))
         order.receipted = True
         order.save()

@@ -70,9 +70,13 @@ class EmailForm(forms.Form):
     rejectmessage = forms.CharField(widget=forms.Textarea, required=False)
     add_to_group = forms.BooleanField(required=False, initial=False)
     bill_to = forms.CharField(required=False)
+    delivery_fee = forms.IntegerField(required=False)
 
 class GroupInvoiceForm(forms.Form):
     bill_to = forms.CharField(required=False)
+    delivery_fee = forms.IntegerField(required=False)
+
+
 
 class ScaleForm(forms.Form):
     scale = forms.FloatField(required=False, widget=forms.NumberInput(attrs={'placeholder':100,'class':'form-control'}))

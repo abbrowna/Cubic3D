@@ -51,7 +51,7 @@
                 <td>{{invoice_object.invoice.date}}</td>
                 <td>{{invoice_object.invoice.amount}}</td>
                 <td class="action_list">
-                    <a href="{% url 'send_receipt' invoice_id=invoice_object.invoice.number orderlist=invoice_object.order_id_list %}" data-toggle="tooltip" title="Send receipt">
+                    <a href="{% url 'send_receipt' invoice_id=invoice_object.invoice.number orderlist=invoice_object.id_list %}" data-toggle="tooltip" title="Send receipt">
                         <svg viewBox="43 43 114 114" xmlns="http://www.w3.org/2000/svg" data-type="shape" role="img">
                             <g>
                                 <path d="M43 43v114h114V43H43zm108.3 108.3H48.7V48.7h102.6v102.6z"></path>

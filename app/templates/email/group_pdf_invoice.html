@@ -79,6 +79,15 @@
                                         </td>
                                     </tr>
                                     {% endfor %}
+                                    {% if delivery_fee %}
+                                    <tr class="items">
+                                        <td>
+                                            Delivery fee
+                                        </td>
+                                        <td></td>
+                                        <td>{{ delivery_fee }}</td>
+                                    </tr>
+                                    {% endif %}
                                     <tr>
                                         <td style="padding: 15px 0 15px 0">&nbsp;</td>
                                     </tr>
