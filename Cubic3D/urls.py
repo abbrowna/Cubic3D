@@ -51,6 +51,7 @@ urlpatterns = [
     path('my_admin/orders/pending/',app.views.orders, name='orders'),
     path('my_admin/user_profiles/', app.views.user_profiles, name='user_profiles'),
     path('accounts/change_profile/', app.views.change_profile, name='change_profile'),
+    (r'^googledb04602fc10702c7\.html$', lambda r: HttpResponse("google-site-verification: googledb04602fc10702c7.html", mimetype="text/plain")),
 
     path('accounts/login/',
         django.contrib.auth.views.LoginView.as_view(
