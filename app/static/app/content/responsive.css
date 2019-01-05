@@ -62,12 +62,14 @@
         right: 0;
         left: 0;
     }
-    .SEO .btn1 {
+    .SEO .btn {
         position: absolute;
         margin: auto;
         top: 73%;
         right: 0;
         left: 0;
+        width: 145px;
+        color: black;
     }
     .carousel-indicators {
         display: block;

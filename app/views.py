@@ -43,7 +43,8 @@ def home(request):
         request,
         'app/index.html',
         {
-            'title':'Home',
+            'title':'Cubic3D - 3D printing service',
+            'description':'Professional 3D printing service based in Juja, Kenya producing clean, crisp objects reliably, with pricing that works for everyone',
             'year':datetime.now().year,
         }
     )
@@ -56,7 +57,7 @@ def contact(request):
         'app/contact.html',
         {
             'title':'Contact Us',
-            'message':'We\'d love to be of any assistance we can. You can get to us by writing to:',
+            'description':'Contact channels for our services.',
             'year':datetime.now().year,
         }
     )
@@ -66,8 +67,8 @@ def about(request):
     assert isinstance(request, HttpRequest)
     return render(request,'app/about.html',
         {
-            'title':'About',
-            'message':'Cubic3D is your hobbyist paradise.',
+            'title':'About our 3D printing services',
+            'description':'Simply put, we 3D print your designs and ship the resulting objet to you charging per gram of material used.',
             'year':datetime.now().year,
         }
     )
@@ -78,7 +79,7 @@ def materials(request):
     return render(request,'app/materials.html',
         {
             'title':'Materials and Options',
-            'message':'Which material should you choose?',
+            'description':'A brief explanation of our available 3D printing materials and which one would best suit your application.',
             'year':datetime.now().year,
         }
     )
@@ -96,6 +97,7 @@ def gallery(request):
         {
             'photos':photos,
             'title':'Gallery',
+            'description':'A photo collection showing some objects printed by us that will prove we\'re the right team for the job.',
             'year':datetime.now().year,
         }
     )
@@ -115,7 +117,8 @@ def def_quote(request):
     return render(request, 'app/def_quote.html',
         {
             'form':form,
-            'title':'Upload & Options.',
+            'title':'Upload model & select options to be quoted',
+            'description':'Your CAD design can be uploaded here and our trusty online webapp will give you an estimate on the cost of 3D printing it. ',
             'year':datetime.now().year,
         }
     )
@@ -145,7 +148,8 @@ def upload(request):
     return render(request,'app/upload.html',
         {
             'form':form,
-            'title':'Upload & Options.',
+            'title':'Upload model & select options.',
+            'description':'To get a 3D print, upload your CAD design here, and select the options that best suit your needs.',
             'year':datetime.now().year,
         }
     )
@@ -202,7 +206,8 @@ def quote_review(request):
             'price':price,
             'stlpath':quote.thing.url,
             'year':datetime.now().year,
-            'title':'Review and scaling',
+            'title':'Scale and review 3D print quote request',
+            'description':'Here\'s your estimate on the cost of 3D printing the submited model.',
         }
     )
 
@@ -235,7 +240,8 @@ def review_n_info(request):
             'form':form,
             'slicemass':mass,
             'filename':file_name,
-            'title':'Review and Scaling',
+            'title':'Scale and review 3D print request',
+            'description':'See your 3D print request the way we will receive it and change the scale of the model if needed. On submission we will process it manually to give you a final price.',
             'year':datetime.now().year,
             'price':price,
         }
@@ -277,7 +283,8 @@ def thanks(request):
     send_mail('new print request', 'There\'s a new print request for you. Check it out', 'orders@cubic3d.co.ke', ['abbrowna@cubic3d.co.ke','noelkimwatan@cubic3d.co.ke'])
     return render(request,'app/thanks.html',
         {
-            'title':'Thanks for the request',
+            'title':'Request submitted, Thank you!',
+            'description':'We have successfully received yor 3D print request, give us some time and we will get back to you on the same.',
             'year':datetime.now().year,
         }
     )
@@ -298,6 +305,7 @@ def confirm_print(request,thing_id):
             {
                 'printrequests':items,
                 'title':'Print confirmed',
+                'description':'We will now start 3D printing your model.',
                 'year':datetime.now().year,
             }
         )
@@ -314,7 +322,7 @@ def confirm_print(request,thing_id):
         return render(request, 'app/printconfirmed.html',
             {
                 'printrequests':items,
-                'title':'Print confirmed',
+                'title':'Prints confirmed',
                 'year':datetime.now().year,
             })
 
@@ -348,7 +356,7 @@ def printrequests(request):
     requestqueue=PrintRequest.objects.filter(confirmation_sent=False).filter(grouped=False).order_by('uploaded_at')
     return render(request,'myadmin/printrequests.html',
         {
-            'title':'Print requests',
+            'title':'Print request records',
             'year':datetime.now().year,
             'requestqueue':requestqueue,
         }
@@ -521,7 +529,7 @@ def grouped_requests(request):
     return render(request, 'myadmin/grouped_requests.html' ,{
             'group': group,
             'form': form,
-            'title':'Grouped requests'
+            'title':'Grouped request records'
         })
 
 @staff_member_required
@@ -690,7 +698,7 @@ def thingiverse(request):
     assert isinstance(request,HttpRequest)
     return render(request, 'app/thingiverse.html',
         {
-            'title':'Browse Thingiverse',
+            'title':'A collection of 3D models',
             'year':datetime.now().year,
         }
     )
@@ -721,6 +729,7 @@ def change_profile(request):
         {
             'form':form,
             'title':'My account',
+            'description':'View and/or change your account information. Your privacy is our great concern.',
             'year': datetime.now().year,
         })
 
@@ -745,6 +754,7 @@ def signup(request):
         {
             'form': form,
             'title':'SignUp',
+            'description':'Create an account with Cubic3D 3D printing service.',
             'year':datetime.now().year,                            
         }
     )

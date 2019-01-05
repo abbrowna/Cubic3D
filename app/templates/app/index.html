@@ -143,3 +143,18 @@
     </div>
 </div>
 {% endblock %}
+
+{% block scripts %}
+<script type="application/ld+json">
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "url": "https://www.cubic3d.co.ke",
+    "logo": "https://www.cubic3d.co.ke/static/app/images/logo%20light.png",
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+254-700-888-557",
+      "contactType": "customer service"
+  }]
+    "areaServed": "Kenya"
+</script>
+{% endblock %}

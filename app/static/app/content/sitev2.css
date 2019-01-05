@@ -267,10 +267,11 @@ body {
     background-color: transparent;
     color: #4BD1A0;
 }
-.SEO .btn1 {
+.SEO .btn {
     transition: border-color 0.4s ease 0s, background-color 0.4s ease 0s;
     width: 142px;
     height: 40px;
+    color: black;
 }
 
 .carousel-caption {

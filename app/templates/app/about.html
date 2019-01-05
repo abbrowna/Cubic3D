@@ -35,7 +35,7 @@
                             Obtain the digital design of  the object either through CAD software or from Thingiverse.
                         </li>
                         <li>
-                            Request a print using the link provided below <a href="/">home page.</a>
+                            Request a print using the link provided below.
                         </li>
                         <li>
                             We send you the cost of printing your object that you agree to.
@@ -65,6 +65,21 @@
     </div>    
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+<script type="application/ld+json">
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "url": "https://www.cubic3d.co.ke",
+    "logo": "https://www.cubic3d.co.ke/static/app/images/logo%20light.png",
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+254-700-888-557",
+      "contactType": "customer service"
+    }]
+    "areaServed": "KE"
+</script>
 {% endblock %}
 
 
