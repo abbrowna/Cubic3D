@@ -10,6 +10,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 
+from django.http import HttpResponse
+
 import app.forms
 import app.views
 from app import views
@@ -51,7 +53,7 @@ urlpatterns = [
     path('my_admin/orders/pending/',app.views.orders, name='orders'),
     path('my_admin/user_profiles/', app.views.user_profiles, name='user_profiles'),
     path('accounts/change_profile/', app.views.change_profile, name='change_profile'),
-    (r'^googledb04602fc10702c7\.html$', lambda r: HttpResponse("google-site-verification: googledb04602fc10702c7.html", mimetype="text/plain")),
+    url(r'^googledb04602fc10702c7\.html$', lambda r: HttpResponse("google-site-verification: googledb04602fc10702c7.html")),
 
     path('accounts/login/',
         django.contrib.auth.views.LoginView.as_view(
