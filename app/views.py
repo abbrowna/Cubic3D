@@ -43,8 +43,8 @@ def home(request):
         request,
         'app/index.html',
         {
-            'title':'Cubic3D - 3D printing service',
-            'description':'Professional 3D printing service based in Juja, Kenya producing clean, crisp objects reliably, with pricing that works for everyone',
+            'title':'Cubic3D - 3D printing service in Kenya',
+            'description':'Professional 3D printing service based in Kenya producing clean, crisp objects reliably, with pricing that works for everyone',
             'year':datetime.now().year,
         }
     )
