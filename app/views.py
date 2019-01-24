@@ -44,7 +44,7 @@ def home(request):
         'app/index.html',
         {
             'title':'Cubic3D - 3D printing service in Kenya',
-            'description':'Professional 3D printing service based in Kenya producing clean, crisp objects reliably, with pricing that works for everyone',
+            'description':'Professional 3D printing service in Kenya producing clean, crisp objects reliably, with pricing that works for everyone',
             'year':datetime.now().year,
         }
     )
@@ -68,7 +68,7 @@ def about(request):
     return render(request,'app/about.html',
         {
             'title':'About our 3D printing services',
-            'description':'Simply put, we 3D print your designs and ship the resulting objet to you charging per gram of material used.',
+            'description':'Simply put, we 3D print your digital designs and ship the resulting object to you charging per gram of material used.',
             'year':datetime.now().year,
         }
     )
