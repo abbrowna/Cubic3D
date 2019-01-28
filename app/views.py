@@ -472,6 +472,8 @@ def grouped_requests(request):
         if form.is_valid():
             grandtotal = 0
             delivery_fee = form.cleaned_data['delivery_fee']
+            if not delivery_fee:
+                delivery_fee = 0
             id_list= []
             for item in group:
                 grandtotal += item.printrequest.subtotal()
