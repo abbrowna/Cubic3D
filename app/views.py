@@ -318,6 +318,7 @@ def confirm_print(request,thing_id):
             printrequest.confirmation_date = datetime.now()
             printrequest.save()
             items.append(printrequest)
+        send_mail('new order', 'Order confirmed', 'orders@cubic3d.co.ke', ['abbrowna@cubic3d.co.ke','noelkimwatan@cubic3d.co.ke'])
 
         return render(request, 'app/printconfirmed.html',
             {
