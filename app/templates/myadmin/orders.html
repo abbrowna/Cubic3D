@@ -14,6 +14,8 @@
                 <th>Client</th>
                 <th>Print</th>
                 <th>QTY</th>
+                <th>Each@</th>
+                <th>Subtotal</th>
                 <th>Date</th>
                 <th>Actions</th>
             </tr>
@@ -27,7 +29,9 @@
                 <td>&times;{{order.quantity}}</td>
                 {% else %}
                 <td class="unusual">&times;{{order.quantity}}</td>
-                {% endif %}                
+                {% endif %}
+                <td>@{{order.final_price}}</td>
+                <td>{{order.subtotal}}</td>
                 <td>{{order.confirmation_date}}</td>
                 <td class="action_list">
                     <a href="{% url 'download' order.thing.path %}" target="_blank" data-toggle="tooltip" title="Download file">
