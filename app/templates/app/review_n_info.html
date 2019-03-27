@@ -53,8 +53,9 @@
                 <form method="post">
                     {% csrf_token %}
                     <div class="input-group">
-                        {{form.scale}}
+                        <span style="display:table-cell; vertical-align: middle">{{form.scale}}</span>
                         <span class="input-group-addon">%</span>
+                        <span class="input-group-addon"><button type="submit" class="btn btn2">Set</button></span>
                     </div>
                 </form>
                 <h2>Estimate <small>subject to change</small></h2>
