@@ -15,11 +15,11 @@ class Material(models.Model):
     acronym = models.CharField(primary_key=True, max_length=5, verbose_name = "Material Acronym")
     density = models.FloatField()
     ppg = models.IntegerField(verbose_name = "Price per gram")
-    color1 = models.CharField(max_length=5, blank=True)
-    color2 = models.CharField(max_length=5, blank=True)
-    color3 = models.CharField(max_length=5, blank=True)
-    color4 = models.CharField(max_length=5, blank=True)
-    color5 = models.CharField(max_length=5, blank=True)
+    color1 = models.CharField(max_length=15, blank=True)
+    color2 = models.CharField(max_length=15, blank=True)
+    color3 = models.CharField(max_length=15, blank=True)
+    color4 = models.CharField(max_length=15, blank=True)
+    color5 = models.CharField(max_length=15, blank=True)
 
     def available_colors(self):
         colors=[]
@@ -42,7 +42,7 @@ class PrintRequest(models.Model):
     )
     material = models.ForeignKey(Material, on_delete=models.CASCADE, default='PLA')
     purpose = models.CharField(max_length=5,choices=infill_choices,default='ART')
-    color = models.CharField(max_length=10)
+    color = models.CharField(max_length=15)
     color_combo = models.TextField(blank=True,)
     scale = models.FloatField(default=100)
     quantity = models.IntegerField(blank=True, default=1)
@@ -96,7 +96,7 @@ class Quote(models.Model):
     )
     material = models.ForeignKey(Material, on_delete=models.CASCADE, default='PLA')
     purpose = models.CharField(max_length=5,choices=infill_choices,default='ART')
-    color = models.CharField(max_length=10)
+    color = models.CharField(max_length=15)
     scale = models.FloatField(default=100)
     def slicemass(self):
         from app.stlprocessing import slicedweight
@@ -117,7 +117,7 @@ class ThingOrders(models.Model):
     confirmed_on = models.DateTimeField(auto_now_add=True)    
     material = models.CharField(max_length=5)
     purpose = models.CharField(max_length=5)
-    color = models.CharField(max_length=10)
+    color = models.CharField(max_length=15)
     color_combo = models.TextField(blank=True,)
     scale = models.FloatField(default=False,)
     further_requests = models.TextField(blank=True,)
