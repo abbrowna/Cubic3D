@@ -154,5 +154,5 @@ EMAIL_HOST = 'smtp.zoho.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'orders@cubic3d.co.ke'
 #EMAIL_HOST_PASSWORD = os.environ['EMAIL_PASS']
-EMAIL_HOST_PASSWORD = testserver
+EMAIL_HOST_PASSWORD = 'testserver'
 EMAIL_USE_TLS = True
