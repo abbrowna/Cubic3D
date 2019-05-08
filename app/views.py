@@ -661,12 +661,12 @@ def completed_orders(request):
             self.bill_to = bill_to
 
     completed_orders = []
-    ungrouped = PrintRequest.objects.filter(grouped=False).filter(receipted=True)
+    ungrouped = PrintRequest.objects.filter(grouped=False).filter(receipted=True).order_by('-confirmation_date')
     for item in ungrouped:
         invoice = Invoice.objects.get(number=item.id)
         completed_orders.append(CompletedOrder(item,invoice.bill_to))
     
-    grouped = PrintRequest.objects.filter(receipted=True).filter(grouped=True)
+    grouped = PrintRequest.objects.filter(receipted=True).filter(grouped=True).order_by('-confirmation_date')
     grouprecords = GroupRecord.objects.all()
     for item in grouped:
         found = False;
