@@ -75,6 +75,7 @@
                     <p id="viewer-tooltip">The plane on which your object lies is 200 x 200mm which should help give some perspective. Also, your object needs to fit on this plane to be printable as a single piece.</p>
                 </a>
                 <p id="stlpath" hidden>{{part.thing.url}}</p>
+                <p id="stlcolor" hidden>{{part.color}}</p>
                 <iframe id="id_stlviewer" scrolling="no" src="{% url 'viewer'%}"></iframe>
             </div>
         </div>

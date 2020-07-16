@@ -7,7 +7,7 @@ from stl import mesh
 
 def slicedweight(pathtofile, density):  
     if platform == 'win32':
-        cmd = r'cd C:\Program Files\Ultimaker Cura 3.6 && CuraEngine slice -v -j "C:\Program Files\Ultimaker Cura 3.6\resources\definitions\wanhao_d6.def.json" -o "C:\Users\abbro\Documents\Visual Studio 2017\Projects\Cubic3D\Cubic3D\output.gcode" -s center_object=true -s adhesion_type=skirt -s infill_line_distance=2.4 -s support_enable=false -l "{0}"'.format(pathtofile)
+        cmd = r'cd C:\Program Files\Ultimaker Cura 4.6 && CuraEngine slice -v -j "C:\Program Files\Ultimaker Cura 4.6\resources\definitions\wanhao_d6.def.json" -o "C:\Users\abbro\Documents\Visual Studio 2017\Projects\Cubic3D\Cubic3D\output.gcode" -s center_object=true -s adhesion_type=skirt -s infill_line_distance=2.4 -s support_enable=false -l "{0}"'.format(pathtofile)
         result = subprocess.check_output(cmd, shell=True, stderr=subprocess.STDOUT)
         string = result.decode('utf-8')
         search = re.compile('(?<=Filament\s[(]mm\^3[)]:\s)[0-9]+')
