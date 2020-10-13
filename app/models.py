@@ -63,6 +63,9 @@ class PrintRequest(models.Model):
         from app.stlprocessing import slicedweight
         output,mass = slicedweight(self.thing.path,self.material.density)
         price = (int(math.ceil(mass))*self.material.ppg)
+        if price*self.quantity < 200:
+            price = 200/self.quantity
+            return mass,int(math.ceil(price/10.0)*10)
         return mass,int(math.ceil(price/50.0)*50)
     
     def subtotal(self):
@@ -106,7 +109,10 @@ class Quote(models.Model):
         from app.stlprocessing import slicedweight
         output,mass = slicedweight(self.thing.path,self.material.density)
         price = (int(math.ceil(mass))*self.material.ppg)
-        return mass,int(math.ceil(price/50.0)*50)
+        roundprice = int(math.ceil(price/50.0)*50)
+        if roundprice < 200:
+            roundprice = 200
+        return mass,roundprice
 
 
 class ThingOrders(models.Model):
