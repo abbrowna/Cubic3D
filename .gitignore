@@ -7,4 +7,10 @@ media
 output.gcode
 readme.html
 receipts
-static
+/static
+Cubic3D.sln
+obj
+bin
+.vs
+__pycache__
+*.pyc
