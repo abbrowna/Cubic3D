@@ -25,13 +25,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['139.59.26.37','localhost','cubic3d.co.ke','www.cubic3d.co.ke']
 
-GOOGLE_ANALYTICS = {
-    'google_analytics_id': 'UA-187644512-1',
-}
 
 # Application definition
 INSTALLED_APPS = [
@@ -44,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
-    'google_analytics',
 ]
 
 MIDDLEWARE = [
