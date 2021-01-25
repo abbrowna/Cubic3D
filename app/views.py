@@ -343,6 +343,24 @@ def old_sys_orders(request):
 def myadmin(request):
     """Renders the custom administration page"""
     assert isinstance(request, HttpRequest)
+    
+    #temorary script to retrieve receipt date
+    import pathlib
+    invoices = Invoice.objects.all()
+    for i in invoices:
+        receipt_path = "receipts/RCPT-{}.pdf".format(i.number)
+        fname = pathlib.Path(receipt_path)
+        if fname.exists():
+            mtime = datetime.fromtimestamp(fname.stat().st_mtime)
+            i.paid_date = mtime
+            i.save()
+        else:
+            try:
+                i.paid_date = PrintRequest.objects.get(id=i.number).confirmation_date
+            except:
+                pass
+            i.save()
+
     return render(request,'myadmin/myadmin.html',
         {
             'title':'Administration panel',
