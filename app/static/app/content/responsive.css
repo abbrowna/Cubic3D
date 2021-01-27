@@ -97,6 +97,12 @@
         top: 2%;
         left: 10%;
     }
+    #life-gross {
+        min-height: 400px;
+    }
+    #month-gross {
+        height: 350px;
+    }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
