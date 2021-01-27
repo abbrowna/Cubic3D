@@ -102,6 +102,9 @@ urlpatterns = [
     # Uncomment the next line to enable the admin:
     path('admin',admin.site.urls),
     path('djga/', include('google_analytics.urls')),
+    path('ajax/life_gross/',views.life_gross, name='ajax_life_gross'),
+    path('ajax/month_gross/',views.this_month, name='ajax_month_gross'),
+    path('my_admin/autopopulate/', views.autopopulate, name='autopopulate')
 ]
 
 if settings.DEBUG:

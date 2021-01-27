@@ -7,6 +7,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.template.loader import render_to_string
 from datetime import datetime, timedelta
+from datetime import datetime, timedelta
 from django.contrib.auth import login, authenticate
 from app.forms import SignUpForm, TempThingForm, EmailForm, QuoteForm, ScaleForm, GroupInvoiceForm, ProfileForm
 from app.models import PrintRequest, Quote, Material, GroupedPrintRequest, GroupRecord, Invoice, ThingOrders
@@ -14,8 +15,11 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.conf import settings
-from django.http import Http404, HttpResponse, HttpRequest
+from django.http import Http404, HttpResponse, HttpRequest, JsonResponse
 from django.core.mail import EmailMessage, send_mail
+from django.db.models.functions import Trunc
+from django.db.models import Sum, F  
+import calendar
 import os
 import urllib
 from sys import platform
@@ -342,24 +346,7 @@ def old_sys_orders(request):
 @staff_member_required
 def myadmin(request):
     """Renders the custom administration page"""
-    assert isinstance(request, HttpRequest)
-    
-    #temorary script to retrieve receipt date
-    import pathlib
-    invoices = Invoice.objects.all()
-    for i in invoices:
-        receipt_path = "receipts/RCPT-{}.pdf".format(i.number)
-        fname = pathlib.Path(receipt_path)
-        if fname.exists():
-            mtime = datetime.fromtimestamp(fname.stat().st_mtime)
-            i.paid_date = mtime
-            i.save()
-        else:
-            try:
-                i.paid_date = PrintRequest.objects.get(id=i.number).confirmation_date
-            except:
-                pass
-            i.save()
+    assert isinstance(request, HttpRequest)    
 
     return render(request,'myadmin/myadmin.html',
         {
@@ -367,6 +354,52 @@ def myadmin(request):
             'year':datetime.now().year,
         }
     )
+
+def life_gross(request):
+    """Renders the chart that shows gross income over the lifetime of the company"""
+    labels = []
+    data = []
+    monthly_prints = PrintRequest.objects.filter(receipted=True).annotate(printrequest_month=Trunc('paid_date', 'month')).values('printrequest_month').annotate(income=Sum(F('final_price')*F('quantity'))).order_by('printrequest_month')
+    counter = monthly_prints[0]['printrequest_month'].month
+    bad_requests = PrintRequest.objects.filter(receipted=True).filter(paid_date=None)
+    for bad in bad_requests:
+        print (bad.id, bad.uploaded_at)
+    for m in monthly_prints:
+        while m['printrequest_month'].month != counter:
+            M = m['printrequest_month'].month - counter
+            if M < 1:
+                y = m['printrequest_month'].year - 1
+                labels.append(str(y)+"-"+ calendar.month_abbr[counter])
+                data.append(0)
+                counter = counter + 1
+            else:
+                labels.append(str(m['printrequest_month'].year)+"-"+calendar.month_abbr[counter])
+                data.append(0)
+                counter = counter + 1
+        labels.append(m['printrequest_month'].strftime("%Y-%b"))
+        data.append(m['income'])
+        counter = counter + 1
+        if counter > 12:
+            counter = counter - 12
+        
+    return JsonResponse(data={
+        'labels': labels,
+        'data': data,
+    })
+
+def this_month(request):
+    """Renders the chart for this month's gross income"""
+    month_prs = PrintRequest.objects.filter(receipted=True).filter(paid_date__month=datetime.now().month)
+    m_total = 0
+    for pr in month_prs:
+        m_total = m_total + pr.subtotal()
+    labels = [datetime.now().strftime("%Y-%b"), "rand"]
+    data = [m_total, 4]
+
+    return JsonResponse(data={
+        'labels': labels,
+        'data': data,
+    })
 
 @staff_member_required
 def printrequests(request):
@@ -667,7 +700,43 @@ def send_receipt(request, invoice_id, orderlist):
     for id in cleaned_list:
         order = PrintRequest.objects.get(pk=int(id))
         order.receipted = True
+        order.paid_date = datetime.now()
         order.save()
+    return redirect('myadmin')
+
+@staff_member_required
+
+def autopopulate(request):
+    """Autopopulate paid field in print request model"""
+
+    import pathlib
+    prs = PrintRequest.objects.filter(receipted=True)
+    groups = GroupRecord.objects.all()
+    for p in prs:
+        receipt_path = "receipts/RCPT-{}.pdf".format(p.id)
+        fname = pathlib.Path(receipt_path)
+        if fname.exists():
+            grouped = False
+            for group in groups:
+                group_list = group.id_list()
+                if p.id == group_list[0]:
+                    mtime = datetime.fromtimestamp(fname.stat().st_mtime)
+                    for pr_id in group_list:
+                        pr = PrintRequest.objects.get(id=pr_id)
+                        pr.paid_date = mtime
+                        pr.save()
+                    grouped = True
+            if not grouped:
+                p.paid_date = mtime
+                p.save()
+        else:
+            if p.confirmation_date:
+                p.paid_date = p.confirmation_date
+                p.save()
+            else:
+                p.paid_date = p.uploaded_at
+                p.save()
+
     return redirect('myadmin')
 
 def completed_orders(request):

@@ -54,7 +54,8 @@ class PrintRequest(models.Model):
     final_price = models.IntegerField(blank=True, null=True)
     printed = models.BooleanField(default=False)
     receipted = models.BooleanField(default=False)
-    
+    paid_date = models.DateTimeField(blank=True, null=True)
+
     #def slicemass(self):
     #    from app.stlprocessing import slicedweight
     #    return slicedweight(self.thing.path,self.material.density)
@@ -81,7 +82,6 @@ class Invoice(models.Model):
     amount = models.IntegerField()
     date = models.DateField(auto_now_add=True)
     paid = models.BooleanField(default=False)
-    paid_date = models.DateTimeField(blank=True, null=True)
 
 class GroupRecord(models.Model):
     id_string = models.CharField(max_length=100, primary_key=True)

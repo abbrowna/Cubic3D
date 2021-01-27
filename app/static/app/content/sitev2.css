@@ -1428,6 +1428,12 @@ p#viewer-tooltip {
     border-color: transparent;
     color: grey;
 }
+/*.wide_chart{
+    margin: 100px 0px 100px 0px;
+}*/
+#month_gross{
+    /*height: 393px;*/
+}
 
 
 
