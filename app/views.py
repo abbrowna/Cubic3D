@@ -279,7 +279,7 @@ def delete_file(request, requestid):
     except:
         pass
     part.delete()
-    return redirect('abandoned')
+    return redirect('pending_confirmation')
 
 def thanks(request):
     """thank you and quick links page"""
