@@ -11,21 +11,43 @@ $(function () {
                     datasets: [{
                         label: 'Gross Income',
                         data: data.data,
+                        backgroundColor: 'rgba(0, 0, 0, 1.0)',
+                        borderColor: 'rgba(247, 213, 127, 0.7)',
+                        borderWidth: 1,
                     }]
                 },
                 options: {
-                    /*responsive: true,*/
-                    /*title: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    title: {
                         display: true,
-                        text: 'Lifetime Monthly Gross Income',
+                        text: 'Gross Income this month',
                         fontColor: '#b3b3b3',
                         fontFamily: "'DIN Neuzeit Grotesk'",
                         fontSize: 19,
                         fontStyle: 'normal' 
-                    },*/
-                    /*legend: {
+                    },
+                    legend: {
                         display: false,
-                    },*/
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                fontColor: '#b3b3b3',
+                            },
+                            gridLines: {
+                                color: 'rgba(0, 0, 0, 0.3)',
+                                zeroLineColor: 'rgba(0, 0, 0, 0.8)',
+                            },
+                        }],
+                        xAxes: [{
+                            gridLines: {
+                                color: 'rgba(0, 0, 0, 0.3)',
+                                zeroLineColor: 'rgba(0, 0, 0, 0.8)',
+                            },
+                            
+                        }]
+                    },
                 }
             });
         }

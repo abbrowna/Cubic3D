@@ -1428,11 +1428,13 @@ p#viewer-tooltip {
     border-color: transparent;
     color: grey;
 }
-/*.wide_chart{
+#life-gross{
     margin: 100px 0px 100px 0px;
-}*/
-#month_gross{
-    /*height: 393px;*/
+    min-height: 300px;
+}
+#month-gross {
+    height: 350px;
+    margin: 100px 0px 100px 0px;
 }
 
 

@@ -361,9 +361,6 @@ def life_gross(request):
     data = []
     monthly_prints = PrintRequest.objects.filter(receipted=True).annotate(printrequest_month=Trunc('paid_date', 'month')).values('printrequest_month').annotate(income=Sum(F('final_price')*F('quantity'))).order_by('printrequest_month')
     counter = monthly_prints[0]['printrequest_month'].month
-    bad_requests = PrintRequest.objects.filter(receipted=True).filter(paid_date=None)
-    for bad in bad_requests:
-        print (bad.id, bad.uploaded_at)
     for m in monthly_prints:
         while m['printrequest_month'].month != counter:
             M = m['printrequest_month'].month - counter
@@ -387,15 +384,30 @@ def life_gross(request):
         'data': data,
     })
 
-def this_month(request):
+def month_gross(request):
     """Renders the chart for this month's gross income"""
-    month_prs = PrintRequest.objects.filter(receipted=True).filter(paid_date__month=datetime.now().month)
+    month_prs = PrintRequest.objects.filter(receipted=True).filter(paid_date__month=datetime.now().month).filter(paid_date__year=datetime.now().year)
     m_total = 0
     for pr in month_prs:
         m_total = m_total + pr.subtotal()
-    labels = [datetime.now().strftime("%Y-%b"), "rand"]
-    data = [m_total, 4]
-
+    labels = [datetime.now().strftime("%Y-%b")]
+    data = [m_total]
+    shareholder1 = 0
+    shareholder2 = 0
+    available_gross = int(2*m_total/7)
+    if available_gross <= 10000.0:
+        shareholder1 = available_gross
+    elif available_gross > 15000.0:
+        split = (available_gross-15000)/2
+        shareholder1 = 10000 + split
+        shareholder2 = 5000 + split
+    else:
+        shareholder1 = 10000
+        shareholder2 = available_gross - 10000
+    data.append(shareholder1)
+    data.append(shareholder2)
+    labels.append("Shareholder 1")
+    labels.append("Shareholder 2")
     return JsonResponse(data={
         'labels': labels,
         'data': data,
@@ -618,6 +630,7 @@ def orders(request):
         }
     )
 
+@staff_member_required
 def pending_confirmation(request):
     """View print requests that are pending confirmation"""
     assert isinstance(request, HttpRequest)
@@ -629,6 +642,7 @@ def pending_confirmation(request):
             'year': datetime.now().year,
         })
 
+@staff_member_required
 def printed(request):
     """View printed orders"""
     assert isinstance(request, HttpRequest)
@@ -705,7 +719,6 @@ def send_receipt(request, invoice_id, orderlist):
     return redirect('myadmin')
 
 @staff_member_required
-
 def autopopulate(request):
     """Autopopulate paid field in print request model"""
 

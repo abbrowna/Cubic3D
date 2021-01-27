@@ -17,18 +17,18 @@
 {% endblock %}
 
 {% block content %}
-<div class="wide_chart">
+<div id="life-gross">
     <canvas id="life_gross_chart" data-url="{% url 'ajax_life_gross' %}"></canvas>
 </div>
 
-<div class="">
+<div id="month-gross">
     <canvas id="this_month_chart" data-url="{% url 'ajax_month_gross' %}"></canvas>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-<script src="{% static 'app/scripts/lifegross.js' %}"></script>
-<script src="{% static 'app/scripts/monthgross.js' %}"></script>
+<script src="{% static 'app/scripts/lifegross.js' %}?v=1.0"></script>
+<script src="{% static 'app/scripts/monthgross.js' %}?v=1.0"></script>
 
 
 {% endblock %}

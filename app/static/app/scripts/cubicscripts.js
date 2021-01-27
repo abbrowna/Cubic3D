@@ -242,5 +242,4 @@ $(document).ready(function () {
             $('#id_delivery_fee').parent().show();
         }
     });
-
 });
