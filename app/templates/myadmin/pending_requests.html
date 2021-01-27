@@ -43,14 +43,14 @@
                 <td>{{printrequest.subtotal}}</td>
                 <td>{{printrequest.uploaded_at}}</td>
                 <td class="action_list">
-                    <a href="{% url 'delete_file' printrequest.id %}" target="_blank" data-toggle="tooltip" title="Delete request and file">
+                    <a href="{% url 'delete_file' printrequest.id %}" data-toggle="tooltip" title="Delete request and file">
                         <svg viewBox="46.500423431396484 53.6049919128418 107.000732421875 91.99668884277344" height="200" width="200" xmlns="http://www.w3.org/2000/svg" data-type="color" role="img" preserveAspectRatio="xMidYMid meet">
                             <g>
                                 <path d="M171.1 182L100 110.9 28.9 182 18 171.1 89.1 100 18 28.9 28.9 18 100 89.1 171.1 18 182 28.9 110.9 100l71.1 71.1-10.9 10.9z" fill="red" data-color="1"></path>
                             </g>
                         </svg>
                     </a>
-                    <a href="{% url 'confirm' printrequest.id %}" target="_blank" data-toggle="tooltip" title="Confirm print on behalf of client">
+                    <a href="{% url 'confirm' printrequest.id %}" data-toggle="tooltip" title="Confirm print on behalf of client">
                         <svg viewBox="10 11.716197967529297 180.0003662109375 176.68380737304688" xmlns="http://www.w3.org/2000/svg" data-type="color" role="img" preserveAspectRatio="xMidYMid meet">
                             <g>
                                 <path d="M177.804 52.827L76.192 161.956c-3.063 3.257-8.188 3.404-11.443.34L22.55 122.609c-3.257-3.032-3.417-8.175-.353-11.432l4.869-6.109c3.06-3.287 8.154-3.432 11.443-.353l32.622 29.803 90.834-95.868c3.06-3.277 7.345-4.706 11.604-.76l3.883 3.54c3.252 3.029 3.415 8.142.352 11.397z"></path>
