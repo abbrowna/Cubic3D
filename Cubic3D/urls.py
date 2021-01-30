@@ -67,6 +67,8 @@ urlpatterns = [
             ),name='login'
         ),   
     path('signup/',app.views.signup, name='signup'),
+    path('signup/verification/<user_email>',app.views.pending_verification, name='pending_verification'),
+    path('verification/', include('verify_email.urls')),
     path('logout/',django.contrib.auth.views.LogoutView.as_view(), name='logout'),
     
     path('accounts/password_reset/',
