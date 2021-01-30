@@ -766,48 +766,6 @@ body,
     font-weight: bold;
     color: black;
 }
-
-/***Pending verification page***/
-.pending_verification h1 {
-    font-family: 'Playfair Display',serif;
-    font-size: 40px;
-    text-align: center;
-    margin: 0 0 50px 0;
-}
-.pending_verification p {
-    text-align: center;
-    font-family: Nunito, sans-serif;
-    padding-bottom: 20px;
-}
-.pending_verification span{
-    font-weight: bold;
-}
-.pending_verification a {
-    text-align: center;
-    color: #333;
-    font-family: 'Playfair Display',serif;
-    text-decoration: underline;
-}
-/***Verification succesfull***/
-.verification_success h1 {
-    font-family: 'Playfair Display',serif;
-    font-size: 40px;
-    text-align: center;
-    margin: 0 0 50px 0;
-}
-
-.verification_success p {
-    text-align: center;
-    font-family: Nunito, sans-serif;
-    padding-bottom: 20px;
-}
-
-.verification_success a {
-    text-align: center;
-    color: #333;
-    font-family: 'Playfair Display',serif;
-    min-width: 60px;
-}
 /***Login page****/
 #logintitle h1 {
     font-family: 'Playfair Display',serif;

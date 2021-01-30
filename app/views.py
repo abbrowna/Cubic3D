@@ -18,8 +18,7 @@ from django.conf import settings
 from django.http import Http404, HttpResponse, HttpRequest, JsonResponse
 from django.core.mail import EmailMessage, send_mail
 from django.db.models.functions import Trunc
-from django.db.models import Sum, F
-from verify_email.email_handler import send_verification_email
+from django.db.models import Sum, F  
 import calendar
 import os
 import urllib
@@ -843,16 +842,15 @@ def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            inactive_user = send_verification_email(request, form)
-            inactive_user.refresh_from_db()
-            inactive_user.profile.mobile = form.cleaned_data.get('mobile')
-            inactive_user.save()
-            email = form.cleaned_data.get('email')
-            #username = form.cleaned_data.get('username')
-            #raw_password = form.cleaned_data.get('password1')
-            #user = authenticate(username=username, password=raw_password)
-            #login(request, user)
-            return redirect('pending_verification', user_email=email)
+            user = form.save()
+            user.refresh_from_db()
+            user.profile.mobile = form.cleaned_data.get('mobile')
+            user.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('home')
     else:
         form = SignUpForm()
     return render(request,'registration/signup.html',
@@ -861,17 +859,6 @@ def signup(request):
             'title':'SignUp',
             'description':'Create an account with Cubic3D 3D printing service.',
             'year':datetime.now().year,                            
-        }
-    )
-
-def pending_verification(request, user_email):
-    """A page directing new users to verify their email"""
-    assert isinstance(request, HttpRequest)
-    return render(request, 'registration/pending_verification.html',
-        {
-            'title':'Verify your email',
-            'year':datetime.now().year, 
-            'user_email':user_email,
         }
     )
 

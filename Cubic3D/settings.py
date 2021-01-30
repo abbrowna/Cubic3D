@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'google_analytics',
-    'verify_email',
 ]
 
 MIDDLEWARE = [
@@ -135,7 +134,6 @@ USE_TZ = True
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-LOGIN_URL = 'login'
 
 
 # Static files (CSS, JavaScript, Images)
@@ -161,9 +159,3 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'orders@cubic3d.co.ke'
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_PASS']
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'Cubic3D Account<orders@cubic3d.co.ke>'
-
-#Templates for email verification
-HTML_MESSAGE_TEMPLATE = os.path.join(BASE_DIR, 'app/templates/email/verification_email.html')
-VERIFICATION_SUCCESS_TEMPLATE = os.path.join(BASE_DIR, 'app/templates/registration/verification_success.html')
-VERIFICATION_FAILED_TEMPLATE = os.path.join(BASE_DIR, 'app/templates/registration/verification_failed.html')
