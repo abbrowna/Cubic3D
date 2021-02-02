@@ -22,6 +22,7 @@
         <p>{{printrequest.color_combo}}</p>
         <p>Scale: <strong>{{printrequest.scale}}</strong></p>
         <p>{{printrequest.further_requests}}</p>
+        <p id="our_price_estimate" data-url="{% url 'ajax_price_estimate' %}" data-pr="{{printrequest.id}}">Estimated Price: <strong></strong></p>
     </div>
 
     <div class="col-md-6">

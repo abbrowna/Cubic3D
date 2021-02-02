@@ -242,4 +242,15 @@ $(document).ready(function () {
             $('#id_delivery_fee').parent().show();
         }
     });
+    //Load the estimated price of the model in the Admin "accept_or_reject" page
+    var $estimatedprice = $("#our_price_estimate");
+    var request_id = $estimatedprice.data("pr")
+    var url = $estimatedprice.data("url")
+    $.ajax({
+        url: url,
+        data: { 'request_id': request_id },
+        success: function (data) {
+            $("#our_price_estimate > strong").text(data.price);
+        }
+    });
 });

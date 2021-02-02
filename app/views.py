@@ -528,6 +528,18 @@ def accept_or_reject(request, requestid):
         }
     )
 
+def get_estimate(request):
+    """processes the stl once more for our viewing purposes"""
+    request_id = request.GET.get('request_id')
+    pr = PrintRequest.objects.get(id=request_id)
+    mass, price = pr.thing_price()
+    
+    return JsonResponse(data={
+        'mass':mass,
+        'price':price,
+    })
+
+
 @staff_member_required
 def grouped_requests(request):
     """ Sends 1 invoice for a group of prints"""
