@@ -45,7 +45,9 @@ $(function () {
                                 color: 'rgba(0, 0, 0, 0.3)',
                                 zeroLineColor: 'rgba(0, 0, 0, 0.8)',
                             },
-                            
+                            ticks: {
+                                suggestedMax: 50000,
+                            },
                         }]
                     },
                 }
