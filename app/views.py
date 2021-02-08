@@ -765,6 +765,7 @@ def autopopulate(request):
 
     return redirect('myadmin')
 
+@staff_member_required
 def completed_orders(request):
     """View Completed orders"""
     assert isinstance(request, HttpRequest)
@@ -799,6 +800,7 @@ def completed_orders(request):
             'year': datetime.now().year,
         })    
 
+@staff_member_required
 def user_profiles(request):
     """view your users"""
     assert isinstance(request, HttpRequest)
