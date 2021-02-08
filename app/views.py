@@ -774,23 +774,23 @@ def completed_orders(request):
             self.bill_to = bill_to
 
     completed_orders = []
-    ungrouped = PrintRequest.objects.filter(grouped=False).filter(receipted=True).order_by('-confirmation_date')
-    for item in ungrouped:
-        invoice = Invoice.objects.get(number=item.id)
-        completed_orders.append(CompletedOrder(item,invoice.bill_to))
-    
-    grouped = PrintRequest.objects.filter(receipted=True).filter(grouped=True).order_by('-confirmation_date')
     grouprecords = GroupRecord.objects.all()
-    for item in grouped:
-        found = False;
-        for record in grouprecords:
-            for id in record.id_list():
-                if int(id) == item.id:
-                    invoice = Invoice.objects.get(number=int(record.id_list()[0]))
-                    completed_orders.append(CompletedOrder(item,invoice.bill_to))
-                    found = True;
-                    break;
-        if found: continue
+
+    completed = PrintRequest.objects.filter(receipted=True).order_by('-paid_date')
+    for item in completed:
+        if item.grouped:
+            found = False;
+            for record in grouprecords:
+                for id in record.id_list():
+                    if int(id) == item.id:
+                        invoice = Invoice.objects.get(number=int(record.id_list()[0]))
+                        completed_orders.append(CompletedOrder(item,invoice.bill_to))
+                        found = True;
+                        break;
+            if found: continue
+        else:
+            invoice = Invoice.objects.get(number=item.id)
+            completed_orders.append(CompletedOrder(item,invoice.bill_to))
 
     return render(request, 'myadmin/completed_orders.html',
         {
