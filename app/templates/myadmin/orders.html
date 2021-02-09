@@ -23,7 +23,7 @@
         {% for order in orderqueue  %}
             <tr>
                 <td class="requestid">{{order.pk}}</td>
-                <td>{{order.user.first_name}} {{order.user.last_name}}<br />0{{order.user.profile.mobile}}</td>                
+                <td>{{order.user.first_name}} {{order.user.last_name}}<br />{{order.user.profile.mobile}}</td>                
                 <td style="background-color:{{order.color}}">{{order.description}}<br />{{order.material.acronym}}<br />{{order.further_requests}}<br />{{order.color_combo}}</td>
                 {% if order.quantity == 1 %}
                 <td>&times;{{order.quantity}}</td>
