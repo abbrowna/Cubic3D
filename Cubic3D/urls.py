@@ -9,8 +9,10 @@ import django.contrib.auth.views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
-
+from django.contrib.sitemaps.views import sitemap
 from django.http import HttpResponse
+
+from app.sitemaps import StaticViewSitemap
 
 import app.forms
 import app.views
@@ -20,6 +22,10 @@ from app import views
 from django.conf.urls import include
 from django.contrib import admin
 admin.autodiscover()
+
+sitemaps = {
+    'static': StaticViewSitemap
+}
 
 urlpatterns = [
     # Examples:
@@ -107,6 +113,8 @@ urlpatterns = [
     path('ajax/life_gross/',views.life_gross, name='ajax_life_gross'),
     path('ajax/month_gross/',views.month_gross, name='ajax_month_gross'),
     path('ajax/get_estimate/',views.get_estimate, name='ajax_price_estimate'),
+
+    path('sitemap.xml', sitemap, {'sitemaps':sitemaps}, name='django.contrib.sitemaps.views.sitemap')
 ]
 
 if settings.DEBUG:
