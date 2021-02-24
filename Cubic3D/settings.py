@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'verify_email',
 ]
 
-SITE_ID = 3
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -96,6 +96,7 @@ if platform == 'win32':
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
+    SITE_ID = 2
 else:
     DATABASES = {
         'default': {
@@ -103,6 +104,7 @@ else:
             'NAME': os.path.join('/home/cubic', 'db.sqlite3'),
         }
     }
+    SITE_ID = 3
 
 
 
