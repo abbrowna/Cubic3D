@@ -64,8 +64,8 @@ class PrintRequest(models.Model):
         from app.stlprocessing import slicedweight
         output,mass = slicedweight(self.thing.path,self.material.density)
         price = (int(math.ceil(mass))*self.material.ppg)
-        if price*self.quantity < 200:
-            price = 200/self.quantity
+        if price*self.quantity < 1000:
+            price = 1000/self.quantity
             return mass,int(math.ceil(price/10.0)*10)
         return mass,int(math.ceil(price/50.0)*50)
     
