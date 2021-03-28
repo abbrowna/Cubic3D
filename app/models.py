@@ -111,8 +111,8 @@ class Quote(models.Model):
         output,mass = slicedweight(self.thing.path,self.material.density)
         price = (int(math.ceil(mass))*self.material.ppg)
         roundprice = int(math.ceil(price/50.0)*50)
-        if roundprice < 200:
-            roundprice = 200
+        if roundprice < 1000:
+            roundprice = 1000
         return mass,roundprice
 
 
