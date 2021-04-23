@@ -48,7 +48,7 @@ def home(request):
         request,
         'app/index.html',
         {
-            'title':'Cubic3D - 3D printing service in Kenya',
+            'title':'3D printing services - Now closer to you - Cubic3D',
             'description':'Professional 3D printing service in Kenya producing clean, crisp objects reliably, with pricing that works for everyone',
             'year':datetime.now().year,
         }
@@ -122,7 +122,7 @@ def def_quote(request):
     return render(request, 'app/def_quote.html',
         {
             'form':form,
-            'title':'Upload model & select options to be quoted',
+            'title':'Upload model & select options to get an instant estimate',
             'description':'Your CAD design can be uploaded here and our trusty online webapp will give you an estimate on the cost of 3D printing it. ',
             'year':datetime.now().year,
         }
