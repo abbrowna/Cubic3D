@@ -25,7 +25,7 @@ function init() {
     scene.background = new THREE.Color(0x262626);
 
     //Global grid on ground
-    var grid = new THREE.GridHelper(200, 20, 0xff8000, 0x3B3B3B);
+    var grid = new THREE.GridHelper(300, 20, 0xff8000, 0x3B3B3B);
     grid.position.y = 0;
     grid.position.x = 0;
     grid.position.z = 0;
