@@ -16,7 +16,7 @@ function init() {
     document.body.appendChild(container);
 
     camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000);
-    camera.position.set(500, 500, 500);
+    camera.position.set(550, 550, 550);
 
     cameraTarget = new THREE.Vector3(0, 0, 0);
 
@@ -25,7 +25,7 @@ function init() {
     scene.background = new THREE.Color(0x262626);
 
     //Global grid on ground
-    var grid = new THREE.GridHelper(300, 20, 0xff8000, 0x3B3B3B);
+    var grid = new THREE.GridHelper(300, 30, 0xff8000, 0x3B3B3B);
     grid.position.y = 0;
     grid.position.x = 0;
     grid.position.z = 0;
