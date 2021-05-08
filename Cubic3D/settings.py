@@ -35,22 +35,22 @@ GOOGLE_ANALYTICS = {
 }
 
 # Application definition
-#INSTALLED_APPS = [
+INSTALLED_APPS = [
     
-#    # Add your apps here to enable them
-#    'django.contrib.admin',
-#    'django.contrib.auth',
-#    'django.contrib.contenttypes',
-#    'django.contrib.sessions',
-#    'django.contrib.messages',
-#    'django.contrib.staticfiles',
-#    'django.contrib.sites',
-#    'django.contrib.sitemaps',
-#    'store',
-#    'app',
-#    'google_analytics',
-#    'verify_email',
-#]
+    # Add your apps here to enable them
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'store',
+    'app',
+    'google_analytics',
+    'verify_email',
+]
 
 
 
