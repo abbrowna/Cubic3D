@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['139.59.26.37','localhost','cubic3d.co.ke','www.cubic3d.co.ke','store.cubic3d.co.ke','www.store.cubic3d.co.ke']
 
@@ -85,7 +85,7 @@ TEMPLATES = [
     },
 ]
 
-#WSGI_APPLICATION = 'app.wsgi.application'
+WSGI_APPLICATION = 'Cubic3D.wsgi.application'
 
 
 # Database
