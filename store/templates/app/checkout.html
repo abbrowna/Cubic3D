@@ -1,0 +1,145 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}.</h2>
+<h3>Your items</h3>
+
+<div class="cart_list">
+    <div class="row">
+        {% for item in filaments %}
+            <div class="col-md-4 col-sm-6 cart_item">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <img src="{{item.filament.image.url}}" alt="filament image">
+                    </div>
+                    <div class="col-xs-6 info_col">
+                        <p><span>{{item.filament.diameter}}mm {{item.filament.color}} {{item.filament.material}}</span> </p>
+                        <p>Net weight: 
+                            {% if item.filament.net_weight == 1000 %}
+                            1 kg
+                            {% else %}
+                            {{item.filament.net_weight}} g
+                            {% endif %}
+                        </p>
+                        <p>KSH {{item.filament.price}}</p>
+                        <p class="cart_qty">X <span>{{item.quantity}}</span></p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <p class="subtotal">Subtotal: KSH <span>{{subtotal}}</span></p>
+</div>
+<h3> Delivery details </h3>
+
+{% if auth %}
+<div class="hidden">
+    <p id="js_first_name">{{user.first_name}}</p>
+    <p id="js_last_name">{{user.last_name}}</p>
+    <p id="js_email">{{user.email}}</p>
+    <p id="js_phone">{{user.profile.phone}}</p>
+    <p id="js_address">{{user.profile.address}}</p>
+    <p id="js_company">{{user.profile.company}}</p>
+    <p id="js_region">{{user.profile.region.id}}</p>
+</div>
+<div class="auth_checkout">
+    <p>{{user.first_name}} {{user.last_name}}</p>
+    <p>&nbsp;</p>
+    <p>{{user.profile.address}}</p>
+    <p>{{user.profile.region}}</p>
+    <p>&nbsp;</p>
+    <p>{{user.profile.phone}}</p>
+    <button class="btn2" id="change_default">Change</button>
+</div>
+{%endif%}
+
+<div class="checkout_form" {% if auth %}style="display:none"{% endif %}>
+    <form action="{% url 'checkout' %}" method="post" id="checkout-form">   
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="field-wrapper">
+                    <label for="{{form.first_name.id_for_label}}">First Name</label>
+                    {{form.first_name.errors}}
+                    {{form.first_name}}
+                </div>
+                <div class="field-wrapper">
+                    <label for="{{form.last_name.id_for_label}}">Last Name</label>
+                    {{form.last_name.errors}}
+                    {{form.last_name}}
+                </div>
+                <div class="field-wrapper">
+                    <label for="{{form.email.id_for_label}}">Email</label>
+                    {{form.email.errors}}
+                    {{form.email}}
+                </div>
+                <div class="field-wrapper">
+                    <label for="{{form.company.id_for_label}}">Company</label>
+                    {{form.company.errors}}
+                    {{form.company}}
+                </div>
+                <div class="field-wrapper">
+                    <label for="{{form.phone.id_for_label}}">Phone</label>
+                    {{form.phone.errors}}
+                    {{form.phone}}
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="field-wrapper" id="alternate_select">
+                    <input type="checkbox" id="alt_contact" name="alt_contact" value="alternate">
+                    <label for="alt_contact">Use a different contact for delivery</label>
+                </div>
+                <div class="field-wrapper alt" style="display: none;">
+                    <label for="{{form.alternate_name.id_for_label}}">Delivery contact name</label>
+                    {{form.alt_name.errors}}
+                    {{form.alt_name}}
+                </div>
+                <div class="field-wrapper alt" style="display:none;">
+                    <label for="{{form.alternate_phone.id_for_label}}">Delivery contact phone</label>
+                    {{form.alt_phone.errors}}
+                    {{form.alt_phone}}
+                </div>
+                <div class="field-wrapper">
+                    <label for="{{form.address.id_for_label}}">Physical address</label>
+                    {{form.address.errors}}
+                    {{form.address}}
+                </div>
+                <div class="field-wrapper">
+                    <label for="{{form.region.id_for_label}}">Region</label>
+                    {{form.region.errors}}
+                    {{form.region}}
+                </div>
+            </div>
+        </div>
+    </form>
+    <p id="delivery_cost">Delivery: KSH <span>350</span></p>
+    <p id="checkout_total">Total: KSH <strong></strong></p>
+</div>
+
+<div class="order-btn-wrapper">
+    <button type="submit" class="btn2">Place Order</button>
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function () {
+        var total = parseInt($('.subtotal span').html()) + parseInt($('#delivery_cost span').html());
+        $('#checkout_total strong').html(total);
+
+        // prefill checkout form if the user is authenticated
+        {% if auth %}
+            $("#id_first_name").val($("#js_first_name").html());
+            $("#id_last_name").val($("#js_last_name").html());
+            $("#id_email").val($("#js_email").html());
+            $("#id_phone").val($("#js_phone").html());
+            $("#id_address").val($("#js_address").html());
+            $("#id_region").val($("#js_region").html());
+            $("#id_company").val($("#js_company").html());
+        {% endif %}
+    })
+</script>
+{% endblock %}

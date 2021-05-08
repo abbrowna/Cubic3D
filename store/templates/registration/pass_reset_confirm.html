@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ title }}</title>
+        {% load static %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="icon" href="{% static 'store/images/favicon.ico' %}">
+        <script src="{% static 'store/scripts/modernizr-2.6.2.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'store/content/auth.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'store/content/responsive.css' %}"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body class="cleanbody" style="display: flex; align-items:center;">
+        <div class="container pass_reset">
+            <div><h1>Change password</h1></div>
+            {% if validlink %}
+            <form action="." method="post" class="form-horizontal">
+                {% csrf_token %}
+                <div class="passinfo">
+                    <ul>
+                        <li>Your password can't be too similar to your other personal information.</li>
+                        <li>Your password must contain at least 8 characters.</li>
+                        <li>Your password can't be entirely numeric.</li>
+                    </ul>
+                </div>
+                <div class="input-group">
+                    {{form.new_password1}}
+                </div>
+                <div class="input-group">
+                    {{form.new_password2}}
+                </div>
+                {{ form.errors }}
+                <div class="submitbtn">
+                    <input type="hidden" name="next" value="{{next}}" />
+                    <input type="submit" value="Change password" class="btn btn1" />
+                </div>
+            </form>
+            {% else %}
+            <p>
+                The password reset link was invalid, possibly because it has already been used.
+                Please request a new password reset.
+            </p>
+            {% endif %}
+        </div>
+        <script src="{% static 'store/scripts/jquery.validate.min.js' %}"></script>
+        <script src="{% static 'store/scripts/cubicscripts.js' %}?v=3.0"></script>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ title }}</title>
+        {% load static %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="icon" href="{% static 'store/images/favicon.ico' %}">
+        <script src="{% static 'store/scripts/modernizr-2.6.2.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'store/content/auth.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'store/content/responsive.css' %}"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body class="cleanbody" style="display: flex; align-items:center;">
+        <div class="container pass_reset">
+            <div><h1 style="color:#F7D57F">Email sent</h1></div>
+            <p>
+                We've emailed you instructions for setting your password, if an account exists with the email you entered.
+                You should receive them shortly.
+            </p>
+            <p>
+                If you don't receive an email, please make sure you've entered the address you registered with,
+                and check your spam folder.
+            </p>
+            <div style="text-align:center;"><a href="{% url 'login' %}">Go to login</a></div>
+        </div>
+    </body>
+</html>

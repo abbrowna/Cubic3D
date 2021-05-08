@@ -1,0 +1,38 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<a class="btn2 linkbtn" href="{% url 'home' %}">Continue shopping</a>
+<h3>{{ message }}</h3>
+
+<div class="cart_list">
+    <div class="row">
+        {% for item in items %}
+            <div class="col-md-4 col-sm-6 cart_item">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <img src="{{item.filament.image.url}}" alt="filament image">
+                    </div>
+                    <div class="col-xs-6 info_col">
+                        <p><span>{{item.filament.diameter}}mm {{item.filament.color}} {{item.filament.material}}</span> </p>
+                        <p>Net weight: 
+                            {% if item.filament.net_weight == 1000 %}
+                            1 kg
+                            {% else %}
+                            {{item.filament.net_weight}} g
+                            {% endif %}
+                        </p>
+                        <p>KSH {{item.filament.price}}</p>
+                        <p class="cart_qty" data-id="{{item.filament.id}}">X <span>{{item.quantity}}</span> <button class="btn3 increase_qty">+</button> <button class="btn3 decrease_qty">-</button></p>
+                        <p class="stock_message">Placeholder</p>
+                    </div>
+                </div>
+            
+            </div>
+        {% endfor %}
+    </div>
+    <p class="subtotal">Subtotal: KSH {{subtotal}} <br />Shipping will be calulated at checkout</p>
+</div>
+<div class="checkout-btn-wrapper"><a href="{% url 'checkout' %}" class="btn2 linkbtn">Checkout</a></div>
+
+{% endblock %}

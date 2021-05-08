@@ -26,30 +26,31 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['139.59.26.37','localhost','cubic3d.co.ke','www.cubic3d.co.ke']
+ALLOWED_HOSTS = ['139.59.26.37','localhost','cubic3d.co.ke','www.cubic3d.co.ke','store.cubic3d.co.ke','www.store.cubic3d.co.ke']
 
 GOOGLE_ANALYTICS = {
     'google_analytics_id': 'UA-187644512-1',
 }
 
 # Application definition
-INSTALLED_APPS = [
+#INSTALLED_APPS = [
     
-    # Add your apps here to enable them
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django.contrib.sites',
-    'django.contrib.sitemaps',
-    'app',
-    'google_analytics',
-    'verify_email',
-]
+#    # Add your apps here to enable them
+#    'django.contrib.admin',
+#    'django.contrib.auth',
+#    'django.contrib.contenttypes',
+#    'django.contrib.sessions',
+#    'django.contrib.messages',
+#    'django.contrib.staticfiles',
+#    'django.contrib.sites',
+#    'django.contrib.sitemaps',
+#    'store',
+#    'app',
+#    'google_analytics',
+#    'verify_email',
+#]
 
 
 
@@ -65,7 +66,7 @@ MIDDLEWARE = [
 ]
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
-ROOT_URLCONF = 'Cubic3D.urls'
+#ROOT_URLCONF = 'Cubic3D.urls'
 
 TEMPLATES = [
     {
@@ -84,7 +85,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Cubic3D.wsgi.application'
+#WSGI_APPLICATION = 'app.wsgi.application'
 
 
 # Database
@@ -97,7 +98,6 @@ if platform == 'win32':
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-    SITE_ID = 2
 else:
     DATABASES = {
         'default': {
@@ -105,7 +105,6 @@ else:
             'NAME': os.path.join('/home/cubic', 'db.sqlite3'),
         }
     }
-    SITE_ID = 3
 
 
 

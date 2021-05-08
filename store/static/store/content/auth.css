@@ -1,0 +1,293 @@
+/****Fonts*****/
+@font-face {
+    font-family: DIN;
+    src: url('../fonts/DIN Neuzeit Grotesk LT W01 BdCn.ttf') format('truetype'), url('../fonts/DIN Neuzeit Grotesk LT W01 BdCn.woff') format('woff'), url('../fonts/DIN Neuzeit Grotesk LT W01 BdCn.woff2') format('woff2');
+}
+
+/***************Generic***********/
+.btn1 {
+    background-color: #f7d57f;
+    text-align: center;
+    font-family: 'DIN',sans-serif;
+    font-size: 19px;
+    font-style: normal;
+    letter-spacing: normal;
+    font-weight: normal;
+    color: #3B3B3B;
+    border-radius: 0px;
+}
+
+.btn1:hover {
+    background-color: #F5DDA2;
+}
+
+.btn2 {
+    background-color: #262626;
+    text-align: center;
+    font-family: 'DIN',sans-serif;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: normal;
+    color: #FCFCFC;
+    border-radius: 0px;
+}
+
+.btn2:hover {
+    background-color: #000000;
+    color: #FCFCFC;
+}
+
+.btn3 {
+    background-color: #262626;
+    text-align: center;
+    font-family: 'DIN',sans-serif;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: normal;
+    color: #FCFCFC;
+    border-radius: 0px;
+}
+
+.btn3:hover {
+    background-color: #F7D57F;
+    color: #262626;
+}
+
+.btn4 {
+    background-color: transparent;
+    text-align: center;
+    font-family: Nunito,sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: normal;
+    color: #FCFCFC;
+    border-radius: 0px;
+    border: 0px;
+}
+
+.btn4:hover {
+    background-color: transparent;
+    color: #4BD1A0;
+}
+
+/**************Sign up page***********/
+.cleanbody {
+    background-color: white;
+}
+
+#signup {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#signuptitle h1 {
+    font-family: 'Playfair Display',serif;
+    font-size: 56px;
+    text-align: center;
+    margin: 0 0 5px 0;
+}
+
+#signup .row {
+    margin: 80px auto auto auto;
+}
+
+#signup .input-group {
+    width: 100%;
+    max-width: 332px;
+    height: auto;
+    margin: 0 auto 24px auto;
+}
+
+#signup input,select,textarea {
+    height: 48px;
+    width: 100%;
+}
+#signup textarea{
+    height: 114px;
+}
+
+#signup .submitbtn {
+    max-width: 332px;
+    margin: 0 auto 0 auto;
+}
+
+#signup p {
+    text-align: center;
+    height: 48px;
+    line-height: 50px;
+}
+
+#signup a {
+    font-weight: bold;
+    color: black;
+}
+#signup .errorlist{
+    display: none;
+}
+#signup .field_error{
+    border-color: red;
+}
+
+/***Pending verification page***/
+.pending_verification h1 {
+    font-family: 'Playfair Display',serif;
+    font-size: 40px;
+    text-align: center;
+    margin: 0 0 50px 0;
+}
+
+.pending_verification p {
+    text-align: center;
+    font-family: Nunito, sans-serif;
+    padding-bottom: 20px;
+}
+
+.pending_verification span {
+    font-weight: bold;
+}
+
+.pending_verification a {
+    text-align: center;
+    color: #333;
+    font-family: 'Playfair Display',serif;
+    text-decoration: underline;
+}
+/***Login page****/
+#logintitle h1 {
+    font-family: 'Playfair Display',serif;
+    font-size: 56px;
+    text-align: center;
+    margin: 0 0 85px 0;
+}
+
+#loginmessage span {
+    font-weight: 700;
+}
+
+#login .input-group {
+    max-width: 332px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto 24px auto;
+}
+
+#login input {
+    height: 48px;
+    width: 100%;
+}
+
+#login .submitbtn {
+    max-width: 332px;
+    text-align: center;
+    margin: Auto;
+}
+#login p {
+    text-align: center;
+    height: 48px;
+    line-height: 50px;
+}
+
+#login a {
+    font-weight: bold;
+    color: black;
+}
+
+/****password reset pages****/
+.pass_reset h1 {
+    font-family: 'Playfair Display',serif;
+    font-size: 40px;
+    text-align: center;
+    margin: 0 0 50px 0;
+}
+
+.pass_reset .input-group {
+    max-width: 332px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto 24px auto;
+}
+
+.pass_reset input {
+    height: 48px;
+    width: 100%;
+}
+
+.pass_reset .submitbtn {
+    max-width: 332px;
+    text-align: center;
+    margin: Auto;
+}
+
+.pass_reset p {
+    text-align: center;
+    /*height: 48px;
+    line-height: 50px;*/
+}
+
+.pass_reset a {
+    font-weight: bold;
+    color: black;
+}
+
+.passinfo {
+    max-width: 400px;
+    margin: auto;
+}
+
+/**Edit account page***/
+.clean_brand {
+    font-family: 'DIN',sans-serif;
+    font-weight: normal;
+    font-size: 30px;
+    color: #F7D57F;
+}
+
+#edit_profile .input-group {
+    max-width: 332px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto 24px auto;
+}
+
+#edit_profile input {
+    height: 48px;
+    width: 100%;
+}
+
+#edit_profile .input-group-addon {
+    background-color: transparent;
+    border: none;
+}
+
+#edit_profile .submitbtn {
+    width: 50%;
+    margin: auto;
+}
+
+#edit_profile {
+    max-width: 700px;
+}
+
+#edit_profile .row {
+    padding-top: 30px;
+}
+
+#profile_title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: #262626;
+    padding-bottom: 37px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid rgba(38, 38, 38, 0.2);
+}
+
+#edit_profile_title h2 {
+    font-size: 15px;
+}
+#edit_profile .errorlist {
+    display: none;
+}
+
+#edit_profile .field_error {
+    border-color: red;
+}

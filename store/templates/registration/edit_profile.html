@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ title }}</title>
+        {% load static %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="icon" href="{% static 'store/images/favicon.ico' %}">
+        <script src="{% static 'store/scripts/modernizr-2.6.2.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'store/content/auth.css' %}?v=1.3" />
+        <link rel="stylesheet" type="text/css" href="{% static 'store/content/responsive.css' %}?v=1.3"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    </head>
+    <body class="cleanbody">
+        
+        <div id="edit_profile" class="container">
+            <h1 class="clean_brand">CUBIC3D store</h1>
+            <div id="profile_title">
+                <h1>{{title}}</h1>
+                <h2>View and edit your personal info below.</h2>
+            </div>
+            <form method="POST" class="form-horizontal">
+                {% csrf_token %} 
+                <div class="input-group">
+                    <span class="input-group-addon"><label style="margin:0;"for="username">Login email</label></span>
+                    {{user_form.username.errors}}
+                    {{user_form.username}}
+                </div>
+                {{ form.non_field_errors }}
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <label for="first_name">First name</label>
+                            {{user_form.first_name.errors}}
+                            {{user_form.first_name}}
+                        </div>
+                        <div class="input-group">
+                            <label for="last_name">Last name</label>
+                            {{user_form.last_name.errors}}
+                            {{user_form.last_name}}
+                        </div>
+                        <div class="input-group">
+                            <label for="email">Contact email</label>
+                            {{user_form.email.errors}}
+                            {{user_form.email}}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <label for="address">Default address</label>
+                            {{profile_form.address.errors}}
+                            {{profile_form.address}}
+                        </div>
+                        <div class="input-group">
+                            <label for="region">Region</label>
+                            {{profile_form.region.errors}}
+                            {{profile_form.region}}
+                        </div>
+                        <div class="input-group">
+                            <label for="mobile">Mobile number</label>
+                            {{profile_form.phone.errors}}
+                            {{profile_form.phone}}
+                        </div>
+                    </div>
+                </div>
+                <div class="submitbtn"><input type="submit" value="Save" class="btn btn1" /></div>
+            </form>
+        </div>
+        <script src="{% static 'store/scripts/custom.js' %}?v=1.3"></script>
+        <script>
+            $(document).ready(function () {
+                $(".errorlist").each(function () {
+                    var text = $(this).text();
+                    $(this).parent().tooltip({ title: text, html: false, placement: "bottom" });
+                    $(this).siblings().addClass("field_error");
+                });
+            });
+        </script>
+    </body>
+</html>
+

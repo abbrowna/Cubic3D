@@ -1,0 +1,41 @@
+{% extends "app/layout.html" %}
+{% load static %}
+{% block content %}
+
+<div>
+    <h2 class="inline">{{material}} at {{diameter}}mm diameter</h2>
+    <a class="filter_change" href="{% url 'home' %}">Change</a>
+</div>
+<div class="row filtered_filament">
+    {% for filament in filtered %}
+    <div class="col-md-3 col-sm-4 column scroll_fade_in">
+        <img class="filament_image" src="{{filament.image.url}}" alt="{{filament.diameter}} {{filament.color}} {{filament.material.name}}" />
+        <h3>
+            {% if filament.net_weight == 1000 %}
+            1 Kg - 
+            {% else %}
+            {{filament.net_weight}} g 
+            {% endif %}
+            {{filament.color}}
+        </h3>
+        <p class="price">{{filament.price}} KSH</p>
+        <div class="stock_bubble"><span>{{filament.stock}}</span></div>
+        <span class="stock-tooltip">In stock</span>
+        <span class="stock-info"></span>
+        <button class="btn2 add_cart_btn" value="{{filament.id}}">Add to Cart</button>
+    </div>
+    {%endfor%}
+</div>
+
+<a href ="{% url 'cart' %}"id="cart_icon">
+    <div>
+        <img src="{% static 'store/images/cart.svg' %}"/>
+        <span>{{num_cart_items}}</span>
+    </div>
+</a>
+
+<div id="cart-animator">
+
+</div>
+
+{% endblock %}

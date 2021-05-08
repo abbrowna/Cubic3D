@@ -1,5 +1,5 @@
 """
-Global definition of urls
+Definition of urls for Main application.
 """
 
 from datetime import datetime
@@ -27,40 +27,39 @@ sitemaps = {
     'static': StaticViewSitemap
 }
 
+app_name = 'app'
 urlpatterns = [
-    path('',include('app.urls')),
-    path('',include('store.urls')),
     # Examples:
-    #path('',views.home, name='home'),
-    #path('contact/',views.contact, name='contact'),
-    #path('about/', views.about, name='about'),
-    #path('materials/',app.views.materials, name='materials'),
-    #path('gallery/',views.gallery, name='gallery'),
-    #path('ajax/load-colors/',views.load_colors, name='ajax_load_colors'),
-    #path('getting_started/upload/',views.upload, name='upload'),
-    #path('getting_started/quote_upload/',views.def_quote, name='def_quote'),
-    #path('getting_started/review_n_info/',app.views.review_n_info, name='review_n_info'),
-    #path('getting_started/quote_review/',app.views.quote_review, name='quote_review'),
-    #path('getting_started/review_n_info/cancel_print/',app.views.cancel, name='cancel'),
-    #path('getting_started/quote_review/quote_finish/',app.views.delquote, name='delquote'),
-    #path('getting_started/thanks/',app.views.thanks, name='thanks'),
-    #path('printrequests/confirm/<thing_id>/',app.views.confirm_print, name='confirm'),
-    #path('my_admin/',app.views.myadmin, name='myadmin'),
-    #path('my_admin/printrequest/download/<path:path>/',app.views.download, name='download'),
-    #path('my_admin/orders/set_printed/<id>/',app.views.set_printed, name='set_printed'),
-    #path('my_admin/printrequests/delete_file/<requestid>/',app.views.delete_file, name='delete_file'),
-    #path('my_admin/printrequests/accept_or_reject/<requestid>/',app.views.accept_or_reject, name='accept_or_reject'),
-    #path('my_admin/printrequests/',app.views.printrequests, name='printrequests'),
-    #path('my_admin/printrequests/group/' , app.views.grouped_requests, name='grouped_requests'),
-    #path('my_admin/printrequests/group/remove/<requestid>/', app.views.remove_from_group, name='remove_from_group'),
-    #path('my_admin/printrequests/pending/', app.views.pending_confirmation, name='pending_confirmation'),
-    #path('my_admin/orders/printed/', app.views.printed, name='printed'),
-    #path('my_admin/orders/completed/', app.views.completed_orders, name='completed'),
-    #path('my_admin/orders/old_completed/', app.views.old_sys_orders, name='old_sys_orders'),
-    #path('my_admin/orders/printed/receipt/<invoice_id>/<orderlist>/', app.views.send_receipt, name='send_receipt'),
-    #path('my_admin/orders/pending/',app.views.orders, name='orders'),
-    #path('my_admin/user_profiles/', app.views.user_profiles, name='user_profiles'),
-    #path('accounts/change_profile/', app.views.change_profile, name='change_profile'),
+    path('',views.home, name='home'),
+    path('contact/',views.contact, name='contact'),
+    path('about/', views.about, name='about'),
+    path('materials/',app.views.materials, name='materials'),
+    path('gallery/',views.gallery, name='gallery'),
+    path('ajax/load-colors/',views.load_colors, name='ajax_load_colors'),
+    path('getting_started/upload/',views.upload, name='upload'),
+    path('getting_started/quote_upload/',views.def_quote, name='def_quote'),
+    path('getting_started/review_n_info/',app.views.review_n_info, name='review_n_info'),
+    path('getting_started/quote_review/',app.views.quote_review, name='quote_review'),
+    path('getting_started/review_n_info/cancel_print/',app.views.cancel, name='cancel'),
+    path('getting_started/quote_review/quote_finish/',app.views.delquote, name='delquote'),
+    path('getting_started/thanks/',app.views.thanks, name='thanks'),
+    path('printrequests/confirm/<thing_id>/',app.views.confirm_print, name='confirm'),
+    path('my_admin/',app.views.myadmin, name='myadmin'),
+    path('my_admin/printrequest/download/<path:path>/',app.views.download, name='download'),
+    path('my_admin/orders/set_printed/<id>/',app.views.set_printed, name='set_printed'),
+    path('my_admin/printrequests/delete_file/<requestid>/',app.views.delete_file, name='delete_file'),
+    path('my_admin/printrequests/accept_or_reject/<requestid>/',app.views.accept_or_reject, name='accept_or_reject'),
+    path('my_admin/printrequests/',app.views.printrequests, name='printrequests'),
+    path('my_admin/printrequests/group/' , app.views.grouped_requests, name='grouped_requests'),
+    path('my_admin/printrequests/group/remove/<requestid>/', app.views.remove_from_group, name='remove_from_group'),
+    path('my_admin/printrequests/pending/', app.views.pending_confirmation, name='pending_confirmation'),
+    path('my_admin/orders/printed/', app.views.printed, name='printed'),
+    path('my_admin/orders/completed/', app.views.completed_orders, name='completed'),
+    path('my_admin/orders/old_completed/', app.views.old_sys_orders, name='old_sys_orders'),
+    path('my_admin/orders/printed/receipt/<invoice_id>/<orderlist>/', app.views.send_receipt, name='send_receipt'),
+    path('my_admin/orders/pending/',app.views.orders, name='orders'),
+    path('my_admin/user_profiles/', app.views.user_profiles, name='user_profiles'),
+    path('accounts/change_profile/', app.views.change_profile, name='change_profile'),
     url(r'^googledb04602fc10702c7\.html$', lambda r: HttpResponse("google-site-verification: googledb04602fc10702c7.html")),
 
     path('accounts/login/',
@@ -101,20 +100,20 @@ urlpatterns = [
             template_name='registration/pass_reset_complete.html',
         ),name='password_reset_complete'),
     
-    #path('email/pdf/',app.views.pdf, name='pdf'),
+    path('email/pdf/',app.views.pdf, name='pdf'),
     
     #path('accounts/', include('django.contrib.auth.urls')),
     
-    #path('viewer', TemplateView.as_view(template_name="app/stlviewer.html"),name='viewer'),
+    path('viewer', TemplateView.as_view(template_name="app/stlviewer.html"),name='viewer'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    #path('admin',admin.site.urls),
+    path('admin',admin.site.urls),
     path('djga/', include('google_analytics.urls')),
-    #path('ajax/life_gross/',views.life_gross, name='ajax_life_gross'),
-    #path('ajax/month_gross/',views.month_gross, name='ajax_month_gross'),
-    #path('ajax/get_estimate/',views.get_estimate, name='ajax_price_estimate'),
+    path('ajax/life_gross/',views.life_gross, name='ajax_life_gross'),
+    path('ajax/month_gross/',views.month_gross, name='ajax_month_gross'),
+    path('ajax/get_estimate/',views.get_estimate, name='ajax_price_estimate'),
 
     path('sitemap.xml', sitemap, {'sitemaps':sitemaps}, name='django.contrib.sitemaps.views.sitemap')
 ]

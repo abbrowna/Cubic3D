@@ -1,0 +1,74 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<a href="{% url 'myadmin' %}"><h2>&#60; Main</h2></a>
+<h3>{{ message }}</h3>
+
+<div class="release-wrapper">
+    <button class="btn2" data-toggle="modal" data-target="#releaseModal">Release stock</button>
+</div>
+
+<div class="order-table table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>User</th>
+                <th>Filament</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in details %}
+            <tr class="order-row {% if d.0 in expired %}exp{% endif %}" >
+                <td>{{d.0.pk}}</td>
+                <td>{{d.0.time}}</td>
+                <td>{{d.0.first_name}} {{d.0.last_name}}</td>
+                <td>
+                    <table class="subtable">
+                        {% for item in d.1 %}
+                                <tr>
+                                    <td>{{item.filament.diameter}}</td>
+                                    <td>{{item.filament.color}}</td>
+                                    <td>{{item.filament.material}}</td>
+                                    <td>x {{item.quantity}}</td>
+                                </tr>
+                        {% endfor %}
+                    </table>
+                </td>
+                <td>{{d.0.item_total}} + {{d.0.delivery_fee}} = {{d.0.total}}</td>
+                <td class="set-paid"><button class="linkbtn btn2" data-id="{{d.0.pk}}">Paid</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div id="releaseModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                
+            </div>
+            <div class="modal-body">
+                <p>Do you want to delete {{num_exp}} pre-orders and release stock?</p>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <button type="button" class="btn btn2" data-dismiss="modal">Cancel</button>
+                    </div>
+                    <div class="col-xs-6">
+                        <button type="button" class="btn btn1" id="releaseConfirm" data-dismiss="modal">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

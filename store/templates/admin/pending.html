@@ -1,0 +1,49 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<a href="{% url 'myadmin' %}"><h2>&#60; Main</h2></a>
+<h3>{{ message }}</h3>
+
+<div class="order-table table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>User</th>
+                <th>Filament</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in details %}
+            <tr class="order-row" >
+                <td>{{d.0.pk}}</td>
+                <td>{{d.0.time}}</td>
+                <td>
+                    {{d.0.first_name}} {{d.0.last_name}}<br />
+                    {{d.0.phone}}<br />
+                    {{d.0.address}}
+                </td>
+                <td>
+                    <table class="subtable">
+                        {% for item in d.1 %}
+                                <tr>
+                                    <td>{{item.filament.diameter}}</td>
+                                    <td>{{item.filament.color}}</td>
+                                    <td>{{item.filament.material}}</td>
+                                    <td>x {{item.quantity}}</td>
+                                </tr>
+                        {% endfor %}
+                    </table>
+                </td>
+                <td>{{d.0.item_total}} + {{d.0.delivery_fee}} = {{d.0.total}}</td>
+                <td class="set-delievered"><button class="linkbtn btn2" data-id="{{d.0.pk}}">delivered</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

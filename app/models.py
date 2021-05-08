@@ -1,5 +1,5 @@
 """
-Definition of models.
+Definition of models for the main application (app).
 """
 
 from django.db import models
@@ -29,6 +29,9 @@ class Material(models.Model):
             if color:
                 colors.append(color)
         return colors
+
+    class Meta:
+        app_label = 'app'
 
 
 class PrintRequest(models.Model):
@@ -72,8 +75,14 @@ class PrintRequest(models.Model):
     def subtotal(self):
         return self.final_price*self.quantity
 
+    class Meta:
+        app_label = 'app'
+
 class GroupedPrintRequest(models.Model):
     printrequest = models.ForeignKey(PrintRequest, on_delete=models.CASCADE)
+
+    class Meta:
+        app_label = 'app'
 
 class Invoice(models.Model):
     number = models.IntegerField(primary_key=True)
@@ -83,6 +92,9 @@ class Invoice(models.Model):
     date = models.DateField(auto_now_add=True)
     paid = models.BooleanField(default=False)
 
+    class Meta:
+        app_label = 'app'
+
 class GroupRecord(models.Model):
     id_string = models.CharField(max_length=100, primary_key=True)
     def id_list(self):
@@ -91,6 +103,9 @@ class GroupRecord(models.Model):
         for i in request_IDs:
             IDs.append(int(i))
         return IDs
+
+    class Meta:
+        app_label = 'app'
 
 class Quote(models.Model):
     thing = models.FileField(upload_to='thingstemp/%Y/%m/',
@@ -114,6 +129,9 @@ class Quote(models.Model):
         if roundprice < 1000:
             roundprice = 1000
         return mass,roundprice
+
+    class Meta:
+        app_label = 'app'
 
 
 class ThingOrders(models.Model):
@@ -140,16 +158,38 @@ class ThingOrders(models.Model):
         print(math.ceil(mass))
         return(int(math.ceil(mass))*12)
 
+    class Meta:
+        app_label = 'app'
+
+class Region(models.Model):
+    region = models.CharField(max_length = 50)
+    cost = models.IntegerField()
+    
+    def __str__(self):
+        return self.region
+
+    class Meta:
+        app_label = 'app'
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     mobile=models.CharField(max_length=10, default=0)
+    address = models.TextField(max_length = 100, blank=False, null=True)
+    company = models.CharField(max_length = 100, blank=True, null=True)
+    region = models.ForeignKey(Region, on_delete = models.SET_NULL, null=True, default=None)
+
+    class Meta:
+        app_label = 'app'
+
 
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
     instance.profile.save()
+
+    class Meta:
+        app_label = 'app'
 
 
 

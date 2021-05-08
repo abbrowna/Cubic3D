@@ -1,0 +1,41 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+
+<h3>Filament store Admin</h3>
+
+<div class="row admin-nav">
+    <div class="col-md-4 btn-col">
+        <a class="linkbtn btn2" href="{% url 'preOrders' %}">Pre-Orders</a>
+    </div>
+    <div class="col-md-4 btn-col">
+        <a class="linkbtn btn2" href="{% url 'pendingOrders' %}">Pending Orders</a>
+    </div>
+    <div class="col-md-4 btn-col">
+        <a class="linkbtn btn2" href="{% url 'completedOrders' %}">Completed Orders</a>
+    </div>
+</div>
+
+<h4> Filament stock levels </h4>
+
+<div class="stock-view">
+    <table>
+        <tr>
+            <th>Diameter</th>
+            <th>Material</th>
+            <th>Color</th>
+            <th>Stock</th>
+        </tr>
+        {% for f in filament %}
+        <tr>
+            <td>{{f.diameter}}</td>
+            <td>{{f.material.name}}</td>
+            <td>{{f.color}}</td>
+            <td>{{f.stock}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

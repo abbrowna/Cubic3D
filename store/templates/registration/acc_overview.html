@@ -1,0 +1,49 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>Account overview </h2>
+
+<h4>{{user.first_name}}{{user.last_name}}</h4>
+<p>{{user.email}}</p>
+<a class="linkbtn btn2" id="editbtn" href="{% url 'edit_profile' %}">Edit Profile</a>
+
+<h3>My Orders</h3>
+
+<div class="order-table table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Order</th>
+                <th>Date</th>
+                <th>Filament</th>
+                <th>Total (KSH)</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in details %}
+            <tr class="order-row" >
+                <td>{{d.0.num}}</td>
+                <td>{{d.0.time}}</td>
+                <td>
+                    <table class="subtable">
+                        {% for item in d.1 %}
+                                <tr>
+                                    <td>{{item.filament.diameter}}</td>
+                                    <td>{{item.filament.color}}</td>
+                                    <td>{{item.filament.material}}</td>
+                                    <td>x {{item.quantity}}</td>
+                                </tr>
+                        {% endfor %}
+                    </table>
+                </td>
+                <td>{{d.0.item_total}} + {{d.0.delivery_fee}} = {{d.0.total}}</td>
+                <td>{% if d.0.delivered %}Completed{% elif d.0.paid %}Awaiting delivery{% else %}Payment pending{% endif %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}.</h2>
+<h3>Your filament has been temporarily reserved</h3>
+
+<div class="order_wrapper">
+    <div class="order_num">
+        <p>Order#: {{order.num}}</p>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <td>Item total:</td>
+                <td class="amount">{{order.item_total}}</td>
+            </tr>
+            <tr>
+                <td>Delivery fee:</td>
+                <td class="amount">{{order.delivery_fee}}</td>
+            </tr>
+            <tr class="total">
+                <td>Total:</td>
+                <td class="amount">{{order.total}}</td>
+                <td class="currency">KSH</td>
+            </tr>
+        </table>
+    </div>
+    <div class="info">
+        <h4> Delivering to:</h4>
+        <p>
+            {% if order.alt_name %}
+                {{order.alt_name}}
+            {% else %}
+                {{order.first_name}} {{order.last_name}}
+            {% endif %}
+        </p>
+        <p>{{order.address}}</p>
+        <p>{{order.region}}</p>
+        <p>
+            {% if order.alt_phone %}
+                {{order.alt_phone}}
+            {% else %}
+                {{order.phone}}
+            {% endif %}
+        </p>
+    </div>
+    <div class="info">
+        <p>Kindly make payment through any of the following channels before your pre-order expires in the next 1 hour.</p>
+        <p>An invoice has also been mailed to <span>{{order.email}}</span></p>
+    </div>
+    <div class="payment methods">
+        <h4>Co-operative bank</h4>
+        <p>Acc name: <span>Cubic Advanced Systems</span></p>
+        <p>Acc #: <span>01192582994700</span></p>
+        <p>Indicate the order# above in the payment description</p>
+        <h4>Mpesa</h4>
+        <p>Paybill: <span>400222</span></p>
+        <p>Acc #: <span>1860018#{{order_number}}</span></p>
+    </div>
+</div>
+
+{% endblock %}

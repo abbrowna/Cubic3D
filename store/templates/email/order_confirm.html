@@ -1,0 +1,75 @@
+﻿{% autoescape off %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Filament Pre-Order</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="color-scheme" content="light dark">
+        <style>
+            .invoice {
+                border-style: solid;
+                border-width: 1px;
+                border-color: #000000;
+            }
+            @media (prefers-color-scheme: dark) {
+                h1 {
+                    color: #F7D57F !important;
+                }
+            }
+
+        </style>
+    </head>
+    <body style="margin: 0; padding: 0;">
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td style="padding: 20px 30px 20px 30px;">
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+                        <tr style="display: none">
+                            <td>
+                                Your payment has been received. We are diligently working on delivery. 
+                                Usually 24 hours for Nairobi and its environs (except weekends and holidays.)<br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0 0 20px 0;">
+                                <h1 style="color:#F7D57F !important;-webkit-text-fill-color: #F7D57F !important; font-family: Verdana">Cubic3D Filament Store</h1>
+                                <p style="font-size:1.2em;">Hello {% if order.user %}{{order.user.first_name}}{% else %}{{ order.first_name }}{% endif %}</p>
+                                <p style="font-size:1.2em;">
+                                    Your payment for order# {{order.num}} has been confirmed. Please find attached your payment receipt.
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px 0 0 0">
+                                <p style="font-size: 1.2em">We are diligently working on delivery. Usually 24 hours for Nairobi and its environs (except weekends and holidays.)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:50px 0 20px 0;">
+                                <p style="font-size: 1.2em;">Delievery details:</p>
+                                <p>Contact: 
+                                    {% if order.alt_name %}
+                                        {{order.alt_name}}
+                                    {% else %}
+                                        {{order.first_name}} {{order.last_name}}
+                                    {% endif %}
+                                </p>
+                                <p>Phone: 
+                                    {% if order.alt_phone %}
+                                        {{order.alt_phone}}
+                                    {%else%}
+                                        {{order.phone}}
+                                    {% endif %}
+                                </p>
+                                <p>Address:{{order.address}}</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
+{% endautoescape %}

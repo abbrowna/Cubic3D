@@ -1,0 +1,72 @@
+body {
+    background-color: white;
+}
+
+.outer {
+    width: 100%;
+}
+
+.innertable {
+    margin-right: auto;
+    margin-left: auto;
+    width: 600px;
+}
+
+.maintable {
+    width: 100%;
+    font-size: 17px;
+}
+
+.pdfbrand {
+    padding: 0 0 20px 0;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: 'DIN Neuzeit Grotesk',sans-serif;
+    color: #F7D57F;
+}
+
+.headers {
+    border-bottom: 1px solid black;
+}
+
+.items {
+    border-bottom: 0.5px solid #808080;
+    font-size: 0.8em;
+}
+
+.items td {
+    padding: 10px 0;
+}
+
+.payment_info h1 {
+    font-size: 14px;
+    color: #808080;
+}
+
+.payment_info h2 {
+    font-size: 15px;
+}
+
+.option_detail {
+    font-size: 12px;
+}
+
+td, th {
+    text-align: left;
+}
+
+.amount {
+    border: 1px solid #F7D57F;
+    margin: 0;
+}
+
+p {
+    display: block;
+    margin: 5px 0px;
+    padding: 0;
+}
+
+.table {
+    border-collapse: separate;
+    border-spacing: 2px;
+}
