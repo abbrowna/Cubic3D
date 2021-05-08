@@ -7,7 +7,7 @@ ROOT_URLCONF = 'store.urls'
 if platform == 'win32':
     SITE_ID = 3
 else:
-    SITE_ID = 4
+    SITE_ID = 5
 
 WSGI_APPLICATION = 'store.wsgi.application'
 
