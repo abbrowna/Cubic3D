@@ -6,7 +6,10 @@ ROOT_URLCONF = 'app.urls'
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
-SITE_ID = 2
+if platform == 'win32':
+    SITE_ID = 2
+else:
+    SITE_ID = 3
 
 # Application definition
 INSTALLED_APPS = [

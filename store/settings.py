@@ -4,7 +4,10 @@ from Cubic3D.settings import *
 
 ROOT_URLCONF = 'store.urls'
 
-SITE_ID = 3
+if platform == 'win32':
+    SITE_ID = 3
+else:
+    SITE_ID = 4
 
 WSGI_APPLICATION = 'store.wsgi.application'
 
