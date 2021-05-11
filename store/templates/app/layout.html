@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} - Cubic3D Filament store</title>
+    <title>{{ title }} - The store that keeps you 3D printing</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'store/content/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'store/content/site.css' %}?v=1.1" />
@@ -41,17 +41,22 @@
         {% endblock %}
         <hr/>
     </div>
-    <div class="container-fluid footer-container">
-        <footer>
-            <div class="contact-section">
-                <p>support@cubic3d.co.ke</p>
-                <p>+254 728 274 309</p>
-            </div>
-            <div class="copyright-section">
-                <p class="copyright">Cubic Advanced Systems Limited - {{ year }}</p>
-            </div>
-            
-        </footer>
+    <div class="container-fluid" id="footer-wide">
+        <div class="container">
+            <footer>
+                <div class="row">
+                    <div class="col-sm-10 copyright">
+                            <p>&copy; {{ year }} Cubic3D . 3D printing closer home</p>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="social-bar row">
+                            <div class="col-xs-6" style="text-align:right;"><a href="https://twitter.com/Cubic3D_Ke" target="_blank"><img src="{% static "store/images/twitter.webp" %}" alt="twitter"></a></div>
+                            <div class="col-xs-6"><a href="https://www.instagram.com/cubic3d_ke/" target="_blank"><img src="{% static "store/images/instagram.webp" %}" alt="instagram"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
     </div>
 
     <script src="{% static 'store/scripts/jquery-1.10.2.js' %}"></script>

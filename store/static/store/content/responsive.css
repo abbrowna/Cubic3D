@@ -49,6 +49,9 @@
     .footer-container{
         z-index: 101;
     }
+    .store_cat .col-sm-4 {
+        text-align: center !important; 
+    }
 }
 
 /*@media (min-width: 1300px) {

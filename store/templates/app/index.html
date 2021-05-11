@@ -7,17 +7,21 @@
 
 
 <div class="row store_cat">
-    <div class="col-sm-4">
-        <a class="btn1 disabled scroll_fade_in" data-toggle="tooltip" data-placement="top" title="Almost there !">Spares & Accessories</a>
+    <div class="col-sm-4" style="text-align: right">
+        <a class="btn1 disabled scroll_fade_in" data-toggle="tooltip" data-placement="top" title="Coming soon">Spares & Accessories</a>
     </div>
     <div class="col-sm-4">
         <a class="btn1 scroll_fade_in" href="{% url 'filamentHome' %}">Filament</a>
     </div>
-    <div class="col-sm-4">
-        <a class="btn1 disabled scroll_fade_in" data-toggle="tooltip" data-placement="top" title="Almost there !">Printers</a>
+    <div class="col-sm-4" style="text-align: left">
+        <a class="btn1 disabled scroll_fade_in" data-toggle="tooltip" data-placement="top" title="Coming soon">Printers</a>
     </div>
 </div>
 
+<div id="cubic_redirect" class="scroll_fade_in">
+    <h4>Or... You could skip all the hustle and let us do the printing</h4>
+    <a class="btn2" href="https://cubic3d.co.ke">Request a print</a>
+</div>
 {% endblock %}
 
 {% block scripts %}

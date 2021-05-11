@@ -149,7 +149,7 @@ $(document).ready(function () {
             $(".body-content").css("height", bcHeight + fHeight - (bHeight - wHeight));
         }
     }
-    //minbody();
+    minbody();
 
 
     //update the cart using ajax request
