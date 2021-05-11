@@ -38,7 +38,18 @@ def link_callback(uri, rel):
     return path
 
 def home(request):
-    """Renders the home page."""
+    """Renders the store home page"""
+    assert isinstance(request, HttpRequest)
+    
+    return render(request, 'app/index.html',{
+        'title':'Cubic3D Store',
+        'message': 'The shop that keeps you 3D printing',
+        'year':datetime.now().year,
+    })
+
+
+def filamentLanding(request):
+    """Renders the filament landing page."""
     assert isinstance(request, HttpRequest)
     if request.method == 'POST':
         form = FilterForm(request.POST)
@@ -65,10 +76,10 @@ def home(request):
             materials.append(M)
         return render(
             request,
-            'app/index.html',
+            'app/fil_landing.html',
             {
                 'materials':materials,
-                'title':'Home Page',
+                'title':'3D printing filament selection',
                 'year':datetime.now().year,
                 'form':form,
                 'num_cart_items': num_cart_items
@@ -83,7 +94,7 @@ def contact(request):
         request,
         'app/contact.html',
         {
-            'title':'Contact',
+            'title':'Contact Us',
             'message':'Your contact page.',
             'year':datetime.now().year,
         }

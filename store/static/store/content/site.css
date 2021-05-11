@@ -150,7 +150,30 @@ h3{
     font-family: DIN;
     text-align: center;
 }
-/*********home page*******/
+/*******Store Landing page********/
+.store_cat .col-sm-4{
+    text-align: center;
+}
+.store_cat a{
+    display: inline-block;
+    width: 220px;
+    margin: 10px;
+    color: #000000;
+}
+.store_cat a:hover{
+    text-decoration: none;
+}
+.store_cat{
+    margin-top: 60px;
+}
+.store_cat .disabled:hover{
+    text-decoration: none;
+}
+
+
+
+
+/*********Filament home page*******/
 .filamentFilter{
     padding: 50px 30px 40px 30px;
 }

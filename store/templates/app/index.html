@@ -1,58 +1,24 @@
 {% extends "app/layout.html" %}
-{% load static %}
 
 {% block content %}
-<div class="headings">
-    <h1>Welcome to our 3D filament store! </h1>
-    <h4>We use the same stuff in our print farm, all day.</h4>
+
+<h2>{{ title }}</h2>
+<h3>{{ message }}</h3>
+
+
+<div class="row store_cat">
+    <div class="col-sm-4">
+        <a class="btn1 disabled scroll_fade_in" data-toggle="tooltip" data-placement="top" title="Almost there !">Spares & Accessories</a>
+    </div>
+    <div class="col-sm-4">
+        <a class="btn1 scroll_fade_in" href="{% url 'filamentHome' %}">Filament</a>
+    </div>
+    <div class="col-sm-4">
+        <a class="btn1 disabled scroll_fade_in" data-toggle="tooltip" data-placement="top" title="Almost there !">Printers</a>
+    </div>
 </div>
 
-<div class="filamentFilter">
-    <form id="filterform" class="hidden" action="/" method="post">
-        {% csrf_token %}
-        {{ form.non_field_errors }}
-        {{ form.diameter }}
-        {{ form.diameter.errors }}
-        {{ form.material }}
-        {{ form.material.errors }}
-    </form>
-    <div class="row diameter_select scroll_fade_in">
-        <div class="col-sm-6">
-            <img src="{% static 'store/images/diameter.svg' %}" alt="filDia"/>
-        </div>
-        <div class="col-sm-6">
-            <h3>Select your filament diameter</h3>
-            <ul id="dia_list">
-                <li><button  value="1.75" class="dia_button btn1">1.75mm</button></li>
-                <li><button  value="2.85" class="dia_button btn1 disabled">2.85mm</button></li>
-            </ul>
-        </div>
-            
-    </div>
-    <div class="row material_select">
-        <div class="col-sm-6">
-            <img src="{% static 'store/images/molecule.svg' %}" alt="Material" />
-        </div>
-        <div class="col-sm-6">
-            <h3>Pick a material</h3>
-            <ul id="matl_list">
-                {% for material in materials %}
-                <li><button class="{%if not material.stock %}disabled {% endif %}btn1 matl_button">{{ material.name }}</button></li>
-                {% endfor %}
+{% endblock %}
 
-            </ul>
-        </div>
-            
-    </div>
-    
-
-</div>
-
-<a href ="{% url 'cart' %}"id="cart_icon">
-    <div>
-        <img src="{% static 'store/images/cart.svg' %}"/>
-        <span>{{num_cart_items}}</span>
-    </div>
-</a>
-
+{% block scripts %}
 {% endblock %}
