@@ -8,10 +8,12 @@
         <meta name="description" content="{{ description }}" />
     {% endif %}
     {% load static %}
+    <link rel="preload" href="{% static 'app/fonts/DIN Neuzeit Grotesk LT W01 BdCn.woff2'%}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{% static 'app/fonts/Playfair Display.woff2'%}" as="font" type="font/woff2" crossorigin>
+    {% block preload %}
+
+    {% endblock %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="icon" href="{% static 'app/images/favicon.ico' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/sitev2.css' %}?v=3.3" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/responsive.css' %}?v=3.3"/>
@@ -81,10 +83,18 @@
             </footer>
         </div>
     </div>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="{% static 'app/scripts/respond.js' %}"></script>
     <script src="{% static 'app/scripts/jquery.bcSwipe.min.js' %}"></script>
-    <script src="{% static 'app/scripts/cubicscripts.js' %}?v=3.3"></script>
+    <script src="{% static 'app/scripts/cubicscripts.js' %}?v=3.4"></script>
+    <script>
+        $(document).ready(function () {
+            //page fade in
+            $('body').fadeIn(400);
+        })
+    </script>
 {% block scripts %}
 
 

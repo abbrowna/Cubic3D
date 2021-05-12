@@ -1,7 +1,6 @@
 $(document).ready(function () {
     ///////////////////////New website scripts///////////////////////////
-    //page fade in
-    $('body').fadeIn(400);
+
 
     //contact row links
     $("#contact-strip .col1").click(function () {

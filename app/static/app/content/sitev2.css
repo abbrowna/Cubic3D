@@ -3,49 +3,58 @@
     font-family: 'DIN Neuzeit Grotesk';
     src: url('../fonts/DIN Neuzeit Grotesk LT W01 BdCn.woff2') format('woff2'), url('../fonts/DIN Neuzeit Grotesk LT W01 BdCn.woff') format('woff'), /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
     url('../fonts/DIN Neuzeit Grotesk LT W01 BdCn.ttf') format('truetype');
+    font-display: swap;
 }
 @font-face {
     font-family: 'Playfair Display';
-    src: url('../fonts/Playfair Display.woff2') format('woff2'), url('../fonts/Playfair Display.woff') format('woff'), /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+    src: url('../fonts/Playfair Display.woff2') format('woff2'), url('../fonts/Playfair Display.woff') format('woff'), /*Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
     url('../fonts/Playfair Display.ttf') format('truetype');
+    font-display: swap;
 }
 @font-face {
     font-family: 'Playfair Display Italic';
     src: url('../fonts/PlayfairDisplay-Italic.ttf') format('truetype');
+    font-display: swap;
 }
 @font-face {
     font-family: 'Avenir light';
     src: url('../fonts/Avenir_LT_35_Light.ttf') format('truetype');
+    font-display: swap;
 }
 @font-face {
     font-family: 'Nunito';
     src: url('../fonts/Nunito-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 @font-face {
     font-family: 'Nunito';
     src: url('../fonts/Nunito-Light.ttf') format('truetype');
     font-weight: 200;
     font-style: normal;
+    font-display: swap;
 }
 @font-face {
     font-family: 'Nunito';
     src: url('../fonts/Nunito-LightItalic.ttf') format('truetype');
     font-weight: 200;
     font-style: italic;
+    font-display: swap;
 }
 @font-face {
     font-family: 'Nunito';
     src: url('../fonts/Nunito-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
+    font-display: swap;
 }
 @font-face {
     font-family: 'Nunito';
     src: url('../fonts/Nunito-ExtraLightItalic.ttf') format('truetype');
     font-weight: 100;
     font-style: italic;
+    font-display: swap;
 }
 
 /*Navigation Bar*/
@@ -176,7 +185,7 @@ body {
 
 .SEO .welcome {
     text-align: center;
-    font-family: 'Playfair Display Italic',Arial;
+    font-family: 'Playfair Display',Arial;
     /*font-size: 70px;*/
     font-size: 7em;
     font-style: italic;
