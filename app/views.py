@@ -48,7 +48,7 @@ def home(request):
         request,
         'app/index.html',
         {
-            'title':'3D printing services - Now closer to you - Cubic3D',
+            'title':'Cubic3D - 3D printing service for your custom designs',
             'description':'Professional 3D printing service in Kenya producing clean, crisp objects reliably, with pricing that works for everyone',
             'year':datetime.now().year,
         }
@@ -72,7 +72,7 @@ def about(request):
     assert isinstance(request, HttpRequest)
     return render(request,'app/about.html',
         {
-            'title':'About our 3D printing services',
+            'title':'Cubic3D - About our 3D printing services',
             'description':'Simply put, we 3D print your digital designs and ship the resulting object to you charging per gram of material used.',
             'year':datetime.now().year,
         }
