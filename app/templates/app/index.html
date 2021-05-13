@@ -1,8 +1,5 @@
 {% extends "app/layout.html" %}
-{% load static %}
-{% block preload %}
-<link rel="preload" href="{% static 'app/images/Scincube.webp'%}" as="image" type="image/webp">
-{% endblock %}
+
 
 {% block fullcontent %}
 <div class="SEO container" id="mobile_welcome">
@@ -30,7 +27,7 @@
     <div class="carousel-inner">
         {% load static %}
         <div class="item active">
-            <div style="opacity: 0.75;">
+            <div style="opacity: 0.6;">
                 <img class="slides" src="{% static "app/images/Scincube.webp" %}" alt="Logo">
             </div>
             <div class="SEO carousel-caption" style="margin:0;">
