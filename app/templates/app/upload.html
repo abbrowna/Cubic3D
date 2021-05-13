@@ -137,3 +137,38 @@
 </div>
 {% include "app/analytics.html" %}
 {% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function () {
+        
+        //Add .stl file filter to file field
+        $("#id_thing").attr('accept', '.stl');
+
+        // Auto update the colors field with the colors of the selected material.
+        var url = $("#upload_form").attr("data-colors-url"); //Excecute on initial load
+        var material = $("#id_material").val();
+
+        $.ajax({
+            url: url,
+            data: { 'material': material },
+            success: function (data) {
+                $("#id_color").html(data);
+            }
+        });
+
+        $("#id_material").change(function () {
+            var url = $("#upload_form").attr("data-colors-url");
+            var material = $(this).val();
+
+            $.ajax({
+                url: url,
+                data: { 'material': material },
+                success: function (data) {
+                    $("#id_color").html(data);
+                }
+            });
+        });
+    })
+</script>
+{% endblock %}

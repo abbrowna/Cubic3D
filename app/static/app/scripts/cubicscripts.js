@@ -113,32 +113,6 @@ $(document).ready(function () {
             $("#combo_info").hide();
         }
     });
-    //Add .stl file filter to file field
-    $("#id_thing").attr('accept', '.stl');
-
-    // Auto update the colors field with the colors of the selected material.
-    var url = $("#upload_form").attr("data-colors-url"); //Excecute on initial load
-    var material = $("#id_material").val();
-
-    $.ajax({
-        url: url,
-        data: { 'material': material },
-        success: function (data) {
-            $("#id_color").html(data);
-        }
-    });
-    $("#id_material").change(function () {
-        var url = $("#upload_form").attr("data-colors-url");
-        var material = $(this).val();
-
-        $.ajax({
-            url: url,
-            data: { 'material': material },
-            success: function (data) {
-                $("#id_color").html(data);
-            }
-        });
-    });
 
     //call the Loading modal on submition of Request
     $("#upload_form").on('submit', function (event) {
@@ -241,15 +215,5 @@ $(document).ready(function () {
             $('#id_delivery_fee').parent().show();
         }
     });
-    //Load the estimated price of the model in the Admin "accept_or_reject" page
-    var $estimatedprice = $("#our_price_estimate");
-    var request_id = $estimatedprice.data("pr")
-    var url = $estimatedprice.data("url")
-    $.ajax({
-        url: url,
-        data: { 'request_id': request_id },
-        success: function (data) {
-            $("#our_price_estimate > strong").text(data.price);
-        }
-    });
+
 });
