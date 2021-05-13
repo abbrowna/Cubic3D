@@ -1,5 +1,11 @@
 {% extends "app/layout.html" %}
-
+{% load static %}
+{% block preload %}
+<link rel="preload" href="{% static 'app/fonts/Nunito-Regular.ttf'%}" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="{% static 'app/fonts/Nunito-Light.ttf'%}" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="{% static 'app/fonts/Nunito-Bold.ttf'%}" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="{% static 'app/images/Scincube.webp' %}" as="image" type="image/webp" />
+{% endblock %}
 
 {% block fullcontent %}
 <div class="SEO container" id="mobile_welcome">
