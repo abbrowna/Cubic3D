@@ -441,9 +441,47 @@ body,
 }
 .col-link a:hover {
     text-decoration: none;
-    color: #4BD1A0
+    color: #4BD1A0;
 }
 
+/******Capabilities row***********/
+#capabilities {
+    margin-top: 200px;
+}
+#capabilities h2{
+    font-family: 'DIN Neuzeit Grotesk', sans-serif;
+    letter-spacing: 0.2em;
+    color: #FCFCFC;
+}
+#capabilities h3 {
+    font-family: Nunito, sans-serif;
+    color: #4BD1A0;
+    /*color: #f7d57f;*/
+    margin-top: 50px;
+    display: inline-block;
+    letter-spacing: 0.2em;
+}
+#capabilities .explanation{
+    font-family: Nunito, sans-serif;
+    font-weight: 200;
+    color: #FCFCFC;
+    font-size: 18px;
+    margin-left: 100px
+}
+#capabilities img{
+    object-fit: contain;
+}
+#capabilities span{
+    font-family: 'Nunito', serif;
+    font-size: 30px;
+    font-weight: 100;
+    color: #f7d57f;
+    display: inline-block;
+    margin-bottom: 60px;
+}
+#capabilities .cap_wrapper{
+    margin-bottom: 30px;
+}
 /*footer*/
 #footer-wide {
     background-color: #F7D57F;
@@ -654,6 +692,14 @@ body,
     font-size: 25px;
     font-family: 'DIN Neuzeit Grotesk';
     padding: 50px 0;
+    background-color: #FBEABE;
+}
+.print_links{
+    text-align: center;
+    margin-top: 60px;
+}
+.print_links a{
+    width: 135px;
 }
 #comptable {
     background: url("/static/app/images/molecule.png") no-repeat center;
@@ -695,7 +741,7 @@ body,
 #comptable td:nth-child(1) {
     border-radius: 10px 0px 0px 10px;
 }
-#comptable td:nth-child(3){
+#comptable td:nth-child(4){
     border-radius: 0 10px 10px 0;
 }
 #comptable tr {
@@ -709,6 +755,16 @@ body,
     border-right-style: solid;
     border-right-color: #262626;
 }
+#matl_link {
+    text-align: center; 
+    margin-top:50px;
+    margin-bottom: 50px;
+    font-family: Nunito, sans-serif;
+    font-size: 20px;  
+}
+#matl_link a {
+    color: #4BD1A0;
+}
 /*TPU strip*/
 #TPU_strip .container{
     padding-top: 50px;
@@ -720,9 +776,11 @@ body,
     font-size: 30px;
     padding-bottom: 20px;
 }
-#TPU_strip span{
+#TPU_strip span {
+    font-family: 'DIN Neuzeit Grotesk',sans-serif;
     color: #F7D57F;
     font-size: 35px;
+    padding-top: 20px;
 }
 #TPU_strip h4 {
     font-family: 'DIN Neuzeit Grotesk',sans-serif;

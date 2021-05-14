@@ -38,3 +38,11 @@
 </div>
 
 {% endblock %}
+{% block scripts %}
+<script>
+    $(document).ready(function () {
+        //thanks page strip min height
+        $("#thanks_info").css('min-height', $(window).height() - $("#thanks_title").height() - $("nav").height() - $("footer").height());
+    })
+</script>
+{% endblock %}

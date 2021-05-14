@@ -13,18 +13,9 @@ $(document).ready(function () {
         window.open("https://twitter.com/Cubic3D_Ke");
     });
 
-    //material page table or grid selector
-    $(window).resize(function () {
-        if ($("#materialstrip .row").css('display') === 'block') {
-            $("#comptable").hide();
-        }
-        else {
-            $("#comptable").show();
-        }
-    });
-    //material table border styling on hover
     $("#comptable tr").hover(function () {
         $("td:nth-child(2)", this).toggleClass('borderstyling');
+        $("td:nth-child(3)", this).toggleClass('borderstyling');
     });
 
     //form placeholders
@@ -139,8 +130,7 @@ $(document).ready(function () {
             $("#id_stlviewer")[0].contentWindow.location.reload(true);
         }        
     });
-    //thanks page strip min height
-    $("#thanks_info").css('min-height', $(window).height() - $("#thanks_title").height() - $("nav").height() - $("footer").height());
+
 
     //gallery image modal
     $("#gallery_strip img").click(function () {
@@ -157,21 +147,6 @@ $(document).ready(function () {
     if ($(".carousel").length) {
         $(".carousel").bcSwipe({ threshold: 50 });
     }
-    //home-page SEO display according to screen size:
-    if ($("#mobile_welcome").css('display') === 'block') {
-        $(".SEO.carousel-caption").hide();
-    }
-    else {
-        $(".SEO.carousel-caption").show();
-    }
-    $(window).resize(function () {
-        if ($("#mobile_welcome").css('display') === 'block') {
-            $(".SEO.carousel-caption").hide();
-        }
-        else {
-            $(".SEO.carousel-caption").show();
-        }
-    });
 
     //navbar images height setting
     var set_nav_image = function () {

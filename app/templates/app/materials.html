@@ -66,56 +66,80 @@
                     <p>Low glass transition temperature of around 60c which is a good thing for high surface detail.</p>
                 </div>
             </div>
+            <div class="col-sm-6">
+                <h2>ABS</h2>
+                <h3>(Polylactic Acid)</h3>
+                <div class="comparison comp1 mycol3">
+                    <p>ABS, like PLA, also fails suddenly but will flex a bit more before doing so.</p>
+                </div>
+                <div class="comparison comp2 mycol3">
+                    <p>There is a tradeoff between quality and strength with ABS but supports polishing.</p>
+                </div>
+                <div class="comparison comp3 mycol3">
+                    <p>It doesn't like to stick to itself and suffers delamination.</p>
+                </div>
+                <div class="comparison comp4 mycol3">
+                    <p>Readily dissolves in acetone as well as other solvents.</p>
+                </div>
+                <div class="comparison comp5 mycol3">
+                    <p>High temperature resistance softening at around 100c.</p>
+                </div>
+            </div>
         </div>
 
         <table id="comptable">
             <tr class="table-header">
                 <th></th>
-                <th style="width:40%"><h2>PETG</h2><h3>(Polyethylene Terephthalate-Glycol)</h3></th>
-                <th style="width:40%"><h2>PLA</h2><h3>(Polylactic Acid)</h3></th>
+                <th style="width:30%"><h2>PETG</h2><h3>(Polyethylene Terephthalate-Glycol)</h3></th>
+                <th style="width:30%"><h2>PLA</h2><h3>(Polylactic Acid)</h3></th>
+                <th style="width:30%"><h2>ABS</h2><h3>(Acrylonitrile Butadiene Styrene)</h3></th>
             </tr>
             <tr>
                 <td class="comptopic">Flexibility</td>
                 <td class="comparison border">PETG is a tough material and will flex, then deform plastically rather than snapping.</td>
                 <td class="comparison">PLA doesn't like to bend, and puts up a descent fight until failure by breakage.</td>
+                <td class="comparison">ABS, like PLA, also fails suddenly but will flex a bit more before doing so.</td>
             </tr>
             <tr>
                 <td class="comptopic">Finish</td>
                 <td class="comparison border">Comes in neutral colors such as white and gray with descent surface detail.</td>
                 <td class="comparison">Superb surface detail with vibrant true colors, highly desirable properties for art. </td>
+                <td class="comparison">There is a tradeoff between quality and strength with ABS but supports polishing.</td>
             </tr>
             <tr>
                 <td class="comptopic">Strength</td>
                 <td class="comparison border">Strong with high impact resistance resulting from its flexibility.</td>
                 <td class="comparison">Rigid but brittle material with respectable strength. </td>
+                <td class="comparison">It doesn't like to stick to itself and suffers delamination.</td>
             </tr>
             <tr>
                 <td class="comptopic">Resistance</td>
                 <td class="comparison border">High alkali, acid and water resistance just like big brother PET as used in food and drink containers.</td>
                 <td class="comparison">Made from biodegradable materials hence Eco friendly but less resistant to solvents and other chemicals.</td>
+                <td class="comparison">Readily dissolves in acetone as well as other solvents.</td>
             </tr>
             <tr>
                 <td class="comptopic">Heat</td>
                 <td class="comparison border">High temperature resistance softening at around 80c.</td>
                 <td class="comparison">Low glass transition temperature of around 60c which is a good thing for high surface detail.</td>
+                <td class="comparison">High temperature resistance softening at around 100c.</td>
             </tr>
         </table>
-        <div class="material_p">
-            <p>To sum it up...</p>
+        <div id="matl_link">
             <p>
-                If your print is a vital mechanical part which will be undergoing significant loading or exposed to harsh environmental conditions, 
-                then PETG is definitely the material to choose.
+                For a more indepth comparison between these 3 materials, Stefan over at CNC Kitchen has already done a great job right  
+                <a href="https://www.cnckitchen.com/blog/comparing-pla-petg-amp-asa-feat-prusament" target="_blank">here.</a>
             </p>
-            <p>Artistically oriented objects or even mechanical but with minimal loads are however more suited to PLA.</p>
         </div>
     </div>
 </div>
 <div id="TPU_strip">
     <div class="container">
-        <h3>Introducing... <span>ThermoPlastic Polyurethane</span></h3>
-        <h4>Better known by its acronym, TPU completes our 3D printing trio.</h4>
+        <h3>Specialty materials</h3>
+        <span>ThermoPlastic Polyurethane</span>
+        <h4>Better known by its acronym, TPU completes our 3D printing quartet.</h4>
         <p>
-            TPU is essentially a plastic with rubber like characteristics which distinguishes it from the more common PLA and PETG. It can be stretched and reverts to its 
+            TPU is essentially a plastic with rubber like characteristics which distinguishes it from the more common materials. It can be stretched and reverts to its 
             original form without deformation, it is also more resistant to abrasion.
         </p>
         <p>
@@ -123,9 +147,53 @@
             possibilities such as ergonomic covers for mechanical handles, or mounting brackets that need to absorb vibrations to reduce noise.
         </p>
         <p>
-            One thing worth mentioning, the overall flexibility of the final part can be vastly controlled by the infill density used when printing. For example a cube with 
+            One thing worth mentioning, the overall flexibility of the TPU part can be vastly controlled by the infill density used when printing. For example a cube with 
             lower infill will be squishy in the hand while a completely solid cube will be a lot firmer. 
         </p>
+        <span>Polyvinyl Alcohol</span>
+        <h4>PVA is the magician of the group.</h4>
+        <p>
+            With some models, overhaning sections need to be supported to make the print succeed. This can be accomplished with the same material that goes into the actual part 
+            and later broken off. This however doesn't leave a good look on the model. 
+        </p>
+        <p>Or what if the support is inside a cavity that can't be accessed?</p>
+        <p>
+            PVA is unique in that it readily dissolves in water and can be used as the support material so that when the print is completed, a soak in water will dissolve all the 
+            support material away. AKA magic. 
+        </p>
+    </div>
+</div>
+
+<div class="material_p">
+    <div class="container">
+        <p>To sum it up...</p>
+        <ol>
+            <li>         
+                <p>
+                    If your print is a vital mechanical part which will be undergoing significant loading or exposed to harsh environmental conditions, 
+                    then PETG is definitely the material to choose.
+                </p>
+            </li>
+            <li>
+                <p>Artistically oriented objects or even mechanical but with minimal loads are however more suited to PLA.</p>
+            </li>
+            <li>
+                <p>We would advise that you only choose ABS for high temperature applications.</p>
+            </li>
+            <li>
+                <p>If you wish you could design something out of rubber, you can. Just pick TPU.</p>
+            </li>
+            <li>
+                <p>You can combine these materials with PVA to ensure a dimensionaly perfect part. Just tell us about it</p>
+            </li>
+            <li>
+                <p>You can combine these materials in one print.</p>
+            </li>
+        </ol>
+    </div>
+    <div class="print_links">
+        <a class="btn btn2" href="{% url 'def_quote' %}" role="button">Get an estimate</a>
+        <a class="btn btn2" href="{% url 'upload' %}" role="button">Request a print</a>
     </div>
 </div>
 {% include "app/analytics.html" %}

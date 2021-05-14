@@ -9,6 +9,16 @@
     .carousel-indicators{
         display:none;
     }
+    #capabilities .explanation{
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+    }
+    #comptable{
+        display: none;
+    }
+    .SEO.carousel-caption {
+        display: none;
+    }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -22,6 +32,12 @@
     .cleanbody {
         display: flex;
         align-items: center;
+    }
+    #comptable{
+        display: none;
+    }
+    .SEO.carousel-caption {
+        display: none;
     }
 }
 
@@ -40,6 +56,9 @@
     }
     #mobile_welcome {
         display: none;
+    }
+    .SEO.carousel-caption{
+        display: block;
     }
     .SEO .welcome {
         position: absolute;
@@ -86,8 +105,11 @@
     #materialstrip .row{
         display: none;
     }
+    #comptable{
+        display: table;
+    }
     #comptable td {
-        padding: 15px 40px;
+        padding: 10px 35px;
     }
     #review_info .col-md-8 {
         display: block;
@@ -124,7 +146,7 @@
         padding-bottom: 50%
     }
     #comptable td {
-        padding: 15px 50px;
+        padding: 10px 45px;
     }
     .uploadhelp{
         display: block;

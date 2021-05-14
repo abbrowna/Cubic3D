@@ -120,13 +120,15 @@
     <div class="col-md-4 col2">
         <h2>MATERIALS</h2>
         <div class="col-content">        
-            <p>Objects can be printed in a plethora of materials, but we specialize in two:</p>
+            <p>Objects can be printed in a plethora of materials, we now specialize in four:</p>
                 <ol class="matlist">
-                    <li>PLA: Polylactic-Acid</li>
-                    <li>PETG: Polyethylene-Terephthalate-Glycol</li>
+                    <li>PLA+</li>
+                    <li>PETG</li>
+                    <li>ABS</li>
+                    <li>TPU</li>
                 </ol>
             <p>
-                Use the link below to find out more about these materials and most importantly, which one you should choose.
+                Use the link below to find out more about these materials, how you can <strong>combine</strong> them and most importantly, which one you should choose.
             </p>
             <div class="col-link"><a href="{% url 'materials' %}"><span>Materials &raquo;</span></a></div>
         </div>
@@ -148,6 +150,56 @@
             <div class="col-link"><a href="{% url 'def_quote' %}"><strong>Get an estimate &raquo;</strong></a></div>
         </div>      
     </div>
+</div>
+<div id="capabilities">
+    <h2>What are we capable of?</h2>
+    <div class="cap_wrapper">    
+        <h3>DUAL EXTRUSION</h3>
+        <img class="cap_image" width="300" src="{% static 'app/images/dual_extrusion.svg' %}" alt='IDEX'>
+        <div class="explanation">
+            <p>        
+                With dual extrusion, we are not only capable of <strong>multi-color printing</strong>, but <strong>multi-material</strong> as well. 
+                The materials don't even have to be compatible with each other as in traditional dual extrusion.
+            </p>
+        </div>
+    </div>
+
+    <div class="cap_wrapper">    
+        <h3>BATCH PRODUCTION</h3>
+        <span>&nbsp;x100</span>
+        <div class="explanation" style="margin-left: 200px">
+            <p>
+                With an increasing number of printers on the job, our capacity is higher than ever. If you need a good number of custom products, we can make 
+                it happen in record time. 
+            </p>
+        </div>
+    </div>
+
+    <div class="cap_wrapper">    
+        <h3>FINE DETAIL</h3>
+        <img class="cap_image" width="200" src="{% static 'app/images/layer_height.svg' %}" alt='Layer height' style="margin-bottom: 30px;"/>
+        <div class="explanation">
+            <p>
+                With up to 0.02mm layer height and 0.2mm nozzles at our disposal, we can push the boundaries of what's possible with 
+                FDM printing. Our engineering team also went the extra mile in tuning the printers to achieve high tolerances and make your part at 
+                the size and spec you ordered it. 
+            </p>
+        </div>
+    </div>
+
+    <div class="cap_wrapper">    
+        <h3>ADVANCED ONLINE ESTIMATION</h3>
+        <div class="explanation" style="margin-left: 200px">
+            <p>
+                Our online estimation system is truly one of a kind, period. Accounting even for details such as infill, it will try and give you the best idea of what 
+                the implied printing costs will be before humans take over and give the final say. 
+            </p>
+        </div>
+    </div>
+</div>
+<div class="print_links">
+    <a class="btn btn1" href="{% url 'def_quote' %}" role="button">Get an estimate</a>
+    <a class="btn btn1" href="{% url 'upload' %}" role="button">Request a print</a>
 </div>
 {% include "app/analytics.html" %}
 {% endblock %}
