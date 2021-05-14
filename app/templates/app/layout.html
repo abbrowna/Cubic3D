@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -10,9 +10,7 @@
     {% load static %}
     <link rel="preload" href="{% static 'app/fonts/DIN Neuzeit Grotesk LT W01 BdCn.woff2'%}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{% static 'app/fonts/Playfair Display.woff2'%}" as="font" type="font/woff2" crossorigin>
-    {% block preload %}
-
-    {% endblock %}
+    {% block preload %}{% endblock %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="icon" href="{% static 'app/images/favicon.ico' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/sitev2.css' %}?v=3.4" />
@@ -89,10 +87,8 @@
     <script src="{% static 'app/scripts/respond.js' %}"></script>
     <script src="{% static 'app/scripts/jquery.bcSwipe.min.js' %}"></script>
     <script src="{% static 'app/scripts/cubicscripts.js' %}?v=3.6"></script>
-{% block scripts %}
-
-
-{% endblock %}
+    {% block scripts %}
+    {% endblock %}
 
 </body>
 </html>
