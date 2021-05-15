@@ -51,8 +51,7 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    margin-top: 80px;
-    /*min-height: 125vh;*/
+    padding-top: 80px;
 }
 
 
@@ -248,10 +247,11 @@ h3{
 .filtered_filament .column {
     padding-bottom: 80px;
     text-align: center;
+    border: 1px none #F7D57F;
 }
-.filtered_filament .column:hover{
-    border: #f7d57f solid 1px;
+.filtered_filament .column:hover {
     border-radius: 5px;
+    border-style: solid;
 }
 .btn2{
     padding: 10px 40px;
@@ -322,15 +322,30 @@ h3{
     top: 17%;
     left: 25%;
 }
-.detail_overlay{
+.detail_overlay {
+    display: none;
     height: 100%;
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
+    background-color: #000000;
+    opacity: 0.8;
+    text-align: left;
+    color: #ffffff;
+    border-radius: 5px;
+    font-size: 17px;
 }
-.detail_overlay:hover{
-    /*background-color: rgba(0, 0, 0, 0.8);*/
+.detail_overlay h4 {
+    padding: 10px 10px;
+    font-family: Nunito;
+    font-weight: bold;
+    font-size: 20px;
+}
+.detail_overlay p {
+    padding: 10px 10px;
+    font-family: Nunito;
+    font-size: 18px;
 }
 
 #cart_icon{

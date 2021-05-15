@@ -21,6 +21,15 @@ $(document).ready(function () {
         $("#filterform").submit();
     })
 
+    //click event for filtered filament show details
+    $(".filtered_filament .column").click(function () {
+        $(this).children(".detail_overlay").show("fast");
+    })
+    //Remove details when no longer pointing at detail
+    $(".detail_overlay").mouseleave(function () {
+        $(this).hide("fast");
+    })
+
     //Ajax request to add to the cart
     $(".add_cart_btn").click(function () {
         var button = $(this);
@@ -132,25 +141,6 @@ $(document).ready(function () {
             }
         })
     })
-
-
-    //make the body of the page be at least the height of the viewport
-    function minbody() {
-        bHeight = $("body").height();
-        bcHeight = $(".body-content").height();
-        wHeight = $(window).height();
-        fHeight = $(".footer-container").height();
-        nHeight = $(".navbar").height();
-
-        if (bHeight < wHeight) {
-            $(".body-content").css("height", (bcHeight + wHeight - bHeight));
-        }
-        else if (bHeight > wHeight && (bHeight - fHeight) < wHeight) {
-            $(".body-content").css("height", bcHeight + fHeight - (bHeight - wHeight));
-        }
-    }
-    minbody();
-
 
     //update the cart using ajax request
     $.ajax({

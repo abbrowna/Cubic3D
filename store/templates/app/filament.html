@@ -23,6 +23,15 @@
         <span class="stock-tooltip">In stock</span>
         <span class="stock-info"></span>
         <button class="btn2 add_cart_btn" value="{{filament.id}}">Add to Cart</button>
+        <div class="detail_overlay">
+
+            <h4>Description</h4>
+            <p> {{filament.characteristics}} </p>
+            <p>
+                Hotend: {{filament.print_temp}}&deg;C<br />
+                Bed: {{filament.bed_temp}}&deg;C
+            </p>
+        </div>
     </div>
     {%endfor%}
 </div>
