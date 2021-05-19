@@ -19,6 +19,9 @@
     .SEO.carousel-caption {
         display: none;
     }
+    #cubiccarousel {
+        display: none;
+    }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -39,6 +42,9 @@
     .SEO.carousel-caption {
         display: none;
     }
+    #cubiccarousel {
+        display: none;
+    }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -56,6 +62,9 @@
     }
     #mobile_welcome {
         display: none;
+    }
+    #cubiccarousel{
+        display: block;
     }
     .SEO.carousel-caption{
         display: block;

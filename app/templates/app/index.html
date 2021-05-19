@@ -4,7 +4,7 @@
 <link rel="preload" href="{% static 'app/fonts/Nunito-Regular.ttf'%}" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="{% static 'app/fonts/Nunito-Light.ttf'%}" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="{% static 'app/fonts/Nunito-Bold.ttf'%}" as="font" type="font/ttf" crossorigin>
-<link rel="preload" href="{% static 'app/images/Scincube.webp' %}" as="image" type="image/webp" />
+<!--<link rel="preload" href="{% static 'app/images/Scincube.webp' %}" as="image" type="image/webp" />-->
 {% endblock %}
 
 {% block fullcontent %}
@@ -34,7 +34,7 @@
         {% load static %}
         <div class="item active">
             <div style="opacity: 0.6;">
-                <img class="slides" src="{% static "app/images/Scincube.webp" %}" alt="Logo">
+                <img class="slides" src="{% static "app/images/Scincube.webp" %}" alt="Logo" loading="lazy">
             </div>
             <div class="SEO carousel-caption" style="margin:0;">
                 <h2 class="welcome"> Welcome to</h2>
@@ -48,7 +48,7 @@
         </div>
         <div class="item">
             <div style="opacity: 0.7;">
-                <img class="slides" src="{% static "app/images/art.webp" %}" alt="Art">
+                <img class="slides" src="{% static "app/images/art.webp" %}" alt="Art" loading="lazy">
             </div>
             <div class="carousel-caption">
                 <span>3D printed Art</span>
@@ -56,7 +56,7 @@
         </div>  
         <div class="item">
             <div style="opacity: 0.7;">
-                <img class="slides" src="{% static "app/images/arch.webp" %}" alt="Architecture">
+                <img class="slides" src="{% static "app/images/arch.webp" %}" alt="Architecture" loading="lazy">
             </div>
             <div class="carousel-caption">
                 <span>3D printing for Architects</span>
@@ -64,7 +64,7 @@
         </div>    
         <div class="item">
             <div style="opacity: 0.7;">
-                <img class="slides" src="{% static "app/images/wheel.webp" %}" alt="Engineering">
+                <img class="slides" src="{% static "app/images/wheel.webp" %}" alt="Engineering" loading="lazy">
             </div>
             <div class="carousel-caption">
                 <span>3D printing for Engineers</span>
@@ -72,7 +72,7 @@
         </div>
         <div class="item">
             <div style="opacity: 0.75;">
-                <img class="slides" src="{% static "app/images/lifestyle.webp" %}" alt="Lifestyle">
+                <img class="slides" src="{% static "app/images/lifestyle.webp" %}" alt="Lifestyle" loading="lazy">
             </div> 
             <div class="carousel-caption">
                 <span>3D printed lifestyle</span>
