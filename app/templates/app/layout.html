@@ -11,9 +11,10 @@
     <link rel="preload" href="{% static 'app/fonts/DIN Neuzeit Grotesk LT W01 BdCn.woff2'%}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{% static 'app/fonts/Playfair Display.woff2'%}" as="font" type="font/woff2" crossorigin>
     {% block preload %}{% endblock %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}">
     <link rel="icon" href="{% static 'app/images/favicon.ico' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'app/content/sitev2.css' %}?v=3.5" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/sitev2.min.css' %}?v=3.5" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/responsive.css' %}?v=3.5"/>
   
 </head>
