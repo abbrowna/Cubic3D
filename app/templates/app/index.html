@@ -4,7 +4,7 @@
 <link rel="preload" href="{% static 'app/fonts/Nunito-Regular.ttf'%}" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="{% static 'app/fonts/Nunito-Light.ttf'%}" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="{% static 'app/fonts/Nunito-Bold.ttf'%}" as="font" type="font/ttf" crossorigin>
-<!--<link rel="preload" href="{% static 'app/images/Scincube.webp' %}" as="image" type="image/webp" />-->
+<link rel="preload" href="{% static 'app/images/Scincube.webp' %}" as="image" type="image/webp" />
 {% endblock %}
 
 {% block fullcontent %}
@@ -227,5 +227,23 @@
       "https://twitter.com/cubic3d_ke"
     ]
 }
+</script>
+<script>
+    function preload(arrayOfImages) {
+        $(arrayOfImages).each(function(){
+            $('<img/>')[0].src = this;
+        });
+    }
+    $(window).on('load', function () {
+        if($("#cubiccarousel").is(":visible")){
+            preload([
+                '{% static 'app/images/art.webp' %}',
+                '{% static "app/images/arch.webp" %}',
+                '{% static "app/images/wheel.webp" %}',
+                '{% static "app/images/lifestyle.webp" %}'
+                
+            ]);
+        }
+    })
 </script>
 {% endblock %}
