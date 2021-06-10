@@ -37,7 +37,7 @@
             <h3>Pick a material</h3>
             <ul id="matl_list">
                 {% for material in materials %}
-                <li><button class="{%if not material.stock %}disabled {% endif %}btn1 matl_button">{{ material.name }}</button></li>
+                <li><button class="{%if not material.stock %}disabled {% endif %}btn1 matl_button"  {% if not material.stock %}data-toggle="tooltip" data-placement="bottom" title="Sorry, looks we're out of stock"{% endif %}>{{ material.name }}</button></li>
                 {% endfor %}
 
             </ul>

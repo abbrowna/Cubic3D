@@ -17,8 +17,10 @@ $(document).ready(function () {
     //button event for filament material
     $(".matl_button").click(function () {
         var matl = this.innerHTML;
-        $("#id_material").val(matl);
-        $("#filterform").submit();
+        if (!$(this).hasClass('disabled')) {
+            $("#id_material").val(matl);
+            $("#filterform").submit();
+        }
     })
 
     //click event for filtered filament show details
