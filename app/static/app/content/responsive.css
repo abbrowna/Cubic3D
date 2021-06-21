@@ -91,13 +91,15 @@
         left: 0;
     }
     .SEO .btn {
+        width: 145px;
+        color: black;
+    }
+    #quicklink {
         position: absolute;
         margin: auto;
         top: 73%;
         right: 0;
         left: 0;
-        width: 145px;
-        color: black;
     }
     .carousel-indicators {
         display: block;

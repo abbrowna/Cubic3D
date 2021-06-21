@@ -211,6 +211,13 @@ body {
     color: #FCFCFC;
     text-align:center;
 }
+.SEO .storelink{
+    background-color: rgba(0,0,0,0.5);
+    color: #F7D57F !important;
+}
+.SEO .storelink:hover{
+    background-color: black;
+}
 
 .btn {
     transition: all 0.2s ease 0s;
@@ -280,6 +287,8 @@ body {
     width: 142px;
     height: 40px;
     color: black;
+    margin-right: 3px;
+    margin-left: 3px;
 }
 
 .carousel-caption {
@@ -432,6 +441,9 @@ body {
     text-decoration: none;
     color: #000000;
     transition: color 0.3s ease-out 0s;
+}
+.col2 .col-link strong{
+    color: #4BD1A0;
 }
 .col-content strong{
     font-family: 'Nunito',sans-serif;

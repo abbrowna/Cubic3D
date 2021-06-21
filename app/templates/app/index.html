@@ -18,6 +18,7 @@
         </p>
     </div>
     <a class="btn btn1" href="{% url 'upload' %}" role="button">Request a print</a>
+    <a class="btn btn1 storelink" href="https://store.cubic3d.co.ke" role="button">Buy filament</a>
 </div>
 <div class="carousel slide carousel-fade" id="cubiccarousel" data-ride="carousel" data-interval="6000">
     <!-- Indicators -->
@@ -43,7 +44,10 @@
                     We are a Kenyan 3D printing service that brings this versatile<br /> manufacturing technique
                     much closer to home<br /> all without breaking the bank.
                 </p>
-                <a class="btn btn1" href="{% url 'upload' %}" role="button">Request a print</a>
+                <div id="quicklink">
+                    <a class="btn btn1" href="{% url 'upload' %}" role="button">Request a print</a>
+                    <a class="btn btn1 storelink" href="https://store.cubic3d.co.ke" role="button">Buy filament</a>
+                </div>
             </div>
         </div>
         <div class="item">
@@ -131,6 +135,7 @@
                 Use the link below to find out more about these materials, how you can <strong>combine</strong> them and most importantly, which one you should choose.
             </p>
             <div class="col-link"><a href="{% url 'materials' %}"><span>Materials &raquo;</span></a></div>
+            <div class="col-link"><a href="https://store.cubic3d.co.ke"><strong id="storelink2">Buy filament &raquo;</strong></a></div>
         </div>
     </div>
     <div class="col-md-4 col3">
