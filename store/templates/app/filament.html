@@ -3,8 +3,9 @@
 {% block content %}
 
 <div>
-    <h2 class="inline">{{material}} at {{diameter}}mm diameter</h2>
-    <a class="filter_change" href="{% url 'filamentHome' %}">Change</a>
+    <a class="filter_change" href="{% url 'filamentHome' %}" data-toggle="tooltip" data-placement="bottom" title="Click to change">
+        <h2 class="inline" style="margin-right: 20px;">{{material}} at {{diameter}}mm diameter</h2>
+    </a>
 </div>
 <div class="row filtered_filament">
     {% for filament in filtered %}

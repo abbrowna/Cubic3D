@@ -46,12 +46,13 @@
     .body-content {
         margin-top: 30px;
     }
-    .footer-container{
-        z-index: 101;
+    #footer-wide{
+        z-index: 110;
     }
     .store_cat .col-sm-4 {
         text-align: center !important; 
     }
+
 }
 
 /*@media (min-width: 1300px) {

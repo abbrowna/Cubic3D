@@ -1,5 +1,15 @@
 {% extends "app/layout.html" %}
 {% load static %}
+{% block style %}
+@media only screen and (max-width: 768px) {
+    #cart_icon{
+        position: absolute;
+        top: 120px;
+        right: 30px;
+        z-index: 100;
+    }
+}
+{% endblock %}
 
 {% block content %}
 <div class="headings">

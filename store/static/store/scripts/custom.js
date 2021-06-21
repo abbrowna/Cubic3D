@@ -31,6 +31,10 @@ $(document).ready(function () {
     $(".detail_overlay").mouseleave(function () {
         $(this).hide("fast");
     })
+    //Remove details when you click on details as well
+    $(".detail_overlay").click(function () {
+        $(this).hide("fast");
+    })
 
     //Ajax request to add to the cart
     $(".add_cart_btn").click(function () {

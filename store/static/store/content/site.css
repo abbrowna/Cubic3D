@@ -381,12 +381,19 @@ h3{
     /*background-color: #f7d57F;*/
     border: 1px solid #f7d57f;
 }
-.filter_change{
-    margin-left: 20px;
+.filter_change:hover{
+    text-decoration: none;
+}
+/*.filter_change{
+    margin-left: 0px;
     color: black;
     font-family: Nunito;
     font-size: 15px;
 }
+.filter_change:hover{
+    color: black;
+    text-decoration: underline;
+}*/
 #cart-animator{
     width: 0px;
     height: 0px;
@@ -635,12 +642,14 @@ h3{
 /*********footer************/
 #footer-wide {
     background-color: #F7D57F;
+    position: relative;
+    z-index: 110;
 }
 
-    #footer-wide > .container > footer > .row {
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
+#footer-wide > .container > footer > .row {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 
 .copyright {
     font-family: 'Playfair Display',sans-serif;
