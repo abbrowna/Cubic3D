@@ -38,23 +38,25 @@
     <p id="js_first_name">{{user.first_name}}</p>
     <p id="js_last_name">{{user.last_name}}</p>
     <p id="js_email">{{user.email}}</p>
-    <p id="js_phone">{{user.profile.phone}}</p>
+    <p id="js_phone">{{user.profile.mobile}}</p>
     <p id="js_address">{{user.profile.address}}</p>
     <p id="js_company">{{user.profile.company}}</p>
     <p id="js_region">{{user.profile.region.id}}</p>
 </div>
-<div class="auth_checkout">
-    <p>{{user.first_name}} {{user.last_name}}</p>
-    <p>&nbsp;</p>
-    <p>{{user.profile.address}}</p>
-    <p>{{user.profile.region}}</p>
-    <p>&nbsp;</p>
-    <p>{{user.profile.phone}}</p>
-    <button class="btn2" id="change_default">Change</button>
-</div>
+    {% if user.profile.address %}
+    <div class="auth_checkout">
+        <p>{{user.first_name}} {{user.last_name}}</p>
+        <p>&nbsp;</p>
+        <p>{{user.profile.address}}</p>
+        <p>{{user.profile.region}}</p>
+        <p>&nbsp;</p>
+        <p>{{user.profile.mobile}}</p>
+        <button class="btn2" id="change_default">Change</button>
+    </div>
+    {% endif %}
 {%endif%}
 
-<div class="checkout_form" {% if auth %}style="display:none"{% endif %}>
+<div class="checkout_form" {% if auth and user.profile.address %}style="display:none"{% endif %}>
     <form action="{% url 'checkout' %}" method="post" id="checkout-form">   
         {% csrf_token %}
         <div class="row">
@@ -110,9 +112,19 @@
                     {{form.region.errors}}
                     {{form.region}}
                 </div>
+                {% if auth %}
+                <div class="field-wrapper" id="default_select">
+                    <label for="{{form.set_default.id_for_label}}">Set address and region as default</label>
+                    {{form.set_default.errors}}
+                    {{form.set_default}}
+                </div>
+                {% endif %}
             </div>
         </div>
     </form>
+</div>
+
+<div class="cost_summary">
     <p id="delivery_cost">Delivery: KSH <span>350</span></p>
     <p id="checkout_total">Total: KSH <strong></strong></p>
 </div>
@@ -127,6 +139,18 @@
 {% block scripts %}
 <script>
     $(document).ready(function () {
+        // Update the delivery on first load
+        var region_id = $("#id_region").val();
+        $.ajax({
+            url: '/ajax/updateDelivery',
+            data: { 'region_id': region_id },
+            dataType: 'json',
+            success: function (data) {
+                $('#delivery_cost > span').html(data.cost);
+                var total = parseInt($('.subtotal span').html()) + parseInt(data.cost);
+                $('#checkout_total strong').html(total);
+            }
+        })
         var total = parseInt($('.subtotal span').html()) + parseInt($('#delivery_cost span').html());
         $('#checkout_total strong').html(total);
 

@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'store',
+    'app',
     'google_analytics',
     'verify_email',
 ]

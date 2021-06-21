@@ -54,7 +54,6 @@
     padding-top: 80px;
 }
 
-
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
@@ -128,8 +127,13 @@ input[type="checkbox"].input-validation-error {
     font-family: 'Playfair Display';
     font-size: 16px;
 }
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    background-color: #F7D57f;
+    color: #1a1a1a;
+}
 /*******Body styling*******/
-hr{
+hr {
     border-top-style: none;
 }
 .headings {
@@ -518,11 +522,11 @@ h3{
     font-weight: bold;
     font-size: 16px;
 }
-#alternate_select input{
+#alternate_select input, #default_select input{
     display: inline;
     width: auto;
 }
-#alternate_select label{
+#alternate_select label, #default_select label {
     display: inline;
 }
 .alt{

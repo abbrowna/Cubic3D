@@ -7,7 +7,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpRequest, JsonResponse
 from .forms import FilterForm, OrderForm, SignUpForm, ProfileForm, UserForm
 from verify_email.email_handler import send_verification_email
-from store.models import Material, Filament, Region, Order, OrderDetail
+from store.models import Material, Filament, Order, OrderDetail
+from app.models import Region
 from django.contrib.auth.decorators import login_required 
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.mail import EmailMessage, send_mail
@@ -16,6 +17,8 @@ from xhtml2pdf import pisa
 from django.conf import settings
 import os
 import urllib
+import requests
+import base64
 
 #lifespan for preorders and timezone
 lifespan = timedelta(hours=1)
@@ -253,7 +256,10 @@ def checkout(request):
             new_order = form.save()
             if usr.is_authenticated:
                 new_order.user = usr
-                
+                if form.cleaned_data["set_default"]:
+                    usr.profile.address = form.cleaned_data["address"]
+                    usr.profile.region = form.cleaned_data["region"]
+                    usr.save()
             
             item_total = 0
             for item in classed_filament:
@@ -265,7 +271,7 @@ def checkout(request):
                 order_detail.save()
                 item_total = item_total + item.filament.price * item.quantity
             new_order.item_total = item_total
-            new_order.shipping_fee = new_order.region.cost
+            new_order.delivery_fee = new_order.region.cost
             new_order.save()
 
             for item in classed_filament:
@@ -345,6 +351,51 @@ def updateDelivery(request):
         'cost': cost
     }
     return JsonResponse(data)
+
+def mpesaExpress(request):
+#    """Send an stk push for payment to the user and process it"""
+#    #get authorization​
+#    response = requests.request(
+#        "GET", 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials', 
+#        headers = { 'Authorization': 'Basic cFJZcjZ6anEwaThMMXp6d1FETUxwWkIzeVBDa2hNc2M6UmYyMkJmWm9nMHFRR2xWOQ==' }
+#    )
+#    print(response.status_code)
+#    token = response.json()["access_token"]
+#    print(token)
+    
+    #perform push   ​
+    headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic '+token
+    }
+    timestamp = datetime.now(timezone(tz)).strftime("%Y%m%d%H%M%S")
+    shortcode = 174379
+    b64_pass = base64.b64encode(str(shortcode).encode("ascii")+token.encode("ascii")+timestamp.encode("ascii"))
+    payload = {
+        "BusinessShortCode": shortcode,
+        "Password": b64_pass,
+        "Timestamp": timestamp,
+        "TransactionType": "CustomerPayBillOnline",
+        "Amount": 1,
+        "PartyA": 254700888557,
+        "PartyB": shortcode,
+        "PhoneNumber": 254700888557,
+        "CallBackURL": "https://mydomain.com/path",
+        "AccountReference": "CompanyXLTD",
+        "TransactionDesc": "Payment of X" 
+    }
+    
+    response = requests.request("POST", 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v2/processrequest', headers = headers, data = payload)
+    print(response.text.encode('utf8'))
+
+    return redirect('home')
+
+def apiCallback(request):
+    if request.method == 'POST':
+        pass #toDo process the callback Json response
+    else:
+        pass #just checking if the method is GET
+    return True
 
 def orderReview(request):
     """Order review and payment information"""

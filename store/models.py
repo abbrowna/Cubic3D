@@ -35,12 +35,12 @@ class Filament(models.Model):
     def __str__(self):
         return str(self.diameter) + 'mm' + ' ' + self.color + ' ' + self.material.name
 
-class Region(models.Model):
-    region = models.CharField(max_length = 50)
-    cost = models.IntegerField()
+#class Region(models.Model):
+#    region = models.CharField(max_length = 50)
+#    cost = models.IntegerField()
     
-    def __str__(self):
-        return self.region
+#    def __str__(self):
+#        return self.region
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete = models.SET_NULL, null=True, blank=True)
@@ -51,7 +51,7 @@ class Order(models.Model):
     company = models.CharField(max_length = 100, blank=True )
     email = models.EmailField()
     time = models.DateTimeField(auto_now_add=True)
-    region = models.ForeignKey(Region, on_delete = models.SET_NULL, null=True, default=1)
+    region = models.ForeignKey('app.Region', on_delete = models.SET_NULL, null=True, default=1)
     paid = models.BooleanField(default = False)
     delivered = models.BooleanField(default = False)
     item_total = models.IntegerField(default = 0)

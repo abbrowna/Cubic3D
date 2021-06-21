@@ -40,6 +40,7 @@ class OrderForm(forms.ModelForm):
             'company':forms.TextInput(attrs = {'placeholder':'Optional'}),
             'email':forms.TextInput(attrs = {'placeholder':'example@domain.com'})
         }
+    set_default = forms.BooleanField(required=False, label='Set address and region as default')
 
 
 class SignUpForm(UserCreationForm):

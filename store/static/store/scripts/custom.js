@@ -24,8 +24,8 @@ $(document).ready(function () {
     })
 
     //click event for filtered filament show details
-    $(".filtered_filament .column").click(function () {
-        $(this).children(".detail_overlay").show("fast");
+    $(".filtered_filament img").click(function () {
+        $(this).siblings(".detail_overlay").show("fast");
     })
     //Remove details when no longer pointing at detail
     $(".detail_overlay").mouseleave(function () {

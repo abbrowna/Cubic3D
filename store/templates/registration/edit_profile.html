@@ -17,10 +17,9 @@
     <body class="cleanbody">
         
         <div id="edit_profile" class="container">
-            <h1 class="clean_brand">CUBIC3D store</h1>
+            <h1 class="clean_brand">CUBIC3D</h1>
             <div id="profile_title">
-                <h1>{{title}}</h1>
-                <h2>View and edit your personal info below.</h2>
+                <h2>View and edit your profile</h2>
             </div>
             <form method="POST" class="form-horizontal">
                 {% csrf_token %} 
@@ -61,8 +60,8 @@
                         </div>
                         <div class="input-group">
                             <label for="mobile">Mobile number</label>
-                            {{profile_form.phone.errors}}
-                            {{profile_form.phone}}
+                            {{profile_form.mobile.errors}}
+                            {{profile_form.mobile}}
                         </div>
                     </div>
                 </div>

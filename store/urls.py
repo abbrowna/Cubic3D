@@ -49,6 +49,8 @@ urlpatterns = [
     path('myadmin/pre-orders', views.preOrders, name='preOrders'),
     path('myadmin/pending-orders', views.pendingOrders, name='pendingOrders'),
     path('myadmin/completed-orders', views.completedOrders, name='completedOrders'),
+    #path('api/callback', views.apiCallback, name='apiCallback'),
+    #path('api/Express', views.mpesaExpress, name='mpesaExpress'),
 
     #temporary email construction
     path('email/emailviewer', views.emailViewer, name='emailViewer'),
