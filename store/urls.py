@@ -16,8 +16,8 @@ from django.conf.urls.static import static
 
 app_name = 'store'
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('filament', views.filamentLanding, name='filamentHome'),
+    path('', views.filamentLanding, name='filamentHome'),
+    #path('filament', views.filamentLanding, name='filamentHome'),
     path('contact/', views.contact, name='contact'),
     path('about/', views.about, name='about'),
     path('login/',

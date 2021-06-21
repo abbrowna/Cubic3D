@@ -392,7 +392,7 @@ def mpesaExpress(request):
     response = requests.request("POST", 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v2/processrequest', headers = headers, data = payload)
     print(response.text.encode('utf8'))
 
-    return redirect('home')
+    return redirect('filamentHome')
 
 def apiCallback(request):
     if request.method == 'POST':

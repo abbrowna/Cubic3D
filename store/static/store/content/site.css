@@ -234,6 +234,13 @@ h3{
 .hidden{
     display: none;
 }
+#service_link{
+    margin-left: 30px;
+}
+#service_link a {
+    color: #4bd1a0;
+    text-decoration: underline;
+}
 
 /********Filament selectionpage**********/
 .filament_image{
