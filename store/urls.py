@@ -6,12 +6,18 @@ from datetime import datetime
 from django.urls import path
 from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import FilamentSitemap
 from store import forms, views
 
 
 from django.conf import settings
 from django.conf.urls import include
 from django.conf.urls.static import static
+
+sitemaps = {
+    'filament':FilamentSitemap,
+}
 
 
 app_name = 'store'
@@ -97,5 +103,5 @@ urlpatterns = [
             template_name='registration/pass_reset_complete.html',
         ),name='password_reset_complete'),
 
-
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

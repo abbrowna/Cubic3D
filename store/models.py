@@ -19,6 +19,9 @@ class Material(models.Model):
     name = models.CharField(max_length = 20, primary_key=True)
     def __str__(self):
         return self.name
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('filament', kwargs = {'diameter':1.75, 'material':self.name})
 
 class Filament(models.Model):
     diameter = models.DecimalField(max_digits = 3, decimal_places=2, choices=dia_choices)
@@ -34,8 +37,10 @@ class Filament(models.Model):
     bed_temp = models.CharField(max_length = 15, blank = True)
     help_link = models.BooleanField(default = True)
     type = models.CharField(max_length = 20, choices=type_choices, default = 'Refill+Spool')
+    
     def __str__(self):
         return str(self.diameter) + 'mm' + ' ' + self.color + ' ' + self.material.name + ' ' + self.type
+
 
 #class Region(models.Model):
 #    region = models.CharField(max_length = 50)
