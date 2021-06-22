@@ -31,7 +31,7 @@ class Filament(models.Model):
     characteristics = models.TextField(blank=True)
     print_temp = models.CharField(max_length = 15, blank = True)
     bed_temp = models.CharField(max_length = 15, blank = True)
-
+    help_link = models.BooleanField(default = True)
     def __str__(self):
         return str(self.diameter) + 'mm' + ' ' + self.color + ' ' + self.material.name
 

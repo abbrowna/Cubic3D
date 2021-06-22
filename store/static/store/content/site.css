@@ -358,6 +358,13 @@ h3{
     font-family: Nunito;
     font-size: 18px;
 }
+.detail_overlay a{
+    color: #4bd1a0;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+    font-family: Nunito;
+}
 
 #cart_icon{
     position: fixed;
@@ -789,5 +796,26 @@ h3{
     margin-top: 20px;
     margin-bottom: 40px;
 }
-
+/******How to images ********/
+.how_image{
+    width: 100%;
+    object-fit: contain;
+    border: 1px solid #f7d57f;
+}
+.how-col{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.how_def li, #small-howto p{
+    font-family: Nunito;
+    font-size: 17px;
+    padding-top: 5px;
+}
+#how-image-col .bubble{
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-family: DIN;
+    font-size: 17px;
+}
 

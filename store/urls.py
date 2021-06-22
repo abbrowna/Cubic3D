@@ -44,6 +44,7 @@ urlpatterns = [
     path('filament/checkout/', views.checkout, name='checkout'),
     path('ajax/updateDelivery', views.updateDelivery, name='updateDelivery'),
     path('filament/order-review', views.orderReview, name='orderReview'),
+    path('filament/how-to', views.howTo, name='howTo'),
     path('myadmin/', views.myadmin, name='myadmin'),
     path('myadmin/release-stock', views.releaseStock, name='releaseStock'),
     path('myadmin/pre-orders', views.preOrders, name='preOrders'),

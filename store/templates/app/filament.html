@@ -32,6 +32,9 @@
                 Hotend: {{filament.print_temp}}&deg;C<br />
                 Bed: {{filament.bed_temp}}&deg;C
             </p>
+            {% if filament.help_link %}
+            <a href="{% url 'howTo' %}" target="_blank">How to refill a spool</a>
+            {% endif %}
         </div>
     </div>
     {%endfor%}

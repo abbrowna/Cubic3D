@@ -116,6 +116,19 @@ def about(request):
         }
     )
 
+def howTo(request):
+    """renders the how to assemble page"""
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'app/howto.html',
+        {
+            'title':'How to refill reusable spools',
+            'message':'A simple guide on how to use Esun re-usable spools',
+            'year':datetime.now().year,
+        }
+    )
+
 def filament(request, diameter, material):
     """renders available filament after filtering"""
     assert isinstance(request, HttpRequest)

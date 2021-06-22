@@ -52,7 +52,15 @@
     .store_cat .col-sm-4 {
         text-align: center !important; 
     }
-
+    #large-howto{
+        display: none;
+    }
+    #small-howto{
+        display: block !important;
+    }
+    #small-howto .instruction{
+        margin-top: 20px;
+    }
 }
 
 /*@media (min-width: 1300px) {

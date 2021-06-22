@@ -1,0 +1,79 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+{% load static %}
+<h2 style="margin-bottom:50px;">How to use the re-fillable spools</h2>
+
+<div class="row" id="large-howto">
+    <div class="col-sm-7" id="how-image-col">
+        <div class="row">
+            <div class="col-sm-6 how-col">
+                <img class="how_image" src="{% static 'store/images/howto1.webp'%}" alt="How-To-1"/>
+                <span class="bubble">1</span>
+            </div>
+            <div class="col-sm-6 how-col">
+                <img class="how_image" src="{% static 'store/images/howto2.webp'%}" alt="How-To-2"/>
+                <span class="bubble">2</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 how-col">
+                <img class="how_image" src="{% static 'store/images/howto3.webp'%}" alt="How-To-3"/>
+                <span class="bubble">3</span>
+            </div>
+            <div class="col-sm-6 how-col">
+                <img class="how_image" src="{% static 'store/images/howto4.webp'%}" alt="How-To-4"/>
+                <span class="bubble">4</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-5">
+        <ol class="how_def">
+            <li>Distinguish between the inner and outer sides of the spool. The inner side is smooth while the outer side has grooves and a cutout for the label</li>
+            <li>Align and insert each of the 3 short pieces with the corresponding slots on the inner side of the spool. They may be a bit tight.</li>
+            <li>Place the filament re-fill into the partialy assembled spool.</li>
+            <li>Align the other half of the spool and press to complete the assembly. Now you can cut the straps and pull them out.</li>
+        </ol>
+    </div>
+    <div class="col-md-6">
+
+    </div>
+</div>
+<div id="small-howto" style="display:none">
+    <div class="instruction">
+        <div>
+            <img class="how_image" src="{% static 'store/images/howto1.webp' %}" alt="How-To-1" />
+        </div>
+        <div>
+            <p>Distinguish between the inner and outer side of each spool half. The inner side is smooth while the outer side has grooves and a cutout for the label.</p>
+        </div>
+    </div>
+    <div class="instruction">
+        <div>
+            <img class="how_image" src="{% static 'store/images/howto2.webp' %}" alt="How-To-2" />
+        </div>
+        <div>
+            <p>Align and insert each of the 3 short pieces with the corresponding slots on the inner side of the spool. They may be a bit tight.</p>
+        </div>
+    </div>
+    <div class="instruction">
+        <div>
+            <img class="how_image" src="{% static 'store/images/howto3.webp' %}" alt="How-To-3" />
+        </div>
+        <div>
+            <p>Place the filament re-fill into the partialy assembled spool.</p>
+        </div>
+    </div>
+    <div class="instruction">
+        <div>
+            <img class="how_image" src="{% static 'store/images/howto4.webp' %}" alt="How-To-4" />
+        </div>
+        <div>
+            <p>Align the other half of the spool and press to complete the assembly. Now you can cut the straps and pull them out.</p>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}
