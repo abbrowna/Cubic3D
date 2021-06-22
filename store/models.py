@@ -8,6 +8,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 dia_choices = [(1.75, '1.75'),(2.85, '2.85')]
+type_choices = [('Refill+Spool','Refill+Spool'),('Refill','Refill'),('Full Spool','Full Spool')]
 mass_choices = [(250, '250g'),(500,'500g'),(750, '750g'),(1000, '1Kg')]
 
 # Create your models here.
@@ -32,8 +33,9 @@ class Filament(models.Model):
     print_temp = models.CharField(max_length = 15, blank = True)
     bed_temp = models.CharField(max_length = 15, blank = True)
     help_link = models.BooleanField(default = True)
+    type = models.CharField(max_length = 20, choices=type_choices, default = 'Refill+Spool')
     def __str__(self):
-        return str(self.diameter) + 'mm' + ' ' + self.color + ' ' + self.material.name
+        return str(self.diameter) + 'mm' + ' ' + self.color + ' ' + self.material.name + ' ' + self.type
 
 #class Region(models.Model):
 #    region = models.CharField(max_length = 50)
