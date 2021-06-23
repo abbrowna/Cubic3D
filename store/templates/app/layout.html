@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} - The store that keeps you 3D printing</title>
     {% load static %}
+    <meta name="decription" content="{{ description }}" />
     <link rel="stylesheet" type="text/css" href="{% static 'store/content/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'store/content/site.css' %}?v=1.4" />
     <link rel="stylesheet" type="text/css" href="{% static 'store/content/responsive.css' %}?v=1.4" />
@@ -51,8 +52,9 @@
                     </div>
                     <div class="col-sm-2">
                         <div class="social-bar row">
-                            <div class="col-xs-6" style="text-align:right;"><a href="https://twitter.com/Cubic3D_Ke" target="_blank"><img src="{% static "store/images/twitter.webp" %}" alt="twitter"></a></div>
-                            <div class="col-xs-6"><a href="https://www.instagram.com/cubic3d_ke/" target="_blank"><img src="{% static "store/images/instagram.webp" %}" alt="instagram"></a></div>
+                            <div class="col-xs-4" style="text-align:right;"><a href="https://twitter.com/Cubic3D_Ke" target="_blank"><img src="{% static "store/images/twitter.webp" %}" alt="twitter"></a></div>
+                            <div class="col-xs-4" style="text-align:center;"><a href="https://www.instagram.com/cubic3d_ke/" target="_blank"><img src="{% static "store/images/instagram.webp" %}" alt="instagram"></a></div>
+                            <div class="col-xs-4"><a href="https://www.facebook.com/cubic3d/" target="_blank"><img src="{% static "store/images/facebook.webp" %}" alt="facebook"></a></div>
                         </div>
                     </div>
                 </div>

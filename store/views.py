@@ -82,10 +82,11 @@ def filamentLanding(request):
             'app/fil_landing.html',
             {
                 'materials':materials,
-                'title':'3D printing filament selection',
+                'title':'Cubic3D Store - Buy 3D printing filament with Local delivery',
                 'year':datetime.now().year,
                 'form':form,
-                'num_cart_items': num_cart_items
+                'num_cart_items': num_cart_items,
+                'description': 'Cubic3D store confidently offers a selection of high quality 3D printing filament because we use the same in our print farm all day.'
             }
     )
 
@@ -97,9 +98,10 @@ def contact(request):
         request,
         'app/contact.html',
         {
-            'title':'Contact Us',
+            'title':'Cubic3D - Contact Us',
             'message':'Your contact page.',
             'year':datetime.now().year,
+            'description':'You can easily reach the Cubic3D team and talk to us through these channels.',
         }
     )
 
@@ -110,9 +112,10 @@ def about(request):
         request,
         'app/about.html',
         {
-            'title':'About us',
+            'title':'Cubic3D - About us',
             'message':'About us',
             'year':datetime.now().year,
+            'description':'Learn more about us, how we came to be and why you can trust our products.',
         }
     )
 
@@ -123,9 +126,10 @@ def howTo(request):
         request,
         'app/howto.html',
         {
-            'title':'How to refill reusable spools',
+            'title':'Cubic3D - How to refill reusable spools',
             'message':'A simple guide on how to use Esun re-usable spools',
             'year':datetime.now().year,
+            'description':'Learn the easy steps to refill a re-usable spool and reduce plastic waste created by used up spools.',
         }
     )
 
@@ -139,13 +143,14 @@ def filament(request, diameter, material):
         request,
         'app/filament.html',
         {
-            'title': 'Filament',
+            'title': 'Cubic3D - '+str(diameter)+'mm '+material,
+            'description': 'Our selection of '+str(diameter)+'mm '+material+' that we know you will love.',
             'message':'Filament available for you',
             'year':datetime.now().year,
             'material':material,
             'diameter':diameter,
             'filtered':filtered_filament,
-            'num_cart_items': num_cart_items
+            'num_cart_items': num_cart_items,
             }
         )
 
