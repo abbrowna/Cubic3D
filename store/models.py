@@ -37,7 +37,7 @@ class Filament(models.Model):
     bed_temp = models.CharField(max_length = 15, blank = True)
     help_link = models.BooleanField(default = True)
     type = models.CharField(max_length = 20, choices=type_choices, default = 'Refill+Spool')
-    
+
     def __str__(self):
         return str(self.diameter) + 'mm' + ' ' + self.color + ' ' + self.material.name + ' ' + self.type
 

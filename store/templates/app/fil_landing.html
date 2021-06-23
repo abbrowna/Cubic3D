@@ -67,3 +67,25 @@
 </a>
 
 {% endblock %}
+{% block scripts %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "url": "https://store.cubic3d.co.ke",
+    "name": "Cubic3D Store",
+    "logo": "https://cubic3d.co.ke/static/store/images/logo.png",
+    "areaServed": "KE",
+    "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+254-700-888-557",
+        "contactType": "customer service"
+    },
+    "sameAs": [
+      "https://www.facebook.com/cubic3d/",
+      "https://www.instagram.com/cubic3d_ke/",
+      "https://twitter.com/cubic3d_ke"
+    ]
+}
+</script>
+{% endblock %}
