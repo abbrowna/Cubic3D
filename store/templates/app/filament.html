@@ -59,7 +59,7 @@
       "@context": "https://schema.org/",
       "@type": "Product",
       "name": "{{diameter}}mm {{material}} filament",
-      "image": [{{images}}],
+      "image": [{{images|safe}}],
       "description": "This is {% if filtered.0.net_weight == 1000 %}1Kg {% else %}{{filtered.0.net_weight}}g {% endif %}of {{filtered.0.diameter}}mm {{filtered.0.material}} 3D printing filament with tight diametral tolerance and high consistency.",
       "brand": {
         "@type": "Brand",
