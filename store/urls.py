@@ -9,6 +9,7 @@ from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, 
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import FilamentSitemap, StaticViewSitemap
 from store import forms, views
+from django.views.generic.base import TemplateView
 
 
 from django.conf import settings
@@ -62,7 +63,11 @@ urlpatterns = [
 
     #temporary email construction
     path('email/emailviewer', views.emailViewer, name='emailViewer'),
-    
+    #robots.txt
+    path('robots.txt/',
+        TemplateView.as_view(template_name='robots.txt', content_type='text/plain'),
+    ),
+
     #Authentication
     path('accounts/login/',
         LoginView.as_view(
