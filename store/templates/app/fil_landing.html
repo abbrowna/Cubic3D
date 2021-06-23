@@ -1,5 +1,8 @@
 {% extends "app/layout.html" %}
 {% load static %}
+{% block preload %}
+<link rel="preload" href="{% static 'store/images/diameter.svg' %}" as="image" type="image/svg+xml" />
+{% endblock %}
 {% block style %}
 @media only screen and (max-width: 768px) {
     #cart_icon{
