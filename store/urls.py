@@ -7,7 +7,7 @@ from django.urls import path
 from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.contrib.sitemaps.views import sitemap
-from .sitemaps import FilamentSitemap
+from .sitemaps import FilamentSitemap, StaticViewSitemap
 from store import forms, views
 
 
@@ -17,6 +17,7 @@ from django.conf.urls.static import static
 
 sitemaps = {
     'filament':FilamentSitemap,
+    'static':StaticViewSitemap
 }
 
 
