@@ -137,7 +137,7 @@ def filament(request, diameter, material):
     """renders available filament after filtering"""
     assert isinstance(request, HttpRequest)
     filtered_filament = Filament.objects.filter(diameter = diameter).filter(material__name = material).order_by('price')
-
+    instock = Filament.objects.filter(stock__gt = 0)
     num_cart_items = len(request.session['cart_items'])
     return render(
         request,
@@ -151,6 +151,7 @@ def filament(request, diameter, material):
             'diameter':diameter,
             'filtered':filtered_filament,
             'num_cart_items': num_cart_items,
+            'instock':len(instock) > 0
             }
         )
 

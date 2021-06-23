@@ -64,7 +64,7 @@
         "{{ filament.image.url }}",
         {% endfor %}
        ],
-      "description": "This is {{filtered.0.net_weight}} of {{filtered.0.diameter}} {{filtered.0.material}} 3D printing filament with tight diametral tolerance and high consistency.",
+      "description": "This is {% if filtered.0.net_weight == 1000 %}1Kg {% else %}{{filtered.0.net_weight}}g {% endif %}of {{filtered.0.diameter}}mm {{filtered.0.material}} 3D printing filament with tight diametral tolerance and high consistency.",
       "brand": {
         "@type": "Brand",
         "name": "{{filtered.0.brand.name}}"
@@ -75,7 +75,7 @@
         "priceCurrency": "KES",
         "price": "{{filtered.0.price}}",
         "itemCondition": "https://schema.org/NewCondition",
-        {% if filtered.0.stock %}
+        {% if instock %}
         "availability": "https://schema.org/InStock",
         {% else %}
         "availability": "https://schema.org/OutOfStock",
