@@ -182,11 +182,14 @@ def addToCart(request):
 def updateCart(request):
     """Updates the cart with the correct current value"""
     assert isinstance(request, HttpRequest)
-    if 'cart_items' in request.session:
-        cart_items = request.session['cart_items']
-    else:
+    try:
+        if 'cart_items' in request.session:
+            cart_items = request.session['cart_items']
+        else:
+            cart_items = []
+            request.session['cart_items'] = cart_items
+    except:
         cart_items = []
-        request.session['cart_items'] = cart_items
     data = {
         'numOfItems': len(cart_items),
     }

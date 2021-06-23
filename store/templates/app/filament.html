@@ -61,7 +61,7 @@
       "name": "{{diameter}}mm {{material}} filament",
       "image": [
         {% for filament in filtered %}
-        "{{ filament.image.url }}",
+        "{{ request.scheme }}://{{ request.get_host }}{{ filament.image.url }}",
         {% endfor %}
        ],
       "description": "This is {% if filtered.0.net_weight == 1000 %}1Kg {% else %}{{filtered.0.net_weight}}g {% endif %}of {{filtered.0.diameter}}mm {{filtered.0.material}} 3D printing filament with tight diametral tolerance and high consistency.",
@@ -71,7 +71,7 @@
       },
       "offers": {
         "@type": "Offer",
-        "url": "{% url 'filament' diameter=diameter material=material %}",
+        "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'filament' diameter=diameter material=material %}",
         "priceCurrency": "KES",
         "price": "{{filtered.0.price}}",
         "itemCondition": "https://schema.org/NewCondition",
