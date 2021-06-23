@@ -65,7 +65,7 @@ urlpatterns = [
     path('email/emailviewer', views.emailViewer, name='emailViewer'),
     #robots.txt
     path('robots.txt/',
-        TemplateView.as_view(template_name='robots.txt', content_type='text/plain'),
+        TemplateView.as_view(template_name='Robots.txt', content_type='text/plain'),
     ),
 
     #Authentication
