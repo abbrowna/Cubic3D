@@ -1,2 +1,3 @@
 User-Agent: *
 Disallow: /filament/cart/
+Disallow: /ajax/updateCart/

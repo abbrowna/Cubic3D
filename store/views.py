@@ -138,7 +138,10 @@ def filament(request, diameter, material):
     assert isinstance(request, HttpRequest)
     filtered_filament = Filament.objects.filter(diameter = diameter).filter(material__name = material).order_by('price')
     instock = Filament.objects.filter(stock__gt = 0)
-    num_cart_items = len(request.session['cart_items'])
+    try:
+        num_cart_items = len(request.session['cart_items'])
+    except:
+        num_cart_items = 0
     return render(
         request,
         'app/filament.html',
