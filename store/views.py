@@ -260,7 +260,7 @@ def cart(request):
         }
     )
 
-
+@login_required
 def checkout(request):
     """present the checkout page"""
     assert isinstance(request, HttpRequest)
@@ -430,6 +430,7 @@ def apiCallback(request):
         pass #just checking if the method is GET
     return True
 
+@login_required
 def orderReview(request):
     """Order review and payment information"""
     assert isinstance(request, HttpRequest)
