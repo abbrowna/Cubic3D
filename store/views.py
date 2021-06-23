@@ -142,6 +142,9 @@ def filament(request, diameter, material):
         num_cart_items = len(request.session['cart_items'])
     except:
         num_cart_items = 0
+    images = []
+    for f in filtered_filament:
+        images.append(request.build_absolute_uri(f.image.url))
     return render(
         request,
         'app/filament.html',
@@ -154,7 +157,8 @@ def filament(request, diameter, material):
             'diameter':diameter,
             'filtered':filtered_filament,
             'num_cart_items': num_cart_items,
-            'instock':len(instock) > 0
+            'instock':len(instock) > 0,
+            'images':",".join(f'"{i}"' for i in images)
             }
         )
 
