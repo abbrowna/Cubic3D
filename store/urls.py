@@ -60,7 +60,8 @@ urlpatterns = [
     path('myadmin/completed-orders', views.completedOrders, name='completedOrders'),
     #path('api/callback', views.apiCallback, name='apiCallback'),
     #path('api/Express', views.mpesaExpress, name='mpesaExpress'),
-
+    path('djga/', include('google_analytics.urls')),
+    
     #temporary email construction
     path('email/emailviewer', views.emailViewer, name='emailViewer'),
     #robots.txt
