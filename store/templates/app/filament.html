@@ -21,7 +21,10 @@
         </h3>
         <p class="type">{{filament.type}}</p>
         <p class="price">{{filament.price}} KSH</p>
-        <div class="stock_bubble"><span>{{filament.stock}}</span></div>
+        <!--<div class="stock_bubble"><span>{{filament.stock}}</span></div>-->
+        {% if not filament.stock %}
+        <div class="OOS"><span>Out of stock</span></div>
+        {% endif %}
         <span class="stock-tooltip">In stock</span>
         <span class="stock-info"></span>
         <button class="btn2 add_cart_btn" value="{{filament.id}}">Add to Cart</button>
