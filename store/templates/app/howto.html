@@ -32,7 +32,7 @@
             <li>Distinguish between the inner and outer sides of the spool. The inner side is smooth while the outer side has grooves and a cutout for the label</li>
             <li>Align and insert each of the 3 short pieces with the corresponding slots on the inner side of the spool. They may be a bit tight.</li>
             <li>Place the filament re-fill into the partialy assembled spool.</li>
-            <li>Align the other half of the spool and press to complete the assembly. Now you can cut the straps and pull them out.</li>
+            <li>Align the other half of the spool and press to complete the assembly. Now you can cut the straps with your utility kife and pull them out. Done!</li>
         </ol>
     </div>
     <div class="col-md-6">
@@ -40,40 +40,108 @@
     </div>
 </div>
 <div id="small-howto" style="display:none">
+    <a name="step1"></a>
     <div class="instruction">
-        <div>
+        <div class="mobile_image">
             <img class="how_image" src="{% static 'store/images/howto1.webp' %}" alt="How-To-1" />
+            <span class="bubble">1</span>
         </div>
         <div>
             <p>Distinguish between the inner and outer side of each spool half. The inner side is smooth while the outer side has grooves and a cutout for the label.</p>
         </div>
     </div>
+    <a name="step2"></a>
     <div class="instruction">
-        <div>
+        <div class="mobile_image">
             <img class="how_image" src="{% static 'store/images/howto2.webp' %}" alt="How-To-2" />
+            <span class="bubble">2</span>
         </div>
         <div>
             <p>Align and insert each of the 3 short pieces with the corresponding slots on the inner side of the spool. They may be a bit tight.</p>
         </div>
     </div>
+    <a name="step3"></a>
     <div class="instruction">
-        <div>
+        <div class="mobile_image">
             <img class="how_image" src="{% static 'store/images/howto3.webp' %}" alt="How-To-3" />
+            <span class="bubble">3</span>
         </div>
         <div>
             <p>Place the filament re-fill into the partialy assembled spool.</p>
         </div>
     </div>
+    <a name="step4"></a>
     <div class="instruction">
-        <div>
+        <div class="mobile_image">
             <img class="how_image" src="{% static 'store/images/howto4.webp' %}" alt="How-To-4" />
+            <span class="bubble">4</span>
         </div>
         <div>
-            <p>Align the other half of the spool and press to complete the assembly. Now you can cut the straps and pull them out.</p>
+            <p>Align the other half of the spool and press to complete the assembly. Now you can cut the straps with your utility kife and pull them out. Done!</p>
         </div>
     </div>
 
 
 </div>
 
+{% endblock %}
+{% block scripts %}
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "HowTo",
+    "image": {
+    "@type": "ImageObject",
+    "url": "https://store.cubic3d.co.ke/static/store/images/howto0.webp"
+    },
+    "name": "How to refill the eSUN re-usable spools",
+    "description": "Learn how to take a filament refill and load it into a re-usable spool of the eSUN brand.",
+    "totalTime": "PT5M",
+    "supply": [
+        {
+          "@type": "HowToSupply",
+          "name": "An eSUN filament refill of your choice"
+        }, {
+          "@type": "HowToSupply",
+          "name": "An eSUN re-usable spool"
+        }
+      ],
+      "tool": [
+        {
+          "@type": "HowToTool",
+          "name": "Box cutter or similar utility knife"
+        }
+      ],
+    "step": [
+    {
+        "@type": "HowToStep",
+        "name": "Know your spool",
+        "text": "Distinguish between the inner and outer side of each spool half. The inner side is smooth while the outer side has grooves and a cutout for the label.",
+        "image": "https://store.cubic3d.co.ke/static/store/images/howto1.webp",
+        "url": "https://store.cubic3d.co.ke/filament/how-to#step1"
+    },
+    {
+        "@type": "HowToStep",
+        "name": "Assemble the first half",
+        "text": "Align and insert each of the 3 short pieces with the corresponding slots on the inner side of the spool. They may be a bit tight.",
+        "image": "https://store.cubic3d.co.ke/static/store/images/howto2.webp",
+        "url": "https://store.cubic3d.co.ke/filament/how-to#step2"
+    },
+    {
+        "@type": "HowToStep",
+        "name": "Insert your new filament",
+        "text": "Place the filament re-fill into the partialy assembled spool.",
+        "image": "https://store.cubic3d.co.ke/static/store/images/howto3.webp",
+        "url": "https://store.cubic3d.co.ke/filament/how-to#step3"
+    },
+    {
+        "@type": "HowToStep",
+        "name": "Finish the assembly",
+        "text": "Align the other half of the spool and press to complete the assembly. Finally, cut the straps with the utility knife and pull them out.",
+        "image": "https://store.cubic3d.co.ke/static/store/images/howto4.webp",
+        "url": "https://store.cubic3d.co.ke/filament/how-to#step4"
+    }
+    ]
+}
+</script>
 {% endblock %}

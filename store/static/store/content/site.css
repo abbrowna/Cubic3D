@@ -832,4 +832,14 @@ h3{
     font-family: DIN;
     font-size: 17px;
 }
+#small-howto .bubble{
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-family: DIN;
+    font-size: 17px;
+}
+.mobile_image{
+    position: relative;
+}
 
