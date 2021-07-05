@@ -45,7 +45,7 @@ def home(request):
     assert isinstance(request, HttpRequest)
     
     return render(request, 'app/index.html',{
-        'title':'Cubic3D Store',
+        'title':'Cubic3D Store - Buy 3D printing filament with local delivery.',
         'message': 'The shop that keeps you 3D printing',
         'year':datetime.now().year,
     })
