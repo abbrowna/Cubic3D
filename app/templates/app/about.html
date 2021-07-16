@@ -4,7 +4,7 @@
 
 <div class="navbar-image">
     {% load static %}
-    <img src="{% static "app/images/Scincube.webp" %}" alt="Logo">
+    <img src="{% static 'app/images/Scincube.webp' %}" alt="Logo">
 </div>
 
 <div>
@@ -60,6 +60,31 @@
                 <li><a href="{% url 'upload' %}">Request a 3D print</a></li>
                 <li><a href="{% url 'def_quote' %}">Get an estimate</a></li>
             </ul>
+            <div id="client_logos">
+                <h4>Some of our clients</h4>
+                <div class="row">
+                    <div class="col-md-3 image-col">
+                        <a href="https://rensylintegral.com/" target="_blank">
+                            <img src="{% static 'app/images/rensyl_logo.webp' %}" />
+                        </a>
+                    </div>
+                    <div class="col-md-3 image-col">
+                        <a href="https://drygro.com/" target="_blank">
+                            <img src="{% static 'app/images/drygro_logo.webp' %}" />
+                        </a>
+                    </div>
+                    <div class="col=md-3 image-col">
+                        <a href="https://kaiote.io/" target="_blank">
+                            <img src="{% static 'app/images/kaiote_logo.webp' %}" />
+                        </a>
+                    </div>
+                    <div class="col-md-3 image-col">
+                        <a href="https://www.pctlautomation.com/" target="_blank">
+                            <img src="{% static 'app/images/PCTL_logo.webp' %}" />
+                        </a>
+                    </div>
+                </div>
+            </div> 
 
         </div>
     </div>    

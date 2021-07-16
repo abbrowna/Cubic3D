@@ -584,6 +584,27 @@ body {
     text-decoration: none;
     font-size: 1.1em;
 }
+#about-strip .row{
+    align-items: center;
+}
+#client_logos h4{
+    padding-top: 50px;
+    padding-bottom: 0px;
+}
+#client_logos .image-col{
+    text-align: center;
+}
+#client_logos img:hover{
+    transform: scale(1.1, 1.1);
+}
+#client_logos img {
+    transition: transform 0.3s;
+    object-fit: contain;
+    width: 100%;
+    max-width: 200px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 
 /***Contacts page***/
 /* contact strip*/
