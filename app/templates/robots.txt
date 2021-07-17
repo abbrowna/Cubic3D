@@ -3,3 +3,5 @@ Disallow: /accounts/
 Disallow: /getting_started/
 Disallow: /logout/
 Disallow: /signup/
+
+Sitemap: https://cubic3d.co.ke/sitemap.xml
