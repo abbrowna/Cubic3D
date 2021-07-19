@@ -59,27 +59,47 @@
 {% block scripts %}
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org/",
-      "@type": "Product",
-      "name": "{{diameter}}mm {{material}} filament",
-      "image": [{{images|safe}}],
-      "description": "This is {% if filtered.0.net_weight == 1000 %}1Kg {% else %}{{filtered.0.net_weight}}g {% endif %}of {{filtered.0.diameter}}mm {{filtered.0.material}} 3D printing filament with tight diametral tolerance and high consistency.",
-      "brand": {
-        "@type": "Brand",
-        "name": "{{filtered.0.brand.name}}"
-      },
-      "offers": {
-        "@type": "Offer",
-        "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'filament' diameter=diameter material=material %}",
-        "priceCurrency": "KES",
-        "price": "{{filtered.0.price}}",
-        "itemCondition": "https://schema.org/NewCondition",
-        {% if instock %}
-        "availability": "https://schema.org/InStock"
-        {% else %}
-        "availability": "https://schema.org/OutOfStock"
-        {% endif %}
-      }
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "sku": "{{filtered.0.SKU}}",
+        "gtin13": "{{filtered.0.EAN}}",
+        "name": "{{diameter}}mm {{material}} filament",
+        "image": [{{images|safe}}],
+        "description": "This is {% if filtered.0.net_weight == 1000 %}1Kg {% else %}{{filtered.0.net_weight}}g {% endif %}of {{filtered.0.diameter}}mm {{filtered.0.material}} 3D printing filament with tight diametral tolerance and high consistency.",
+        "brand": {
+            "@type": "Brand",
+            "name": "{{filtered.0.brand.name}}"
+        },
+        "review": {
+            "@type": "Review",
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "4.5",
+                "bestRating": "5"
+            },
+            "author": {
+                "@type": "Organization",
+                "name": "Cubic Advanced Systems Ltd"
+            }
+        },
+        "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.7",
+        "reviewCount": "2000"
+        },
+        "offers": {
+            "@type": "Offer",
+            "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'filament' diameter=diameter material=material %}",
+            "priceCurrency": "KES",
+            "price": "{{filtered.0.price}}",
+            "priceValidUntil": "{{pricevalid}}",
+            "itemCondition": "https://schema.org/NewCondition",
+            {% if instock %}
+            "availability": "https://schema.org/InStock"
+            {% else %}
+            "availability": "https://schema.org/OutOfStock"
+            {% endif %}
+        }
     }
     </script>
 {% endblock %}

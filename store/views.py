@@ -77,6 +77,7 @@ def filamentLanding(request):
             matl_stock = Filament.objects.filter(material = m).filter(stock__gt = 0)
             M = Matl(m.name, len(matl_stock))
             materials.append(M)
+        
         return render(
             request,
             'app/fil_landing.html',
@@ -145,6 +146,7 @@ def filament(request, diameter, material):
     images = []
     for f in filtered_filament:
         images.append(request.build_absolute_uri(f.image.url))
+    pricevalid = datetime.now(timezone(tz)) + timedelta(weeks=4)
     return render(
         request,
         'app/filament.html',
@@ -158,7 +160,8 @@ def filament(request, diameter, material):
             'filtered':filtered_filament,
             'num_cart_items': num_cart_items,
             'instock':len(instock) > 0,
-            'images':",".join(f'"{i}"' for i in images)
+            'images':",".join(f'"{i}"' for i in images),
+            'pricevalid': pricevalid.strftime("%Y-%m-%d")
             }
         )
 
