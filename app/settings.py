@@ -7,7 +7,7 @@ ROOT_URLCONF = 'app.urls'
 WSGI_APPLICATION = 'app.wsgi.application'
 
 if platform == 'win32':
-    SITE_ID = 2
+    SITE_ID = 3
 else:
     SITE_ID = 3
 

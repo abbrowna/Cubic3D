@@ -370,10 +370,15 @@ def life_gross(request):
                 labels.append(str(y)+"-"+ calendar.month_abbr[counter])
                 data.append(0)
                 counter = counter + 1
+                if counter > 12:
+                    counter = counter - 12
             else:
                 labels.append(str(m['printrequest_month'].year)+"-"+calendar.month_abbr[counter])
                 data.append(0)
                 counter = counter + 1
+                if counter > 12:
+                    counter = counter - 12
+
         labels.append(m['printrequest_month'].strftime("%Y-%b"))
         data.append(m['income'])
         counter = counter + 1
@@ -396,15 +401,8 @@ def month_gross(request):
     shareholder1 = 0
     shareholder2 = 0
     available_gross = int(2*m_total/7)
-    if available_gross <= 10000.0:
-        shareholder1 = available_gross
-    elif available_gross > 15000.0:
-        split = (available_gross-15000)/2
-        shareholder1 = 10000 + split
-        shareholder2 = 5000 + split
-    else:
-        shareholder1 = 10000
-        shareholder2 = available_gross - 10000
+    shareholder1 = int(available_gross*0.65)
+    shareholder2 = int(available_gross*0.35)
     data.append(shareholder1)
     data.append(shareholder2)
     labels.append("Shareholder 1")
