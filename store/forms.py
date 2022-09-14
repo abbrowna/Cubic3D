@@ -13,6 +13,8 @@ from django.contrib.auth import (
 
 from store.models import Filament, Order 
 from app.models import Profile
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV3
 
 class BootstrapAuthenticationForm(AuthenticationForm):
     """Authentication form which uses boostrap CSS."""
@@ -57,6 +59,7 @@ class SignUpForm(UserCreationForm):
         strip=False,
         help_text=_("Enter the same password as before, for verification."),
     )
+    captcha = ReCaptchaField(widget=ReCaptchaV3)
     class Meta:
         model = User
         fields = ('username','first_name','last_name','email','password1','password2')
