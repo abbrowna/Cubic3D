@@ -81,6 +81,7 @@ urlpatterns = [
     path('accounts/password_reset/',
         django.contrib.auth.views.PasswordResetView.as_view(
             template_name='registration/pass_reset_form.html',
+            form_class=app.forms.PasswordResetFormCaptcha,
             html_email_template_name='registration/pass_reset_email.html',
             from_email='support@cubic3d.co.ke',
         ),name='password_reset'),

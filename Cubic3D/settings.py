@@ -24,9 +24,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ['SECRET_KEY']
-
+RECAPTCHA_PUBLIC_KEY = os.environ['CAPTCHA_PUBLIC_KEY']
+RECAPTCHA_PRIVATE_KEY = os.environ['CAPTCHA_PRIVATE_KEY']
+RECAPTCHA_REQUIRED_SCORE = 0.85
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['139.59.26.37','188.166.237.15','localhost','cubic3d.co.ke','www.cubic3d.co.ke','store.cubic3d.co.ke','www.store.cubic3d.co.ke']
 
@@ -50,6 +52,7 @@ INSTALLED_APPS = [
     'app',
     'google_analytics',
     'verify_email',
+    'captcha',
 ]
 
 
@@ -153,13 +156,14 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-#File system 
+#File system and static files
 
 MEDIA_URL = '/media/'
 if platform != 'win32':
     MEDIA_ROOT = os.path.join('/home/cubic', 'media/')
 else:
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
 
 #Email
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

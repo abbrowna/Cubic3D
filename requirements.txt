@@ -20,3 +20,4 @@ webencodings
 xhtml2pdf
 django-google-analytics-app
 Django-Verify-Email
+django-recaptcha

@@ -3,10 +3,12 @@ Definition of forms.
 """
 
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordResetForm
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from app.models import PrintRequest, Quote, Material
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV3
 
 class MyModelChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, obj):
@@ -28,7 +30,7 @@ class SignUpForm(UserCreationForm):
     last_name = forms.CharField(max_length=30,)
     email = forms.EmailField(max_length=254, help_text='Give a valid email address that will be used to send printing info.')
     mobile = forms.CharField(max_length=10, help_text='This will be used to contact you for further queries, if any, and for the exchange.')
-
+    captcha = ReCaptchaField(widget=ReCaptchaV3)
     class Meta:
         model = User
         fields = ('username','first_name','last_name','email','password1','password2', 'mobile')
@@ -42,6 +44,9 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username','first_name','last_name','email',]
+
+class PasswordResetFormCaptcha(PasswordResetForm):
+    captcha = ReCaptchaField(widget=ReCaptchaV3)
 
 class TempThingForm(forms.ModelForm):
     material = MyModelChoiceField(queryset=Material.objects.all(),initial="PLA")

@@ -92,6 +92,7 @@ urlpatterns = [
         PasswordResetView.as_view(
             template_name='registration/pass_reset_form.html',
             html_email_template_name='registration/pass_reset_email.html',
+            form_class=app.forms.PasswordResetFormCaptcha,
             from_email='support@cubic3d.co.ke',
         ),name='password_reset'),
 

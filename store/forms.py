@@ -3,7 +3,7 @@ Definition of forms for the store.
 """
 
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordResetForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
@@ -89,3 +89,6 @@ class ProfileForm(forms.ModelForm):
             'company':forms.TextInput(attrs = {'placeholder':'Company name (Optional)'}),
         }
         
+
+class PasswordResetFormCaptcha(PasswordResetForm):
+    captcha = ReCaptchaField(widget=ReCaptchaV3)
