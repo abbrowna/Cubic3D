@@ -28,7 +28,7 @@ RECAPTCHA_PUBLIC_KEY = os.environ['CAPTCHA_PUBLIC_KEY']
 RECAPTCHA_PRIVATE_KEY = os.environ['CAPTCHA_PRIVATE_KEY']
 RECAPTCHA_REQUIRED_SCORE = 0.85
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['139.59.26.37','188.166.237.15','localhost','cubic3d.co.ke','www.cubic3d.co.ke','store.cubic3d.co.ke','www.store.cubic3d.co.ke']
 
