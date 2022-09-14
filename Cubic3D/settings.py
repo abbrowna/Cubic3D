@@ -22,13 +22,26 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
+#ADMINS = [('Tony','abbrowna@cubic3d.co.ke')]
+#LOGGING = {
+#    'handlers': {
+#        'mail_admins': {
+#            'level': 'ERROR',
+#            'class': 'django.utils.log.AdminEmailHandler',
+#            'include_html': True,
+#            'email_backend': 'django.core.mail.backends.filebased.EmailBackend',
+#        },
+#    },
+#}
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ['SECRET_KEY']
-RECAPTCHA_PUBLIC_KEY = os.environ['CAPTCHA_PUBLIC_KEY']
-RECAPTCHA_PRIVATE_KEY = os.environ['CAPTCHA_PRIVATE_KEY']
+#RECAPTCHA_PUBLIC_KEY = os.environ['CAPTCHA_PUBLIC_KEY']
+#RECAPTCHA_PRIVATE_KEY = os.environ['CAPTCHA_PRIVATE_KEY']
 RECAPTCHA_REQUIRED_SCORE = 0.85
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+
 
 ALLOWED_HOSTS = ['139.59.26.37','188.166.237.15','localhost','cubic3d.co.ke','www.cubic3d.co.ke','store.cubic3d.co.ke','www.store.cubic3d.co.ke']
 
