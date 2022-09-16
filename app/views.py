@@ -501,10 +501,8 @@ def accept_or_reject(request, requestid):
                         html_content = render_to_string('email/reject_request_email.html',
                             {
                                 'printrequest':printrequest,
-                                'subtotal':printrequest.subtotal(),
-                                'date':today.strftime("%d-%m-%y"),
-                                'bill_to':form.cleaned_data['bill_to'],
-                                'confirmation_link':request.build_absolute_uri(reverse('confirm', args=[printrequest.id])),
+                                'rejectmessage':reject_message,
+
                             },request)              
                         from_email = 'orders@Cubic3D.co.ke'
                         to = printrequest.user.email
