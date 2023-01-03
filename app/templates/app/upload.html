@@ -139,6 +139,17 @@
 <div style="display:none">
     <img src="{% google_analytics %}" width="0" height="0" />
 </div>
+{% if holiday %}
+<div id="holidayOverlay" class="overlay">
+    <!-- Overlay content -->
+    <div class="overlay-content">
+        <h3> Sorry, Cubic3D is currently not accepting print requests at the moment. 
+        We should be back shorty but meantime, feel free to peruse our website and learn about what we do best. 
+        Hope to see you soon</h3>
+    </div>
+
+</div> 
+{%endif%}
 {% endblock %}
 
 {% block scripts %}

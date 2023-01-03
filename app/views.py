@@ -9,6 +9,7 @@ from django.template.loader import render_to_string
 from datetime import datetime, timedelta
 from datetime import datetime, timedelta
 from django.contrib.auth import login, authenticate
+from Cubic3D.settings import HOLIDAY_MODE
 from app.forms import SignUpForm, TempThingForm, EmailForm, QuoteForm, ScaleForm, GroupInvoiceForm, ProfileForm
 from app.models import PrintRequest, Quote, Material, GroupedPrintRequest, GroupRecord, Invoice, ThingOrders
 from django.contrib.auth.models import User
@@ -156,6 +157,7 @@ def upload(request):
             'title':'Upload model & select options.',
             'description':'To get a 3D print, upload your CAD design here, and select the options that best suit your needs.',
             'year':datetime.now().year,
+            'holiday':HOLIDAY_MODE,
         }
     )
 
