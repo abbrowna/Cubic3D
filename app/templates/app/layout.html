@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     {% if description %}
-        <meta name="description" content="{{ description }}" />
+    <meta name="description" content="{{ description }}" />
     {% endif %}
     {% load static %}
     <link rel="preload" href="{% static 'app/fonts/DIN Neuzeit Grotesk LT W01 BdCn.woff2'%}" as="font" type="font/woff2" crossorigin>
@@ -15,10 +15,10 @@
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}">
     <link rel="icon" href="{% static 'app/images/favicon.ico' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/sitev2.min.css' %}?v=3.8" />
-    <link rel="stylesheet" type="text/css" href="{% static 'app/content/responsive.css' %}?v=3.6"/>
-  
-</head>
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/responsive.css' %}?v=3.6" />
 
+</head>
+{% include "app/analytics.html" %}
 <body>
     <div style="min-height:calc(100vh - 80px);">
         <nav class="navbar" id="navbar-container">
@@ -36,12 +36,12 @@
                     <ul class="nav navbar-nav">
                         <li><a role="button" data-listposition="left" href="{% url 'about' %}">ABOUT US</a></li>
                         <li><a role="button" href="{% url 'contact' %}">CONTACT</a></li>
-                        <li><a role ="button" href="{% url 'materials' %}">MATERIALS</a></li>
-                        <li><a role ="button" href="{% url 'gallery' %}">GALLERY</a></li>
+                        <li><a role="button" href="{% url 'materials' %}">MATERIALS</a></li>
+                        <li><a role="button" href="{% url 'gallery' %}">GALLERY</a></li>
                         <li class="separator"></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                    {% if user.is_authenticated %}
+                        {% if user.is_authenticated %}
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown">Hello {{ user.first_name }}! <span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -51,9 +51,9 @@
                                 <li><a href="{% url 'change_profile' %}">My account</a></li>
                             </ul>
                         </li>
-                    {% else %}
+                        {% else %}
                         <li><a href="{% url 'login' %}">Sign Up / Log In</a></li>
-                    {% endif %} 
+                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -70,13 +70,13 @@
             <footer>
                 <div class="row">
                     <div class="col-sm-10 copyright">
-                            <p>&copy; {{ year }} Cubic3D . 3D printing closer home</p>
+                        <p>&copy; {{ year }} Cubic3D . 3D printing closer home</p>
                     </div>
                     <div class="col-sm-2">
                         <div class="social-bar row">
-                            <div class="col-xs-4" style="text-align:right;"><a href="https://twitter.com/Cubic3D_Ke" target="_blank"><img src="{% static "app/images/twitter.webp" %}" alt="twitter" loading="lazy"></a></div>
-                            <div class="col-xs-4" style="text-align:center;"><a href="https://www.instagram.com/cubic3d_ke/" target="_blank"><img src="{% static "app/images/instagram.webp" %}" alt="instagram" loading="lazy"></a></div>
-                            <div class="col-xs-4"><a href="https://www.facebook.com/cubic3d/" target="_blank"><img src="{% static "app/images/facebook.webp" %}" alt="facebook" loading="lazy"></a></div>
+                            <div class="col-xs-4" style="text-align:right;"><a href="https://twitter.com/Cubic3D_Ke" target="_blank"><img src="{% static " app /images/twitter.webp" %}" alt="twitter" loading="lazy"></a></div>
+                            <div class="col-xs-4" style="text-align:center;"><a href="https://www.instagram.com/cubic3d_ke/" target="_blank"><img src="{% static " app /images/instagram.webp" %}" alt="instagram" loading="lazy"></a></div>
+                            <div class="col-xs-4"><a href="https://www.facebook.com/cubic3d/" target="_blank"><img src="{% static " app /images/facebook.webp" %}" alt="facebook" loading="lazy"></a></div>
                         </div>
                     </div>
                 </div>

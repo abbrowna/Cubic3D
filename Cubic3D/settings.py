@@ -40,16 +40,12 @@ RECAPTCHA_PUBLIC_KEY = os.environ['CAPTCHA_PUBLIC_KEY']
 RECAPTCHA_PRIVATE_KEY = os.environ['CAPTCHA_PRIVATE_KEY']
 RECAPTCHA_REQUIRED_SCORE = 0.85
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 #HOLIDAY MODE adds an overlay with a message above the create print request page preventing users from making print requests 
 HOLIDAY_MODE = False
 
 
 ALLOWED_HOSTS = ['139.59.26.37','188.166.237.15','localhost','cubic3d.co.ke','www.cubic3d.co.ke','store.cubic3d.co.ke','www.store.cubic3d.co.ke']
-
-GOOGLE_ANALYTICS = {
-    'google_analytics_id': 'UA-187644512-1',
-}
 
 # Application definition
 INSTALLED_APPS = [
@@ -65,7 +61,6 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'store',
     'app',
-    'google_analytics',
     'verify_email',
     'captcha',
 ]
