@@ -16,9 +16,8 @@
     <link rel="icon" href="{% static 'app/images/favicon.ico' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/sitev2.min.css' %}?v=4.0" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/responsive.css' %}?v=3.6" />
-
+    {% include "app/analytics.html" %}
 </head>
-{% include "app/analytics.html" %}
 <body>
     <div style="min-height:calc(100vh - 80px);">
         <nav class="navbar" id="navbar-container">
