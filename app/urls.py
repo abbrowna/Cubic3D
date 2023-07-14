@@ -111,7 +111,6 @@ urlpatterns = [
 
     # Uncomment the next line to enable the admin:
     path('admin',admin.site.urls),
-    path('djga/', include('google_analytics.urls')),
     path('ajax/life_gross/',views.life_gross, name='ajax_life_gross'),
     path('ajax/month_gross/',views.month_gross, name='ajax_month_gross'),
     path('ajax/get_estimate/',views.get_estimate, name='ajax_price_estimate'),
