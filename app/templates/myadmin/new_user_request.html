@@ -1,0 +1,117 @@
+{% extends "app/layout.html" %}
+
+{% block fullcontent %}
+<div class="myadmin_title">
+    <h1>{{title}}</h1>
+    <div class="nav_link"><a href="{% url 'myadmin' %}">&lt; Main</a></div>
+</div>
+
+
+
+<form method="post" enctype="multipart/form-data" id="upload_form" class="form-horizontal" data-colors-url="{% url 'ajax_load_colors' %}">
+    <div id="uploadrow">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 uploadcol">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+
+                    <div class="input-group">
+                        {{form.description.errors}}
+                        {{form.description}}
+                    </div>
+
+                    <div class="input-group">
+                        {{form.purpose.errors}}
+                        {{form.purpose}}
+                    </div>
+
+                    <div class="input-group">
+                        {{form.material.errors}}
+                        {{form.material}}
+                    </div>
+
+                    <div class="input-group">
+                        {{form.color.errors}}
+                        {{form.color}}
+                    </div>
+
+                    <div class="input-group" id="furthertext" style="display:none">
+                        {{form.further_requests.errors}}
+                        {{form.further_requests}}
+                    </div>
+
+                    <div class="input-group">
+                        {{form.quantity.errors}}
+                        <label class="input-group-addon" for="quantity">Quantity</label>
+                        {{form.quantity}}
+                    </div>
+
+                </div>
+                <div class="col-md-6 ">
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            {% csrf_token %}
+                            {{ form.non_field_errors }}
+                            <div class="input-group">
+                                {{form.first_name.errors}}
+                                <!--<span class="input-group-addon"><label class="control-label" for="{{from.first_name.id_for_label}}">First name:</label></span>-->
+                                {{form.first_name}}
+                            </div>
+                            <div class="input-group">
+                                {{form.last_name.errors}}
+                                {{form.last_name}}
+                            </div>
+
+                            <div class="input-group">
+                                {{form.email.errors}}
+                                {{form.email}}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                {{form.mobile.errors}}
+                                {{form.mobile}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="submitbtn"><input type="submit" value="Submit" class="btn btn1" /></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
+{% block scripts %}
+<script>
+    $(document).ready(function () {
+
+        // Auto update the colors field with the colors of the selected material.
+        var url = $("#upload_form").attr("data-colors-url"); //Excecute on initial load
+        var material = $("#id_material").val();
+        $.ajax({
+            url: url,
+            data: { 'material': material },
+            success: function (data) {
+                $("#id_color").html(data);
+            }
+        });
+
+        $("#id_material").change(function () {
+            var url = $("#upload_form").attr("data-colors-url");
+            var material = $(this).val();
+            alert(url);
+            $.ajax({
+                url: url,
+                data: { 'material': material },
+                success: function (data) {
+                    $("#id_color").html(data);
+                }
+            });
+        });
+    })
+</script>
+{% endblock %}

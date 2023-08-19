@@ -2,6 +2,7 @@
 Definition of forms.
 """
 
+from logging import PlaceHolder
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordResetForm
 from django.utils.translation import ugettext_lazy as _
@@ -29,11 +30,26 @@ class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=30,)
     last_name = forms.CharField(max_length=30,)
     email = forms.EmailField(max_length=254, help_text='Give a valid email address that will be used to send printing info.')
-    mobile = forms.CharField(max_length=10, help_text='This will be used to contact you for further queries, if any, and for the exchange.')
+    mobile = forms.CharField(max_length=10, help_text='This will be used to contact you for further queries, if any, and for delivery.')
     captcha = ReCaptchaField(widget=ReCaptchaV3)
     class Meta:
         model = User
         fields = ('username','first_name','last_name','email','password1','password2', 'mobile')
+
+class NewUserRequest(forms.Form):
+    first_name = forms.CharField(max_length=30,)
+    last_name = forms.CharField(max_length=30,)
+    email = forms.EmailField(max_length=254,)
+    mobile = forms.CharField(max_length=10)
+    description = forms.CharField(max_length=50,)
+    material = MyModelChoiceField(queryset=Material.objects.all(),initial="PLA")
+    color = forms.CharField(max_length=10, widget=forms.TextInput(attrs={'placeholder': 'Color'}))
+    quantity = forms.IntegerField(min_value=1, initial=1)
+    infill_choices=(
+        ('ART','Artistic/Aestetic'),('MECH','Mechanical')
+    )
+    purpose = forms.ChoiceField(choices=infill_choices)
+
 
 class ProfileForm(forms.ModelForm):
     first_name = forms.CharField(max_length=30,)
@@ -85,7 +101,4 @@ class GroupInvoiceForm(forms.Form):
 
 class ScaleForm(forms.Form):
     scale = forms.FloatField(required=False, widget=forms.NumberInput(attrs={'placeholder':100,'class':'form-control'}))
-
-
-
 

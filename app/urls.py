@@ -59,6 +59,7 @@ urlpatterns = [
     path('my_admin/orders/printed/receipt/<invoice_id>/<orderlist>/', app.views.send_receipt, name='send_receipt'),
     path('my_admin/orders/pending/',app.views.orders, name='orders'),
     path('my_admin/user_profiles/', app.views.user_profiles, name='user_profiles'),
+    path('my_admin/new_user_request/', app.views.new_user_request, name='new_user_request'),
     path('accounts/change_profile/', app.views.change_profile, name='change_profile'),
     url(r'^googledb04602fc10702c7\.html$', lambda r: HttpResponse("google-site-verification: googledb04602fc10702c7.html")),
 

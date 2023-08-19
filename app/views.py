@@ -9,8 +9,9 @@ from django.template.loader import render_to_string
 from datetime import datetime, timedelta
 from datetime import datetime, timedelta
 from django.contrib.auth import login, authenticate
+from numpy import True_
 from Cubic3D.settings import HOLIDAY_MODE
-from app.forms import SignUpForm, TempThingForm, EmailForm, QuoteForm, ScaleForm, GroupInvoiceForm, ProfileForm
+from app.forms import NewUserRequest, SignUpForm, TempThingForm, EmailForm, QuoteForm, ScaleForm, GroupInvoiceForm, ProfileForm
 from app.models import PrintRequest, Quote, Material, GroupedPrintRequest, GroupRecord, Invoice, ThingOrders
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -21,6 +22,7 @@ from django.core.mail import EmailMessage, send_mail
 from django.db.models.functions import Trunc
 from django.db.models import Sum, F
 from verify_email.email_handler import send_verification_email
+from django.core.files.base import ContentFile
 import calendar
 import os
 import urllib
@@ -526,6 +528,53 @@ def accept_or_reject(request, requestid):
         }
     )
 
+staff_member_required
+def new_user_request(request):
+    """creates a print request for a new user"""
+    assert isinstance(request, HttpRequest)
+    if request.method == 'POST':
+        form = NewUserRequest(request.POST)
+        if form.is_valid():
+            #todo check if that user already exists
+            usercheck = User.objects.filter(username=form.cleaned_data['email'])
+            if len(usercheck) > 0:
+                newuser = usercheck[0]
+            else:
+                newuser = User(
+                    username = form.cleaned_data['email'],
+                    email = form.cleaned_data['email'],
+                    password = "J5Fke(mhf)",
+                )
+                newuser.first_name = form.cleaned_data['first_name']
+                newuser.last_name = form.cleaned_data['last_name']
+                newuser.mobile = form.cleaned_data['mobile']
+                newuser.save()
+            
+            tempfile=ContentFile('')
+            tempfile.name = 'blank.stl'
+            pr = PrintRequest(
+                description=form.cleaned_data['description'],
+                quantity=form.cleaned_data['quantity'],
+                material=form.cleaned_data['material'],
+                color=form.cleaned_data['color'],
+                purpose=form.cleaned_data['purpose'],
+                #confirmation_sent=True,
+                #confirmed=True,
+                thing=tempfile,
+                user=newuser,
+                )
+            pr.save()
+            return redirect('printrequests')
+    else:
+        form = NewUserRequest()
+    return render(request,'myadmin/new_user_request.html',
+        {
+            'form':form,
+            'title':'Create a print request for a new user',
+            'year':datetime.now().year,
+        }
+    )
+
 def get_estimate(request):
     """processes the stl once more for our viewing purposes"""
     request_id = request.GET.get('request_id')
@@ -860,9 +909,7 @@ def signup(request):
             inactive_user.profile.mobile = form.cleaned_data.get('mobile')
             inactive_user.save()
             email = form.cleaned_data.get('email')
-            #username = form.cleaned_data.get('username')
-            #raw_password = form.cleaned_data.get('password1')
-            #user = authenticate(username=username, password=raw_password)
+
             #login(request, user)
             return redirect('pending_verification', user_email=email)
     else:
