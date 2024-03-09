@@ -547,7 +547,7 @@ def new_user_request(request):
                 )
                 newuser.first_name = form.cleaned_data['first_name']
                 newuser.last_name = form.cleaned_data['last_name']
-                newuser.mobile = form.cleaned_data['mobile']
+                newuser.profile.mobile = form.cleaned_data['mobile']
                 newuser.save()
             
             tempfile=ContentFile('')
