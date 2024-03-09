@@ -547,8 +547,8 @@ def new_user_request(request):
                 )
                 newuser.first_name = form.cleaned_data['first_name']
                 newuser.last_name = form.cleaned_data['last_name']
-                newuser.profile.mobile = form.cleaned_data['mobile']
                 newuser.save()
+                newuser.profile.mobile = form.cleaned_data['mobile']
             
             tempfile=ContentFile('')
             tempfile.name = 'blank.stl'
