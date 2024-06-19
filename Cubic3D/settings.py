@@ -35,6 +35,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 #}
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# environment variables are declared in the uwsgi config file!!!!
 SECRET_KEY = os.environ['SECRET_KEY']
 RECAPTCHA_PUBLIC_KEY = os.environ['CAPTCHA_PUBLIC_KEY']
 RECAPTCHA_PRIVATE_KEY = os.environ['CAPTCHA_PRIVATE_KEY']
