@@ -41,7 +41,7 @@ RECAPTCHA_PUBLIC_KEY = os.environ['CAPTCHA_PUBLIC_KEY']
 RECAPTCHA_PRIVATE_KEY = os.environ['CAPTCHA_PRIVATE_KEY']
 RECAPTCHA_REQUIRED_SCORE = 0.85
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 #HOLIDAY MODE adds an overlay with a message above the create print request page preventing users from making print requests 
 HOLIDAY_MODE = False
 
