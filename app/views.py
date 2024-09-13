@@ -289,7 +289,7 @@ def delete_file(request, requestid):
 def thanks(request):
     """thank you and quick links page"""
     assert isinstance(request, HttpRequest)
-    send_mail('new print request', 'There\'s a new print request for you. Check it out', 'orders@cubic3d.co.ke', ['abbrowna@cubic3d.co.ke','noelkimwatan@cubic3d.co.ke'])
+    send_mail('new print request', 'There\'s a new print request for you. Check it out', 'orders@cubic3d.co.ke', ['abbrowna@cubic3d.co.ke','noelkimwatan@cubic3d.co.ke','victorkimeu@cubic3d.co.ke'])
     return render(request,'app/thanks.html',
         {
             'title':'Request submitted, Thank you!',
@@ -305,7 +305,7 @@ def confirm_print(request,thing_id):
         thing_id = int(thing_id)
         printrequest = PrintRequest.objects.get(pk=thing_id)
         if not printrequest.confirmed:
-            send_mail('new order', 'Order confirmed', 'orders@cubic3d.co.ke', ['abbrowna@cubic3d.co.ke','noelkimwatan@cubic3d.co.ke'])
+            send_mail('new order', 'Order confirmed', 'orders@cubic3d.co.ke', ['tech@cubic3d.co.ke'])
         printrequest.confirmed = True
         printrequest.confirmation_date = datetime.now()
         printrequest.save()
@@ -327,7 +327,7 @@ def confirm_print(request,thing_id):
             printrequest.confirmation_date = datetime.now()
             printrequest.save()
             items.append(printrequest)
-        send_mail('new order', 'Order confirmed', 'orders@cubic3d.co.ke', ['abbrowna@cubic3d.co.ke','noelkimwatan@cubic3d.co.ke'])
+        send_mail('new order', 'Order confirmed', 'orders@cubic3d.co.ke', ['tech@cubic3d.co.ke'])
 
         return render(request, 'app/printconfirmed.html',
             {
