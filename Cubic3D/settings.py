@@ -14,6 +14,18 @@ import os
 import posixpath
 from sys import platform
 
+# Detect local development environment (Windows or macOS)
+IS_LOCAL = platform in ('win32', 'darwin')
+
+# Load .env file automatically when running locally.
+# Create a .env file in the project root with your local secrets (never commit it).
+if IS_LOCAL:
+    try:
+        from dotenv import load_dotenv
+        load_dotenv()
+    except ImportError:
+        pass  # Install python-dotenv: pip install python-dotenv
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -35,13 +47,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 #}
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# environment variables are declared in the uwsgi config file!!!!
-SECRET_KEY = os.environ['SECRET_KEY']
-RECAPTCHA_PUBLIC_KEY = os.environ['CAPTCHA_PUBLIC_KEY']
-RECAPTCHA_PRIVATE_KEY = os.environ['CAPTCHA_PRIVATE_KEY']
+# Production: env vars are declared in the uwsgi config file.
+# Local dev: set these in a .env file in the project root.
+SECRET_KEY = os.environ.get('SECRET_KEY', 'local-dev-insecure-key-do-not-use-in-production')
+RECAPTCHA_PUBLIC_KEY = os.environ.get('CAPTCHA_PUBLIC_KEY', 'dummy')
+RECAPTCHA_PRIVATE_KEY = os.environ.get('CAPTCHA_PRIVATE_KEY', 'dummy')
 RECAPTCHA_REQUIRED_SCORE = 0.85
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = IS_LOCAL
 #HOLIDAY MODE adds an overlay with a message above the create print request page preventing users from making print requests 
 HOLIDAY_MODE = False
 
@@ -105,7 +118,7 @@ WSGI_APPLICATION = 'Cubic3D.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-if platform == 'win32':
+if IS_LOCAL:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -170,10 +183,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 #File system and static files
 
 MEDIA_URL = '/media/'
-if platform != 'win32':
-    MEDIA_ROOT = os.path.join('/home/cubic', 'media/')
-else:
+if IS_LOCAL:
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+else:
+    MEDIA_ROOT = os.path.join('/home/cubic', 'media/')
 
 
 #Email
@@ -181,7 +194,7 @@ else:
 EMAIL_HOST = 'smtp.zoho.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'orders@cubic3d.co.ke'
-EMAIL_HOST_PASSWORD = os.environ['EMAIL_PASS']
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS', '')
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Cubic3D Account<orders@cubic3d.co.ke>'
 
