@@ -3,8 +3,7 @@ Global definition of urls
 """
 
 from datetime import datetime
-from django.conf.urls import url
-from django.urls import path
+from django.urls import path, re_path
 import django.contrib.auth.views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -19,7 +18,7 @@ import app.views
 from app import views
 
 # Uncomment the next lines to enable the admin:
-from django.conf.urls import include
+from django.urls import include
 from django.contrib import admin
 admin.autodiscover()
 
@@ -61,7 +60,7 @@ urlpatterns = [
     #path('my_admin/orders/pending/',app.views.orders, name='orders'),
     #path('my_admin/user_profiles/', app.views.user_profiles, name='user_profiles'),
     #path('accounts/change_profile/', app.views.change_profile, name='change_profile'),
-    url(r'^googledb04602fc10702c7\.html$', lambda r: HttpResponse("google-site-verification: googledb04602fc10702c7.html")),
+    re_path(r'^googledb04602fc10702c7\.html$', lambda r: HttpResponse("google-site-verification: googledb04602fc10702c7.html")),
 
     path('accounts/login/',
         django.contrib.auth.views.LoginView.as_view(
@@ -111,7 +110,7 @@ urlpatterns = [
 
     # Uncomment the next line to enable the admin:
     #path('admin',admin.site.urls),
-    path('djga/', include('google_analytics.urls')),
+    #path('djga/', include('google_analytics.urls')),  # google_analytics not installed
     #path('ajax/life_gross/',views.life_gross, name='ajax_life_gross'),
     #path('ajax/month_gross/',views.month_gross, name='ajax_month_gross'),
     #path('ajax/get_estimate/',views.get_estimate, name='ajax_price_estimate'),

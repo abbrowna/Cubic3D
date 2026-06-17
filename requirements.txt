@@ -20,3 +20,4 @@ webencodings
 xhtml2pdf
 Django-Verify-Email
 django-recaptcha
+rcssmin

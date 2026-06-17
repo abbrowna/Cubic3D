@@ -5,11 +5,11 @@ Definition of forms.
 from logging import PlaceHolder
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordResetForm
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import User
 from app.models import PrintRequest, Quote, Material
-from captcha.fields import ReCaptchaField
-from captcha.widgets import ReCaptchaV3
+from django_recaptcha.fields import ReCaptchaField
+from django_recaptcha.widgets import ReCaptchaV3
 
 class MyModelChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, obj):

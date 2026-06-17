@@ -25,7 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'store',
     'app',
-    'captcha',
+    'django_recaptcha',
     'google_analytics',
     'verify_email',
 ]

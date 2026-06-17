@@ -5,7 +5,7 @@
 <link rel="preload" href="{% static 'app/fonts/Nunito-Light.ttf'%}" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="{% static 'app/fonts/Nunito-Bold.ttf'%}" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="{% static 'app/images/Scincube.webp' %}" as="image" type="image/webp" />
-<link rel="stylesheet" type="text/css" href="{% static 'app/content/index.css' %}?v=1.0" />
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/index.css' %}?v=1.5" />
 {% endblock %}
 
 {% block fullcontent %}
@@ -85,26 +85,28 @@
 </div>
 
 {# ── Materials grid ── #}
-<div id="index-materials" class="fade-in-section">
+<div id="index-materials">
     <h2 class="index-section-label">CHOOSE YOUR MATERIAL</h2>
-    <div class="mat-grid">
+    <div class="mat-grid fade-in-section">
         {% for mat in materials %}
-        <div class="mat-card"
+        <div class="mat-card fade-in-section"
              tabindex="0"
              role="button"
              aria-label="{{ mat.acronym }}, KES {{ mat.ppg }} per gram{% if mat.tagline %} — {{ mat.tagline }}{% endif %}">
-            <div class="mat-card-inner">
-                <span class="mat-acronym">{{ mat.acronym }}</span>
-                <span class="mat-price">KES {{ mat.ppg }}<small>/g</small></span>
-                <div class="mat-swatches">
-                    {% for color in mat.available_colors %}
-                    <span class="mat-swatch" style="background-color:{{ color }};"></span>
-                    {% endfor %}
+            <div class="mat-card-track">
+                <div class="mat-card-front">
+                    <span class="mat-acronym">{{ mat.acronym }}</span>
+                    <span class="mat-price">KES {{ mat.ppg }}<small>/g</small></span>
+                    <div class="mat-swatches">
+                        {% for color in mat.available_colors %}
+                        <span class="mat-swatch" style="background-color:{{ color }};"></span>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="mat-card-back">
+                    {% if mat.tagline %}<span class="mat-tagline-text">{{ mat.tagline }}</span>{% endif %}
                 </div>
             </div>
-            {% if mat.tagline %}
-            <div class="mat-tagline"><span>{{ mat.tagline }}</span></div>
-            {% endif %}
         </div>
         {% empty %}
         <p style="color:#787878;text-align:center;font-family:Nunito,sans-serif;font-weight:200;grid-column:1/-1;padding:40px 0;">
@@ -115,31 +117,122 @@
 </div>
 
 {# ── Capabilities strip ── #}
-<div id="index-caps" class="fade-in-section">
+<div id="index-caps">
+    <h2 class="index-section-label fade-in-section">WHAT WE ARE CAPABLE OF</h2>
     <div class="icap-grid">
-        <div class="icap-item">
+        <div class="icap-item  fade-in-section">
             <h3>DUAL EXTRUSION</h3>
             <p>Multi-color &amp; multi-material in a single print.</p>
         </div>
-        <div class="icap-item">
+        <div class="icap-item  fade-in-section">
             <h3>FINE DETAIL</h3>
             <p>Down to 0.02&nbsp;mm layer height. Crisp, accurate parts.</p>
         </div>
-        <div class="icap-item">
+        <div class="icap-item  fade-in-section">
             <h3>INSTANT ESTIMATE</h3>
             <p>Real pricing before you commit — no surprises.</p>
+        </div>
+        <div class="icap-item  fade-in-section">
+            <h3>PRINT-IN-PLACE</h3>
+            <p>Printing mechanisms already fully assembled</p>
+        </div>
+        <div class="icap-item  fade-in-section">
+            <h3>POST-PROCESSING</h3>
+            <p>Sanding, priming, and surface finishing.</p>
+        </div>
+        <div class="icap-item  fade-in-section">
+            <h3>HARDWARE INTEGRATION</h3>
+            <p>Embed magnets, nuts, and inserts within the print.</p>
         </div>
     </div>
 </div>
 
 {# ── Final CTA ── #}
-<div id="index-final-cta" class="fade-in-section">
-    <h2 class="final-cta-heading">Ready to bring your design to life?</h2>
-    <div class="final-cta-buttons">
+<div id="index-final-cta">
+    <h2 class="final-cta-heading fade-in-section">Ready to bring your design to life?</h2>
+    <div class="final-cta-buttons fade-in-section">
         <a class="btn btn1 btn-pulse" href="{% url 'upload' %}" role="button">Request a Print</a>
         <a class="btn-outline" href="{% url 'def_quote' %}" role="button">Get an Estimate</a>
     </div>
 </div>
+
+{# ── Other services ── #}
+<div id="index-services">
+    <h2 class="index-section-label fade-in-section">OTHER SERVICES</h2>
+    <div class="services-grid">
+        <div class="service-card fade-in-section">
+            <span class="service-card-name">3D Design</span>
+            <span class="service-price-label">starting from</span>
+            <span class="service-price">KES 1,500</span>
+            <p class="service-desc">Don't have a 3D file? We can model your idea from a sketch, photo, or description.</p>
+        </div>
+        <div class="service-card fade-in-section">
+            <span class="service-card-name">3D Scanning</span>
+            <span class="service-price-label">starting from</span>
+            <span class="service-price">KES 1,500</span>
+            <p class="service-desc">We digitize physical objects into accurate 3D models for reproduction or modification.</p>
+        </div>
+    </div>
+    <p class="services-contact-label">Get in touch to discuss your project</p>
+    <div class="services-contact-wrap">
+        <div class="services-contact-buttons">
+        <a class="btn-contact btn-contact-email"
+           href="mailto:support@cubic3d.co.ke"
+           onclick="copyContact('support@cubic3d.co.ke','Email address copied')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <polyline points="2,4 12,13 22,4"/>
+            </svg>
+            Email Us
+        </a>
+        <a class="btn-contact btn-contact-call"
+           href="tel:+254728274309"
+           onclick="copyContact('+254728274309','Number copied')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            Call Us
+        </a>
+        <a class="btn-contact btn-contact-whatsapp"
+           href="https://wa.me/254728274309"
+           target="_blank"
+           rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+            </svg>
+            WhatsApp
+        </a>
+    </div>
+    </div>
+</div>
+
+{# ── About us ── #}
+<div id="index-about">
+    <h2 class="index-section-label fade-in-section">MORE ABOUT US</h2>
+    <div class="about-grid">
+        <div class="about-item fade-in-section">
+            <span class="about-item-title">Who we are</span>
+            <p>Cubic3D is a professional 3D printing service based in Nairobi, Kenya. We exist to make advanced manufacturing accessible — not just to large organizations, but to individuals, students, and small businesses too.</p>
+        </div>
+        <div class="about-item fade-in-section">
+            <span class="about-item-title">How it works</span>
+            <p>Upload your 3D file, choose your material and color, and we send you a confirmed price. Give us at least 48 hours and your part is ready. We deliver countrywide, and payment is only required before dispatch.</p>
+        </div>
+        <div class="about-item fade-in-section">
+            <span class="about-item-title">Our commitment to quality</span>
+            <p>Every print is tuned for dimensional accuracy — down to 0.02&nbsp;mm in some cases. We don't just hit print and hand it over; we inspect each part so it arrives true to your design, with no further finishing needed.</p>
+        </div>
+        <div class="about-item fade-in-section">
+            <span class="about-item-title">A personalized service</span>
+            <p>No two print requests are the same. We take the time to understand your requirements so the finished part is exactly what you had in mind — whether that's an architectural model, a custom enclosure, or a one-off prototype.</p>
+        </div>
+    </div>
+    <div class="about-cta-row fade-in-section">
+        <a class="btn-outline-dark" href="{% url 'gallery' %}">View Our Work &rarr;</a>
+    </div>
+</div>
+
+<div class="copy-toast" id="copy-toast" role="status" aria-live="polite"></div>
 
 {% endblock %}
 
@@ -182,6 +275,23 @@
             });
         }
     });
+
+    /* ── Copy-to-clipboard for contact buttons ── */
+    var toastTimer;
+    function copyContact(text, msg) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).catch(function() {});
+        }
+        var toast = document.getElementById('copy-toast');
+        if (!toast) { return; }
+        toast.textContent = msg;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () {
+            toast.classList.remove('show');
+        }, 2200);
+    }
+    window.copyContact = copyContact;
 
     /* ── Material card expand / collapse ── */
     document.querySelectorAll('.mat-card').forEach(function (card) {

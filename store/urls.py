@@ -13,7 +13,7 @@ from django.views.generic.base import TemplateView
 
 
 from django.conf import settings
-from django.conf.urls import include
+from django.urls import include
 from django.conf.urls.static import static
 
 sitemaps = {
@@ -22,7 +22,7 @@ sitemaps = {
 }
 
 
-app_name = 'store'
+#app_name = 'store'
 urlpatterns = [
     path('', views.filamentLanding, name='filamentHome'),
     #path('filament', views.filamentLanding, name='filamentHome'),
@@ -60,7 +60,7 @@ urlpatterns = [
     path('myadmin/completed-orders', views.completedOrders, name='completedOrders'),
     #path('api/callback', views.apiCallback, name='apiCallback'),
     #path('api/Express', views.mpesaExpress, name='mpesaExpress'),
-    path('djga/', include('google_analytics.urls')),
+    #path('djga/', include('google_analytics.urls')),  # google_analytics not installed
     
     #temporary email construction
     path('email/emailviewer', views.emailViewer, name='emailViewer'),

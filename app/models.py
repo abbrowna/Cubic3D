@@ -12,7 +12,8 @@ import math
 
 # Create your models here.
 class Material(models.Model):
-    acronym = models.CharField(primary_key=True, max_length=5, verbose_name = "Material Acronym")
+    acronym = models.CharField(primary_key=True, max_length=10, verbose_name = "Material Acronym")
+    full_name = models.CharField(max_length=50, blank=True, verbose_name = "Full name")
     density = models.FloatField()
     ppg = models.IntegerField(verbose_name = "Price per gram")
     color1 = models.CharField(max_length=15, blank=True)
@@ -20,6 +21,7 @@ class Material(models.Model):
     color3 = models.CharField(max_length=15, blank=True)
     color4 = models.CharField(max_length=15, blank=True)
     color5 = models.CharField(max_length=15, blank=True)
+    tagline = models.CharField(max_length=200, blank=True, verbose_name = "Card tagline (short phrase shown when card is clicked)")
 
     def available_colors(self):
         colors=[]

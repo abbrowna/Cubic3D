@@ -3,8 +3,7 @@ Definition of urls for Main application.
 """
 
 from datetime import datetime
-from django.conf.urls import url
-from django.urls import path
+from django.urls import path, re_path
 import django.contrib.auth.views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -19,7 +18,7 @@ import app.views
 from app import views
 
 # Uncomment the next lines to enable the admin:
-from django.conf.urls import include
+from django.urls import include
 from django.contrib import admin
 admin.autodiscover()
 
@@ -27,7 +26,6 @@ sitemaps = {
     'static': StaticViewSitemap
 }
 
-app_name = 'app'
 urlpatterns = [
     # Examples:
     path('',views.home, name='home'),
@@ -61,7 +59,7 @@ urlpatterns = [
     path('my_admin/user_profiles/', app.views.user_profiles, name='user_profiles'),
     path('my_admin/new_user_request/', app.views.new_user_request, name='new_user_request'),
     path('accounts/change_profile/', app.views.change_profile, name='change_profile'),
-    url(r'^googledb04602fc10702c7\.html$', lambda r: HttpResponse("google-site-verification: googledb04602fc10702c7.html")),
+    re_path(r'^googledb04602fc10702c7\.html$', lambda r: HttpResponse("google-site-verification: googledb04602fc10702c7.html")),
 
     path('accounts/login/',
         django.contrib.auth.views.LoginView.as_view(

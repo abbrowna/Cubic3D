@@ -59,7 +59,7 @@ DEBUG = IS_LOCAL
 HOLIDAY_MODE = False
 
 
-ALLOWED_HOSTS = ['139.59.26.37','188.166.237.15','localhost','cubic3d.co.ke','www.cubic3d.co.ke','store.cubic3d.co.ke','www.store.cubic3d.co.ke']
+ALLOWED_HOSTS = ['139.59.26.37','188.166.237.15','localhost','127.0.0.1','cubic3d.co.ke','www.cubic3d.co.ke','store.cubic3d.co.ke','www.store.cubic3d.co.ke']
 
 # Application definition
 INSTALLED_APPS = [
@@ -76,7 +76,7 @@ INSTALLED_APPS = [
     'store',
     'app',
     'verify_email',
-    'captcha',
+    'django_recaptcha',
 ]
 
 
@@ -93,7 +93,7 @@ MIDDLEWARE = [
 ]
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
-#ROOT_URLCONF = 'Cubic3D.urls'
+ROOT_URLCONF = 'Cubic3D.urls'
 
 TEMPLATES = [
     {

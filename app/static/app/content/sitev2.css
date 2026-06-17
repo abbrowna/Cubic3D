@@ -1,13 +1,13 @@
 /*fonts*/
 @font-face {
     font-family: 'DIN Neuzeit Grotesk';
-    src: url('../fonts/DIN Neuzeit Grotesk LT W01 BdCn.woff2') format('woff2'), url('../fonts/DIN Neuzeit Grotesk LT W01 BdCn.woff') format('woff'), /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+    src: url('../fonts/DIN Neuzeit Grotesk LT W01 BdCn.woff2') format('woff2'), url('../fonts/DIN Neuzeit Grotesk LT W01 BdCn.woff') format('woff'), /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3ï¿½5 */
     url('../fonts/DIN Neuzeit Grotesk LT W01 BdCn.ttf') format('truetype');
     font-display: swap;
 }
 @font-face {
     font-family: 'Playfair Display';
-    src: url('../fonts/Playfair Display.woff2') format('woff2'), url('../fonts/Playfair Display.woff') format('woff'), /*Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+    src: url('../fonts/Playfair Display.woff2') format('woff2'), url('../fonts/Playfair Display.woff') format('woff'), /*Chrome 4+, Firefox 3.5, Opera 10+, Safari 3ï¿½5 */
     url('../fonts/Playfair Display.ttf') format('truetype');
     font-display: swap;
 }
@@ -584,12 +584,35 @@ body {
     text-decoration: none;
     font-size: 1.1em;
 }
+#client_logos{
+    color: #FCFCFC;
+}
 #client_logos .row{
     align-items: center;
 }
 #client_logos h4{
     padding-top: 50px;
     padding-bottom: 0px;
+}
+
+/* Gallery page variant â€” light background */
+#gallery-clients-strip {
+    background-color: #fcfcfc;
+    padding-bottom: 40px;
+}
+#gallery-clients-strip #client_logos {
+    color: #3b3b3b;
+}
+#gallery-clients-strip #client_logos h4 {
+    font-family: 'DIN Neuzeit Grotesk', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: normal;
+    color: #2c7a5e;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin: 0;
 }
 #client_logos .image-col{
     text-align: center;

@@ -1,6 +1,6 @@
 @font-face{
     font-family: Avenir;
-    src: url('../fonts/Avenir_LT_35_light.ttf');
+    src: url('../fonts/Avenir_LT_35_Light.ttf');
 }
 @font-face {
     font-family: DIN;
@@ -38,7 +38,7 @@
     font-family: Playfair;
     src: url('../fonts/Playfair Display.ttf') format('truetype'),
         url('../fonts/Playfair Display.woff') format('woff'),
-        url('../fonts/Playfair display.woff2') format('woff2'),
+        url('../fonts/Playfair Display.woff2') format('woff2'),
 }
 @font-face{
     font-family: Playfair;

@@ -2,6 +2,8 @@ Cubic3D.pyproj
 Cubic3D.pyproj.user
 db.sqlite3
 env
+.env
+.venv
 invoices
 media
 output.gcode
@@ -12,7 +14,9 @@ Cubic3D.sln
 obj
 bin
 .vs
+.vscode
 __pycache__
 *.pyc
 /app/migrations
 /store/migrations
+.DS_Store
