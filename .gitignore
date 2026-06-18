@@ -16,7 +16,4 @@ bin
 .vs
 .vscode
 __pycache__
-*.pyc
-/app/migrations
-/store/migrations
 .DS_Store
