@@ -59,7 +59,7 @@ DEBUG = IS_LOCAL
 HOLIDAY_MODE = False
 
 
-ALLOWED_HOSTS = ['139.59.26.37','188.166.237.15','localhost','127.0.0.1','cubic3d.co.ke','www.cubic3d.co.ke','store.cubic3d.co.ke','www.store.cubic3d.co.ke']
+ALLOWED_HOSTS = ['146.190.104.24','139.59.26.37','188.166.237.15','localhost','127.0.0.1','cubic3d.co.ke','www.cubic3d.co.ke','store.cubic3d.co.ke','www.store.cubic3d.co.ke']
 
 # Application definition
 INSTALLED_APPS = [

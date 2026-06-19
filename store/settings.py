@@ -26,6 +26,5 @@ INSTALLED_APPS = [
     'store',
     'app',
     'django_recaptcha',
-    'google_analytics',
     'verify_email',
 ]

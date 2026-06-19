@@ -17,5 +17,8 @@ bin
 .vscode
 __pycache__
 .DS_Store
-/store/migrations
-/app/migrations
+# Ignore all Django migration files
+**/migrations/*
+
+# But DO NOT ignore the __init__.py files
+!**/migrations/__init__.py
