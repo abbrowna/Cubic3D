@@ -631,7 +631,9 @@ def grouped_requests(request):
                     'bill_to':form.cleaned_data['bill_to'],
                     'delivery_fee':delivery_fee
                 },request)
-            invoice_path = "invoices/INV-{}.pdf".format(group[0].printrequest.id)
+            invoice_dir = os.path.join(settings.MEDIA_ROOT, 'invoices')
+            os.makedirs(invoice_dir, exist_ok=True)
+            invoice_path = os.path.join(invoice_dir, "INV-{}.pdf".format(group[0].printrequest.id))
             pdf_invoice = open(invoice_path,"w+b")
             pisastatus = pisa.CreatePDF(pdf_content,dest=pdf_invoice,link_callback=link_callback)
             pdf_invoice.close()
