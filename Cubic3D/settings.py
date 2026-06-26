@@ -190,13 +190,15 @@ else:
 
 
 #Email
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = 'smtp.zoho.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'orders@cubic3d.co.ke'
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS', '')
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'Cubic3D Account<orders@cubic3d.co.ke>'
+if IS_LOCAL:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_HOST = 'smtp.zoho.com'
+    EMAIL_PORT = 587
+    EMAIL_HOST_USER = 'orders@cubic3d.co.ke'
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS', '')
+    EMAIL_USE_TLS = True
+    DEFAULT_FROM_EMAIL = 'Cubic3D Account<orders@cubic3d.co.ke>'
 
 #Templates for email verification
 HTML_MESSAGE_TEMPLATE = os.path.join(BASE_DIR, 'app/templates/email/verification_email.html')

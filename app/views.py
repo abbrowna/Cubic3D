@@ -32,11 +32,17 @@ from xhtml2pdf import pisa
 def link_callback(uri, rel):
     sUrl = settings.STATIC_URL
     sRoot = settings.STATIC_ROOT
-    if uri.startswith(sUrl):
+    mUrl = settings.MEDIA_URL
+    mRoot = settings.MEDIA_ROOT
+
+    if uri.startswith(mUrl):
+        path = os.path.join(mRoot, uri.replace(mUrl, ""))
+        path = urllib.parse.unquote(path)
+    elif uri.startswith(sUrl):
         path = os.path.join(sRoot, uri.replace(sUrl, ""))
         path = urllib.parse.unquote(path)
     else:
-       return uri
+        return uri
 
     if not os.path.isfile(path):
         raise Exception(
@@ -476,8 +482,10 @@ def accept_or_reject(request, requestid):
                             'bill_to':form.cleaned_data['bill_to'],
                             'delivery_fee':delivery_fee,
                         },request)
-                    
-                    invoice_path = "invoices/INV-{}.pdf".format(printrequest.id)
+                    invoice_dir = os.path.join(settings.MEDIA_ROOT, 'invoices')
+                    os.makedirs(invoice_dir, exist_ok=True)
+                    invoice_path = os.path.join(invoice_dir, "INV-{}.pdf".format(printrequest.id))
+                    #invoice_path = "invoices/INV-{}.pdf".format(printrequest.id)
                     pdf_invoice = open(invoice_path,"w+b")
                     pisastatus = pisa.CreatePDF(pdf_content,dest=pdf_invoice,link_callback=link_callback)
                     pdf_invoice.close()
