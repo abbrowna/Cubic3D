@@ -768,7 +768,9 @@ def send_receipt(request, invoice_id, orderlist):
             'invoice':invoice,
             'date':datetime.today().strftime("%d-%m-%y"),
         },request)
-    receipt_path = "receipts/RCPT-{}.pdf".format(invoice.number)
+    receipt_dir = os.path.join(settings.MEDIA_ROOT, 'receipts')
+    os.makedirs(receipt_dir, exist_ok=True)
+    receipt_path = os.path.join(receipt_dir, "RCPT-{}.pdf".format(invoice.number))
     pdf_receipt = open(receipt_path,"w+b")
     pisastatus = pisa.CreatePDF(pdf_content,dest=pdf_receipt,link_callback=link_callback)
     pdf_receipt.close()
@@ -798,7 +800,7 @@ def autopopulate(request):
     prs = PrintRequest.objects.filter(receipted=True)
     groups = GroupRecord.objects.all()
     for p in prs:
-        receipt_path = "receipts/RCPT-{}.pdf".format(p.id)
+        receipt_path = os.path.join(settings.MEDIA_ROOT, 'receipts', "RCPT-{}.pdf".format(p.id))
         fname = pathlib.Path(receipt_path)
         if fname.exists():
             grouped = False
