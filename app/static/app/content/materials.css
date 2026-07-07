@@ -1,0 +1,300 @@
+/* ============================================================
+   Cubic3D — Materials page styles  (materials.css v1.0)
+   Color palette: #262626 bg · #F7D57F gold · #FCFCFC white
+                  #4BD1A0 green · #1a1a1a dark · #3b3b3b mid
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   Hero / header
+   ---------------------------------------------------------- */
+#mat-hero {
+    background: #262626;
+    padding: 80px 24px 72px;
+    text-align: center;
+    border-bottom: 1px solid #2e2e2e;
+}
+
+.mat-hero-label {
+    font-family: 'DIN Neuzeit Grotesk', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.40em;
+    color: #4BD1A0;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin: 0 0 20px;
+}
+
+.mat-hero-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 36px;
+    font-weight: normal;
+    color: #FCFCFC;
+    margin: 0 0 20px;
+    letter-spacing: 0.02em;
+    line-height: 1.3;
+}
+
+.mat-hero-sub {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    font-size: 17px;
+    color: #909090;
+    margin: 0 auto;
+    max-width: 560px;
+    line-height: 1.7;
+}
+
+/* ----------------------------------------------------------
+   Accordion wrapper
+   ---------------------------------------------------------- */
+#mat-accordion {
+    background: #1a1a1a;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+}
+
+/* ----------------------------------------------------------
+   Individual accordion item
+   ---------------------------------------------------------- */
+.mat-acc-item {
+    border-bottom: 1px solid #2e2e2e;
+}
+.mat-acc-item:first-child {
+    border-top: 1px solid #2e2e2e;
+    margin-top: 56px;
+}
+
+/* ----------------------------------------------------------
+   Accordion header button
+   ---------------------------------------------------------- */
+.mat-acc-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 24px 0;
+    cursor: pointer;
+    gap: 16px;
+    text-align: left;
+    transition: background 0.2s ease;
+}
+.mat-acc-head:hover,
+.mat-acc-head:focus {
+    outline: none;
+}
+.mat-acc-head:focus-visible {
+    outline: 2px solid rgba(247, 213, 127, 0.5);
+    outline-offset: 2px;
+}
+
+/* Left side: acronym + full name */
+.mat-acc-identity {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.mat-acc-acronym {
+    font-family: 'DIN Neuzeit Grotesk', sans-serif;
+    font-size: 26px;
+    letter-spacing: 0.12em;
+    color: #F7D57F;
+    font-weight: normal;
+    line-height: 1.1;
+    transition: color 0.2s ease;
+}
+.mat-acc-head[aria-expanded="true"] .mat-acc-acronym {
+    color: #f0cb6a;
+}
+
+.mat-acc-fullname {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    font-size: 13px;
+    color: #787878;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+}
+
+/* Right side: price + swatches + chevron */
+.mat-acc-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+.mat-acc-price {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+    color: #FCFCFC;
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+}
+.mat-acc-price small {
+    font-size: 12px;
+    color: #787878;
+}
+
+.mat-acc-chevron {
+    flex-shrink: 0;
+    color: #787878;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+}
+.mat-acc-head[aria-expanded="true"] .mat-acc-chevron {
+    transform: rotate(180deg);
+    color: #F7D57F;
+}
+
+/* ----------------------------------------------------------
+   Accordion body (description)
+   ---------------------------------------------------------- */
+.mat-acc-body {
+    padding: 0 0 28px;
+}
+
+.mat-acc-body p {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    font-size: 15px;
+    color: #909090;
+    line-height: 1.8;
+    margin: 0 0 14px;
+}
+.mat-acc-body p:last-child {
+    margin-bottom: 0;
+}
+
+/* Highlight the "Best for" final paragraph */
+.mat-acc-body p:last-of-type {
+    color: #4BD1A0;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    border-left: 2px solid rgba(75, 209, 160, 0.4);
+    padding-left: 14px;
+    margin-top: 14px;
+}
+
+/* ----------------------------------------------------------
+   CTA section
+   ---------------------------------------------------------- */
+#mat-cta {
+    /*background: linear-gradient(to bottom, #1a1a1a 0%, #262626 100%);*/
+    padding: 80px 24px 100px;
+    text-align: center;
+}
+
+.final-cta-heading {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 26px;
+    font-weight: normal;
+    color: #FCFCFC;
+    margin: 0 0 44px;
+    letter-spacing: 0.03em;
+    line-height: 1.4;
+}
+
+.final-cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* ----------------------------------------------------------
+   CTA pulse animation — draws the eye to "Request a Print"
+   ---------------------------------------------------------- */
+@keyframes cubic-pulse {
+    0%   { box-shadow: 0 0 0 0   rgba(247, 213, 127, 0.60); }
+    70%  { box-shadow: 0 0 0 16px rgba(247, 213, 127, 0); }
+    100% { box-shadow: 0 0 0 0   rgba(247, 213, 127, 0); }
+}
+.btn-pulse {
+    animation: cubic-pulse 2.5s ease-out infinite;
+}
+.btn-pulse:hover,
+.btn-pulse:focus {
+    animation: none;
+    background-color: #f0cb6a;
+    box-shadow: 0 4px 22px rgba(247, 213, 127, 0.50);
+    transform: translateY(-2px);
+    outline: none;
+}
+
+/* Outline variant button (secondary CTA) */
+.btn-outline {
+    display: inline-block;
+    background-color: transparent;
+    border: 1px solid #3b3b3b;
+    color: #FCFCFC;
+    font-family: 'DIN Neuzeit Grotesk', sans-serif;
+    font-size: 19px;
+    padding: 6px 20px;
+    border-radius: 0;
+    text-decoration: none;
+    transition: border-color 0.25s ease, color 0.25s ease, background-color 0.25s ease;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+}
+.btn-outline:hover,
+.btn-outline:focus {
+    border-color: #F7D57F;
+    color: #F7D57F;
+    background-color: transparent;
+    text-decoration: none;
+    outline: none;
+}
+
+/* ----------------------------------------------------------
+   Responsive
+   ---------------------------------------------------------- */
+@media (min-width: 600px) {
+    .mat-acc-acronym {
+        font-size: 30px;
+    }
+    .mat-acc-fullname {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 768px) {
+    .mat-hero-title {
+        font-size: 44px;
+    }
+    #mat-accordion {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .mat-acc-head {
+        padding: 28px 0;
+    }
+    .mat-acc-acronym {
+        font-size: 32px;
+    }
+    .final-cta-heading {
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 992px) {
+    .mat-hero-title {
+        font-size: 52px;
+    }
+    #mat-hero {
+        padding: 100px 40px 88px;
+    }
+    .mat-acc-body p {
+        font-size: 16px;
+    }
+    .final-cta-heading {
+        font-size: 34px;
+    }
+}

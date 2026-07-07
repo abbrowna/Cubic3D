@@ -232,6 +232,84 @@
     </div>
 </div>
 
+{# ── FAQ ── #}
+<div id="index-faq">
+    <h2 class="index-section-label fade-in-section">FREQUENTLY ASKED QUESTIONS</h2>
+    <div class="faq-list fade-in-section" role="list">
+
+        <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
+                What 3D file format do I need to upload?
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer" id="faq-1" hidden>
+                <p>We accept STL files, which is the standard format exported by most CAD tools including Fusion 360, SolidWorks, Tinkercad, and Blender. If your design is in a different format, reach out before uploading and we'll help you convert it.</p>
+            </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
+                How long does it take to receive my print?
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer" id="faq-2" hidden>
+                <p>Most orders are ready within 2–5 business days after you confirm the price. Larger or more complex prints may take longer, and we'll give you a specific timeline once we've reviewed your file.</p>
+            </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
+                How is the price calculated?
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer" id="faq-3" hidden>
+                <p>Pricing is based primarily on the weight of the finished print (KES per gram), which depends on the size and density of your model. The material you choose also affects the cost. Upload your file to get an instant estimate before committing.</p>
+            </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
+                What materials are available?
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer" id="faq-4" hidden>
+                <p>We currently offer PLA, PETG, ASA, ABS, TPU, and more, each available in a range of colors. PLA is great for most everyday objects, PETG for functional parts, and TPU for flexible applications. Visit our <a href="{% url 'materials' %}">Materials page</a> for a full breakdown.</p>
+            </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-5">
+                Do you deliver outside Nairobi?
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer" id="faq-5" hidden>
+                <p>Yes — we deliver countrywide across Kenya. Delivery fees are calculated at the invoicing stage based on your location. Payment is only required after you confirm the price and before dispatch.</p>
+            </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-6">
+                I don't have a 3D file — can you still help?
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer" id="faq-6" hidden>
+                <p>Absolutely. We offer a 3D design service where we model your idea from a sketch, photo, or description — starting from KES 1,500. We also have a 3D scanning service to digitize an existing physical object. <a href="{% url 'contact' %}">Get in touch</a> to discuss your project.</p>
+            </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-7">
+                What if my print doesn't come out right?
+                <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer" id="faq-7" hidden>
+                <p>We inspect every print before dispatch. If a part fails to meet the expected quality due to a printing error on our end, we reprint it at no extra charge. Issues arising from problems with the original 3D file — such as non-manifold geometry — will be discussed with you before we proceed.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <div class="copy-toast" id="copy-toast" role="status" aria-live="polite"></div>
 
 {% endblock %}
@@ -255,7 +333,7 @@
     "sameAs": [
       "https://www.facebook.com/cubic3d/",
       "https://www.instagram.com/cubic3d_ke/",
-      "https://twitter.com/cubic3d_ke"
+      "https://x.com/cubic3d_ke"
     ]
 }
 </script>
@@ -328,6 +406,28 @@
             el.classList.add('is-visible');
         });
     }
+
+    /* ── FAQ accordion ── */
+    document.querySelectorAll('.faq-question').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var expanded = btn.getAttribute('aria-expanded') === 'true';
+            var answerId = btn.getAttribute('aria-controls');
+            var answer = document.getElementById(answerId);
+
+            /* Close all others */
+            document.querySelectorAll('.faq-question').forEach(function (other) {
+                if (other !== btn) {
+                    other.setAttribute('aria-expanded', 'false');
+                    var otherId = other.getAttribute('aria-controls');
+                    var otherAnswer = document.getElementById(otherId);
+                    if (otherAnswer) { otherAnswer.hidden = true; }
+                }
+            });
+
+            btn.setAttribute('aria-expanded', String(!expanded));
+            if (answer) { answer.hidden = expanded; }
+        });
+    });
 }());
 </script>
 {% endblock %}

@@ -96,6 +96,7 @@ def materials(request):
             'title':'Materials and Options',
             'description':'A brief explanation of our available 3D printing materials and which one would best suit your application.',
             'year':datetime.now().year,
+            'materials': Material.objects.all(),
         }
     )
 
@@ -103,11 +104,15 @@ def gallery(request):
     """Renders the gallery page."""
     assert isinstance(request, HttpRequest)
     rootdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    photo_names = os.listdir(os.path.join(rootdir, 'app/static/app/images/gallery/'))
+    static_gallery_dir = os.path.join(rootdir, 'app', 'static', 'app', 'images', 'gallery')
     photos = []
-    for photo_name in photo_names:
-        photo = '/static/app/images/gallery/{0}'.format(photo_name)
-        photos.append(photo)
+    if os.path.isdir(static_gallery_dir):
+        for name in sorted(os.listdir(static_gallery_dir)):
+            photos.append({'url': '/static/app/images/gallery/{0}'.format(name), 'name': name, 'deletable': False})
+    media_gallery_dir = os.path.join(settings.MEDIA_ROOT, 'gallery')
+    if os.path.isdir(media_gallery_dir):
+        for name in sorted(os.listdir(media_gallery_dir)):
+            photos.append({'url': settings.MEDIA_URL + 'gallery/' + name, 'name': name, 'deletable': True})
     return render(request,'app/gallery.html',
         {
             'photos':photos,
@@ -116,6 +121,77 @@ def gallery(request):
             'year':datetime.now().year,
         }
     )
+
+@staff_member_required
+def gallery_manage(request):
+    """Gallery image management page for staff"""
+    assert isinstance(request, HttpRequest)
+    error = None
+
+    if request.method == 'POST':
+        image = request.FILES.get('image')
+        if not image:
+            error = 'No image file provided.'
+        else:
+            allowed_extensions = {'.jpg', '.jpeg', '.png', '.webp', '.gif'}
+            _, ext = os.path.splitext(image.name.lower())
+            if ext not in allowed_extensions:
+                error = 'Invalid file type. Allowed: JPG, PNG, WEBP, GIF.'
+            else:
+                from PIL import Image as PilImage
+                try:
+                    img = PilImage.open(image)
+                    img.verify()
+                    image.seek(0)
+                except Exception:
+                    error = 'File does not appear to be a valid image.'
+                if not error:
+                    from django.utils.text import get_valid_filename
+                    safe_name = get_valid_filename(os.path.basename(image.name))
+                    gallery_dir = os.path.join(settings.MEDIA_ROOT, 'gallery')
+                    os.makedirs(gallery_dir, exist_ok=True)
+                    dest_path = os.path.join(gallery_dir, safe_name)
+                    with open(dest_path, 'wb') as f:
+                        for chunk in image.chunks():
+                            f.write(chunk)
+                    return redirect('gallery_manage')
+
+    rootdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    static_gallery_dir = os.path.join(rootdir, 'app', 'static', 'app', 'images', 'gallery')
+    static_photos = []
+    if os.path.isdir(static_gallery_dir):
+        for name in sorted(os.listdir(static_gallery_dir)):
+            static_photos.append({'url': '/static/app/images/gallery/{0}'.format(name), 'name': name})
+
+    media_gallery_dir = os.path.join(settings.MEDIA_ROOT, 'gallery')
+    media_photos = []
+    if os.path.isdir(media_gallery_dir):
+        for name in sorted(os.listdir(media_gallery_dir)):
+            media_photos.append({'url': settings.MEDIA_URL + 'gallery/' + name, 'name': name})
+
+    return render(request, 'myadmin/gallery_manage.html', {
+        'title': 'Manage Gallery',
+        'year': datetime.now().year,
+        'static_photos': static_photos,
+        'media_photos': media_photos,
+        'error': error,
+    })
+
+@staff_member_required
+def delete_gallery_image(request):
+    """Delete an uploaded gallery image from media storage"""
+    assert isinstance(request, HttpRequest)
+    if request.method == 'POST':
+        image_name = request.POST.get('image_name', '')
+        safe_name = os.path.basename(image_name)
+        if safe_name:
+            gallery_dir = os.path.join(settings.MEDIA_ROOT, 'gallery')
+            image_path = os.path.join(gallery_dir, safe_name)
+            real_path = os.path.realpath(image_path)
+            real_gallery = os.path.realpath(gallery_dir)
+            if real_path.startswith(real_gallery + os.sep) and os.path.isfile(real_path):
+                os.remove(real_path)
+    return redirect('gallery_manage')
 
 def def_quote(request):
     """Renders page for part upload to get quote"""

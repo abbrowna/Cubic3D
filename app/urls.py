@@ -58,6 +58,8 @@ urlpatterns = [
     path('my_admin/orders/pending/',app.views.orders, name='orders'),
     path('my_admin/user_profiles/', app.views.user_profiles, name='user_profiles'),
     path('my_admin/new_user_request/', app.views.new_user_request, name='new_user_request'),
+    path('my_admin/gallery/', app.views.gallery_manage, name='gallery_manage'),
+    path('my_admin/gallery/delete/', app.views.delete_gallery_image, name='delete_gallery_image'),
     path('accounts/change_profile/', app.views.change_profile, name='change_profile'),
     re_path(r'^googledb04602fc10702c7\.html$', lambda r: HttpResponse("google-site-verification: googledb04602fc10702c7.html")),
 

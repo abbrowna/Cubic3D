@@ -517,6 +517,70 @@ body {
     object-fit: cover;
 }
 
+/* X (formerly Twitter) icon in footer */
+.x-icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background-color: #000000;
+    border-radius: 4px;
+    color: #ffffff;
+    transition: opacity 0.2s ease;
+}
+.x-icon-wrap:hover {
+    opacity: 0.8;
+}
+
+/* About page — X follow section */
+#about-social {
+    background-color: #000000;
+    padding: 48px 24px;
+    text-align: center;
+}
+.about-social-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+@media (min-width: 600px) {
+    .about-social-inner {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+.about-social-label {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    font-size: 15px;
+    color: #909090;
+    letter-spacing: 0.04em;
+}
+.about-x-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #000000;
+    border: 1px solid #3b3b3b;
+    color: #FCFCFC;
+    font-family: 'DIN Neuzeit Grotesk', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: border-color 0.25s ease, color 0.25s ease;
+    border-radius: 0;
+}
+.about-x-btn:hover,
+.about-x-btn:focus {
+    border-color: #FCFCFC;
+    color: #FCFCFC;
+    text-decoration: none;
+    outline: none;
+}
+
 /*****About page*****/
 /*navbar background*/
 .navbar-image{

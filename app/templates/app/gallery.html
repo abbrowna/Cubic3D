@@ -42,11 +42,11 @@
                 {% for photo in photos %}
                     {% if forloop.counter0 == 0 %}
                         <div class="item active">
-                            <img class="slides" src="{{ photo }}">
+                            <img class="slides" src="{{ photo.url }}" alt="{{ photo.name }}">
                         </div>
                     {% else %}
                         <div class="item">
-                            <img class="slides" src="{{ photo }}">
+                            <img class="slides" src="{{ photo.url }}" alt="{{ photo.name }}">
                         </div>
                     {% endif %}
                 {% endfor %}
@@ -78,19 +78,18 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <img alt="violin" data-type="image" src="{% static "app/images/gallery/violin.png" %}" loading="lazy">
-                <img alt="assembly" data-type="image" src="{% static "app/images/gallery/assembly.png" %}" loading="lazy">
-                <img alt="bracket" data-type="image" src="{% static "app/images/gallery/bracket.png" %}" loading="lazy">
-                <img alt="midway" data-type="image" src="{% static "app/images/gallery/print in progress.png" %}" loading="lazy">
-                <img alt="architecture2" data-type="image" src="{% static "app/images/gallery/linda1.JPG" %}" loading="lazy" />
-                <img alt="gear repair" data-type="image" src="{% static "app/images/gallery/gearfix.png" %}" loading="lazy" />
+                {% for photo in photos %}
+                    {% if forloop.counter0|divisibleby:2 %}
+                    <img alt="{{ photo.name }}" data-type="image" src="{{ photo.url }}" loading="lazy">
+                    {% endif %}
+                {% endfor %}
             </div>
             <div class="col-sm-6">
-                <img alt="architecture group" data-type="image" src="{% static "app/images/gallery/architecture group.png" %}" loading="lazy">
-                <img alt="test print" data-type="image" src="{% static "app/images/gallery/test print.png" %}" loading="lazy">
-                <img alt="burj khalifa" data-type="image" src="{% static "app/images/gallery/Burj Khalifa.png" %}" loading="lazy">
-                <img alt="architecture" data-type="image" src="{% static "app/images/gallery/architecture building.png" %}" loading="lazy">
-                <img alt="architecture3" data-type="image" src="{% static "app/images/gallery/linda2.JPG" %}" loading="lazy" />
+                {% for photo in photos %}
+                    {% if not forloop.counter0|divisibleby:2 %}
+                    <img alt="{{ photo.name }}" data-type="image" src="{{ photo.url }}" loading="lazy">
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>    

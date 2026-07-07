@@ -22,7 +22,7 @@ class Material(models.Model):
     color4 = models.CharField(max_length=15, blank=True)
     color5 = models.CharField(max_length=15, blank=True)
     tagline = models.CharField(max_length=200, blank=True, verbose_name = "Card tagline (short phrase shown when card is clicked)")
-
+    description = models.TextField(blank=True, verbose_name="Detailed description (shown on the Materials page)")
     def available_colors(self):
         colors=[]
         for color_no in range(1,6,1):

@@ -1,0 +1,92 @@
+{% extends "app/layout.html" %}
+{% load static %}
+{% block fullcontent %}
+
+<div class="container myadmin_title">
+    <h1>{{ title }}</h1>
+    <p><a href="{% url 'myadmin' %}">&larr; Back to Admin</a></p>
+</div>
+
+<div class="container" style="padding-bottom:60px;">
+
+    {# ── Upload section ── #}
+    <div style="background:#1a1a1a;border:1px solid #2e2e2e;padding:32px;margin-bottom:48px;max-width:560px;">
+        <h2 style="font-family:'DIN Neuzeit Grotesk',sans-serif;font-size:15px;letter-spacing:0.25em;color:#F7D57F;text-transform:uppercase;font-weight:normal;margin:0 0 24px;">Upload New Image</h2>
+
+        {% if error %}
+        <div style="background:#3b1a1a;border:1px solid #7a2222;color:#f08080;font-family:Nunito,sans-serif;font-size:14px;padding:10px 16px;margin-bottom:20px;">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div style="margin-bottom:16px;">
+                <label for="gallery-upload" style="display:block;font-family:Nunito,sans-serif;font-size:13px;color:#909090;font-weight:200;margin-bottom:8px;letter-spacing:0.05em;">
+                    Image file (JPG, PNG, WEBP, GIF)
+                </label>
+                <input id="gallery-upload" type="file" name="image" accept=".jpg,.jpeg,.png,.webp,.gif"
+                       style="font-family:Nunito,sans-serif;font-size:14px;color:#FCFCFC;background:#262626;border:1px solid #3b3b3b;padding:8px 12px;width:100%;box-sizing:border-box;">
+            </div>
+            <button type="submit" class="btn btn1" style="margin-top:8px;">Upload Image</button>
+        </form>
+    </div>
+
+    {# ── Uploaded (deletable) images ── #}
+    <h2 style="font-family:'DIN Neuzeit Grotesk',sans-serif;font-size:14px;letter-spacing:0.28em;color:#4BD1A0;text-transform:uppercase;font-weight:normal;margin:0 0 20px;">
+        Uploaded Images <span style="color:#787878;font-size:12px;">({{ media_photos|length }})</span>
+    </h2>
+
+    {% if media_photos %}
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:48px;">
+        {% for photo in media_photos %}
+        <div style="position:relative;background:#1a1a1a;border:1px solid #2e2e2e;overflow:hidden;">
+            <img src="{{ photo.url }}" alt="{{ photo.name }}"
+                 style="width:100%;height:160px;object-fit:cover;display:block;" loading="lazy">
+            <div style="padding:8px 10px;display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-family:Nunito,sans-serif;font-size:11px;font-weight:200;color:#787878;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:130px;" title="{{ photo.name }}">
+                    {{ photo.name }}
+                </span>
+                <form method="post" action="{% url 'delete_gallery_image' %}" style="margin:0;"
+                      onsubmit="return confirm('Delete {{ photo.name }}?');">
+                    {% csrf_token %}
+                    <input type="hidden" name="image_name" value="{{ photo.name }}">
+                    <button type="submit"
+                            style="background:transparent;border:1px solid #7a2222;color:#f08080;font-family:Nunito,sans-serif;font-size:11px;font-weight:200;padding:3px 8px;cursor:pointer;white-space:nowrap;">
+                        Delete
+                    </button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p style="font-family:Nunito,sans-serif;font-weight:200;font-size:14px;color:#787878;margin-bottom:48px;">
+        No images have been uploaded yet. Use the form above to add images.
+    </p>
+    {% endif %}
+
+    {# ── Built-in static images (read-only) ── #}
+    <h2 style="font-family:'DIN Neuzeit Grotesk',sans-serif;font-size:14px;letter-spacing:0.28em;color:#787878;text-transform:uppercase;font-weight:normal;margin:0 0 12px;">
+        Built-in Images <span style="font-size:12px;">({{ static_photos|length }})</span>
+    </h2>
+    <p style="font-family:Nunito,sans-serif;font-weight:200;font-size:13px;color:#787878;margin:0 0 20px;">
+        These images are part of the codebase and cannot be removed from here.
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
+        {% for photo in static_photos %}
+        <div style="background:#1a1a1a;border:1px solid #2e2e2e;overflow:hidden;">
+            <img src="{{ photo.url }}" alt="{{ photo.name }}"
+                 style="width:100%;height:160px;object-fit:cover;display:block;" loading="lazy">
+            <div style="padding:8px 10px;">
+                <span style="font-family:Nunito,sans-serif;font-size:11px;font-weight:200;color:#787878;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block;" title="{{ photo.name }}">
+                    {{ photo.name }}
+                </span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}
