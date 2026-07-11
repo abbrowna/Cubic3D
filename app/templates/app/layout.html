@@ -7,16 +7,92 @@
     {% if description %}
     <meta name="description" content="{{ description }}" />
     {% endif %}
+    <meta property="og:title" content="{{ title }}" />
+    {% if description %}
+    <meta property="og:description" content="{{ description }}" />
+    {% endif %}
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cubic3d.co.ke{{ request.path }}" />
+    <meta property="og:image" content="{{ og_image|default:'https://cubic3d.co.ke/static/app/images/Scincube.webp' }}" />
+    <meta property="og:site_name" content="Cubic3D" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Cubic3D_Ke" />
+    <meta name="twitter:title" content="{{ title }}" />
+    {% if description %}
+    <meta name="twitter:description" content="{{ description }}" />
+    {% endif %}
+    <link rel="canonical" href="https://cubic3d.co.ke{{ request.path }}" />
     {% load static %}
     <link rel="preload" href="{% static 'app/fonts/DIN Neuzeit Grotesk LT W01 BdCn.woff2'%}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{% static 'app/fonts/Playfair Display.woff2'%}" as="font" type="font/woff2" crossorigin>
     {% block preload %}{% endblock %}
+    <link rel="preconnect" href="https://ajax.googleapis.com">
+    <link rel="preconnect" href="https://maxcdn.bootstrapcdn.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}">
     <link rel="icon" href="{% static 'app/images/favicon.ico' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/sitev2.min.css' %}?v=4.1" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/responsive.css' %}?v=3.6" />
     {% include "app/analytics.html" %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Cubic3D",
+      "description": "Professional 3D printing service based in Nairobi, Kenya, offering FDM 3D printing, 3D design, and 3D scanning services.",
+      "url": "https://cubic3d.co.ke",
+      "telephone": "+254728274309",
+      "email": "support@cubic3d.co.ke",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Nairobi",
+        "addressRegion": "Nairobi County",
+        "addressCountry": "KE"
+      },
+      "priceRange": "KES",
+      "currenciesAccepted": "KES",
+      "serviceArea": {
+        "@type": "Country",
+        "name": "Kenya"
+      },
+      "sameAs": [
+        "https://x.com/Cubic3D_Ke",
+        "https://www.instagram.com/cubic3d_ke/",
+        "https://www.facebook.com/cubic3d/"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "3D Printing Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "FDM 3D Printing",
+              "description": "Custom FDM 3D printing with materials including PLA, PETG, ASA, ABS, and TPU in a range of colours."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "3D Design",
+              "description": "3D modelling from sketches, photos, or descriptions, starting from KES 1,500."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "3D Scanning",
+              "description": "Digitizing physical objects into accurate 3D models for reproduction or modification, starting from KES 1,500."
+            }
+          }
+        ]
+      }
+    }
+    </script>
 </head>
 <body>
     <div style="min-height:calc(100vh - 80px);">

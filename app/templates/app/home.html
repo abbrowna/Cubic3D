@@ -33,7 +33,7 @@
     <div class="carousel-inner">
         <div class="item active">
             <div style="opacity:0.6;">
-                <img class="slides" src="{% static 'app/images/Scincube.webp' %}" alt="Cubic3D 3D printing service" loading="lazy">
+                <img class="slides" src="{% static 'app/images/Scincube.webp' %}" alt="Cubic3D 3D printing service" fetchpriority="high">
             </div>
             <div class="SEO carousel-caption" style="margin:0;">
                 <h2 class="welcome">Welcome to</h2>
@@ -319,22 +319,66 @@
 {% block scripts %}
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "url": "https://cubic3d.co.ke",
-    "name": "Cubic3D.",
-    "logo": "https://cubic3d.co.ke/static/app/images/logo.png",
-    "areaServed": "KE",
-    "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+254-728-274-309",
-        "contactType": "customer service"
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What 3D file format do I need to upload?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We accept STL files, which is the standard format exported by most CAD tools including Fusion 360, SolidWorks, Tinkercad, and Blender. If your design is in a different format, reach out before uploading and we'll help you convert it."
+      }
     },
-    "sameAs": [
-      "https://www.facebook.com/cubic3d/",
-      "https://www.instagram.com/cubic3d_ke/",
-      "https://x.com/cubic3d_ke"
-    ]
+    {
+      "@type": "Question",
+      "name": "How long does it take to receive my print?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most orders are ready within 2–5 business days after you confirm the price. Larger or more complex prints may take longer, and we'll give you a specific timeline once we've reviewed your file."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is the price calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pricing is based primarily on the weight of the finished print (KES per gram), which depends on the size and density of your model. The material you choose also affects the cost. Upload your file to get an instant estimate before committing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What materials are available?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We currently offer PLA, PETG, ASA, ABS, TPU, and more, each available in a range of colours. PLA is great for most everyday objects, PETG for functional parts, and TPU for flexible applications."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you deliver outside Nairobi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — we deliver countrywide across Kenya. Delivery fees are calculated at the invoicing stage based on your location. Payment is only required after you confirm the price and before dispatch."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I don't have a 3D file — can you still help?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We offer a 3D design service where we model your idea from a sketch, photo, or description — starting from KES 1,500. We also have a 3D scanning service to digitize an existing physical object."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if my print doesn't come out right?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We inspect every print before dispatch. If a part fails to meet the expected quality due to a printing error on our end, we reprint it at no extra charge. Issues arising from problems with the original 3D file will be discussed with you before we proceed."
+      }
+    }
+  ]
 }
 </script>
 <script>

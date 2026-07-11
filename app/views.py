@@ -57,8 +57,8 @@ def home(request):
         request,
         'app/home.html',
         {
-            'title':'Cubic3D - 3D printing service for your custom designs',
-            'description':'Professional 3D printing service in Kenya producing clean, crisp objects reliably, with pricing that works for everyone. We also offer mechanical and mechatronic design services',
+            'title':'Cubic3D | 3D Printing Service in Nairobi, Kenya',
+            'description':'Professional 3D printing service in Nairobi, Kenya. Custom FDM prints from your STL file — accurate, fast, and delivered countrywide. 3D design and scanning services also available.',
             'year':datetime.now().year,
             'materials': Material.objects.all(),
         }
@@ -71,8 +71,8 @@ def contact(request):
         request,
         'app/contact.html',
         {
-            'title':'Contact Us',
-            'description':'Contact channels for our services.',
+            'title':'Contact Cubic3D | 3D Printing Service in Nairobi',
+            'description':'Get in touch with Cubic3D via email, WhatsApp, or phone. Professional 3D printing service based in Nairobi, Kenya.',
             'year':datetime.now().year,
         }
     )
@@ -93,8 +93,8 @@ def materials(request):
     assert isinstance(request, HttpRequest)
     return render(request,'app/materials.html',
         {
-            'title':'Materials and Options',
-            'description':'A brief explanation of our available 3D printing materials and which one would best suit your application.',
+            'title':'3D Printing Materials & Options | Cubic3D Kenya',
+            'description':'Explore our available 3D printing materials — PLA, PETG, ASA, ABS, TPU, and more — with pricing and colour options. Find the right material for your project.',
             'year':datetime.now().year,
             'materials': Material.objects.all(),
         }
@@ -116,8 +116,8 @@ def gallery(request):
     return render(request,'app/gallery.html',
         {
             'photos':photos,
-            'title':'Gallery',
-            'description':'A photo collection showing some objects printed by us that will prove we\'re the right team for the job.',
+            'title':'3D Print Gallery | Cubic3D Kenya',
+            'description':'Browse our gallery of custom 3D prints — from architectural models and prototypes to art pieces and functional parts, all produced by Cubic3D in Nairobi, Kenya.',
             'year':datetime.now().year,
         }
     )

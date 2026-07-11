@@ -1,0 +1,66 @@
+# Cubic3D
+
+> Professional FDM 3D printing service based in Nairobi, Kenya, serving customers nationwide.
+
+## About
+
+Cubic3D makes custom manufacturing accessible to individuals, students, and businesses across Kenya. We use FDM (Fused Deposition Modelling) technology to produce accurate, high-quality parts from your digital designs — with dimensional accuracy down to 0.02 mm. Every print is inspected before dispatch.
+
+## Services
+
+- **FDM 3D Printing**: Upload your STL file and receive a confirmed price quote. Most orders are ready within 2–5 business days. Pricing is weight-based (KES per gram of finished print).
+- **3D Design**: We model objects from sketches, photos, or descriptions. Starting from KES 1,500.
+- **3D Scanning**: We digitize physical objects into accurate 3D models for reproduction or modification. Starting from KES 1,500.
+
+## Materials
+
+PLA, PETG, ASA, ABS, TPU — each available in a range of colours.
+Full material list with pricing: https://cubic3d.co.ke/materials/
+
+## Capabilities
+
+- Dual extrusion (multi-colour and multi-material prints)
+- Fine detail down to 0.02 mm layer height
+- Print-in-place mechanisms (fully assembled out of the printer)
+- Post-processing: sanding, priming, and surface finishing
+- Hardware integration: embedded magnets, nuts, and threaded inserts
+
+## How It Works
+
+1. Upload your STL file at https://cubic3d.co.ke/getting_started/upload/
+2. We analyse the file and send you a confirmed price.
+3. Confirm and pay — payment is required before dispatch.
+4. Receive your print, delivered countrywide across Kenya within 2–5 business days.
+
+## Clients
+
+We have worked with Rensyl Integral (https://rensylintegral.com/), Drygro (https://drygro.com/), Kaiote (https://kaiote.io/), and PCTL Automation (https://www.pctlautomation.com/).
+
+## Contact
+
+- Website: https://cubic3d.co.ke
+- Email: support@cubic3d.co.ke
+- Phone / WhatsApp: +254 728 274 309
+- Instagram: https://www.instagram.com/cubic3d_ke/
+- X (Twitter): https://x.com/Cubic3D_Ke
+- Facebook: https://www.facebook.com/cubic3d/
+
+## Frequently Asked Questions
+
+**What file format is required?**
+STL files are accepted. Most CAD tools (Fusion 360, SolidWorks, Tinkercad, Blender) export STL directly.
+
+**How long does printing take?**
+2–5 business days after confirming the price. Complex or large prints may take longer.
+
+**How is the price calculated?**
+Based on the weight of the finished print in grams multiplied by the material's per-gram rate.
+
+**Do you deliver outside Nairobi?**
+Yes — we deliver countrywide across Kenya. Delivery fees depend on location and are included in the invoice.
+
+**Can you help if I don't have a 3D file?**
+Yes — we offer a 3D design service starting from KES 1,500. Contact us with a sketch, photo, or description.
+
+**What if my print doesn't come out right?**
+We inspect every print before dispatch. If a quality issue is on our end, we reprint at no charge.
