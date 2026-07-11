@@ -204,3 +204,11 @@ else:
 HTML_MESSAGE_TEMPLATE = os.path.join(BASE_DIR, 'app/templates/email/verification_email.html')
 VERIFICATION_SUCCESS_TEMPLATE = os.path.join(BASE_DIR, 'app/templates/registration/verification_success.html')
 VERIFICATION_FAILED_TEMPLATE = os.path.join(BASE_DIR, 'app/templates/registration/verification_failed.html')
+
+# Security / HSTS (production only)
+if not IS_LOCAL:
+    SECURE_HSTS_SECONDS = 31536000          # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_SSL_REDIRECT = False             # nginx handles redirect
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
