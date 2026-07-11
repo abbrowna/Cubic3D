@@ -15,7 +15,7 @@ Cubic3D makes custom manufacturing accessible to individuals, students, and busi
 ## Materials
 
 PLA, PETG, ASA, ABS, TPU — each available in a range of colours.
-Full material list with pricing: https://cubic3d.co.ke/materials/
+Full material list with pricing: [Materials & Options](https://cubic3d.co.ke/materials/)
 
 ## Capabilities
 
@@ -27,28 +27,28 @@ Full material list with pricing: https://cubic3d.co.ke/materials/
 
 ## How It Works
 
-1. Upload your STL file at https://cubic3d.co.ke/getting_started/upload/
+1. Upload your STL file at [Request a Print](https://cubic3d.co.ke/getting_started/upload/)
 2. We analyse the file and send you a confirmed price.
 3. Confirm and pay — payment is required before dispatch.
 4. Receive your print, delivered countrywide across Kenya within 2–5 business days.
 
 ## Clients
 
-We have worked with Rensyl Integral (https://rensylintegral.com/), Drygro (https://drygro.com/), Kaiote (https://kaiote.io/), and PCTL Automation (https://www.pctlautomation.com/).
+We have worked with [Rensyl Integral](https://rensylintegral.com/), [Drygro](https://drygro.com/), [Kaiote](https://kaiote.io/), and [PCTL Automation](https://www.pctlautomation.com/).
 
 ## Contact
 
-- Website: https://cubic3d.co.ke
-- Email: support@cubic3d.co.ke
+- Website: [cubic3d.co.ke](https://cubic3d.co.ke)
+- Email: [support@cubic3d.co.ke](mailto:support@cubic3d.co.ke)
 - Phone / WhatsApp: +254 728 274 309
-- Instagram: https://www.instagram.com/cubic3d_ke/
-- X (Twitter): https://x.com/Cubic3D_Ke
-- Facebook: https://www.facebook.com/cubic3d/
+- Instagram: [cubic3d_ke](https://www.instagram.com/cubic3d_ke/)
+- X (Twitter): [Cubic3D_Ke](https://x.com/Cubic3D_Ke)
+- Facebook: [cubic3d](https://www.facebook.com/cubic3d/)
 
 ## Frequently Asked Questions
 
 **What file format is required?**
-STL files are accepted. Most CAD tools (Fusion 360, SolidWorks, Tinkercad, Blender) export STL directly.
+STL files are accepted. Most CAD tools ([Fusion 360](https://www.autodesk.com/products/fusion-360/), SolidWorks, Tinkercad, Blender) export STL directly.
 
 **How long does printing take?**
 2–5 business days after confirming the price. Complex or large prints may take longer.
@@ -60,7 +60,8 @@ Based on the weight of the finished print in grams multiplied by the material's 
 Yes — we deliver countrywide across Kenya. Delivery fees depend on location and are included in the invoice.
 
 **Can you help if I don't have a 3D file?**
-Yes — we offer a 3D design service starting from KES 1,500. Contact us with a sketch, photo, or description.
+Yes — we offer a 3D design service starting from KES 1,500. [Contact us](https://cubic3d.co.ke/contact/) with a sketch, photo, or description.
 
 **What if my print doesn't come out right?**
 We inspect every print before dispatch. If a quality issue is on our end, we reprint at no charge.
+

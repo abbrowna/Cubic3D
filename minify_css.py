@@ -12,6 +12,7 @@ FILES = [
     # (source, output)
     ("app/static/app/content/sitev2.css",     "app/static/app/content/sitev2.min.css"),
     ("app/static/app/content/responsive.css", "app/static/app/content/responsive.css"),  # already plain
+    ("app/static/app/content/index.css",      "app/static/app/content/index.min.css"),
 ]
 
 for src_rel, out_rel in FILES:
