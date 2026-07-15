@@ -121,7 +121,7 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Hello {{ user.first_name }}! <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="{% url 'logout' %}">Log off</a>
+                                    <form id="logoutForm" action="{% url 'logout' %}" method="post" style="display:none">{% csrf_token %}</form><a href="#" onclick="document.getElementById('logoutForm').submit();return false;">Log off</a>
                                 </li>
                                 <li><a href="{% url 'change_profile' %}">My account</a></li>
                             </ul>
